@@ -12,4 +12,5 @@
 +(NSDateFormatter*)dayOfTheWeekFormatter;
 +(NSDateFormatter*)dayOfTheMonthFormatter;
 +(NSDateFormatter*)querystringDateFormatter;
++(NSDateFormatter*)dateTimeFormat;
 @end

@@ -7,6 +7,19 @@
 //
 
 #import "SongKickDateTime.h"
-
+#import "DateFormats.h"
 @implementation SongKickDateTime
++(NSDictionary *)defaultPropertyValues{
+    return @{@"date": [NSDate dateWithTimeIntervalSince1970:0], @"datetime": [NSDate dateWithTimeIntervalSince1970:0]};
+}
++(NSDictionary *)dictionaryConvertedFromJSON:(NSDictionary *)dict{
+    NSMutableDictionary * result = dict.mutableCopy;
+    if(dict[@"date"])
+        result[@"date"] = [[DateFormats querystringDateFormatter] dateFromString:dict[@"date"]];
+    
+    if(dict[@"datetime"])
+        result[@"datetime"] = [[DateFormats dateTimeFormat] dateFromString:dict[@"datetime"]];
+
+    return result;
+}
 @end

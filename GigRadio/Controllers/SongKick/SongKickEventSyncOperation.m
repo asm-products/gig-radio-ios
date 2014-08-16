@@ -47,7 +47,12 @@
         if([SongKickEvent objectsInRealm:realm where:@"id == %@", dict[@"id"]].count > 0){
             NSLog(@"Skipping duplicated");
         }else{
-            NSDictionary * cleanDict = [dict dictionaryWithoutNullValues];
+            NSMutableDictionary * cleanDict = [dict dictionaryWithoutNullValues].mutableCopy;
+            if(!cleanDict[@"end"])
+                cleanDict[@"end"] = cleanDict[@"start"];
+            cleanDict[@"start"] = [SongKickDateTime dictionaryConvertedFromJSON:cleanDict[@"start"]];
+            cleanDict[@"end"] = [SongKickDateTime dictionaryConvertedFromJSON:cleanDict[@"end"]];
+            
             NSLog(@"Will save event %@", cleanDict[@"displayName"]);
             [realm beginWriteTransaction];
             [SongKickEvent createInRealm:realm withObject:cleanDict];

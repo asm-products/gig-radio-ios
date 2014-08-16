@@ -27,4 +27,7 @@
 +(NSDateFormatter *)querystringDateFormatter{
     formatter(@"yyyy-MM-dd");
 }
++(NSDateFormatter *)dateTimeFormat{
+    formatter(@"yyyy-MM-dd'T'HH:mm:ssZZZZZ"); // 2014-08-16T14:00:00+0200
+}
 @end

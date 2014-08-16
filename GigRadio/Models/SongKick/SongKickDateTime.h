@@ -12,6 +12,6 @@
 @property (nonatomic, strong) NSDate * datetime;
 @property (nonatomic, strong) NSDate * date;
 //@property (nonatomic, strong) NSDateComponents * time;
-
++(NSDictionary*)dictionaryConvertedFromJSON:(NSDictionary*)dict;
 @end
 RLM_ARRAY_TYPE(SongKickDateTime)

@@ -19,8 +19,8 @@
 @property (nonatomic, strong) NSString * displayName;
 @property (nonatomic, strong) SongKickVenue * venue;
 @property (nonatomic, strong) RLMArray<SongKickPerformance>*performance;
-//@property (nonatomic, strong) SongKickDateTime * start;
-//@property (nonatomic, strong) SongKickDateTime * end;
+@property (nonatomic, strong) SongKickDateTime * start;
+@property (nonatomic, strong) SongKickDateTime * end;
 @end
 
 RLM_ARRAY_TYPE(SongKickEvent)

@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface SoundCloudSyncController : NSObject
--(void)refreshWithArtistNamed:(NSString*)artistName;
+-(void)refreshWithArtistNamed:(NSString*)artistName completion:(void(^)())completionBlock;
 @property (nonatomic, strong) NSOperationQueue * syncOperations;
 @end

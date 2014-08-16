@@ -10,6 +10,8 @@
 #import "SongKickEvent.h"
 #import "SongKickArtist.h"
 #import "SongKickVenue.h"
+#import "SoundCloudSyncController.h"
+#import "SoundCloudUser.h"
 
 @interface ArtistSelectionPresenter : NSObject
 @property (nonatomic, strong) NSDate * date;
@@ -19,4 +21,7 @@
 -(instancetype)initWithDate:(NSDate*)date;
 -(void)refresh;
 +(NSMutableDictionary*)presenters;
+@property (nonatomic, strong) SoundCloudSyncController * soundCloudSyncController;
+-(SongKickEvent*)eventWithArtist:(SongKickArtist*)artist;
+-(RLMArray*)artistTracks:(SoundCloudUser*)user;
 @end

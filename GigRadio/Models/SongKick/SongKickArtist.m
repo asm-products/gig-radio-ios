@@ -9,4 +9,7 @@
 #import "SongKickArtist.h"
 
 @implementation SongKickArtist
++(NSDictionary *)defaultPropertyValues{
+    return @{@"soundCloudUserId": @0};
+}
 @end

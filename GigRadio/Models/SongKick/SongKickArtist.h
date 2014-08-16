@@ -12,6 +12,7 @@
 @property (nonatomic) long id;
 @property (nonatomic, strong) NSString * uri;
 @property (nonatomic, strong) NSString * displayName;
+@property (nonatomic) NSInteger soundCloudUserId;
 @end
 
 // This protocol enables typed collections. i.e.:

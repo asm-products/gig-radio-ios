@@ -10,8 +10,17 @@
 #import "SelectedDayViewController.h"
 #import "CalendarHelper.h"
 #import "ArtistSelectionPresenter.h"
-
-@interface NowPlayingViewController ()<UIPageViewControllerDataSource,UIPageViewControllerDelegate>
+#import "SongKickArtist.h"
+#import "SongKickEvent.h"
+#import "SoundCloudUser.h"
+#import "SoundCloudTrack.h"
+#import "SoundCloudSyncController.h"
+@interface NowPlayingViewController ()<UIPageViewControllerDataSource,UIPageViewControllerDelegate>{
+    __weak IBOutlet UILabel *artistNameLabel;
+    
+    __weak IBOutlet UILabel *venueLabel;
+    __weak IBOutlet UILabel *nowPlayingLabel;
+}
 @property (nonatomic, strong) UIPageViewController * daySelector;
 @property (nonatomic, strong) ArtistSelectionPresenter * artistsPresenter;
 @end
@@ -42,6 +51,25 @@
         self.daySelector.delegate = self;
         [self.daySelector setViewControllers:@[[self dayViewControllerForDate:self.date]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     }
+}
+- (IBAction)didPressRefresh:(id)sender {
+    SongKickArtist * artist = [self.artistsPresenter.artists firstObject];
+    if(!artist) {
+        NSLog(@"NO artists!");
+        return;
+    }
+    [self.artistsPresenter.soundCloudSyncController refreshWithArtistNamed:artist.displayName completion:^{
+        SongKickEvent * event = [self.artistsPresenter eventWithArtist:artist];
+        SoundCloudUser * soundCloudUser = [[SoundCloudUser objectsWhere:@"id == %i",artist.soundCloudUserId ] firstObject];
+        RLMArray * tracks = [self.artistsPresenter artistTracks:soundCloudUser];
+        
+        SoundCloudTrack * track = tracks.firstObject;
+        
+        artistNameLabel.text = artist.displayName;
+        venueLabel.text = [NSString stringWithFormat:@"%@ (%1.0fm away)", event.venue.displayName, event.distanceCache];
+        nowPlayingLabel.text = [NSString stringWithFormat:@"Now playing: %@", track.title];
+        
+    }];
 }
 
 #pragma mark - Day selector control

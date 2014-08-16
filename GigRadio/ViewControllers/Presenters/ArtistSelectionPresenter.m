@@ -8,10 +8,9 @@
 
 #import "ArtistSelectionPresenter.h"
 #import <YLMoment.h>
-#import "SoundCloudSyncController.h"
+#import "SoundCloudTrack.h"
 
 @interface ArtistSelectionPresenter()
-@property (nonatomic, strong) SoundCloudSyncController * soundCloudSyncController;
 @end
 
 @implementation ArtistSelectionPresenter
@@ -62,4 +61,20 @@
         return result;
     }
 }
+
+-(SongKickEvent *)eventWithArtist:(SongKickArtist *)artist{
+    for (SongKickEvent*event in self.events) {
+        for (SongKickPerformance*performance in event.performance) {
+            if([performance.artist isEqual:artist]){
+                return event;
+            }
+        }
+    }
+    NSLog(@"ERRRORRR: NO EVENT!");
+    return nil;
+}
+-(RLMArray *)artistTracks:(SoundCloudUser *)user{
+    return [SoundCloudTrack objectsWhere:@"user_id == %i", user.id];
+}
+
 @end

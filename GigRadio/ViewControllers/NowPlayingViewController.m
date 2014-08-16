@@ -16,13 +16,17 @@
 #import "SoundCloudTrack.h"
 #import "SoundCloudSyncController.h"
 @interface NowPlayingViewController ()<UIPageViewControllerDataSource,UIPageViewControllerDelegate>{
-    __weak IBOutlet UILabel *artistNameLabel;
-    
-    __weak IBOutlet UILabel *venueLabel;
-    __weak IBOutlet UILabel *nowPlayingLabel;
+    __weak IBOutlet UIButton *artistNameButton;
+    __weak IBOutlet UIButton *venueButton;
+    __weak IBOutlet UIButton *nowPlayingButton;
 }
 @property (nonatomic, strong) UIPageViewController * daySelector;
 @property (nonatomic, strong) ArtistSelectionPresenter * artistsPresenter;
+
+@property (nonatomic, strong) SongKickEvent * currentEvent;
+@property (nonatomic, strong) SongKickArtist * currentSongKickArtist;
+@property (nonatomic, strong) SoundCloudUser * currentSoundCloudUser;
+@property (nonatomic, strong) SoundCloudTrack * currentSoundCloudTrack;
 @end
 
 @implementation NowPlayingViewController
@@ -64,10 +68,16 @@
         RLMArray * tracks = [self.artistsPresenter artistTracks:soundCloudUser];
         
         SoundCloudTrack * track = tracks.firstObject;
+        [artistNameButton setTitle:artist.displayName forState:UIControlStateNormal];
+        [venueButton setTitle:[NSString stringWithFormat:@"%@ (%1.0fm away)", event.venue.displayName, event.distanceCache] forState:UIControlStateNormal];
+
+        [nowPlayingButton setTitle:[NSString stringWithFormat:@"Now playing: %@", track.title] forState:UIControlStateNormal];
         
-        artistNameLabel.text = artist.displayName;
-        venueLabel.text = [NSString stringWithFormat:@"%@ (%1.0fm away)", event.venue.displayName, event.distanceCache];
-        nowPlayingLabel.text = [NSString stringWithFormat:@"Now playing: %@", track.title];
+        
+        self.currentEvent = event;
+        self.currentSongKickArtist = artist;
+        self.currentSoundCloudUser = soundCloudUser;
+        self.currentSoundCloudTrack = track;
         
     }];
 }
@@ -95,4 +105,18 @@
     return [self dayViewControllerForDate:self.date];
     
 }
+#pragma mark - button presses
+-(void)open:(NSString*)uri{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:uri]];
+}
+- (IBAction)didPressArtistButton:(id)sender {
+    [self open:self.currentSoundCloudUser.permalink_url];
+}
+- (IBAction)didPressVenueButton:(id)sender {
+    [self open:[NSString stringWithFormat:@"https://www.songkick.com/venues/%li", self.currentEvent.venue.id]];
+}
+- (IBAction)didPressNowPlayingButton:(id)sender {
+    [self open:self.currentSoundCloudTrack.permalink_url];
+}
+
 @end

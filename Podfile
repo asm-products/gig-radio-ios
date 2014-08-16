@@ -5,6 +5,8 @@ target "GigRadio" do
   pod 'Realm+JSON', '~> 0.1'
   pod 'CLLocationManager-blocks', '~> 1.1'
   pod 'CMDQueryStringSerialization', '~> 0.3'
+  pod 'YLMoment', '~> 0.5'
+  pod 'Functional.m', '~> 1.0'
 end
 
 target "GigRadioTests" do

@@ -9,6 +9,7 @@
 #import "SongKickSyncController.h"
 #import "SongKickEventSyncOperation.h"
 #import "SongKickEventRequest.h"
+#import "SongKickEvent.h"
 @interface SongKickSyncController(Private)
 @end
 
@@ -23,6 +24,9 @@
     SongKickEventRequest * request = [SongKickEventRequest requestWithMinDate:nil maxDate:nil perPage:50 location:location]; // 100 is a bit slow
     NSLog(@"Requesting %@", request.URL.absoluteString);
     SongKickEventSyncOperation * operation = [[SongKickEventSyncOperation alloc] initWithRequest:request];
+    [operation setCompletionBlock:^{
+        [SongKickVenue updateDistanceCachesWithLocation:location];
+    }];
     [self.syncOperations addOperation:operation];
 }
 @end

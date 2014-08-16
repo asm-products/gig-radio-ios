@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SongKickEventRequest.h"
+
 @interface SongKickEventSyncOperation : NSOperation
 @property (nonatomic, strong) SongKickEventRequest * request;
 -(instancetype)initWithRequest:(SongKickEventRequest*)request;

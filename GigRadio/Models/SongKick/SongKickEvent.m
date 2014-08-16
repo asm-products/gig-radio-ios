@@ -9,4 +9,5 @@
 #import "SongKickEvent.h"
 
 @implementation SongKickEvent
+
 @end

@@ -13,7 +13,18 @@
     return @{
              @"lat": @0,
              @"lng": @0,
-             @"id": @0
+             @"id": @0,
+             @"distanceCache": @(DBL_MAX)
              };
+}
++(void)updateDistanceCachesWithLocation:(CLLocation *)location{
+    [[RLMRealm defaultRealm] beginWriteTransaction];
+    for (SongKickVenue * venue in [self allObjects]) {
+        venue.distanceCache = [venue.location distanceFromLocation:location];
+    }
+    [[RLMRealm defaultRealm] commitWriteTransaction];
+}
+-(CLLocation *)location{
+    return [[CLLocation alloc] initWithLatitude:self.lat longitude:self.lng];
 }
 @end

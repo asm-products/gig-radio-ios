@@ -7,12 +7,17 @@
 //
 
 #import <Realm/Realm.h>
-
+@import CoreLocation;
 @interface SongKickVenue : RLMObject
 @property (nonatomic) long id;
 @property (nonatomic) double lat;
 @property (nonatomic) double lng;
 @property (nonatomic, strong) NSString * displayName;
+
+@property (nonatomic) double distanceCache;
+
+-(CLLocation*)location;
++(void)updateDistanceCachesWithLocation:(CLLocation *)location;
 @end
 
 // This protocol enables typed collections. i.e.:

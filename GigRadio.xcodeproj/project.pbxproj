@@ -37,6 +37,7 @@
 		ACAE7A0C199F967E00030E26 /* LocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE7A0B199F967E00030E26 /* LocationHelper.m */; };
 		ACAE7A0F199FA11D00030E26 /* SongKickDateTime.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE7A0E199FA11D00030E26 /* SongKickDateTime.m */; };
 		ACAE7A15199FAF7400030E26 /* NSDictionary+RemovesNullValues.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE7A14199FAF7400030E26 /* NSDictionary+RemovesNullValues.m */; };
+		ACAE7A19199FCA9600030E26 /* ArtistSelectionPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE7A18199FCA9600030E26 /* ArtistSelectionPresenter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,8 @@
 		ACAE7A0E199FA11D00030E26 /* SongKickDateTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongKickDateTime.m; sourceTree = "<group>"; };
 		ACAE7A13199FAF7400030E26 /* NSDictionary+RemovesNullValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+RemovesNullValues.h"; sourceTree = "<group>"; };
 		ACAE7A14199FAF7400030E26 /* NSDictionary+RemovesNullValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+RemovesNullValues.m"; sourceTree = "<group>"; };
+		ACAE7A17199FCA9600030E26 /* ArtistSelectionPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistSelectionPresenter.h; sourceTree = "<group>"; };
+		ACAE7A18199FCA9600030E26 /* ArtistSelectionPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistSelectionPresenter.m; sourceTree = "<group>"; };
 		F9C02F65535A4429B25E0CF8 /* Pods-GigRadio.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GigRadio.xcconfig"; path = "Pods/Pods-GigRadio.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -217,6 +220,7 @@
 		ACAE79CE199F661D00030E26 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				ACAE7A16199FCA6D00030E26 /* Presenters */,
 				ACAE79CF199F66EB00030E26 /* EventsMapViewController.h */,
 				ACAE79D0199F66EB00030E26 /* EventsMapViewController.m */,
 				ACAE79D2199F68FF00030E26 /* SelectedDayViewController.h */,
@@ -295,6 +299,15 @@
 				ACAE7A08199F944A00030E26 /* SongKickConfiguration.m */,
 			);
 			path = Configuration;
+			sourceTree = "<group>";
+		};
+		ACAE7A16199FCA6D00030E26 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				ACAE7A17199FCA9600030E26 /* ArtistSelectionPresenter.h */,
+				ACAE7A18199FCA9600030E26 /* ArtistSelectionPresenter.m */,
+			);
+			path = Presenters;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -443,6 +456,7 @@
 				ACAE79F4199F89CE00030E26 /* SongKickArtist.m in Sources */,
 				ACAE79F0199F88F900030E26 /* SongKickEvent.m in Sources */,
 				ACAE7A05199F932900030E26 /* SongKickEventRequest.m in Sources */,
+				ACAE7A19199FCA9600030E26 /* ArtistSelectionPresenter.m in Sources */,
 				ACAE7A15199FAF7400030E26 /* NSDictionary+RemovesNullValues.m in Sources */,
 				ACAE79F1199F88F900030E26 /* SongKickPerformance.m in Sources */,
 				ACAE79D8199F699B00030E26 /* DateFormats.m in Sources */,

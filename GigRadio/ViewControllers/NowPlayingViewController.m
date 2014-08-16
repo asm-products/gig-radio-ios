@@ -9,8 +9,11 @@
 #import "NowPlayingViewController.h"
 #import "SelectedDayViewController.h"
 #import "CalendarHelper.h"
+#import "ArtistSelectionPresenter.h"
+
 @interface NowPlayingViewController ()<UIPageViewControllerDataSource,UIPageViewControllerDelegate>
 @property (nonatomic, strong) UIPageViewController * daySelector;
+@property (nonatomic, strong) ArtistSelectionPresenter * artistsPresenter;
 @end
 
 @implementation NowPlayingViewController
@@ -20,7 +23,16 @@
     [super viewDidLoad];
     self.date = [NSDate date];
 }
-
+-(void)setDate:(NSDate *)date{
+    _date = date;
+    
+    self.artistsPresenter = [ArtistSelectionPresenter presenterForDate:date];
+    NSLog(@"*************** %@ *******", date);
+    for (SongKickEvent * event in self.artistsPresenter.events) {
+        NSLog(@"%@: %@", event.start.date,event.displayName);
+    }
+    NSLog(@"Artists: %@", [self.artistsPresenter.artists valueForKey:@"displayName"]);
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

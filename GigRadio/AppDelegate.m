@@ -23,7 +23,8 @@
     [LocationHelper lookupWithError:^(NSError *error) {
         NSLog(@"Error looking up location");
     } completion:^(CLLocation *location) {
-        [self.songKickSyncController refreshWithLocation:location];
+        [self.songKickSyncController refreshWithLocation:location completion:^{
+        }];
     }];
     return YES;
 }

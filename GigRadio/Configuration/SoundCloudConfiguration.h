@@ -1,5 +1,5 @@
 //
-//  SongKickEventSyncOperation.h
+//  SoundCloudConfiguration.h
 //  GigRadio
 //
 //  Created by Michael Forrest on 16/08/2014.
@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SyncOperationBase.h"
-@interface SongKickEventSyncOperation : SyncOperationBase
+
+@interface SoundCloudConfiguration : NSObject
++(NSString*)clientId;
++(NSString*)baseUri;
 @end

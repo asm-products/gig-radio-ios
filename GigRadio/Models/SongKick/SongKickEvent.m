@@ -9,5 +9,9 @@
 #import "SongKickEvent.h"
 
 @implementation SongKickEvent
-
++(NSDictionary *)defaultPropertyValues{
+    return @{
+             @"distanceCache":@(100000000)
+             };
+}
 @end

@@ -13,4 +13,5 @@
 +(NSDateFormatter*)dayOfTheMonthFormatter;
 +(NSDateFormatter*)querystringDateFormatter;
 +(NSDateFormatter*)dateTimeFormat;
++(NSDateFormatter*)soundCloudDateFormat;
 @end

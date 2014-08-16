@@ -20,12 +20,13 @@
     }
     return _syncOperations;
 }
--(void)refreshWithLocation:(CLLocation*)location{
+-(void)refreshWithLocation:(CLLocation*)location completion:(void (^)())completionBlock{
     SongKickEventRequest * request = [SongKickEventRequest requestWithMinDate:nil maxDate:nil perPage:50 location:location]; // 100 is a bit slow
     NSLog(@"Requesting %@", request.URL.absoluteString);
     SongKickEventSyncOperation * operation = [[SongKickEventSyncOperation alloc] initWithRequest:request];
     [operation setCompletionBlock:^{
         [SongKickVenue updateDistanceCachesWithLocation:location];
+        if(completionBlock) completionBlock();
     }];
     [self.syncOperations addOperation:operation];
 }

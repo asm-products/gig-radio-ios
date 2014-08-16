@@ -8,6 +8,7 @@
 
 #import "SelectedDayViewController.h"
 #import "DateFormats.h"
+#import "ArtistSelectionPresenter.h"
 @interface SelectedDayViewController (){
     
     __weak IBOutlet UILabel *dayOfTheWeekLabel;
@@ -23,5 +24,8 @@
     [super viewDidLoad];
     dayOfTheWeekLabel.text = [[DateFormats dayOfTheWeekFormatter] stringFromDate:self.date];
     dayOfTheMonthLabel.text = [[DateFormats dayOfTheMonthFormatter] stringFromDate:self.date];
+}
+- (IBAction)didPressRefresh:(id)sender {
+    [[ArtistSelectionPresenter presenterForDate:self.date] refresh];
 }
 @end

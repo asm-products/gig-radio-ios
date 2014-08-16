@@ -24,7 +24,7 @@
 @property (nonatomic, strong) SongKickDateTime * end;
 
 
-
+@property (nonatomic) double distanceCache;
 @end
 
 RLM_ARRAY_TYPE(SongKickEvent)

@@ -38,6 +38,15 @@
 		ACAE7A0F199FA11D00030E26 /* SongKickDateTime.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE7A0E199FA11D00030E26 /* SongKickDateTime.m */; };
 		ACAE7A15199FAF7400030E26 /* NSDictionary+RemovesNullValues.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE7A14199FAF7400030E26 /* NSDictionary+RemovesNullValues.m */; };
 		ACAE7A19199FCA9600030E26 /* ArtistSelectionPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE7A18199FCA9600030E26 /* ArtistSelectionPresenter.m */; };
+		ACAE7A1C199FD47D00030E26 /* SoundCloudSyncController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE7A1B199FD47D00030E26 /* SoundCloudSyncController.m */; };
+		ACAE7A1F199FD4EB00030E26 /* SoundCloudConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE7A1E199FD4EB00030E26 /* SoundCloudConfiguration.m */; };
+		ACAE7A23199FD5D400030E26 /* SoundCloudArtistSearchOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE7A22199FD5D400030E26 /* SoundCloudArtistSearchOperation.m */; };
+		ACAE7A26199FD5ED00030E26 /* SoundCloudArtistTracksSyncOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE7A25199FD5ED00030E26 /* SoundCloudArtistTracksSyncOperation.m */; };
+		ACAE7A29199FD60400030E26 /* SoundCloudArtistSearchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE7A28199FD60400030E26 /* SoundCloudArtistSearchRequest.m */; };
+		ACAE7A2C199FD61200030E26 /* SoundCloudArtistTracksRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE7A2B199FD61200030E26 /* SoundCloudArtistTracksRequest.m */; };
+		ACAE7A2F199FD67200030E26 /* SyncOperationBase.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE7A2E199FD67200030E26 /* SyncOperationBase.m */; };
+		ACAE7A33199FDA6E00030E26 /* SoundCloudUser.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE7A32199FDA6E00030E26 /* SoundCloudUser.m */; };
+		ACAE7A36199FDB7600030E26 /* SoundCloudTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE7A35199FDB7600030E26 /* SoundCloudTrack.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +112,24 @@
 		ACAE7A14199FAF7400030E26 /* NSDictionary+RemovesNullValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+RemovesNullValues.m"; sourceTree = "<group>"; };
 		ACAE7A17199FCA9600030E26 /* ArtistSelectionPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistSelectionPresenter.h; sourceTree = "<group>"; };
 		ACAE7A18199FCA9600030E26 /* ArtistSelectionPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistSelectionPresenter.m; sourceTree = "<group>"; };
+		ACAE7A1A199FD47D00030E26 /* SoundCloudSyncController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundCloudSyncController.h; sourceTree = "<group>"; };
+		ACAE7A1B199FD47D00030E26 /* SoundCloudSyncController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundCloudSyncController.m; sourceTree = "<group>"; };
+		ACAE7A1D199FD4EB00030E26 /* SoundCloudConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundCloudConfiguration.h; sourceTree = "<group>"; };
+		ACAE7A1E199FD4EB00030E26 /* SoundCloudConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundCloudConfiguration.m; sourceTree = "<group>"; };
+		ACAE7A21199FD5D400030E26 /* SoundCloudArtistSearchOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundCloudArtistSearchOperation.h; sourceTree = "<group>"; };
+		ACAE7A22199FD5D400030E26 /* SoundCloudArtistSearchOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundCloudArtistSearchOperation.m; sourceTree = "<group>"; };
+		ACAE7A24199FD5ED00030E26 /* SoundCloudArtistTracksSyncOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundCloudArtistTracksSyncOperation.h; sourceTree = "<group>"; };
+		ACAE7A25199FD5ED00030E26 /* SoundCloudArtistTracksSyncOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundCloudArtistTracksSyncOperation.m; sourceTree = "<group>"; };
+		ACAE7A27199FD60400030E26 /* SoundCloudArtistSearchRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundCloudArtistSearchRequest.h; sourceTree = "<group>"; };
+		ACAE7A28199FD60400030E26 /* SoundCloudArtistSearchRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundCloudArtistSearchRequest.m; sourceTree = "<group>"; };
+		ACAE7A2A199FD61200030E26 /* SoundCloudArtistTracksRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundCloudArtistTracksRequest.h; sourceTree = "<group>"; };
+		ACAE7A2B199FD61200030E26 /* SoundCloudArtistTracksRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundCloudArtistTracksRequest.m; sourceTree = "<group>"; };
+		ACAE7A2D199FD67200030E26 /* SyncOperationBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncOperationBase.h; sourceTree = "<group>"; };
+		ACAE7A2E199FD67200030E26 /* SyncOperationBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncOperationBase.m; sourceTree = "<group>"; };
+		ACAE7A31199FDA6E00030E26 /* SoundCloudUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundCloudUser.h; sourceTree = "<group>"; };
+		ACAE7A32199FDA6E00030E26 /* SoundCloudUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundCloudUser.m; sourceTree = "<group>"; };
+		ACAE7A34199FDB7600030E26 /* SoundCloudTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundCloudTrack.h; sourceTree = "<group>"; };
+		ACAE7A35199FDB7600030E26 /* SoundCloudTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundCloudTrack.m; sourceTree = "<group>"; };
 		F9C02F65535A4429B25E0CF8 /* Pods-GigRadio.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GigRadio.xcconfig"; path = "Pods/Pods-GigRadio.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -249,6 +276,7 @@
 		ACAE79E4199F717100030E26 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				ACAE7A30199FDA1300030E26 /* SoundCloud */,
 				ACAE79EB199F88D000030E26 /* SongKick */,
 			);
 			path = Models;
@@ -274,9 +302,14 @@
 		ACAE79FB199F8D9800030E26 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				ACAE7A20199FD5A800030E26 /* SoundCloud */,
 				ACAE79FF199F8EFF00030E26 /* SongKick */,
 				ACAE79FC199F8DD200030E26 /* SongKickSyncController.h */,
 				ACAE79FD199F8DD200030E26 /* SongKickSyncController.m */,
+				ACAE7A1A199FD47D00030E26 /* SoundCloudSyncController.h */,
+				ACAE7A1B199FD47D00030E26 /* SoundCloudSyncController.m */,
+				ACAE7A2D199FD67200030E26 /* SyncOperationBase.h */,
+				ACAE7A2E199FD67200030E26 /* SyncOperationBase.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -297,6 +330,8 @@
 			children = (
 				ACAE7A07199F944A00030E26 /* SongKickConfiguration.h */,
 				ACAE7A08199F944A00030E26 /* SongKickConfiguration.m */,
+				ACAE7A1D199FD4EB00030E26 /* SoundCloudConfiguration.h */,
+				ACAE7A1E199FD4EB00030E26 /* SoundCloudConfiguration.m */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -308,6 +343,32 @@
 				ACAE7A18199FCA9600030E26 /* ArtistSelectionPresenter.m */,
 			);
 			path = Presenters;
+			sourceTree = "<group>";
+		};
+		ACAE7A20199FD5A800030E26 /* SoundCloud */ = {
+			isa = PBXGroup;
+			children = (
+				ACAE7A21199FD5D400030E26 /* SoundCloudArtistSearchOperation.h */,
+				ACAE7A22199FD5D400030E26 /* SoundCloudArtistSearchOperation.m */,
+				ACAE7A24199FD5ED00030E26 /* SoundCloudArtistTracksSyncOperation.h */,
+				ACAE7A25199FD5ED00030E26 /* SoundCloudArtistTracksSyncOperation.m */,
+				ACAE7A27199FD60400030E26 /* SoundCloudArtistSearchRequest.h */,
+				ACAE7A28199FD60400030E26 /* SoundCloudArtistSearchRequest.m */,
+				ACAE7A2A199FD61200030E26 /* SoundCloudArtistTracksRequest.h */,
+				ACAE7A2B199FD61200030E26 /* SoundCloudArtistTracksRequest.m */,
+			);
+			path = SoundCloud;
+			sourceTree = "<group>";
+		};
+		ACAE7A30199FDA1300030E26 /* SoundCloud */ = {
+			isa = PBXGroup;
+			children = (
+				ACAE7A31199FDA6E00030E26 /* SoundCloudUser.h */,
+				ACAE7A32199FDA6E00030E26 /* SoundCloudUser.m */,
+				ACAE7A34199FDB7600030E26 /* SoundCloudTrack.h */,
+				ACAE7A35199FDB7600030E26 /* SoundCloudTrack.m */,
+			);
+			path = SoundCloud;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -451,14 +512,23 @@
 				ACAE7A0F199FA11D00030E26 /* SongKickDateTime.m in Sources */,
 				ACAE79DB199F6AE800030E26 /* NowPlayingViewController.m in Sources */,
 				ACAE79D4199F68FF00030E26 /* SelectedDayViewController.m in Sources */,
+				ACAE7A36199FDB7600030E26 /* SoundCloudTrack.m in Sources */,
 				ACAE79A6199F657E00030E26 /* AppDelegate.m in Sources */,
+				ACAE7A1C199FD47D00030E26 /* SoundCloudSyncController.m in Sources */,
+				ACAE7A2F199FD67200030E26 /* SyncOperationBase.m in Sources */,
 				ACAE79D1199F66EB00030E26 /* EventsMapViewController.m in Sources */,
 				ACAE79F4199F89CE00030E26 /* SongKickArtist.m in Sources */,
 				ACAE79F0199F88F900030E26 /* SongKickEvent.m in Sources */,
+				ACAE7A2C199FD61200030E26 /* SoundCloudArtistTracksRequest.m in Sources */,
+				ACAE7A26199FD5ED00030E26 /* SoundCloudArtistTracksSyncOperation.m in Sources */,
+				ACAE7A33199FDA6E00030E26 /* SoundCloudUser.m in Sources */,
 				ACAE7A05199F932900030E26 /* SongKickEventRequest.m in Sources */,
+				ACAE7A29199FD60400030E26 /* SoundCloudArtistSearchRequest.m in Sources */,
 				ACAE7A19199FCA9600030E26 /* ArtistSelectionPresenter.m in Sources */,
 				ACAE7A15199FAF7400030E26 /* NSDictionary+RemovesNullValues.m in Sources */,
 				ACAE79F1199F88F900030E26 /* SongKickPerformance.m in Sources */,
+				ACAE7A23199FD5D400030E26 /* SoundCloudArtistSearchOperation.m in Sources */,
+				ACAE7A1F199FD4EB00030E26 /* SoundCloudConfiguration.m in Sources */,
 				ACAE79D8199F699B00030E26 /* DateFormats.m in Sources */,
 				ACAE79A2199F657E00030E26 /* main.m in Sources */,
 			);

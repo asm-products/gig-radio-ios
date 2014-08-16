@@ -26,12 +26,8 @@
 -(void)setDate:(NSDate *)date{
     _date = date;
     
-    self.artistsPresenter = [ArtistSelectionPresenter presenterForDate:date];
     NSLog(@"*************** %@ *******", date);
-    for (SongKickEvent * event in self.artistsPresenter.events) {
-        NSLog(@"%@: %@", event.start.date,event.displayName);
-    }
-    NSLog(@"Artists: %@", [self.artistsPresenter.artists valueForKey:@"displayName"]);
+    self.artistsPresenter = [ArtistSelectionPresenter presenterForDate:date];
 }
 - (void)didReceiveMemoryWarning
 {

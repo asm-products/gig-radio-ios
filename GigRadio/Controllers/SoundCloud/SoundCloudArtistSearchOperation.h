@@ -1,5 +1,5 @@
 //
-//  SongKickEventSyncOperation.h
+//  SoundCloudArtistSearchOperation.h
 //  GigRadio
 //
 //  Created by Michael Forrest on 16/08/2014.
@@ -8,5 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "SyncOperationBase.h"
-@interface SongKickEventSyncOperation : SyncOperationBase
+@interface SoundCloudArtistSearchOperation : SyncOperationBase
+@property (nonatomic) NSInteger foundUserId;
 @end

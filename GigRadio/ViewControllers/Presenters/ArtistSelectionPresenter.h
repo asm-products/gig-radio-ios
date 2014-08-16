@@ -18,5 +18,5 @@
 +(instancetype)presenterForDate:(NSDate*)date;
 -(instancetype)initWithDate:(NSDate*)date;
 -(void)refresh;
-
++(NSMutableDictionary*)presenters;
 @end

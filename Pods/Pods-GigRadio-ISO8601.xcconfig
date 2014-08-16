@@ -1,0 +1,1 @@
+PODS_GIGRADIO_ISO_____OTHER_LDFLAGS = -framework Foundation

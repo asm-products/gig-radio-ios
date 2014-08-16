@@ -26,6 +26,17 @@
 		ACAE79DB199F6AE800030E26 /* NowPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE79DA199F6AE800030E26 /* NowPlayingViewController.m */; };
 		ACAE79DE199F6C3100030E26 /* CalendarHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE79DD199F6C3100030E26 /* CalendarHelper.m */; };
 		ACAE79E3199F6E9600030E26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACAE79E2199F6E9600030E26 /* Main.storyboard */; };
+		ACAE79F0199F88F900030E26 /* SongKickEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE79ED199F88F900030E26 /* SongKickEvent.m */; };
+		ACAE79F1199F88F900030E26 /* SongKickPerformance.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE79EF199F88F900030E26 /* SongKickPerformance.m */; };
+		ACAE79F4199F89CE00030E26 /* SongKickArtist.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE79F3199F89CE00030E26 /* SongKickArtist.m */; };
+		ACAE79F7199F8A0B00030E26 /* SongKickVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE79F6199F8A0B00030E26 /* SongKickVenue.m */; };
+		ACAE79FE199F8DD200030E26 /* SongKickSyncController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE79FD199F8DD200030E26 /* SongKickSyncController.m */; };
+		ACAE7A02199F8FCC00030E26 /* SongKickEventSyncOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE7A01199F8FCC00030E26 /* SongKickEventSyncOperation.m */; };
+		ACAE7A05199F932900030E26 /* SongKickEventRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE7A04199F932900030E26 /* SongKickEventRequest.m */; };
+		ACAE7A09199F944A00030E26 /* SongKickConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE7A08199F944A00030E26 /* SongKickConfiguration.m */; };
+		ACAE7A0C199F967E00030E26 /* LocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE7A0B199F967E00030E26 /* LocationHelper.m */; };
+		ACAE7A0F199FA11D00030E26 /* SongKickDateTime.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE7A0E199FA11D00030E26 /* SongKickDateTime.m */; };
+		ACAE7A15199FAF7400030E26 /* NSDictionary+RemovesNullValues.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE7A14199FAF7400030E26 /* NSDictionary+RemovesNullValues.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +78,28 @@
 		ACAE79DC199F6C3100030E26 /* CalendarHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarHelper.h; sourceTree = "<group>"; };
 		ACAE79DD199F6C3100030E26 /* CalendarHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarHelper.m; sourceTree = "<group>"; };
 		ACAE79E2199F6E9600030E26 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = GigRadio/Main.storyboard; sourceTree = "<group>"; };
+		ACAE79EC199F88F900030E26 /* SongKickEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongKickEvent.h; sourceTree = "<group>"; };
+		ACAE79ED199F88F900030E26 /* SongKickEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongKickEvent.m; sourceTree = "<group>"; };
+		ACAE79EE199F88F900030E26 /* SongKickPerformance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongKickPerformance.h; sourceTree = "<group>"; };
+		ACAE79EF199F88F900030E26 /* SongKickPerformance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongKickPerformance.m; sourceTree = "<group>"; };
+		ACAE79F2199F89CE00030E26 /* SongKickArtist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongKickArtist.h; sourceTree = "<group>"; };
+		ACAE79F3199F89CE00030E26 /* SongKickArtist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongKickArtist.m; sourceTree = "<group>"; };
+		ACAE79F5199F8A0B00030E26 /* SongKickVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongKickVenue.h; sourceTree = "<group>"; };
+		ACAE79F6199F8A0B00030E26 /* SongKickVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongKickVenue.m; sourceTree = "<group>"; };
+		ACAE79FC199F8DD200030E26 /* SongKickSyncController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongKickSyncController.h; sourceTree = "<group>"; };
+		ACAE79FD199F8DD200030E26 /* SongKickSyncController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongKickSyncController.m; sourceTree = "<group>"; };
+		ACAE7A00199F8FCC00030E26 /* SongKickEventSyncOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongKickEventSyncOperation.h; sourceTree = "<group>"; };
+		ACAE7A01199F8FCC00030E26 /* SongKickEventSyncOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongKickEventSyncOperation.m; sourceTree = "<group>"; };
+		ACAE7A03199F932900030E26 /* SongKickEventRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongKickEventRequest.h; sourceTree = "<group>"; };
+		ACAE7A04199F932900030E26 /* SongKickEventRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongKickEventRequest.m; sourceTree = "<group>"; };
+		ACAE7A07199F944A00030E26 /* SongKickConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongKickConfiguration.h; sourceTree = "<group>"; };
+		ACAE7A08199F944A00030E26 /* SongKickConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongKickConfiguration.m; sourceTree = "<group>"; };
+		ACAE7A0A199F967E00030E26 /* LocationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationHelper.h; sourceTree = "<group>"; };
+		ACAE7A0B199F967E00030E26 /* LocationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationHelper.m; sourceTree = "<group>"; };
+		ACAE7A0D199FA11D00030E26 /* SongKickDateTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongKickDateTime.h; sourceTree = "<group>"; };
+		ACAE7A0E199FA11D00030E26 /* SongKickDateTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongKickDateTime.m; sourceTree = "<group>"; };
+		ACAE7A13199FAF7400030E26 /* NSDictionary+RemovesNullValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+RemovesNullValues.h"; sourceTree = "<group>"; };
+		ACAE7A14199FAF7400030E26 /* NSDictionary+RemovesNullValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+RemovesNullValues.m"; sourceTree = "<group>"; };
 		F9C02F65535A4429B25E0CF8 /* Pods-GigRadio.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GigRadio.xcconfig"; path = "Pods/Pods-GigRadio.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,6 +164,9 @@
 		ACAE799B199F657E00030E26 /* GigRadio */ = {
 			isa = PBXGroup;
 			children = (
+				ACAE7A06199F943500030E26 /* Configuration */,
+				ACAE79FB199F8D9800030E26 /* Controllers */,
+				ACAE79E4199F717100030E26 /* Models */,
 				ACAE79D5199F697700030E26 /* Helpers */,
 				ACAE79CE199F661D00030E26 /* ViewControllers */,
 				ACAE79CD199F661100030E26 /* Views */,
@@ -198,8 +234,67 @@
 				ACAE79D7199F699B00030E26 /* DateFormats.m */,
 				ACAE79DC199F6C3100030E26 /* CalendarHelper.h */,
 				ACAE79DD199F6C3100030E26 /* CalendarHelper.m */,
+				ACAE7A0A199F967E00030E26 /* LocationHelper.h */,
+				ACAE7A0B199F967E00030E26 /* LocationHelper.m */,
+				ACAE7A13199FAF7400030E26 /* NSDictionary+RemovesNullValues.h */,
+				ACAE7A14199FAF7400030E26 /* NSDictionary+RemovesNullValues.m */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		ACAE79E4199F717100030E26 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ACAE79EB199F88D000030E26 /* SongKick */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		ACAE79EB199F88D000030E26 /* SongKick */ = {
+			isa = PBXGroup;
+			children = (
+				ACAE7A0D199FA11D00030E26 /* SongKickDateTime.h */,
+				ACAE7A0E199FA11D00030E26 /* SongKickDateTime.m */,
+				ACAE79EC199F88F900030E26 /* SongKickEvent.h */,
+				ACAE79ED199F88F900030E26 /* SongKickEvent.m */,
+				ACAE79EE199F88F900030E26 /* SongKickPerformance.h */,
+				ACAE79EF199F88F900030E26 /* SongKickPerformance.m */,
+				ACAE79F2199F89CE00030E26 /* SongKickArtist.h */,
+				ACAE79F3199F89CE00030E26 /* SongKickArtist.m */,
+				ACAE79F5199F8A0B00030E26 /* SongKickVenue.h */,
+				ACAE79F6199F8A0B00030E26 /* SongKickVenue.m */,
+			);
+			path = SongKick;
+			sourceTree = "<group>";
+		};
+		ACAE79FB199F8D9800030E26 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				ACAE79FF199F8EFF00030E26 /* SongKick */,
+				ACAE79FC199F8DD200030E26 /* SongKickSyncController.h */,
+				ACAE79FD199F8DD200030E26 /* SongKickSyncController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		ACAE79FF199F8EFF00030E26 /* SongKick */ = {
+			isa = PBXGroup;
+			children = (
+				ACAE7A00199F8FCC00030E26 /* SongKickEventSyncOperation.h */,
+				ACAE7A01199F8FCC00030E26 /* SongKickEventSyncOperation.m */,
+				ACAE7A03199F932900030E26 /* SongKickEventRequest.h */,
+				ACAE7A04199F932900030E26 /* SongKickEventRequest.m */,
+			);
+			path = SongKick;
+			sourceTree = "<group>";
+		};
+		ACAE7A06199F943500030E26 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				ACAE7A07199F944A00030E26 /* SongKickConfiguration.h */,
+				ACAE7A08199F944A00030E26 /* SongKickConfiguration.m */,
+			);
+			path = Configuration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,11 +429,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACAE7A0C199F967E00030E26 /* LocationHelper.m in Sources */,
+				ACAE79FE199F8DD200030E26 /* SongKickSyncController.m in Sources */,
+				ACAE79F7199F8A0B00030E26 /* SongKickVenue.m in Sources */,
+				ACAE7A02199F8FCC00030E26 /* SongKickEventSyncOperation.m in Sources */,
+				ACAE7A09199F944A00030E26 /* SongKickConfiguration.m in Sources */,
 				ACAE79DE199F6C3100030E26 /* CalendarHelper.m in Sources */,
+				ACAE7A0F199FA11D00030E26 /* SongKickDateTime.m in Sources */,
 				ACAE79DB199F6AE800030E26 /* NowPlayingViewController.m in Sources */,
 				ACAE79D4199F68FF00030E26 /* SelectedDayViewController.m in Sources */,
 				ACAE79A6199F657E00030E26 /* AppDelegate.m in Sources */,
 				ACAE79D1199F66EB00030E26 /* EventsMapViewController.m in Sources */,
+				ACAE79F4199F89CE00030E26 /* SongKickArtist.m in Sources */,
+				ACAE79F0199F88F900030E26 /* SongKickEvent.m in Sources */,
+				ACAE7A05199F932900030E26 /* SongKickEventRequest.m in Sources */,
+				ACAE7A15199FAF7400030E26 /* NSDictionary+RemovesNullValues.m in Sources */,
+				ACAE79F1199F88F900030E26 /* SongKickPerformance.m in Sources */,
 				ACAE79D8199F699B00030E26 /* DateFormats.m in Sources */,
 				ACAE79A2199F657E00030E26 /* main.m in Sources */,
 			);

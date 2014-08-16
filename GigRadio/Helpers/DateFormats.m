@@ -24,4 +24,7 @@
 +(NSDateFormatter *)dayOfTheMonthFormatter{
     formatter(@"dd")
 }
++(NSDateFormatter *)querystringDateFormatter{
+    formatter(@"yyyy-MM-dd");
+}
 @end

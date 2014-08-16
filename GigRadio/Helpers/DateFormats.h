@@ -11,4 +11,5 @@
 @interface DateFormats : NSObject
 +(NSDateFormatter*)dayOfTheWeekFormatter;
 +(NSDateFormatter*)dayOfTheMonthFormatter;
++(NSDateFormatter*)querystringDateFormatter;
 @end

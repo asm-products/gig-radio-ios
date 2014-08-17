@@ -7,6 +7,8 @@ target "GigRadio" do
   pod 'CMDQueryStringSerialization', '~> 0.3'
   pod 'YLMoment', '~> 0.5'
   pod 'Functional.m', '~> 1.0'
+  pod 'UIActionSheet+Blocks', '~> 0.8'
+  pod 'NCMusicEngine', '~> 0.1'  
 end
 
 target "GigRadioTests" do

@@ -37,6 +37,9 @@
 @property (nonatomic) NSInteger download_count;
 @property (nonatomic) NSInteger favoritings_count;
 @property (nonatomic) NSInteger comment_count;
+
+
+-(NSURL*)playbackURL;
 @end
 
 RLM_ARRAY_TYPE(SoundCloudTrack)

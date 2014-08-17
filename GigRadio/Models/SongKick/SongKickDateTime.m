@@ -10,7 +10,11 @@
 #import "DateFormats.h"
 @implementation SongKickDateTime
 +(NSDictionary *)defaultPropertyValues{
-    return @{@"date": [NSDate dateWithTimeIntervalSince1970:0], @"datetime": [NSDate dateWithTimeIntervalSince1970:0]};
+    return @{
+             @"date": [NSDate dateWithTimeIntervalSince1970:0],
+             @"datetime": [NSDate dateWithTimeIntervalSince1970:0],
+             @"timeString": @""
+             };
 }
 +(NSDictionary *)dictionaryConvertedFromJSON:(NSDictionary *)dict{
     NSMutableDictionary * result = dict.mutableCopy;
@@ -20,6 +24,10 @@
     if(dict[@"datetime"])
         result[@"datetime"] = [[DateFormats dateTimeFormat] dateFromString:dict[@"datetime"]];
 
+    
+    if(dict[@"time"])
+        result[@"timeString"] = dict[@"time"];
+    
     return result;
 }
 @end

@@ -14,7 +14,12 @@
              @"lat": @0,
              @"lng": @0,
              @"id": @0,
-             @"distanceCache": @(DBL_MAX)
+             @"distanceCache": @(DBL_MAX),
+             @"street": @"",
+             @"zip":@"",
+             @"capacity":@0,
+             @"description":@""
+             
              };
 }
 +(void)updateDistanceCachesWithLocation:(CLLocation *)location{
@@ -26,5 +31,13 @@
 }
 -(CLLocation *)location{
     return [[CLLocation alloc] initWithLatitude:self.lat longitude:self.lng];
+}
+
+-(NSString*)address{
+    return [NSString stringWithFormat:@"%@,%@", self.street, self.zip];
+}
+-(NSString *)citymapperUri{
+    // citymapper://directions?endcoord=51.563612,-0.073299&endname=Abney%20Park%20Cemetery&endaddress=Stoke%20Newington%20High%20Street
+    return [NSString stringWithFormat:@"citymapper://directions?endcoord=%f,%f&endname=%@&endaddress=%@", self.lat,self.lng,self.displayName,[self.address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 }
 @end

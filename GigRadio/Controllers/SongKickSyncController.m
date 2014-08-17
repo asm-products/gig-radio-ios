@@ -10,6 +10,8 @@
 #import "SongKickEventSyncOperation.h"
 #import "SongKickEventRequest.h"
 #import "SongKickEvent.h"
+#import "SongKickVenueRequest.h"
+#import "SongKickVenueSyncOperation.h"
 @interface SongKickSyncController(Private)
 @end
 
@@ -24,10 +26,19 @@
     SongKickEventRequest * request = [SongKickEventRequest requestWithMinDate:nil maxDate:nil perPage:50 location:location]; // 100 is a bit slow
     NSLog(@"Requesting %@", request.URL.absoluteString);
     SongKickEventSyncOperation * operation = [[SongKickEventSyncOperation alloc] initWithRequest:request];
-    [operation setCompletionBlock:^{
+    [operation setJsonParseCompletionBlock:^{
         [SongKickVenue updateDistanceCachesWithLocation:location];
         if(completionBlock) completionBlock();
     }];
+    [self.syncOperations addOperation:operation];
+}
+-(void)refreshVenue:(NSInteger)venueId completion:(void (^)())completionBlock{
+    SongKickVenueRequest * request = [SongKickVenueRequest requestWithVenueId:venueId];
+    SongKickVenueSyncOperation * operation = [[SongKickVenueSyncOperation alloc] initWithRequest:request];
+    
+    operation.jsonParseCompletionBlock = ^{
+        if(completionBlock) completionBlock();
+    };
     [self.syncOperations addOperation:operation];
 }
 @end

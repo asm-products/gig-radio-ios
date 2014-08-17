@@ -13,5 +13,7 @@
  *  Refresh data (with sensible defaults)
  */
 -(void)refreshWithLocation:(CLLocation*)location completion:(void(^)())completionBlock;
+-(void)refreshVenue:(NSInteger)venueId completion:(void(^)())completionBlock;
+
 @property (nonatomic, strong) NSOperationQueue * syncOperations;
 @end

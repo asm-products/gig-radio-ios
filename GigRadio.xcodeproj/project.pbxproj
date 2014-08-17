@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		96B229B395D441B8906893BA /* libPods-GigRadio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDE719E832549FA84561B96 /* libPods-GigRadio.a */; };
+		AC9738E019A0C0D400A0FDA3 /* SongKickVenueSyncOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9738DF19A0C0D400A0FDA3 /* SongKickVenueSyncOperation.m */; };
+		AC9738E319A0C0FB00A0FDA3 /* SongKickVenueRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9738E219A0C0FB00A0FDA3 /* SongKickVenueRequest.m */; };
 		ACAE7996199F657E00030E26 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACAE7995199F657E00030E26 /* Foundation.framework */; };
 		ACAE7998199F657E00030E26 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACAE7997199F657E00030E26 /* CoreGraphics.framework */; };
 		ACAE799A199F657E00030E26 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACAE7999199F657E00030E26 /* UIKit.framework */; };
@@ -61,6 +63,10 @@
 
 /* Begin PBXFileReference section */
 		8CDE719E832549FA84561B96 /* libPods-GigRadio.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GigRadio.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC9738DE19A0C0D400A0FDA3 /* SongKickVenueSyncOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongKickVenueSyncOperation.h; sourceTree = "<group>"; };
+		AC9738DF19A0C0D400A0FDA3 /* SongKickVenueSyncOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongKickVenueSyncOperation.m; sourceTree = "<group>"; };
+		AC9738E119A0C0FB00A0FDA3 /* SongKickVenueRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongKickVenueRequest.h; sourceTree = "<group>"; };
+		AC9738E219A0C0FB00A0FDA3 /* SongKickVenueRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongKickVenueRequest.m; sourceTree = "<group>"; };
 		ACAE7992199F657E00030E26 /* GigRadio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GigRadio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACAE7995199F657E00030E26 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ACAE7997199F657E00030E26 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -321,6 +327,10 @@
 				ACAE7A01199F8FCC00030E26 /* SongKickEventSyncOperation.m */,
 				ACAE7A03199F932900030E26 /* SongKickEventRequest.h */,
 				ACAE7A04199F932900030E26 /* SongKickEventRequest.m */,
+				AC9738DE19A0C0D400A0FDA3 /* SongKickVenueSyncOperation.h */,
+				AC9738DF19A0C0D400A0FDA3 /* SongKickVenueSyncOperation.m */,
+				AC9738E119A0C0FB00A0FDA3 /* SongKickVenueRequest.h */,
+				AC9738E219A0C0FB00A0FDA3 /* SongKickVenueRequest.m */,
 			);
 			path = SongKick;
 			sourceTree = "<group>";
@@ -420,6 +430,13 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Good To Hear";
 				TargetAttributes = {
+					ACAE7991199F657E00030E26 = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
 					ACAE79B5199F657E00030E26 = {
 						TestTargetID = ACAE7991199F657E00030E26;
 					};
@@ -507,6 +524,7 @@
 				ACAE79FE199F8DD200030E26 /* SongKickSyncController.m in Sources */,
 				ACAE79F7199F8A0B00030E26 /* SongKickVenue.m in Sources */,
 				ACAE7A02199F8FCC00030E26 /* SongKickEventSyncOperation.m in Sources */,
+				AC9738E019A0C0D400A0FDA3 /* SongKickVenueSyncOperation.m in Sources */,
 				ACAE7A09199F944A00030E26 /* SongKickConfiguration.m in Sources */,
 				ACAE79DE199F6C3100030E26 /* CalendarHelper.m in Sources */,
 				ACAE7A0F199FA11D00030E26 /* SongKickDateTime.m in Sources */,
@@ -528,6 +546,7 @@
 				ACAE7A15199FAF7400030E26 /* NSDictionary+RemovesNullValues.m in Sources */,
 				ACAE79F1199F88F900030E26 /* SongKickPerformance.m in Sources */,
 				ACAE7A23199FD5D400030E26 /* SoundCloudArtistSearchOperation.m in Sources */,
+				AC9738E319A0C0FB00A0FDA3 /* SongKickVenueRequest.m in Sources */,
 				ACAE7A1F199FD4EB00030E26 /* SoundCloudConfiguration.m in Sources */,
 				ACAE79D8199F699B00030E26 /* DateFormats.m in Sources */,
 				ACAE79A2199F657E00030E26 /* main.m in Sources */,

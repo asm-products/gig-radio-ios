@@ -13,11 +13,19 @@
 @property (nonatomic) double lat;
 @property (nonatomic) double lng;
 @property (nonatomic, strong) NSString * displayName;
+@property (nonatomic, strong) NSString * street;
+@property (nonatomic, strong) NSString * zip;
+@property (nonatomic) NSInteger capacity;
+@property (nonatomic, strong) NSString * description;
 
 @property (nonatomic) double distanceCache;
 
 -(CLLocation*)location;
 +(void)updateDistanceCachesWithLocation:(CLLocation *)location;
+
+
+-(NSString*)citymapperUri;
+
 @end
 
 // This protocol enables typed collections. i.e.:

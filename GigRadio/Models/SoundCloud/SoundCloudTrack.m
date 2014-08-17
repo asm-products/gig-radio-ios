@@ -7,7 +7,7 @@
 //
 
 #import "SoundCloudTrack.h"
-
+#import "SoundCloudConfiguration.h"
 @implementation SoundCloudTrack
 +(NSDictionary *)defaultPropertyValues{
     return @{
@@ -27,5 +27,10 @@
              @"stream_url":@"",
              @"label_id":@0
              };
+}
+
+
+-(NSURL *)playbackURL{
+    return [NSURL URLWithString:[self.stream_url stringByAppendingFormat:@"?client_id=%@",[SoundCloudConfiguration clientId]]];
 }
 @end

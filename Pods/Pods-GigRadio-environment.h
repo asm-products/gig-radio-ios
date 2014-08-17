@@ -6,6 +6,12 @@
 // project.
 
 
+// AFNetworking
+#define COCOAPODS_POD_AVAILABLE_AFNetworking
+#define COCOAPODS_VERSION_MAJOR_AFNetworking 1
+#define COCOAPODS_VERSION_MINOR_AFNetworking 3
+#define COCOAPODS_VERSION_PATCH_AFNetworking 4
+
 // CLLocationManager-blocks
 #define COCOAPODS_POD_AVAILABLE_CLLocationManager_blocks
 #define COCOAPODS_VERSION_MAJOR_CLLocationManager_blocks 1
@@ -30,6 +36,12 @@
 #define COCOAPODS_VERSION_MINOR_ISO8601 1
 #define COCOAPODS_VERSION_PATCH_ISO8601 1
 
+// NCMusicEngine
+#define COCOAPODS_POD_AVAILABLE_NCMusicEngine
+#define COCOAPODS_VERSION_MAJOR_NCMusicEngine 0
+#define COCOAPODS_VERSION_MINOR_NCMusicEngine 1
+#define COCOAPODS_VERSION_PATCH_NCMusicEngine 5
+
 // Realm
 #define COCOAPODS_POD_AVAILABLE_Realm
 #define COCOAPODS_VERSION_MAJOR_Realm 0
@@ -41,6 +53,12 @@
 #define COCOAPODS_VERSION_MAJOR_Realm_JSON 0
 #define COCOAPODS_VERSION_MINOR_Realm_JSON 1
 #define COCOAPODS_VERSION_PATCH_Realm_JSON 2
+
+// UIActionSheet+Blocks
+#define COCOAPODS_POD_AVAILABLE_UIActionSheet_Blocks
+#define COCOAPODS_VERSION_MAJOR_UIActionSheet_Blocks 0
+#define COCOAPODS_VERSION_MINOR_UIActionSheet_Blocks 8
+#define COCOAPODS_VERSION_PATCH_UIActionSheet_Blocks 1
 
 // YLMoment
 #define COCOAPODS_POD_AVAILABLE_YLMoment

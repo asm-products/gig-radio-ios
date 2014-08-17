@@ -14,8 +14,11 @@
 #import "SongKickEvent.h"
 #import "SoundCloudUser.h"
 #import "SoundCloudTrack.h"
+#import <UIActionSheet+Blocks.h>
 #import "SoundCloudSyncController.h"
-@interface NowPlayingViewController ()<UIPageViewControllerDataSource,UIPageViewControllerDelegate>{
+#import <NCMusicEngine.h>
+#import "SongKickSyncController.h"
+@interface NowPlayingViewController ()<UIPageViewControllerDataSource,UIPageViewControllerDelegate,NCMusicEngineDelegate>{
     __weak IBOutlet UIButton *artistNameButton;
     __weak IBOutlet UIButton *venueButton;
     __weak IBOutlet UIButton *nowPlayingButton;
@@ -24,6 +27,8 @@
 @property (nonatomic, strong) ArtistSelectionPresenter * artistsPresenter;
 
 @property (nonatomic) NSInteger currentArtistIndex;
+
+@property (nonatomic, strong) NCMusicEngine * musicEngine;
 
 @property (nonatomic, strong) SongKickEvent * currentEvent;
 @property (nonatomic, strong) SongKickArtist * currentSongKickArtist;
@@ -38,6 +43,8 @@
     [super viewDidLoad];
     self.date = [NSDate date];
     self.currentArtistIndex = 0;
+    self.musicEngine = [NCMusicEngine new];
+    self.musicEngine.delegate = self;
 }
 -(void)setDate:(NSDate *)date{
     _date = date;
@@ -60,31 +67,36 @@
     }
 }
 - (IBAction)didPressRefresh:(id)sender {
+    if(!self.artistsPresenter.artists || self.artistsPresenter.artists.count == 0) return;
     SongKickArtist * artist = self.artistsPresenter.artists[self.currentArtistIndex];
     if(!artist) {
         NSLog(@"NO artists!");
         return;
     }
+    SongKickEvent * event = [self.artistsPresenter eventWithArtist:artist];
+    if([event.venue.street isEqualToString:@""]){
+        [[SongKickSyncController new] refreshVenue:event.venue.id completion:^{
+           // and now I know the map links work
+        }];
+    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+            [artistNameButton setTitle:artist.displayName forState:UIControlStateNormal];
+            [venueButton setTitle:[NSString stringWithFormat:@"%@, %@ (%1.0fm away)",event.start.timeString, event.venue.displayName, event.distanceCache] forState:UIControlStateNormal];
+        
+    });
     [self.artistsPresenter.soundCloudSyncController refreshWithArtistNamed:artist.displayName completion:^{
-        SongKickEvent * event = [self.artistsPresenter eventWithArtist:artist];
         SoundCloudUser * soundCloudUser = [[SoundCloudUser objectsWhere:@"id == %i",artist.soundCloudUserId ] firstObject];
         RLMArray * tracks = [self.artistsPresenter artistTracks:soundCloudUser];
         
         SoundCloudTrack * track = tracks.firstObject;
         dispatch_async(dispatch_get_main_queue(), ^{
-            [artistNameButton setTitle:artist.displayName forState:UIControlStateNormal];
-            [venueButton setTitle:[NSString stringWithFormat:@"%@ (%1.0fm away)", event.venue.displayName, event.distanceCache] forState:UIControlStateNormal];
-            
+            [self.musicEngine playUrl:track.playbackURL];
             [nowPlayingButton setTitle:[NSString stringWithFormat:@"Now playing: %@", track.title] forState:UIControlStateNormal];
-
         });
-        
-        
         self.currentEvent = event;
         self.currentSongKickArtist = artist;
         self.currentSoundCloudUser = soundCloudUser;
         self.currentSoundCloudTrack = track;
-        
     }];
 }
 
@@ -129,13 +141,21 @@
     // 1. songkick
     // 2. apple maps
     // 3. google maps
-    // 4. citymapper citymapper://directions?endcoord=51.563612,-0.073299&endname=Abney%20Park%20Cemetery&endaddress=Stoke%20Newington%20High%20Street
-    [self open:[NSString stringWithFormat:@"https://www.songkick.com/venues/%li", self.currentEvent.venue.id]];
+    // 4. citymapper 
+    
+    [UIActionSheet showInView:self.view withTitle:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@[@"Open in SongKick", @"Directions on Apple Maps",@"Directions on Google Maps",@"Directions on Citymapper"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+        if (buttonIndex == 3) {
+            [self open:self.currentEvent.venue.citymapperUri];
+        }
+    }];
+
+//    [self open:[NSString stringWithFormat:@"https://www.songkick.com/venues/%li", self.currentEvent.venue.id]];
 }
 - (IBAction)didPressNowPlayingButton:(id)sender {
     // 1. open in browser
     // 2. open in soundcloud app
     // 3. buy track
+    
     [self open:self.currentSoundCloudTrack.permalink_url];
 }
 - (IBAction)didPressNext:(id)sender {
@@ -146,4 +166,19 @@
     [self didPressRefresh:nil];
 }
 
+#pragma mark - Player delegate
+-(void)engine:(NCMusicEngine *)engine didChangeDownloadState:(NCMusicEngineDownloadState)downloadState{
+    
+}
+-(void)engine:(NCMusicEngine *)engine didChangePlayState:(NCMusicEnginePlayState)playState{
+    
+}
+-(void)engine:(NCMusicEngine *)engine downloadProgress:(CGFloat)progress{
+    
+}
+-(void)engine:(NCMusicEngine *)engine playProgress:(CGFloat)progress{
+    if(progress > 0.9999){
+        [self didPressNext:nil];
+    }
+}
 @end

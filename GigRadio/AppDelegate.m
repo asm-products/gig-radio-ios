@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "SongKickSyncController.h"
 #import "LocationHelper.h"
+@import AVFoundation;
 @import CoreLocation;
 
 @interface AppDelegate()
@@ -19,6 +20,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
     self.songKickSyncController = [SongKickSyncController new]; 
     [LocationHelper lookupWithError:^(NSError *error) {
         NSLog(@"Error looking up location");

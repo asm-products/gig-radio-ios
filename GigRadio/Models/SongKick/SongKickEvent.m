@@ -12,6 +12,7 @@
 +(NSDictionary *)defaultPropertyValues{
     return @{
              @"distanceCache":@(100000000),
+             @"description":@"",
              @"uri": @""
              };
 }

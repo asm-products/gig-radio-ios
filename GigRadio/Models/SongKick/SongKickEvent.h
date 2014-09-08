@@ -23,6 +23,7 @@
 @property (nonatomic, strong) SongKickDateTime * start;
 @property (nonatomic, strong) SongKickDateTime * end;
 @property (nonatomic, strong) NSString * uri;
+@property (nonatomic, strong) NSString * description;
 
 
 @property (nonatomic) double distanceCache;

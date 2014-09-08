@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		96B229B395D441B8906893BA /* libPods-GigRadio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDE719E832549FA84561B96 /* libPods-GigRadio.a */; };
+		AC1EB93F19B1171300BF7EAF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC1EB93E19B1171300BF7EAF /* Crashlytics.framework */; };
 		AC9738E019A0C0D400A0FDA3 /* SongKickVenueSyncOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9738DF19A0C0D400A0FDA3 /* SongKickVenueSyncOperation.m */; };
 		AC9738E319A0C0FB00A0FDA3 /* SongKickVenueRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9738E219A0C0FB00A0FDA3 /* SongKickVenueRequest.m */; };
 		ACAE7996199F657E00030E26 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACAE7995199F657E00030E26 /* Foundation.framework */; };
@@ -63,6 +64,7 @@
 
 /* Begin PBXFileReference section */
 		8CDE719E832549FA84561B96 /* libPods-GigRadio.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GigRadio.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC1EB93E19B1171300BF7EAF /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		AC9738DE19A0C0D400A0FDA3 /* SongKickVenueSyncOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongKickVenueSyncOperation.h; sourceTree = "<group>"; };
 		AC9738DF19A0C0D400A0FDA3 /* SongKickVenueSyncOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongKickVenueSyncOperation.m; sourceTree = "<group>"; };
 		AC9738E119A0C0FB00A0FDA3 /* SongKickVenueRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongKickVenueRequest.h; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACAE7998199F657E00030E26 /* CoreGraphics.framework in Frameworks */,
+				AC1EB93F19B1171300BF7EAF /* Crashlytics.framework in Frameworks */,
 				ACAE799A199F657E00030E26 /* UIKit.framework in Frameworks */,
 				ACAE7996199F657E00030E26 /* Foundation.framework in Frameworks */,
 				96B229B395D441B8906893BA /* libPods-GigRadio.a in Frameworks */,
@@ -188,6 +191,7 @@
 		ACAE7994199F657E00030E26 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AC1EB93E19B1171300BF7EAF /* Crashlytics.framework */,
 				ACAE7995199F657E00030E26 /* Foundation.framework */,
 				ACAE7997199F657E00030E26 /* CoreGraphics.framework */,
 				ACAE7999199F657E00030E26 /* UIKit.framework */,
@@ -393,6 +397,7 @@
 				ACAE798F199F657E00030E26 /* Frameworks */,
 				ACAE7990199F657E00030E26 /* Resources */,
 				7B7BB4CE530B4C6BB9E75278 /* Copy Pods Resources */,
+				AC1EB93D19B116EF00BF7EAF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -431,6 +436,7 @@
 				ORGANIZATIONNAME = "Good To Hear";
 				TargetAttributes = {
 					ACAE7991199F657E00030E26 = {
+						DevelopmentTeam = TNRLJ4WU59;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -497,6 +503,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Pods-GigRadio-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		AC1EB93D19B116EF00BF7EAF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 3254ccee18a98f4b57c4dc9d4fdd5d961828f59d 3d342277e5866602e57cf63e100c248a8ae2614513986fa7e265a13234b1d651";
 		};
 		F7F9E44208ED4DC3BF0B61C4 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -667,6 +686,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GigRadio/GigRadio-Prefix.pch";
 				INFOPLIST_FILE = "GigRadio/GigRadio-Info.plist";
@@ -681,10 +705,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GigRadio/GigRadio-Prefix.pch";
 				INFOPLIST_FILE = "GigRadio/GigRadio-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "962ef966-4c7b-45ea-ae5c-5efa3c343a12";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

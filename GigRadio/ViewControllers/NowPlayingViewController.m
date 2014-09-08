@@ -18,6 +18,8 @@
 #import "SoundCloudSyncController.h"
 #import <NCMusicEngine.h>
 #import "SongKickSyncController.h"
+#import "LocationHelper.h"
+@import CoreLocation;
 @interface NowPlayingViewController ()<UIPageViewControllerDataSource,UIPageViewControllerDelegate,NCMusicEngineDelegate>{
     __weak IBOutlet UIButton *artistNameButton;
     __weak IBOutlet UIButton *venueButton;
@@ -34,6 +36,9 @@
 @property (nonatomic, strong) SongKickArtist * currentSongKickArtist;
 @property (nonatomic, strong) SoundCloudUser * currentSoundCloudUser;
 @property (nonatomic, strong) SoundCloudTrack * currentSoundCloudTrack;
+
+@property (nonatomic, strong) SongKickSyncController * songKickSyncController;
+@property (nonatomic, strong) CLLocation * location;
 @end
 
 @implementation NowPlayingViewController
@@ -41,20 +46,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.date = [NSDate date];
+
     self.currentArtistIndex = 0;
     self.musicEngine = [NCMusicEngine new];
     self.musicEngine.delegate = self;
+    
+    self.songKickSyncController = [SongKickSyncController new]; 
+    [LocationHelper lookupWithError:^(NSError *error) {
+        NSLog(@"Error looking up location");
+    } completion:^(CLLocation *location) {
+        self.location = location;
+        self.date = [NSDate date]; // triggers a sync...
+    }];
 }
+/**
+ *  This is messy right now - it triggers a sync which is not what you'd expect it to do!
+ */
 -(void)setDate:(NSDate *)date{
     _date = date;
     
     NSLog(@"*************** %@ *******", date);
     self.artistsPresenter = [ArtistSelectionPresenter presenterForDate:date];
-}
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
+    [self.songKickSyncController refreshWithLocation:self.location date:date completion:^{
+        [self didPressRefresh:nil]; // also bad tight coupling with IBActions throughout this class. It's all gonna be different when I have the design though.
+    }];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -75,7 +90,7 @@
     }
     SongKickEvent * event = [self.artistsPresenter eventWithArtist:artist];
     if([event.venue.street isEqualToString:@""]){
-        [[SongKickSyncController new] refreshVenue:event.venue.id completion:^{
+        [self.songKickSyncController refreshVenue:event.venue.id completion:^{
            // and now I know the map links work
         }];
     }
@@ -129,24 +144,30 @@
 }
 - (IBAction)didPressArtistButton:(id)sender {
     // do a prompt
-    // 1. open artist website
-    // 2. songkick
-    // 3. soundcloud
-    // 4. search on Spotify
-    // 5. search on iTunes
-    [self open:self.currentSoundCloudUser.permalink_url];
+    // 0. open artist website
+    // 1. songkick
+    // 2. soundcloud
+    // 3. search on Spotify
+    // 4. search on iTunes
+    [UIActionSheet showInView:self.view withTitle:self.currentSongKickArtist.displayName cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@[self.currentSoundCloudUser.website_title ? self.currentSoundCloudUser.website_title : @"Artist website", @"View on SongKick", @"View on SoundCloud", @"Search on Spotify", @"Search on iTunes"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+        if(buttonIndex == 0) [self open:self.currentSoundCloudUser.website];
+        if(buttonIndex == 1) [self open:self.currentSongKickArtist.uri];
+        if(buttonIndex == 2) [self open:self.currentSoundCloudUser.permalink_url];
+        
+    } ];
 }
 - (IBAction)didPressVenueButton:(id)sender {
     // do a popup, prompt:
-    // 1. songkick
-    // 2. apple maps
-    // 3. google maps
-    // 4. citymapper 
+    // 0. songkick
+    // 1. apple maps
+    // 2. google maps
+    // 3. citymapper
     
     [UIActionSheet showInView:self.view withTitle:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@[@"Open in SongKick", @"Directions on Apple Maps",@"Directions on Google Maps",@"Directions on Citymapper"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
-        if (buttonIndex == 3) {
-            [self open:self.currentEvent.venue.citymapperUri];
-        }
+        if(buttonIndex == 0) [self open:self.currentEvent.uri];
+        if(buttonIndex == 1) [self open:self.currentEvent.venue.appleMapsUri];
+        if(buttonIndex == 3) [self open:self.currentEvent.venue.citymapperUri];
+
     }];
 
 //    [self open:[NSString stringWithFormat:@"https://www.songkick.com/venues/%li", self.currentEvent.venue.id]];

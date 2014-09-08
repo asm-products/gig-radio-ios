@@ -36,6 +36,9 @@
 -(NSString*)address{
     return [NSString stringWithFormat:@"%@,%@", self.street, self.zip];
 }
+-(NSString *)appleMapsUri{
+    return [NSString stringWithFormat:@"http://maps.apple.com/?daddr=%@",[self.address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+}
 -(NSString *)citymapperUri{
     // citymapper://directions?endcoord=51.563612,-0.073299&endname=Abney%20Park%20Cemetery&endaddress=Stoke%20Newington%20High%20Street
     return [NSString stringWithFormat:@"citymapper://directions?endcoord=%f,%f&endname=%@&endaddress=%@", self.lat,self.lng,self.displayName,[self.address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];

@@ -11,7 +11,8 @@
 @implementation SongKickEvent
 +(NSDictionary *)defaultPropertyValues{
     return @{
-             @"distanceCache":@(100000000)
+             @"distanceCache":@(100000000),
+             @"uri": @""
              };
 }
 @end

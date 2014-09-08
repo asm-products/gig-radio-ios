@@ -22,8 +22,8 @@
     }
     return _syncOperations;
 }
--(void)refreshWithLocation:(CLLocation*)location completion:(void (^)())completionBlock{
-    SongKickEventRequest * request = [SongKickEventRequest requestWithMinDate:nil maxDate:nil perPage:50 location:location]; // 100 is a bit slow
+-(void)refreshWithLocation:(CLLocation*)location date:(NSDate *)date completion:(void (^)())completionBlock{
+    SongKickEventRequest * request = [SongKickEventRequest requestWithMinDate:date maxDate:date perPage:50 location:location]; // Using 50. 100 is a bit slow
     NSLog(@"Requesting %@", request.URL.absoluteString);
     SongKickEventSyncOperation * operation = [[SongKickEventSyncOperation alloc] initWithRequest:request];
     [operation setJsonParseCompletionBlock:^{

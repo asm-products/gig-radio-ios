@@ -23,7 +23,7 @@
 -(CLLocation*)location;
 +(void)updateDistanceCachesWithLocation:(CLLocation *)location;
 
-
+-(NSString*)appleMapsUri;
 -(NSString*)citymapperUri;
 
 @end

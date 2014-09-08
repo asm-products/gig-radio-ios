@@ -22,6 +22,7 @@
 @property (nonatomic, strong) RLMArray<SongKickPerformance>*performance;
 @property (nonatomic, strong) SongKickDateTime * start;
 @property (nonatomic, strong) SongKickDateTime * end;
+@property (nonatomic, strong) NSString * uri;
 
 
 @property (nonatomic) double distanceCache;

@@ -7,28 +7,18 @@
 //
 
 #import "AppDelegate.h"
-#import "SongKickSyncController.h"
-#import "LocationHelper.h"
+//#import <TestFlight.h>
+#import <Crashlytics/Crashlytics.h>
 @import AVFoundation;
-@import CoreLocation;
-
-@interface AppDelegate()
-@property (nonatomic, strong) SongKickSyncController * songKickSyncController;
-@end
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+//    [TestFlight takeOff:@"61ab335a-e585-4f3f-99b4-e0404e483607"];
+    [Crashlytics startWithAPIKey:@"3254ccee18a98f4b57c4dc9d4fdd5d961828f59d"];
     
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
-    self.songKickSyncController = [SongKickSyncController new]; 
-    [LocationHelper lookupWithError:^(NSError *error) {
-        NSLog(@"Error looking up location");
-    } completion:^(CLLocation *location) {
-        [self.songKickSyncController refreshWithLocation:location completion:^{
-        }];
-    }];
     return YES;
 }
 							

@@ -11,21 +11,32 @@
 @implementation SoundCloudTrack
 +(NSDictionary *)defaultPropertyValues{
     return @{
-             @"artwork_url":@"",
-             @"label_name":@"",
-             @"purchase_title":@"",
-             @"purchase_url":@"",
-             @"track_type":@"",
              @"kind":@"",
+             @"id": @0,
+             @"duration":@0,
              @"state":@"",
              @"sharing":@"",
              @"tag_list":@"",
              @"permalink":@"",
              @"streamable":@NO,
+             @"downloadable":@NO,
+             @"purchase_url":@"",
+             @"label_id":@0,
+             @"purchase_title":@"",
              @"genre":@"",
+             @"title":@"",
+             @"description":@"",
+             @"label_name":@"",
+             @"track_type":@"",
+             @"uri":@"",
+             @"permalink_url":@"",
+             @"artwork_url":@"",
              @"waveform_url":@"",
              @"stream_url":@"",
-             @"label_id":@0
+             @"playback_count":@0,
+             @"download_count":@0,
+             @"favoritings_count":@0,
+             @"comment_count":@0
              };
 }
 

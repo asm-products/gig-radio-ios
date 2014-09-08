@@ -12,7 +12,7 @@
 /**
  *  Refresh data (with sensible defaults)
  */
--(void)refreshWithLocation:(CLLocation*)location completion:(void(^)())completionBlock;
+-(void)refreshWithLocation:(CLLocation*)location date:(NSDate*)date completion:(void(^)())completionBlock;
 -(void)refreshVenue:(NSInteger)venueId completion:(void(^)())completionBlock;
 
 @property (nonatomic, strong) NSOperationQueue * syncOperations;

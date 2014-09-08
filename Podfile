@@ -8,7 +8,8 @@ target "GigRadio" do
   pod 'YLMoment', '~> 0.5'
   pod 'Functional.m', '~> 1.0'
   pod 'UIActionSheet+Blocks', '~> 0.8'
-  pod 'NCMusicEngine', '~> 0.1'  
+  pod 'NCMusicEngine', '~> 0.1'
+  pod 'CocoaLumberjack', '~> 1.8'
 end
 
 target "GigRadioTests" do

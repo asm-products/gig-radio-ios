@@ -25,8 +25,10 @@
 #import "DateFormats.h"
 #import "Playlist.h"
 #import "PlaylistDebuggingTableViewController.h"
+#import "AppDelegate.h"
 
 @import MapKit;
+@import MediaPlayer;
 
 @import CoreLocation;
 @interface NowPlayingViewController ()<UIPageViewControllerDataSource,UIPageViewControllerDelegate,NCMusicEngineDelegate>{
@@ -65,6 +67,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [(AppDelegate*)[UIApplication sharedApplication].delegate setNowPlayingViewController:self]; // trying out a new pattern here...
+    
     self.isPaused = YES;
     [self wireUpTransportControls];
     
@@ -163,7 +168,20 @@
             self.artistImageView.image = [uiImage rt_tintedImageWithColor:tintColor level:0.5];
             self.artistImageView.alpha = 0.7;
         }];
+        
+        
+        
+        NSMutableDictionary * info = @{
+                                       MPMediaItemPropertyAlbumTitle:[NSString stringWithFormat:@"Upcoming gig: %@", item.event.displayName],
+                                       MPMediaItemPropertyTitle: [NSString stringWithFormat:@"%@ - %@",item.track.title, item.songKickArtist.displayName]
+                                       }.mutableCopy;
+        if(image){
+            info[MPMediaItemPropertyArtwork] = [[MPMediaItemArtwork alloc] initWithImage:image];
+        }
+        [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:info];
     }];
+    
+    
  
 }
 #pragma mark - Day selector control
@@ -196,6 +214,9 @@
     [self.rewindButton addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleRewindTapGesture:)]];
 }
 - (IBAction)didPressPlayPause:(id)sender {
+    [self togglePlayback];
+}
+-(void)togglePlayback{
     if(self.isPaused){
         if(self.musicEngine.playState == NCMusicEnginePlayStatePaused && self.musicEngine.currentlyPlayingTrack == self.currentPlaylistItem.track){
             [self.musicEngine resume];

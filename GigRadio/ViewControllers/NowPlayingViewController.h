@@ -10,4 +10,9 @@
 
 @interface NowPlayingViewController : UIViewController
 @property (nonatomic, strong) NSDate * date;
+
+-(void)playNext;
+-(void)playPreviousOrBackToBeginning;
+-(void)togglePlayback;
+
 @end

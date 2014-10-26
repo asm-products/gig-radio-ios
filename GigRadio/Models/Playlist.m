@@ -130,7 +130,12 @@ CWL_SYNTHESIZE_SINGLETON_FOR_CLASS_WITH_ACCESSOR(Playlist, currentPlaylist)
     NSInteger indexOfItem = [self.items indexOfObject:item];
     if(indexOfItem == NSNotFound) return nil;
     if(indexOfItem == 0) return nil;
-    return self.items[indexOfItem - 1];
+    PlaylistItem *result = self.items[indexOfItem - 1];
+    if(result.track == nil){
+        return [self itemBefore:result];
+    }else{
+        return result;
+    }
 }
 
 @end

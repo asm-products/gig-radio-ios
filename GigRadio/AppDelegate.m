@@ -24,7 +24,27 @@
     NSLog(@"Started app in dir %@", [RLMRealm defaultRealmPath]);
     return YES;
 }
-							
+-(void)remoteControlReceivedWithEvent:(UIEvent *)event{
+    NowPlayingViewController * controller = self.nowPlayingViewController;
+    switch (event.subtype) {
+        case UIEventSubtypeRemoteControlTogglePlayPause: [controller togglePlayback]; break;
+        case UIEventSubtypeRemoteControlPlay: [controller togglePlayback]; break;
+        case UIEventSubtypeRemoteControlNextTrack: [controller playNext]; break;
+        case UIEventSubtypeRemoteControlPause: [controller togglePlayback]; break;
+        case UIEventSubtypeRemoteControlStop: [controller togglePlayback]; break;
+        case UIEventSubtypeRemoteControlPreviousTrack: [controller playPreviousOrBackToBeginning]; break;
+            // suppress warnings:
+        case UIEventSubtypeRemoteControlBeginSeekingBackward:
+        case UIEventSubtypeMotionShake:
+        case UIEventSubtypeRemoteControlBeginSeekingForward:
+        case UIEventSubtypeRemoteControlEndSeekingBackward:
+        case UIEventSubtypeRemoteControlEndSeekingForward:
+        case UIEventSubtypeNone:
+
+            break;
+            
+    }
+}
 - (void)applicationWillResignActive:(UIApplication *)application
 {
 }

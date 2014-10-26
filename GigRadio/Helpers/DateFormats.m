@@ -33,4 +33,7 @@
 +(NSDateFormatter*)soundCloudDateFormat{
     formatter(@"yyyy/MM/dd HH:mm:ss ZZZZZ"); // 2014/04/25 20:50:44 +0000
 }
++(NSDateFormatter*)eventDateFormatter{
+    formatter(@"HH:mm EEEE MMM dd");
+}
 @end

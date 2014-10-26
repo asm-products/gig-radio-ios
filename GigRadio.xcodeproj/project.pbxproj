@@ -9,6 +9,22 @@
 /* Begin PBXBuildFile section */
 		96B229B395D441B8906893BA /* libPods-GigRadio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDE719E832549FA84561B96 /* libPods-GigRadio.a */; };
 		AC1EB93F19B1171300BF7EAF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC1EB93E19B1171300BF7EAF /* Crashlytics.framework */; };
+		AC5E954019FC0B4D005B9872 /* compass_background.png in Resources */ = {isa = PBXBuildFile; fileRef = AC5E953019FC0B4C005B9872 /* compass_background.png */; };
+		AC5E954119FC0B4D005B9872 /* compass_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC5E953119FC0B4C005B9872 /* compass_background@2x.png */; };
+		AC5E954219FC0B4D005B9872 /* compass_needle.png in Resources */ = {isa = PBXBuildFile; fileRef = AC5E953219FC0B4C005B9872 /* compass_needle.png */; };
+		AC5E954319FC0B4D005B9872 /* compass_needle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC5E953319FC0B4C005B9872 /* compass_needle@2x.png */; };
+		AC5E954419FC0B4D005B9872 /* disclosure_small.png in Resources */ = {isa = PBXBuildFile; fileRef = AC5E953419FC0B4C005B9872 /* disclosure_small.png */; };
+		AC5E954519FC0B4D005B9872 /* disclosure_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC5E953519FC0B4C005B9872 /* disclosure_small@2x.png */; };
+		AC5E954619FC0B4D005B9872 /* fastforward.png in Resources */ = {isa = PBXBuildFile; fileRef = AC5E953619FC0B4C005B9872 /* fastforward.png */; };
+		AC5E954719FC0B4D005B9872 /* fastforward@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC5E953719FC0B4C005B9872 /* fastforward@2x.png */; };
+		AC5E954819FC0B4D005B9872 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = AC5E953819FC0B4C005B9872 /* menu.png */; };
+		AC5E954919FC0B4D005B9872 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC5E953919FC0B4D005B9872 /* menu@2x.png */; };
+		AC5E954A19FC0B4D005B9872 /* pause_large.png in Resources */ = {isa = PBXBuildFile; fileRef = AC5E953A19FC0B4D005B9872 /* pause_large.png */; };
+		AC5E954B19FC0B4D005B9872 /* pause_large@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC5E953B19FC0B4D005B9872 /* pause_large@2x.png */; };
+		AC5E954C19FC0B4D005B9872 /* play_large.png in Resources */ = {isa = PBXBuildFile; fileRef = AC5E953C19FC0B4D005B9872 /* play_large.png */; };
+		AC5E954D19FC0B4D005B9872 /* play_large@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC5E953D19FC0B4D005B9872 /* play_large@2x.png */; };
+		AC5E954E19FC0B4D005B9872 /* rewind.png in Resources */ = {isa = PBXBuildFile; fileRef = AC5E953E19FC0B4D005B9872 /* rewind.png */; };
+		AC5E954F19FC0B4D005B9872 /* rewind@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC5E953F19FC0B4D005B9872 /* rewind@2x.png */; };
 		AC9738E019A0C0D400A0FDA3 /* SongKickVenueSyncOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9738DF19A0C0D400A0FDA3 /* SongKickVenueSyncOperation.m */; };
 		AC9738E319A0C0FB00A0FDA3 /* SongKickVenueRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9738E219A0C0FB00A0FDA3 /* SongKickVenueRequest.m */; };
 		ACAE7996199F657E00030E26 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACAE7995199F657E00030E26 /* Foundation.framework */; };
@@ -50,6 +66,11 @@
 		ACAE7A2F199FD67200030E26 /* SyncOperationBase.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE7A2E199FD67200030E26 /* SyncOperationBase.m */; };
 		ACAE7A33199FDA6E00030E26 /* SoundCloudUser.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE7A32199FDA6E00030E26 /* SoundCloudUser.m */; };
 		ACAE7A36199FDB7600030E26 /* SoundCloudTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE7A35199FDB7600030E26 /* SoundCloudTrack.m */; };
+		ACD6EFD819FC44BD00DDE967 /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACD6EFD619FC44BD00DDE967 /* star@2x.png */; };
+		ACD6EFD919FC44BD00DDE967 /* starred@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACD6EFD719FC44BD00DDE967 /* starred@2x.png */; };
+		ACD6EFDC19FC4E0A00DDE967 /* MusicEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD6EFDB19FC4E0A00DDE967 /* MusicEngine.m */; };
+		ACD6EFDF19FC546800DDE967 /* PlaylistDebugTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD6EFDE19FC546800DDE967 /* PlaylistDebugTableViewController.swift */; };
+		ACD6EFE219FC71DC00DDE967 /* EventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD6EFE119FC71DC00DDE967 /* EventDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,8 +84,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C88CA704AA7C5FC060C979D /* Pods-GigRadio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GigRadio.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GigRadio/Pods-GigRadio.debug.xcconfig"; sourceTree = "<group>"; };
+		76A8A8CA5724D9E3EA5BF797 /* Pods-GigRadio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GigRadio.release.xcconfig"; path = "Pods/Target Support Files/Pods-GigRadio/Pods-GigRadio.release.xcconfig"; sourceTree = "<group>"; };
 		8CDE719E832549FA84561B96 /* libPods-GigRadio.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GigRadio.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC1EB93E19B1171300BF7EAF /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		AC5E953019FC0B4C005B9872 /* compass_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compass_background.png; sourceTree = "<group>"; };
+		AC5E953119FC0B4C005B9872 /* compass_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "compass_background@2x.png"; sourceTree = "<group>"; };
+		AC5E953219FC0B4C005B9872 /* compass_needle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compass_needle.png; sourceTree = "<group>"; };
+		AC5E953319FC0B4C005B9872 /* compass_needle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "compass_needle@2x.png"; sourceTree = "<group>"; };
+		AC5E953419FC0B4C005B9872 /* disclosure_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disclosure_small.png; sourceTree = "<group>"; };
+		AC5E953519FC0B4C005B9872 /* disclosure_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclosure_small@2x.png"; sourceTree = "<group>"; };
+		AC5E953619FC0B4C005B9872 /* fastforward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fastforward.png; sourceTree = "<group>"; };
+		AC5E953719FC0B4C005B9872 /* fastforward@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fastforward@2x.png"; sourceTree = "<group>"; };
+		AC5E953819FC0B4C005B9872 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
+		AC5E953919FC0B4D005B9872 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
+		AC5E953A19FC0B4D005B9872 /* pause_large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause_large.png; sourceTree = "<group>"; };
+		AC5E953B19FC0B4D005B9872 /* pause_large@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pause_large@2x.png"; sourceTree = "<group>"; };
+		AC5E953C19FC0B4D005B9872 /* play_large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_large.png; sourceTree = "<group>"; };
+		AC5E953D19FC0B4D005B9872 /* play_large@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play_large@2x.png"; sourceTree = "<group>"; };
+		AC5E953E19FC0B4D005B9872 /* rewind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rewind.png; sourceTree = "<group>"; };
+		AC5E953F19FC0B4D005B9872 /* rewind@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rewind@2x.png"; sourceTree = "<group>"; };
 		AC9738DE19A0C0D400A0FDA3 /* SongKickVenueSyncOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongKickVenueSyncOperation.h; sourceTree = "<group>"; };
 		AC9738DF19A0C0D400A0FDA3 /* SongKickVenueSyncOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongKickVenueSyncOperation.m; sourceTree = "<group>"; };
 		AC9738E119A0C0FB00A0FDA3 /* SongKickVenueRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongKickVenueRequest.h; sourceTree = "<group>"; };
@@ -138,7 +177,14 @@
 		ACAE7A32199FDA6E00030E26 /* SoundCloudUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundCloudUser.m; sourceTree = "<group>"; };
 		ACAE7A34199FDB7600030E26 /* SoundCloudTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundCloudTrack.h; sourceTree = "<group>"; };
 		ACAE7A35199FDB7600030E26 /* SoundCloudTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundCloudTrack.m; sourceTree = "<group>"; };
-		F9C02F65535A4429B25E0CF8 /* Pods-GigRadio.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GigRadio.xcconfig"; path = "Pods/Pods-GigRadio.xcconfig"; sourceTree = "<group>"; };
+		ACD6EFD619FC44BD00DDE967 /* star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star@2x.png"; sourceTree = "<group>"; };
+		ACD6EFD719FC44BD00DDE967 /* starred@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "starred@2x.png"; sourceTree = "<group>"; };
+		ACD6EFDA19FC4E0A00DDE967 /* MusicEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicEngine.h; sourceTree = "<group>"; };
+		ACD6EFDB19FC4E0A00DDE967 /* MusicEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicEngine.m; sourceTree = "<group>"; };
+		ACD6EFDD19FC546700DDE967 /* GigRadio-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GigRadio-Bridging-Header.h"; sourceTree = "<group>"; };
+		ACD6EFDE19FC546800DDE967 /* PlaylistDebugTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistDebugTableViewController.swift; sourceTree = "<group>"; };
+		ACD6EFE019FC71DC00DDE967 /* EventDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailViewController.h; sourceTree = "<group>"; };
+		ACD6EFE119FC71DC00DDE967 /* EventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +213,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05B76765EF59017BC4D0EB6B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0C88CA704AA7C5FC060C979D /* Pods-GigRadio.debug.xcconfig */,
+				76A8A8CA5724D9E3EA5BF797 /* Pods-GigRadio.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AC5E952F19FC0B4C005B9872 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				ACD6EFD619FC44BD00DDE967 /* star@2x.png */,
+				ACD6EFD719FC44BD00DDE967 /* starred@2x.png */,
+				AC5E953019FC0B4C005B9872 /* compass_background.png */,
+				AC5E953119FC0B4C005B9872 /* compass_background@2x.png */,
+				AC5E953219FC0B4C005B9872 /* compass_needle.png */,
+				AC5E953319FC0B4C005B9872 /* compass_needle@2x.png */,
+				AC5E953419FC0B4C005B9872 /* disclosure_small.png */,
+				AC5E953519FC0B4C005B9872 /* disclosure_small@2x.png */,
+				AC5E953619FC0B4C005B9872 /* fastforward.png */,
+				AC5E953719FC0B4C005B9872 /* fastforward@2x.png */,
+				AC5E953819FC0B4C005B9872 /* menu.png */,
+				AC5E953919FC0B4D005B9872 /* menu@2x.png */,
+				AC5E953A19FC0B4D005B9872 /* pause_large.png */,
+				AC5E953B19FC0B4D005B9872 /* pause_large@2x.png */,
+				AC5E953C19FC0B4D005B9872 /* play_large.png */,
+				AC5E953D19FC0B4D005B9872 /* play_large@2x.png */,
+				AC5E953E19FC0B4D005B9872 /* rewind.png */,
+				ACAE7A06199F943500030E26 /* Configuration */,
+				AC5E953F19FC0B4D005B9872 /* rewind@2x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		ACAE7989199F657E00030E26 = {
 			isa = PBXGroup;
 			children = (
@@ -175,7 +256,7 @@
 				ACAE79BD199F657E00030E26 /* GigRadioTests */,
 				ACAE7994199F657E00030E26 /* Frameworks */,
 				ACAE7993199F657E00030E26 /* Products */,
-				F9C02F65535A4429B25E0CF8 /* Pods-GigRadio.xcconfig */,
+				05B76765EF59017BC4D0EB6B /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -204,7 +285,7 @@
 		ACAE799B199F657E00030E26 /* GigRadio */ = {
 			isa = PBXGroup;
 			children = (
-				ACAE7A06199F943500030E26 /* Configuration */,
+				AC5E952F19FC0B4C005B9872 /* Images */,
 				ACAE79FB199F8D9800030E26 /* Controllers */,
 				ACAE79E4199F717100030E26 /* Models */,
 				ACAE79D5199F697700030E26 /* Helpers */,
@@ -264,6 +345,10 @@
 				ACAE79D3199F68FF00030E26 /* SelectedDayViewController.m */,
 				ACAE79D9199F6AE800030E26 /* NowPlayingViewController.h */,
 				ACAE79DA199F6AE800030E26 /* NowPlayingViewController.m */,
+				ACD6EFDE19FC546800DDE967 /* PlaylistDebugTableViewController.swift */,
+				ACD6EFDD19FC546700DDE967 /* GigRadio-Bridging-Header.h */,
+				ACD6EFE019FC71DC00DDE967 /* EventDetailViewController.h */,
+				ACD6EFE119FC71DC00DDE967 /* EventDetailViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -320,6 +405,8 @@
 				ACAE7A1B199FD47D00030E26 /* SoundCloudSyncController.m */,
 				ACAE7A2D199FD67200030E26 /* SyncOperationBase.h */,
 				ACAE7A2E199FD67200030E26 /* SyncOperationBase.m */,
+				ACD6EFDA19FC4E0A00DDE967 /* MusicEngine.h */,
+				ACD6EFDB19FC4E0A00DDE967 /* MusicEngine.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -347,7 +434,8 @@
 				ACAE7A1D199FD4EB00030E26 /* SoundCloudConfiguration.h */,
 				ACAE7A1E199FD4EB00030E26 /* SoundCloudConfiguration.m */,
 			);
-			path = Configuration;
+			name = Configuration;
+			path = ../Configuration;
 			sourceTree = "<group>";
 		};
 		ACAE7A16199FCA6D00030E26 /* Presenters */ = {
@@ -472,8 +560,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC5E954119FC0B4D005B9872 /* compass_background@2x.png in Resources */,
+				AC5E954D19FC0B4D005B9872 /* play_large@2x.png in Resources */,
+				AC5E954C19FC0B4D005B9872 /* play_large.png in Resources */,
+				AC5E954519FC0B4D005B9872 /* disclosure_small@2x.png in Resources */,
+				AC5E954E19FC0B4D005B9872 /* rewind.png in Resources */,
+				ACD6EFD919FC44BD00DDE967 /* starred@2x.png in Resources */,
+				AC5E954919FC0B4D005B9872 /* menu@2x.png in Resources */,
+				ACD6EFD819FC44BD00DDE967 /* star@2x.png in Resources */,
+				AC5E954219FC0B4D005B9872 /* compass_needle.png in Resources */,
 				ACAE79E3199F6E9600030E26 /* Main.storyboard in Resources */,
+				AC5E954F19FC0B4D005B9872 /* rewind@2x.png in Resources */,
 				ACAE79B1199F657E00030E26 /* Images.xcassets in Resources */,
+				AC5E954719FC0B4D005B9872 /* fastforward@2x.png in Resources */,
+				AC5E954419FC0B4D005B9872 /* disclosure_small.png in Resources */,
+				AC5E954A19FC0B4D005B9872 /* pause_large.png in Resources */,
+				AC5E954019FC0B4D005B9872 /* compass_background.png in Resources */,
+				AC5E954819FC0B4D005B9872 /* menu.png in Resources */,
+				AC5E954619FC0B4D005B9872 /* fastforward.png in Resources */,
+				AC5E954319FC0B4D005B9872 /* compass_needle@2x.png in Resources */,
+				AC5E954B19FC0B4D005B9872 /* pause_large@2x.png in Resources */,
 				ACAE79A0199F657E00030E26 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -501,7 +607,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-GigRadio-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GigRadio/Pods-GigRadio-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AC1EB93D19B116EF00BF7EAF /* ShellScript */ = {
@@ -540,6 +646,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACAE7A0C199F967E00030E26 /* LocationHelper.m in Sources */,
+				ACD6EFDF19FC546800DDE967 /* PlaylistDebugTableViewController.swift in Sources */,
 				ACAE79FE199F8DD200030E26 /* SongKickSyncController.m in Sources */,
 				ACAE79F7199F8A0B00030E26 /* SongKickVenue.m in Sources */,
 				ACAE7A02199F8FCC00030E26 /* SongKickEventSyncOperation.m in Sources */,
@@ -547,6 +654,7 @@
 				ACAE7A09199F944A00030E26 /* SongKickConfiguration.m in Sources */,
 				ACAE79DE199F6C3100030E26 /* CalendarHelper.m in Sources */,
 				ACAE7A0F199FA11D00030E26 /* SongKickDateTime.m in Sources */,
+				ACD6EFDC19FC4E0A00DDE967 /* MusicEngine.m in Sources */,
 				ACAE79DB199F6AE800030E26 /* NowPlayingViewController.m in Sources */,
 				ACAE79D4199F68FF00030E26 /* SelectedDayViewController.m in Sources */,
 				ACAE7A36199FDB7600030E26 /* SoundCloudTrack.m in Sources */,
@@ -567,6 +675,7 @@
 				ACAE7A23199FD5D400030E26 /* SoundCloudArtistSearchOperation.m in Sources */,
 				AC9738E319A0C0FB00A0FDA3 /* SongKickVenueRequest.m in Sources */,
 				ACAE7A1F199FD4EB00030E26 /* SoundCloudConfiguration.m in Sources */,
+				ACD6EFE219FC71DC00DDE967 /* EventDetailViewController.m in Sources */,
 				ACAE79D8199F699B00030E26 /* DateFormats.m in Sources */,
 				ACAE79A2199F657E00030E26 /* main.m in Sources */,
 			);
@@ -682,11 +791,12 @@
 		};
 		ACAE79C8199F657E00030E26 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F9C02F65535A4429B25E0CF8 /* Pods-GigRadio.xcconfig */;
+			baseConfigurationReference = 0C88CA704AA7C5FC060C979D /* Pods-GigRadio.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Michael Forrest (2Y46T85LFL)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -694,18 +804,23 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GigRadio/GigRadio-Prefix.pch";
 				INFOPLIST_FILE = "GigRadio/GigRadio-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "GigRadio/ViewControllers/GigRadio-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		ACAE79C9199F657E00030E26 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F9C02F65535A4429B25E0CF8 /* Pods-GigRadio.xcconfig */;
+			baseConfigurationReference = 76A8A8CA5724D9E3EA5BF797 /* Pods-GigRadio.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Good To Hear Ltd (TNRLJ4WU59)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -713,8 +828,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GigRadio/GigRadio-Prefix.pch";
 				INFOPLIST_FILE = "GigRadio/GigRadio-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "962ef966-4c7b-45ea-ae5c-5efa3c343a12";
+				PROVISIONING_PROFILE = "deb5656e-f19d-49ad-a610-00dace03e97e";
+				SWIFT_OBJC_BRIDGING_HEADER = "GigRadio/ViewControllers/GigRadio-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -1,5 +1,0 @@
-#include "Pods-GigRadio-Functional.m.xcconfig"
-GCC_PREPROCESSOR_DEFINITIONS = COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/Functional.m" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/CLLocationManager-blocks" "${PODS_ROOT}/Headers/CMDQueryStringSerialization" "${PODS_ROOT}/Headers/CocoaLumberjack" "${PODS_ROOT}/Headers/Functional.m" "${PODS_ROOT}/Headers/ISO8601" "${PODS_ROOT}/Headers/NCMusicEngine" "${PODS_ROOT}/Headers/Realm" "${PODS_ROOT}/Headers/Realm+JSON" "${PODS_ROOT}/Headers/UIActionSheet+Blocks" "${PODS_ROOT}/Headers/YLMoment"
-OTHER_LDFLAGS = -ObjC
-PODS_ROOT = ${SRCROOT}

@@ -29,6 +29,11 @@
             
         }
     }
-    if(self.jsonParseCompletionBlock) self.jsonParseCompletionBlock();
+    if(self.jsonParseCompletionBlock){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.jsonParseCompletionBlock();
+        });
+
+    }
 }
 @end

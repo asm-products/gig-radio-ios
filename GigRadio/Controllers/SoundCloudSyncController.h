@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "SoundCloudUser.h"
 @interface SoundCloudSyncController : NSObject
--(void)refreshWithArtistNamed:(NSString*)artistName completion:(void(^)())completionBlock;
+-(void)fetchArtistNamed:(NSString*)artistName completion:(void(^)(SoundCloudUser*artist))completionBlock;
 @property (nonatomic, strong) NSOperationQueue * syncOperations;
 @end

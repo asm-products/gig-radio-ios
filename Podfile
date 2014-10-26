@@ -2,7 +2,7 @@
 # platform :ios, "6.0"
 
 target "GigRadio" do
-  pod 'Realm+JSON', '~> 0.1'
+  pod 'Realm', '~> 0.85'
   pod 'CLLocationManager-blocks', '~> 1.1'
   pod 'CMDQueryStringSerialization', '~> 0.3'
   pod 'YLMoment', '~> 0.5'
@@ -10,6 +10,9 @@ target "GigRadio" do
   pod 'UIActionSheet+Blocks', '~> 0.8'
   pod 'NCMusicEngine', '~> 0.1'
   pod 'CocoaLumberjack', '~> 1.8'
+  pod 'HTCoreImage', '~> 1.0'
+  pod 'UIImage+RTTint', '~> 1.0'
+  pod 'SimpleMotionEffects', '~> 1.0'
 end
 
 target "GigRadioTests" do

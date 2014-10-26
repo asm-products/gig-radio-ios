@@ -229,9 +229,9 @@
   NSTimeInterval playerCurrentTime = self.player.currentTime;
   NSTimeInterval playerDuration = self.player.duration;
 #ifdef DDLogInfo
-  DDLogInfo(@"[NCMusicEngine] Music playing progress: %f / %f", playerCurrentTime, playerDuration);
+//  DDLogInfo(@"[NCMusicEngine] Music playing progress: %f / %f", playerCurrentTime, playerDuration);
 #else
-  NSLog(@"[NCMusicEngine] Music playing progress: %f / %f", playerCurrentTime, playerDuration);
+//  NSLog(@"[NCMusicEngine] Music playing progress: %f / %f", playerCurrentTime, playerDuration);
 #endif
 
   //

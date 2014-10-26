@@ -20,27 +20,28 @@
     }
     return _syncOperations;
 }
--(void)refreshWithArtistNamed:(NSString *)artistName completion:(void (^)())completionBlock{
+-(void)fetchArtistNamed:(NSString *)artistName completion:(void (^)(SoundCloudUser *))completionBlock{
     SoundCloudArtistSearchRequest * searchRequest = [SoundCloudArtistSearchRequest requestWithArtistName:artistName];
     SoundCloudArtistSearchOperation * searchOperation = [[SoundCloudArtistSearchOperation alloc] initWithRequest:searchRequest];
     __weak SoundCloudArtistSearchOperation * wSearch = searchOperation;
     [searchOperation setJsonParseCompletionBlock:^{
         if(!wSearch.foundUserId){
             NSLog(@"No artist was found named %@", artistName);
+            completionBlock(nil);
             return;
         }
         [[RLMRealm defaultRealm] beginWriteTransaction];
         SongKickArtist * artist = [[SongKickArtist objectsWhere:@"displayName == %@", artistName] firstObject];
         artist.soundCloudUserId = wSearch.foundUserId;
         [[RLMRealm defaultRealm] commitWriteTransaction];
-
+        NSInteger soundCloudUserId = artist.soundCloudUserId;
         NSLog(@"got the artist (%@), will now get some tracks", @(wSearch.foundUserId));
         SoundCloudArtistTracksRequest * tracksRequest = [SoundCloudArtistTracksRequest requestWithUserId:wSearch.foundUserId];
         SoundCloudArtistTracksSyncOperation * tracksOperation = [[SoundCloudArtistTracksSyncOperation alloc] initWithRequest:tracksRequest];
         [self.syncOperations addOperation:tracksOperation];
         
         [tracksOperation setJsonParseCompletionBlock:^{
-            completionBlock();
+            completionBlock([SoundCloudUser findById:soundCloudUserId]);
         }];
         
     }];

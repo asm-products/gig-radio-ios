@@ -11,7 +11,6 @@
 #import "SongKickDateTime.h"
 #import "SongKickArtist.h"
 #import "SongKickVenue.h"
-#import <RLMObject+JSON.h>
 @import CoreLocation;
 
 @interface SongKickEvent : RLMObject
@@ -23,7 +22,7 @@
 @property (nonatomic, strong) SongKickDateTime * start;
 @property (nonatomic, strong) SongKickDateTime * end;
 @property (nonatomic, strong) NSString * uri;
-@property (nonatomic, strong) NSString * description;
+@property (nonatomic, strong) NSString * eventDescription;
 
 
 @property (nonatomic) double distanceCache;

@@ -18,6 +18,9 @@
 #endif
     static CLLocationManager * manager = nil;
     if(!manager) manager = [CLLocationManager new];
+    if([manager respondsToSelector:@selector(requestWhenInUseAuthorization)]){
+        [manager performSelector:@selector(requestWhenInUseAuthorization)];
+    }
     [manager startUpdatingLocationWithUpdateBlock:^(CLLocationManager *manager, CLLocation *location, NSError *error, BOOL *stopUpdating) {
         if(error){
             errorHandler(error);

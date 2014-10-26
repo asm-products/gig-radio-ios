@@ -65,7 +65,7 @@
 -(SongKickEvent *)eventWithArtist:(SongKickArtist *)artist{
     for (SongKickEvent*event in self.events) {
         for (SongKickPerformance*performance in event.performance) {
-            if([performance.artist isEqual:artist]){
+            if(performance.artist.id == artist.id){
                 return event;
             }
         }

@@ -1,5 +1,0 @@
-#include "Pods-GigRadio-GPSKit.xcconfig"
-GCC_PREPROCESSOR_DEFINITIONS = COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/GPSKit" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/CMDQueryStringSerialization" "${PODS_ROOT}/Headers/GPSKit" "${PODS_ROOT}/Headers/ISO8601" "${PODS_ROOT}/Headers/Realm" "${PODS_ROOT}/Headers/Realm+JSON"
-OTHER_LDFLAGS = -ObjC ${PODS_GIGRADIO_GPSKIT_OTHER_LDFLAGS}
-PODS_ROOT = ${SRCROOT}

@@ -22,6 +22,9 @@
 -(void)refresh;
 +(NSMutableDictionary*)presenters;
 @property (nonatomic, strong) SoundCloudSyncController * soundCloudSyncController;
+/**
+ *  This breaks if an artist plays more than one gig in the given time frame
+ */
 -(SongKickEvent*)eventWithArtist:(SongKickArtist*)artist;
 -(RLMArray*)artistTracks:(SoundCloudUser*)user;
 @end

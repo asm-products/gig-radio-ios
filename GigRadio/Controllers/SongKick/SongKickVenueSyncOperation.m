@@ -14,7 +14,7 @@
     SongKickVenue * venue = [[SongKickVenue objectsWhere:@"id == %@", json[@"id"]] firstObject];
     [[RLMRealm defaultRealm] beginWriteTransaction];
     
-    venue.description = json[@"description"];
+    venue.venueDescription = json[@"description"];
     venue.street = json[@"street"];
     venue.zip = json[@"zip"];
     if(json[@"capacity"]!=[NSNull null])

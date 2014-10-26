@@ -14,4 +14,5 @@
 +(NSDateFormatter*)querystringDateFormatter;
 +(NSDateFormatter*)dateTimeFormat;
 +(NSDateFormatter*)soundCloudDateFormat;
++(NSDateFormatter*)eventDateFormatter;
 @end

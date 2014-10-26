@@ -16,21 +16,31 @@
 #import "SoundCloudTrack.h"
 #import <UIActionSheet+Blocks.h>
 #import "SoundCloudSyncController.h"
-#import <NCMusicEngine.h>
+#import "MusicEngine.h"
 #import "SongKickSyncController.h"
 #import "LocationHelper.h"
+#import <HTCoreImage.h>
+#import <CIFilter+HTCICategoryColorAdjustment.h>
+#import <UIImage+RTTint.h>
+#import <UIView+SimpleMotionEffects.h>
+#import "DateFormats.h"
+
+@import MapKit;
+
 @import CoreLocation;
 @interface NowPlayingViewController ()<UIPageViewControllerDataSource,UIPageViewControllerDelegate,NCMusicEngineDelegate>{
     __weak IBOutlet UIButton *artistNameButton;
+    __weak IBOutlet UIButton *dateButton;
     __weak IBOutlet UIButton *venueButton;
     __weak IBOutlet UIButton *nowPlayingButton;
+    __weak IBOutlet UILabel *distanceLabel;
 }
 @property (nonatomic, strong) UIPageViewController * daySelector;
 @property (nonatomic, strong) ArtistSelectionPresenter * artistsPresenter;
 
 @property (nonatomic) NSInteger currentArtistIndex;
 
-@property (nonatomic, strong) NCMusicEngine * musicEngine;
+@property (nonatomic, strong) MusicEngine * musicEngine;
 
 @property (nonatomic, strong) SongKickEvent * currentEvent;
 @property (nonatomic, strong) SongKickArtist * currentSongKickArtist;
@@ -39,16 +49,32 @@
 
 @property (nonatomic, strong) SongKickSyncController * songKickSyncController;
 @property (nonatomic, strong) CLLocation * location;
+
+@property (weak, nonatomic) IBOutlet UIButton *playPauseButton;
+@property (weak, nonatomic) IBOutlet UIButton *rewindButton;
+@property (weak, nonatomic) IBOutlet UIButton *fastforwardButton;
+@property (weak, nonatomic) IBOutlet UIImageView *artistImageView;
+@property (weak, nonatomic) IBOutlet UISlider *playbackScrubSlider;
+
+@property (nonatomic) BOOL isPaused;
+
 @end
 
 @implementation NowPlayingViewController
-
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
+-(BOOL)prefersStatusBarHidden{
+    return YES;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    self.isPaused = YES;
+    [self wireUpTransportControls];
+    
     self.currentArtistIndex = 0;
-    self.musicEngine = [NCMusicEngine new];
+    self.musicEngine = [MusicEngine new];
     self.musicEngine.delegate = self;
     
     self.songKickSyncController = [SongKickSyncController new]; 
@@ -58,6 +84,7 @@
         self.location = location;
         self.date = [NSDate date]; // triggers a sync...
     }];
+    [self.artistImageView addMotionEffectWithMovement:CGPointMake(16, 16)];
 }
 /**
  *  This is messy right now - it triggers a sync which is not what you'd expect it to do!
@@ -68,7 +95,8 @@
     NSLog(@"*************** %@ *******", date);
     self.artistsPresenter = [ArtistSelectionPresenter presenterForDate:date];
     [self.songKickSyncController refreshWithLocation:self.location date:date completion:^{
-        [self didPressRefresh:nil]; // also bad tight coupling with IBActions throughout this class. It's all gonna be different when I have the design though.
+        [self.artistsPresenter refresh];
+        [self refreshCurrentArtist];
     }];
 }
 
@@ -79,34 +107,54 @@
         self.daySelector.dataSource = self;
         self.daySelector.delegate = self;
         [self.daySelector setViewControllers:@[[self dayViewControllerForDate:self.date]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    }else if ([segue.identifier isEqualToString:@"Debug"]){
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
+    }else if([segue.identifier isEqualToString:@"Event"]){
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
     }
 }
+-(void)viewWillAppear:(BOOL)animated{
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [super viewWillAppear:animated];
+}
 - (IBAction)didPressRefresh:(id)sender {
-    if(!self.artistsPresenter.artists || self.artistsPresenter.artists.count == 0) return;
-    SongKickArtist * artist = self.artistsPresenter.artists[self.currentArtistIndex];
+    [self refreshCurrentArtist];
+}
+-(void)refreshCurrentArtist{
+    SongKickArtist * artist = [self currentArtist];
     if(!artist) {
-        NSLog(@"NO artists!");
+        // do something
         return;
     }
+    
     SongKickEvent * event = [self.artistsPresenter eventWithArtist:artist];
     if([event.venue.street isEqualToString:@""]){
         [self.songKickSyncController refreshVenue:event.venue.id completion:^{
-           // and now I know the map links work
+            // and now I know the map links work
         }];
     }
-    dispatch_async(dispatch_get_main_queue(), ^{
-            [artistNameButton setTitle:artist.displayName forState:UIControlStateNormal];
-            [venueButton setTitle:[NSString stringWithFormat:@"%@, %@ (%1.0fm away)",event.start.timeString, event.venue.displayName, event.distanceCache] forState:UIControlStateNormal];
+    [self showArtist:artist event:event];
+    [self.artistsPresenter.soundCloudSyncController fetchArtistNamed:artist.displayName completion:^(SoundCloudUser *soundCloudUser) {
         
-    });
-    [self.artistsPresenter.soundCloudSyncController refreshWithArtistNamed:artist.displayName completion:^{
-        SoundCloudUser * soundCloudUser = [[SoundCloudUser objectsWhere:@"id == %i",artist.soundCloudUserId ] firstObject];
         RLMArray * tracks = [self.artistsPresenter artistTracks:soundCloudUser];
+        
+        [soundCloudUser loadImage:^(UIImage*image){
+            UIColor * tintColor = [UIColor colorWithRed:0.843 green:0.000 blue:0.455 alpha:1];
+
+            [[[image toCIImage] imageByApplyingFilters:@[
+                                                         [CIFilter filterColorControlsSaturation:0 brightness:0.3 contrast:0.5]
+                                                         ]] processToUIImageCompletion:^(UIImage *uiImage) {
+                self.artistImageView.image = [uiImage rt_tintedImageWithColor:tintColor level:0.5];
+                self.artistImageView.alpha = 0.7;
+            }];
+        }];
         
         SoundCloudTrack * track = tracks.firstObject;
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.musicEngine playUrl:track.playbackURL];
-            [nowPlayingButton setTitle:[NSString stringWithFormat:@"Now playing: %@", track.title] forState:UIControlStateNormal];
+            if(!self.isPaused){
+                [self.musicEngine playUrl:track.playbackURL];
+            }
+            [nowPlayingButton setTitle:[NSString stringWithFormat:@"%@", track.title] forState:UIControlStateNormal];
         });
         self.currentEvent = event;
         self.currentSongKickArtist = artist;
@@ -114,7 +162,22 @@
         self.currentSoundCloudTrack = track;
     }];
 }
-
+-(void)showArtist:(SongKickArtist*)artist event:(SongKickEvent*)event{
+    [artistNameButton setTitle:artist.displayName forState:UIControlStateNormal];
+    
+    [dateButton setTitle:[[DateFormats eventDateFormatter] stringFromDate:event.start.datetime] forState:UIControlStateNormal];
+    
+    [venueButton setTitle:[NSString stringWithFormat:@"%@\n%@", event.venue.displayName, event.venue.address] forState:UIControlStateNormal];
+    MKDistanceFormatter *df = [[MKDistanceFormatter alloc]init];
+    df.unitStyle = MKDistanceFormatterUnitStyleAbbreviated;
+    distanceLabel.text = [[df stringFromDistance:event.distanceCache] stringByAppendingString:@"\naway"];
+    
+}
+-(SongKickArtist*)currentArtist{
+    if(!self.artistsPresenter.artists || self.artistsPresenter.artists.count == 0) return nil;
+    SongKickArtist * artist = self.artistsPresenter.artists[self.currentArtistIndex];
+    return artist;
+}
 #pragma mark - Day selector control
 -(SelectedDayViewController*)dayViewControllerForDate:(NSDate*)date{
     SelectedDayViewController * controller = [self.storyboard instantiateViewControllerWithIdentifier:@"SelectedDay"];
@@ -138,7 +201,49 @@
     return [self dayViewControllerForDate:self.date];
     
 }
-#pragma mark - button presses
+
+#pragma mark - transport
+-(void)wireUpTransportControls{
+    [self.fastforwardButton addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleFastforwardTapGesture:)]];
+    [self.rewindButton addGestureRecognizer:[[UIGestureRecognizer alloc] initWithTarget:self action:@selector(handleRewindTapGesture:)]];
+}
+- (IBAction)didPressPlayPause:(id)sender {
+    if(self.isPaused){
+        if(self.musicEngine.playState == NCMusicEnginePlayStatePaused && self.musicEngine.currentlyPlayingTrack == self.currentSoundCloudTrack){
+            [self.musicEngine resume];
+        }else{
+            [self.musicEngine playSoundCloudTrack:self.currentSoundCloudTrack];
+        }
+    }else{
+        [self.musicEngine pause];
+    }
+    self.isPaused = !self.isPaused;
+    [self updatePlayPauseButton];
+}
+-(void)updatePlayPauseButton{
+    [self.playPauseButton setImage: [UIImage imageNamed:self.isPaused ? @"play_large" : @"pause_large" ]  forState:UIControlStateNormal];
+}
+-(void)handleFastforwardTapGesture:(UITapGestureRecognizer*)tap{
+    [self playNext];
+}
+-(void)handleFastforwardLongPressGesture:(UILongPressGestureRecognizer*)press{
+    
+}
+-(void)handleRewindTapGesture:(UITapGestureRecognizer*)tap{
+    
+}
+-(void)handleRewindLongPressGesture:(UILongPressGestureRecognizer*)press{
+    
+}
+-(void)playNext{
+    self.currentArtistIndex ++;
+    if(self.currentArtistIndex > self.artistsPresenter.artists.count - 1){
+        self.currentArtistIndex = 0;
+    }
+    [self refreshCurrentArtist];
+}
+
+#pragma mark - other button presses
 -(void)open:(NSString*)uri{
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:uri]];
 }
@@ -179,14 +284,6 @@
     
     [self open:self.currentSoundCloudTrack.permalink_url];
 }
-- (IBAction)didPressNext:(id)sender {
-    self.currentArtistIndex ++;
-    if(self.currentArtistIndex > self.artistsPresenter.artists.count - 1){
-        self.currentArtistIndex = 0;
-    }
-    [self didPressRefresh:nil];
-}
-
 #pragma mark - Player delegate
 -(void)engine:(NCMusicEngine *)engine didChangeDownloadState:(NCMusicEngineDownloadState)downloadState{
     
@@ -198,8 +295,9 @@
     
 }
 -(void)engine:(NCMusicEngine *)engine playProgress:(CGFloat)progress{
+    [self.playbackScrubSlider setValue:progress animated:NO];
     if(progress > 0.9999){
-        [self didPressNext:nil];
+        [self playNext];
     }
 }
 @end

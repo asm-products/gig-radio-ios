@@ -1,1 +1,0 @@
-PODS_GIGRADIO_GPSKIT_OTHER_LDFLAGS = -framework CoreLocation

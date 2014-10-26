@@ -7,6 +7,7 @@
 //
 
 #import <Realm/Realm.h>
+@import UIKit;
 
 @interface SoundCloudUser : RLMObject
 @property (nonatomic) NSInteger id;
@@ -25,6 +26,8 @@
 @property (nonatomic) NSInteger playlist_count;
 @property (nonatomic) NSInteger followers_count;
 @property (nonatomic) NSInteger followings_count;
++(SoundCloudUser*)findById:(NSInteger)identifier;
+-(void)loadImage:(void(^)(UIImage*image))callback;
 @end
 
 // This protocol enables typed collections. i.e.:

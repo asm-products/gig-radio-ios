@@ -28,7 +28,10 @@
     SongKickEventSyncOperation * operation = [[SongKickEventSyncOperation alloc] initWithRequest:request];
     [operation setJsonParseCompletionBlock:^{
         [SongKickVenue updateDistanceCachesWithLocation:location];
-        if(completionBlock) completionBlock();
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if(completionBlock) completionBlock();
+            
+        });
     }];
     [self.syncOperations addOperation:operation];
 }

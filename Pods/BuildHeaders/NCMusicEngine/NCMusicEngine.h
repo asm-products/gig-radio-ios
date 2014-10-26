@@ -1,1 +1,0 @@
-../../NCMusicEngine/NCMusicEngine/NCMusicEngine.h

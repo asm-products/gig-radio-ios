@@ -16,9 +16,11 @@
 @property (nonatomic, strong) NSString * street;
 @property (nonatomic, strong) NSString * zip;
 @property (nonatomic) NSInteger capacity;
-@property (nonatomic, strong) NSString * description;
+@property (nonatomic, strong) NSString * venueDescription;
 
 @property (nonatomic) double distanceCache;
+
+-(NSString*)address;
 
 -(CLLocation*)location;
 +(void)updateDistanceCachesWithLocation:(CLLocation *)location;

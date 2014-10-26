@@ -27,7 +27,10 @@
     [searchOperation setJsonParseCompletionBlock:^{
         if(!wSearch.foundUserId){
             NSLog(@"No artist was found named %@", artistName);
-            completionBlock(nil);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completionBlock(nil);
+            });
+
             return;
         }
         [[RLMRealm defaultRealm] beginWriteTransaction];
@@ -38,10 +41,14 @@
         NSLog(@"got the artist (%@), will now get some tracks", @(wSearch.foundUserId));
         SoundCloudArtistTracksRequest * tracksRequest = [SoundCloudArtistTracksRequest requestWithUserId:wSearch.foundUserId];
         SoundCloudArtistTracksSyncOperation * tracksOperation = [[SoundCloudArtistTracksSyncOperation alloc] initWithRequest:tracksRequest];
+        tracksOperation.soundCloudUserId = soundCloudUserId;
         [self.syncOperations addOperation:tracksOperation];
         
         [tracksOperation setJsonParseCompletionBlock:^{
-            completionBlock([SoundCloudUser findById:soundCloudUserId]);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completionBlock([SoundCloudUser findById:soundCloudUserId]);                
+            });
+
         }];
         
     }];

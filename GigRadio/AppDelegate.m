@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 //#import <TestFlight.h>
 #import <Crashlytics/Crashlytics.h>
+#import <RLMRealm.h>
 @import AVFoundation;
 
 @implementation AppDelegate
@@ -19,6 +20,8 @@
     [Crashlytics startWithAPIKey:@"3254ccee18a98f4b57c4dc9d4fdd5d961828f59d"];
     
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+    
+    NSLog(@"Started app in dir %@", [RLMRealm defaultRealmPath]);
     return YES;
 }
 							

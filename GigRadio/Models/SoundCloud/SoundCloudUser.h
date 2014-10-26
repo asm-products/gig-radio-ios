@@ -7,6 +7,7 @@
 //
 
 #import <Realm/Realm.h>
+#import "SoundCloudTrack.h"
 @import UIKit;
 
 @interface SoundCloudUser : RLMObject
@@ -18,7 +19,7 @@
 @property (nonatomic, strong) NSString * permalink_url;
 @property (nonatomic, strong) NSString * avatar_url;
 @property (nonatomic, strong) NSString * full_name;
-@property (nonatomic, strong) NSString * description;
+@property (nonatomic, strong) NSString * userDescription;
 @property (nonatomic, strong) NSString * city;
 @property (nonatomic, strong) NSString * website;
 @property (nonatomic, strong) NSString * website_title;
@@ -28,6 +29,11 @@
 @property (nonatomic) NSInteger followings_count;
 +(SoundCloudUser*)findById:(NSInteger)identifier;
 -(void)loadImage:(void(^)(UIImage*image))callback;
+
+-(SoundCloudTrack*)nextTrackAfter:(NSArray*)trackIdsToSkip;
+
+@property (nonatomic, strong) RLMArray<SoundCloudTrack> * tracks;
+
 @end
 
 // This protocol enables typed collections. i.e.:

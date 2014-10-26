@@ -24,8 +24,11 @@
             self.foundUserId = ((SoundCloudUser*)foundUsers.firstObject).id;
         }else{
             dict = [dict dictionaryWithoutNullValues];
+            NSMutableDictionary * cleanDict = dict.mutableCopy;
+            if(dict[@"description"])
+                cleanDict[@"userDescription"] = dict[@"description"];
             [realm beginWriteTransaction];
-            SoundCloudUser * user = [SoundCloudUser createInRealm:realm withObject:dict];
+            SoundCloudUser * user = [SoundCloudUser createInRealm:realm withObject:cleanDict];
             [realm commitWriteTransaction];
             self.foundUserId = user.id;
         }

@@ -8,6 +8,7 @@ PODS:
   - CocoaLumberjack/Core (1.9.2)
   - CocoaLumberjack/Extensions (1.9.2):
     - CocoaLumberjack/Core
+  - CWLSynthesizeSingleton (1.0.0)
   - Functional.m (1.0.0)
   - HTCoreImage (1.0.1)
   - ISO8601 (0.1.1)
@@ -25,6 +26,7 @@ DEPENDENCIES:
   - CLLocationManager-blocks (~> 1.1)
   - CMDQueryStringSerialization (~> 0.3)
   - CocoaLumberjack (~> 1.8)
+  - CWLSynthesizeSingleton (~> 1.0)
   - Functional.m (~> 1.0)
   - HTCoreImage (~> 1.0)
   - NCMusicEngine (~> 0.1)
@@ -39,6 +41,7 @@ SPEC CHECKSUMS:
   CLLocationManager-blocks: 2f7bfa36b2ec17ab27f1be48268605fc1da2be94
   CMDQueryStringSerialization: 96f05d3225b6a0f6b7445a308c9e50bf84a5ba13
   CocoaLumberjack: 205769c032b5fef85b92472046bcc8b7e7c8a817
+  CWLSynthesizeSingleton: 6bf23e662713ad65ee7348ba9ef73e6e87a2626d
   Functional.m: e01ad5fc30324b63273af1f37284ac609192caa4
   HTCoreImage: 1f2a5f9a88d7893106452e7ffcc6c0ec80b37662
   ISO8601: a6afce5fbe854024802367c814fac4aa8d3586f9
@@ -49,4 +52,4 @@ SPEC CHECKSUMS:
   UIImage+RTTint: 6ce8073821eafc53fef7dd6222621e9fcb3138a3
   YLMoment: a5e6733c66490fd736db325f5d339cb511bdfb54
 
-COCOAPODS: 0.34.2
+COCOAPODS: 0.34.4

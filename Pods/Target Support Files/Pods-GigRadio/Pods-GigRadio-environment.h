@@ -24,6 +24,12 @@
 #define COCOAPODS_VERSION_MINOR_CMDQueryStringSerialization 3
 #define COCOAPODS_VERSION_PATCH_CMDQueryStringSerialization 1
 
+// CWLSynthesizeSingleton
+#define COCOAPODS_POD_AVAILABLE_CWLSynthesizeSingleton
+#define COCOAPODS_VERSION_MAJOR_CWLSynthesizeSingleton 1
+#define COCOAPODS_VERSION_MINOR_CWLSynthesizeSingleton 0
+#define COCOAPODS_VERSION_PATCH_CWLSynthesizeSingleton 0
+
 // CocoaLumberjack
 #define COCOAPODS_POD_AVAILABLE_CocoaLumberjack
 #define COCOAPODS_VERSION_MAJOR_CocoaLumberjack 1

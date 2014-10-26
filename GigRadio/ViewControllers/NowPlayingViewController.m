@@ -9,7 +9,6 @@
 #import "NowPlayingViewController.h"
 #import "SelectedDayViewController.h"
 #import "CalendarHelper.h"
-#import "ArtistSelectionPresenter.h"
 #import "SongKickArtist.h"
 #import "SongKickEvent.h"
 #import "SoundCloudUser.h"
@@ -24,6 +23,8 @@
 #import <UIImage+RTTint.h>
 #import <UIView+SimpleMotionEffects.h>
 #import "DateFormats.h"
+#import "Playlist.h"
+#import "PlaylistDebuggingTableViewController.h"
 
 @import MapKit;
 
@@ -36,16 +37,10 @@
     __weak IBOutlet UILabel *distanceLabel;
 }
 @property (nonatomic, strong) UIPageViewController * daySelector;
-@property (nonatomic, strong) ArtistSelectionPresenter * artistsPresenter;
-
-@property (nonatomic) NSInteger currentArtistIndex;
 
 @property (nonatomic, strong) MusicEngine * musicEngine;
-
-@property (nonatomic, strong) SongKickEvent * currentEvent;
-@property (nonatomic, strong) SongKickArtist * currentSongKickArtist;
-@property (nonatomic, strong) SoundCloudUser * currentSoundCloudUser;
-@property (nonatomic, strong) SoundCloudTrack * currentSoundCloudTrack;
+@property (nonatomic, strong) Playlist * playlist;
+@property (nonatomic, strong) PlaylistItem * currentPlaylistItem;
 
 @property (nonatomic, strong) SongKickSyncController * songKickSyncController;
 @property (nonatomic, strong) CLLocation * location;
@@ -73,7 +68,6 @@
     self.isPaused = YES;
     [self wireUpTransportControls];
     
-    self.currentArtistIndex = 0;
     self.musicEngine = [MusicEngine new];
     self.musicEngine.delegate = self;
     
@@ -93,10 +87,17 @@
     _date = date;
     
     NSLog(@"*************** %@ *******", date);
-    self.artistsPresenter = [ArtistSelectionPresenter presenterForDate:date];
+    self.playlist = [Playlist currentPlaylist];
+    
     [self.songKickSyncController refreshWithLocation:self.location date:date completion:^{
-        [self.artistsPresenter refresh];
-        [self refreshCurrentArtist];
+        self.playlist.startDate = date;
+        self.playlist.endDate = date;
+        [self.playlist rebuild];
+        [self.playlist fetchItemAfter:self.currentPlaylistItem callback:^(PlaylistItem *item) {
+            self.currentPlaylistItem = item;
+            [self refreshCurrentArtist];
+        }];
+        
     }];
 }
 
@@ -108,6 +109,7 @@
         self.daySelector.delegate = self;
         [self.daySelector setViewControllers:@[[self dayViewControllerForDate:self.date]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     }else if ([segue.identifier isEqualToString:@"Debug"]){
+        ((PlaylistDebuggingTableViewController*) segue.destinationViewController).playlist = self.playlist;
         [self.navigationController setNavigationBarHidden:NO animated:YES];
     }else if([segue.identifier isEqualToString:@"Event"]){
         [self.navigationController setNavigationBarHidden:NO animated:YES];
@@ -121,62 +123,48 @@
     [self refreshCurrentArtist];
 }
 -(void)refreshCurrentArtist{
-    SongKickArtist * artist = [self currentArtist];
-    if(!artist) {
+    if(self.currentPlaylistItem.songKickArtist == nil) {
         // do something
+        [self showPlaylistItem:nil];
         return;
     }
     
-    SongKickEvent * event = [self.artistsPresenter eventWithArtist:artist];
+    SongKickEvent * event = self.currentPlaylistItem.event;
     if([event.venue.street isEqualToString:@""]){
         [self.songKickSyncController refreshVenue:event.venue.id completion:^{
             // and now I know the map links work
         }];
     }
-    [self showArtist:artist event:event];
-    [self.artistsPresenter.soundCloudSyncController fetchArtistNamed:artist.displayName completion:^(SoundCloudUser *soundCloudUser) {
-        
-        RLMArray * tracks = [self.artistsPresenter artistTracks:soundCloudUser];
-        
-        [soundCloudUser loadImage:^(UIImage*image){
-            UIColor * tintColor = [UIColor colorWithRed:0.843 green:0.000 blue:0.455 alpha:1];
-
-            [[[image toCIImage] imageByApplyingFilters:@[
-                                                         [CIFilter filterColorControlsSaturation:0 brightness:0.3 contrast:0.5]
-                                                         ]] processToUIImageCompletion:^(UIImage *uiImage) {
-                self.artistImageView.image = [uiImage rt_tintedImageWithColor:tintColor level:0.5];
-                self.artistImageView.alpha = 0.7;
-            }];
-        }];
-        
-        SoundCloudTrack * track = tracks.firstObject;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if(!self.isPaused){
-                [self.musicEngine playUrl:track.playbackURL];
-            }
-            [nowPlayingButton setTitle:[NSString stringWithFormat:@"%@", track.title] forState:UIControlStateNormal];
-        });
-        self.currentEvent = event;
-        self.currentSongKickArtist = artist;
-        self.currentSoundCloudUser = soundCloudUser;
-        self.currentSoundCloudTrack = track;
-    }];
+    [self showPlaylistItem:self.currentPlaylistItem];
+    
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if(!self.isPaused){
+            [self.musicEngine playUrl:self.currentPlaylistItem.track.playbackURL];
+        }
+        [nowPlayingButton setTitle:[NSString stringWithFormat:@"%@", self.currentPlaylistItem.track.title] forState:UIControlStateNormal];
+    });
 }
--(void)showArtist:(SongKickArtist*)artist event:(SongKickEvent*)event{
-    [artistNameButton setTitle:artist.displayName forState:UIControlStateNormal];
+-(void)showPlaylistItem:(PlaylistItem*)item{
+    [artistNameButton setTitle:item.songKickArtist ? item.songKickArtist.displayName : @"" forState:UIControlStateNormal];
+    [dateButton setTitle:item.event ? [[DateFormats eventDateFormatter] stringFromDate:item.event.start.datetime] : @"" forState:UIControlStateNormal];
     
-    [dateButton setTitle:[[DateFormats eventDateFormatter] stringFromDate:event.start.datetime] forState:UIControlStateNormal];
-    
-    [venueButton setTitle:[NSString stringWithFormat:@"%@\n%@", event.venue.displayName, event.venue.address] forState:UIControlStateNormal];
+    [venueButton setTitle:[NSString stringWithFormat:@"%@\n%@", item.event.venue.displayName, item.event.venue.address] forState:UIControlStateNormal];
     MKDistanceFormatter *df = [[MKDistanceFormatter alloc]init];
     df.unitStyle = MKDistanceFormatterUnitStyleAbbreviated;
-    distanceLabel.text = [[df stringFromDistance:event.distanceCache] stringByAppendingString:@"\naway"];
+    distanceLabel.text =  item.event ? [[df stringFromDistance:item.event.distanceCache] stringByAppendingString:@"\naway"] : @"";
     
-}
--(SongKickArtist*)currentArtist{
-    if(!self.artistsPresenter.artists || self.artistsPresenter.artists.count == 0) return nil;
-    SongKickArtist * artist = self.artistsPresenter.artists[self.currentArtistIndex];
-    return artist;
+    [item.soundCloudUser loadImage:^(UIImage*image){
+        UIColor * tintColor = [UIColor colorWithRed:0.843 green:0.000 blue:0.455 alpha:1];
+        
+        [[[image toCIImage] imageByApplyingFilters:@[
+                                                     [CIFilter filterColorControlsSaturation:0 brightness:0.3 contrast:0.8]
+                                                     ]] processToUIImageCompletion:^(UIImage *uiImage) {
+            self.artistImageView.image = [uiImage rt_tintedImageWithColor:tintColor level:0.5];
+            self.artistImageView.alpha = 0.7;
+        }];
+    }];
+ 
 }
 #pragma mark - Day selector control
 -(SelectedDayViewController*)dayViewControllerForDate:(NSDate*)date{
@@ -205,14 +193,14 @@
 #pragma mark - transport
 -(void)wireUpTransportControls{
     [self.fastforwardButton addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleFastforwardTapGesture:)]];
-    [self.rewindButton addGestureRecognizer:[[UIGestureRecognizer alloc] initWithTarget:self action:@selector(handleRewindTapGesture:)]];
+    [self.rewindButton addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleRewindTapGesture:)]];
 }
 - (IBAction)didPressPlayPause:(id)sender {
     if(self.isPaused){
-        if(self.musicEngine.playState == NCMusicEnginePlayStatePaused && self.musicEngine.currentlyPlayingTrack == self.currentSoundCloudTrack){
+        if(self.musicEngine.playState == NCMusicEnginePlayStatePaused && self.musicEngine.currentlyPlayingTrack == self.currentPlaylistItem.track){
             [self.musicEngine resume];
         }else{
-            [self.musicEngine playSoundCloudTrack:self.currentSoundCloudTrack];
+            [self.musicEngine playSoundCloudTrack:self.currentPlaylistItem.track];
         }
     }else{
         [self.musicEngine pause];
@@ -230,17 +218,25 @@
     
 }
 -(void)handleRewindTapGesture:(UITapGestureRecognizer*)tap{
-    
+    [self playPreviousOrBackToBeginning];
 }
 -(void)handleRewindLongPressGesture:(UILongPressGestureRecognizer*)press{
     
 }
 -(void)playNext{
-    self.currentArtistIndex ++;
-    if(self.currentArtistIndex > self.artistsPresenter.artists.count - 1){
-        self.currentArtistIndex = 0;
+    [self.playlist fetchItemAfter:self.currentPlaylistItem callback:^(PlaylistItem *item) {
+        self.currentPlaylistItem = item;
+        [self refreshCurrentArtist];
+    }];
+}
+-(void)playPreviousOrBackToBeginning{
+    if(self.playbackScrubSlider.value > 0.1){
+        [self.musicEngine playSoundCloudTrack:self.currentPlaylistItem.track];
+    }else{
+        self.currentPlaylistItem = [self.playlist itemBefore:self.currentPlaylistItem];
+        [self.musicEngine playSoundCloudTrack:self.currentPlaylistItem.track];
+        [self refreshCurrentArtist];
     }
-    [self refreshCurrentArtist];
 }
 
 #pragma mark - other button presses
@@ -248,16 +244,15 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:uri]];
 }
 - (IBAction)didPressArtistButton:(id)sender {
-    // do a prompt
-    // 0. open artist website
-    // 1. songkick
-    // 2. soundcloud
-    // 3. search on Spotify
-    // 4. search on iTunes
-    [UIActionSheet showInView:self.view withTitle:self.currentSongKickArtist.displayName cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@[self.currentSoundCloudUser.website_title ? self.currentSoundCloudUser.website_title : @"Artist website", @"View on SongKick", @"View on SoundCloud", @"Search on Spotify", @"Search on iTunes"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
-        if(buttonIndex == 0) [self open:self.currentSoundCloudUser.website];
-        if(buttonIndex == 1) [self open:self.currentSongKickArtist.uri];
-        if(buttonIndex == 2) [self open:self.currentSoundCloudUser.permalink_url];
+    NSArray * links = @[self.currentPlaylistItem.soundCloudUser.website_title ? self.currentPlaylistItem.soundCloudUser.website_title : @"Artist website",
+                          @"View on SongKick",
+                          @"View on SoundCloud",
+                          @"Search on Spotify",
+                          @"Search on iTunes"];
+    [UIActionSheet showInView:self.view withTitle:self.currentPlaylistItem.songKickArtist.displayName cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles: links tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+        if(buttonIndex == 0) [self open:self.currentPlaylistItem.soundCloudUser.website];
+        if(buttonIndex == 1) [self open:self.currentPlaylistItem.songKickArtist.uri];
+        if(buttonIndex == 2) [self open:self.currentPlaylistItem.soundCloudUser.permalink_url];
         
     } ];
 }
@@ -269,9 +264,9 @@
     // 3. citymapper
     
     [UIActionSheet showInView:self.view withTitle:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@[@"Open in SongKick", @"Directions on Apple Maps",@"Directions on Google Maps",@"Directions on Citymapper"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
-        if(buttonIndex == 0) [self open:self.currentEvent.uri];
-        if(buttonIndex == 1) [self open:self.currentEvent.venue.appleMapsUri];
-        if(buttonIndex == 3) [self open:self.currentEvent.venue.citymapperUri];
+        if(buttonIndex == 0) [self open:self.currentPlaylistItem.event.uri];
+        if(buttonIndex == 1) [self open:self.currentPlaylistItem.event.venue.appleMapsUri];
+        if(buttonIndex == 3) [self open:self.currentPlaylistItem.event.venue.citymapperUri];
 
     }];
 
@@ -282,7 +277,7 @@
     // 2. open in soundcloud app
     // 3. buy track
     
-    [self open:self.currentSoundCloudTrack.permalink_url];
+    [self open:self.currentPlaylistItem.track.permalink_url];
 }
 #pragma mark - Player delegate
 -(void)engine:(NCMusicEngine *)engine didChangeDownloadState:(NCMusicEngineDownloadState)downloadState{

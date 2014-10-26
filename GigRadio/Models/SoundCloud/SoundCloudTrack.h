@@ -25,7 +25,7 @@
 @property (nonatomic, strong) NSString * purchase_title;
 @property (nonatomic, strong) NSString * genre;
 @property (nonatomic, strong) NSString * title;
-@property (nonatomic, strong) NSString * description;
+@property (nonatomic, strong) NSString * trackDescription;
 @property (nonatomic, strong) NSString * label_name;
 @property (nonatomic, strong) NSString * track_type;
 @property (nonatomic, strong) NSString * uri;

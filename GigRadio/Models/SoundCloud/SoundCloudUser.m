@@ -19,6 +19,7 @@
             @"website_title":@"",
             @"permalink":@"",
             @"description":@"",
+            @"userDescription":@"",
             @"avatar_url":@"",
             @"city":@""
              };
@@ -46,6 +47,15 @@
         }
     }] resume];
 
+}
+
+-(SoundCloudTrack *)nextTrackAfter:(NSArray *)trackIdsToSkip{
+    for (SoundCloudTrack * track in self.tracks) {
+        if([trackIdsToSkip indexOfObject:@(track.id)] == NSNotFound){
+            return track;
+        }
+    }
+    return nil;
 }
 
 @end

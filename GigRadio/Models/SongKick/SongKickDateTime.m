@@ -23,6 +23,8 @@
     
     if(dict[@"datetime"])
         result[@"datetime"] = [[DateFormats dateTimeFormat] dateFromString:dict[@"datetime"]];
+//    else
+//        result[@"datetime"] = [self createDateTimeFromDateAndTimeString];
 
     
     if(dict[@"time"])

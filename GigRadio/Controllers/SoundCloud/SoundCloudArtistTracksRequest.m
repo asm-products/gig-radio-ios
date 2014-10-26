@@ -13,7 +13,6 @@
 +(instancetype)requestWithUserId:(NSInteger)userId{
     NSMutableDictionary * query = [NSMutableDictionary new];
     query[@"client_id"] = [SoundCloudConfiguration clientId];
-    query[@"limit"] = @3;
     
     NSMutableString * uri = [[SoundCloudConfiguration baseUri] mutableCopy];
     [uri appendFormat:@"/users/%@/tracks.json?%@", @(userId), [CMDQueryStringSerialization queryStringWithDictionary:query] ];

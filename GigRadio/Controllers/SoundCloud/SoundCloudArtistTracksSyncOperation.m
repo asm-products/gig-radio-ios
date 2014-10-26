@@ -14,6 +14,7 @@
 @implementation SoundCloudArtistTracksSyncOperation
 -(void)parseAndStore:(NSArray *)json{
     RLMRealm * realm = [RLMRealm defaultRealm];
+    SoundCloudUser * user = [SoundCloudUser findById:self.soundCloudUserId];
     for (NSDictionary * dict in json) {
         NSInteger trackId = [dict[@"id"] intValue];
         if([[SoundCloudTrack objectsWhere:@"id == %i", trackId] count] > 0){
@@ -22,8 +23,10 @@
             
             NSMutableDictionary * cleanDict = dict.dictionaryWithoutNullValues.mutableCopy;
             cleanDict[@"created_at"] = [[DateFormats soundCloudDateFormat] dateFromString:dict[@"created_at"]];
+            cleanDict[@"trackDescription"] = dict[@"description"];
             [realm beginWriteTransaction];
             SoundCloudTrack * track = [SoundCloudTrack createInRealm:realm withObject:cleanDict];
+            [user.tracks addObject:track];
             [realm commitWriteTransaction];
             NSLog(@"Successfully saved track %@", track.title);
             

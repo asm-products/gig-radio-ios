@@ -69,8 +69,10 @@
 		ACD6EFD819FC44BD00DDE967 /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACD6EFD619FC44BD00DDE967 /* star@2x.png */; };
 		ACD6EFD919FC44BD00DDE967 /* starred@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACD6EFD719FC44BD00DDE967 /* starred@2x.png */; };
 		ACD6EFDC19FC4E0A00DDE967 /* MusicEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD6EFDB19FC4E0A00DDE967 /* MusicEngine.m */; };
-		ACD6EFDF19FC546800DDE967 /* PlaylistDebugTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD6EFDE19FC546800DDE967 /* PlaylistDebugTableViewController.swift */; };
 		ACD6EFE219FC71DC00DDE967 /* EventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD6EFE119FC71DC00DDE967 /* EventDetailViewController.m */; };
+		ACD6EFE519FD063600DDE967 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD6EFE419FD063600DDE967 /* Playlist.m */; };
+		ACD6EFE819FD08FD00DDE967 /* PlaylistItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD6EFE719FD08FD00DDE967 /* PlaylistItem.m */; };
+		ACD6EFEB19FD1EF000DDE967 /* PlaylistDebuggingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD6EFEA19FD1EF000DDE967 /* PlaylistDebuggingTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -182,9 +184,14 @@
 		ACD6EFDA19FC4E0A00DDE967 /* MusicEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicEngine.h; sourceTree = "<group>"; };
 		ACD6EFDB19FC4E0A00DDE967 /* MusicEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicEngine.m; sourceTree = "<group>"; };
 		ACD6EFDD19FC546700DDE967 /* GigRadio-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GigRadio-Bridging-Header.h"; sourceTree = "<group>"; };
-		ACD6EFDE19FC546800DDE967 /* PlaylistDebugTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistDebugTableViewController.swift; sourceTree = "<group>"; };
 		ACD6EFE019FC71DC00DDE967 /* EventDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailViewController.h; sourceTree = "<group>"; };
 		ACD6EFE119FC71DC00DDE967 /* EventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailViewController.m; sourceTree = "<group>"; };
+		ACD6EFE319FD063600DDE967 /* Playlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Playlist.h; sourceTree = "<group>"; };
+		ACD6EFE419FD063600DDE967 /* Playlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Playlist.m; sourceTree = "<group>"; };
+		ACD6EFE619FD08FD00DDE967 /* PlaylistItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistItem.h; sourceTree = "<group>"; };
+		ACD6EFE719FD08FD00DDE967 /* PlaylistItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistItem.m; sourceTree = "<group>"; };
+		ACD6EFE919FD1EF000DDE967 /* PlaylistDebuggingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistDebuggingTableViewController.h; sourceTree = "<group>"; };
+		ACD6EFEA19FD1EF000DDE967 /* PlaylistDebuggingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistDebuggingTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -345,10 +352,11 @@
 				ACAE79D3199F68FF00030E26 /* SelectedDayViewController.m */,
 				ACAE79D9199F6AE800030E26 /* NowPlayingViewController.h */,
 				ACAE79DA199F6AE800030E26 /* NowPlayingViewController.m */,
-				ACD6EFDE19FC546800DDE967 /* PlaylistDebugTableViewController.swift */,
 				ACD6EFDD19FC546700DDE967 /* GigRadio-Bridging-Header.h */,
 				ACD6EFE019FC71DC00DDE967 /* EventDetailViewController.h */,
 				ACD6EFE119FC71DC00DDE967 /* EventDetailViewController.m */,
+				ACD6EFE919FD1EF000DDE967 /* PlaylistDebuggingTableViewController.h */,
+				ACD6EFEA19FD1EF000DDE967 /* PlaylistDebuggingTableViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -373,6 +381,10 @@
 			children = (
 				ACAE7A30199FDA1300030E26 /* SoundCloud */,
 				ACAE79EB199F88D000030E26 /* SongKick */,
+				ACD6EFE319FD063600DDE967 /* Playlist.h */,
+				ACD6EFE419FD063600DDE967 /* Playlist.m */,
+				ACD6EFE619FD08FD00DDE967 /* PlaylistItem.h */,
+				ACD6EFE719FD08FD00DDE967 /* PlaylistItem.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -646,7 +658,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACAE7A0C199F967E00030E26 /* LocationHelper.m in Sources */,
-				ACD6EFDF19FC546800DDE967 /* PlaylistDebugTableViewController.swift in Sources */,
 				ACAE79FE199F8DD200030E26 /* SongKickSyncController.m in Sources */,
 				ACAE79F7199F8A0B00030E26 /* SongKickVenue.m in Sources */,
 				ACAE7A02199F8FCC00030E26 /* SongKickEventSyncOperation.m in Sources */,
@@ -659,6 +670,7 @@
 				ACAE79D4199F68FF00030E26 /* SelectedDayViewController.m in Sources */,
 				ACAE7A36199FDB7600030E26 /* SoundCloudTrack.m in Sources */,
 				ACAE79A6199F657E00030E26 /* AppDelegate.m in Sources */,
+				ACD6EFE819FD08FD00DDE967 /* PlaylistItem.m in Sources */,
 				ACAE7A1C199FD47D00030E26 /* SoundCloudSyncController.m in Sources */,
 				ACAE7A2F199FD67200030E26 /* SyncOperationBase.m in Sources */,
 				ACAE79D1199F66EB00030E26 /* EventsMapViewController.m in Sources */,
@@ -668,6 +680,7 @@
 				ACAE7A26199FD5ED00030E26 /* SoundCloudArtistTracksSyncOperation.m in Sources */,
 				ACAE7A33199FDA6E00030E26 /* SoundCloudUser.m in Sources */,
 				ACAE7A05199F932900030E26 /* SongKickEventRequest.m in Sources */,
+				ACD6EFE519FD063600DDE967 /* Playlist.m in Sources */,
 				ACAE7A29199FD60400030E26 /* SoundCloudArtistSearchRequest.m in Sources */,
 				ACAE7A19199FCA9600030E26 /* ArtistSelectionPresenter.m in Sources */,
 				ACAE7A15199FAF7400030E26 /* NSDictionary+RemovesNullValues.m in Sources */,
@@ -675,6 +688,7 @@
 				ACAE7A23199FD5D400030E26 /* SoundCloudArtistSearchOperation.m in Sources */,
 				AC9738E319A0C0FB00A0FDA3 /* SongKickVenueRequest.m in Sources */,
 				ACAE7A1F199FD4EB00030E26 /* SoundCloudConfiguration.m in Sources */,
+				ACD6EFEB19FD1EF000DDE967 /* PlaylistDebuggingTableViewController.m in Sources */,
 				ACD6EFE219FC71DC00DDE967 /* EventDetailViewController.m in Sources */,
 				ACAE79D8199F699B00030E26 /* DateFormats.m in Sources */,
 				ACAE79A2199F657E00030E26 /* main.m in Sources */,

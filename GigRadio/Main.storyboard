@@ -204,10 +204,10 @@
             </objects>
             <point key="canvasLocation" x="653" y="-138"/>
         </scene>
-        <!--Debug-->
+        <!--Playlist-->
         <scene sceneID="7IO-hE-Rze">
             <objects>
-                <tableViewController id="lrS-fy-jbH" customClass="PlaylistDebugTableViewController" sceneMemberID="viewController">
+                <tableViewController id="lrS-fy-jbH" customClass="PlaylistDebuggingTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="kmv-5O-jrz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -233,7 +233,7 @@
                             <outlet property="delegate" destination="lrS-fy-jbH" id="fz2-g5-TRX"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Debug" id="i0Q-AR-tFV"/>
+                    <navigationItem key="navigationItem" title="Playlist" id="i0Q-AR-tFV"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J9k-z8-5uP" userLabel="First Responder" sceneMemberID="firstResponder"/>

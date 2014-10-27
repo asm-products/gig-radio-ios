@@ -8,6 +8,7 @@
 
 #import "Playlist.h"
 #import <NSArray+F.h>
+#import <YLMoment.h>
 
 @interface Playlist()
 @property (nonatomic, strong) RLMArray * events;
@@ -37,7 +38,7 @@ CWL_SYNTHESIZE_SINGLETON_FOR_CLASS_WITH_ACCESSOR(Playlist, currentPlaylist)
     [self buildItems];
 }
 -(void)buildEvents{
-    self.events = [SongKickEvent objectsWhere:@"start.datetime >= %@ ", self.startDate];
+    self.events = [SongKickEvent objectsWhere:@"start.datetime >= %@ ", [[YLMoment momentWithDate:self.startDate] startOf:@"day"].date];
     [[RLMRealm defaultRealm] beginWriteTransaction];
     for(SongKickEvent * event in self.events){
         event.distanceCache = event.venue.distanceCache;

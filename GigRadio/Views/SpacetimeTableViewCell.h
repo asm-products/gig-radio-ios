@@ -1,5 +1,5 @@
 //
-//  EventDetailViewController.h
+//  SpacetimeTableViewCell.h
 //  GigRadio
 //
 //  Created by Michael Forrest on 26/10/2014.
@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "SongKickEvent.h"
-@interface EventDetailViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface SpacetimeTableViewCell : UITableViewCell
 @property (nonatomic, strong) SongKickEvent * event;
-@property (nonatomic, strong) UIImage * backgroundImage;
 @end

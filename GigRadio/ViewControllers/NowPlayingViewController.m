@@ -26,6 +26,8 @@
 #import "Playlist.h"
 #import "PlaylistDebuggingTableViewController.h"
 #import "AppDelegate.h"
+#import "CompassView.h"
+#import "EventDetailViewController.h"
 
 @import MapKit;
 @import MediaPlayer;
@@ -36,6 +38,7 @@
     __weak IBOutlet UIButton *dateButton;
     __weak IBOutlet UIButton *venueButton;
     __weak IBOutlet UIButton *nowPlayingButton;
+    __weak IBOutlet CompassView *compassView;
     __weak IBOutlet UILabel *distanceLabel;
 }
 @property (nonatomic, strong) UIPageViewController * daySelector;
@@ -84,6 +87,7 @@
         self.date = [NSDate date]; // triggers a sync...
     }];
     [self.artistImageView addMotionEffectWithMovement:CGPointMake(16, 16)];
+    
 }
 /**
  *  This is messy right now - it triggers a sync which is not what you'd expect it to do!
@@ -117,6 +121,9 @@
         ((PlaylistDebuggingTableViewController*) segue.destinationViewController).playlist = self.playlist;
         [self.navigationController setNavigationBarHidden:NO animated:YES];
     }else if([segue.identifier isEqualToString:@"Event"]){
+        EventDetailViewController* controller = segue.destinationViewController;
+        controller.event = self.currentPlaylistItem.event;
+        controller.backgroundImage = self.artistImageView.image;
         [self.navigationController setNavigationBarHidden:NO animated:YES];
     }
 }
@@ -157,6 +164,9 @@
     [venueButton setTitle:[NSString stringWithFormat:@"%@\n%@", item.event.venue.displayName, item.event.venue.address] forState:UIControlStateNormal];
     MKDistanceFormatter *df = [[MKDistanceFormatter alloc]init];
     df.unitStyle = MKDistanceFormatterUnitStyleAbbreviated;
+    
+    compassView.destination = item.event.venue.location;
+    
     distanceLabel.text =  item.event ? [[df stringFromDistance:item.event.distanceCache] stringByAppendingString:@"\naway"] : @"";
     
     [item.soundCloudUser loadImage:^(UIImage*image){
@@ -276,22 +286,6 @@
         if(buttonIndex == 2) [self open:self.currentPlaylistItem.soundCloudUser.permalink_url];
         
     } ];
-}
-- (IBAction)didPressVenueButton:(id)sender {
-    // do a popup, prompt:
-    // 0. songkick
-    // 1. apple maps
-    // 2. google maps
-    // 3. citymapper
-    
-    [UIActionSheet showInView:self.view withTitle:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@[@"Open in SongKick", @"Directions on Apple Maps",@"Directions on Google Maps",@"Directions on Citymapper"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
-        if(buttonIndex == 0) [self open:self.currentPlaylistItem.event.uri];
-        if(buttonIndex == 1) [self open:self.currentPlaylistItem.event.venue.appleMapsUri];
-        if(buttonIndex == 3) [self open:self.currentPlaylistItem.event.venue.citymapperUri];
-
-    }];
-
-//    [self open:[NSString stringWithFormat:@"https://www.songkick.com/venues/%li", self.currentEvent.venue.id]];
 }
 - (IBAction)didPressNowPlayingButton:(id)sender {
     // 1. open in browser

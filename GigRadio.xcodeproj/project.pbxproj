@@ -73,6 +73,11 @@
 		ACD6EFE519FD063600DDE967 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD6EFE419FD063600DDE967 /* Playlist.m */; };
 		ACD6EFE819FD08FD00DDE967 /* PlaylistItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD6EFE719FD08FD00DDE967 /* PlaylistItem.m */; };
 		ACD6EFEB19FD1EF000DDE967 /* PlaylistDebuggingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD6EFEA19FD1EF000DDE967 /* PlaylistDebuggingTableViewController.m */; };
+		ACD6EFEE19FD322A00DDE967 /* CompassView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD6EFED19FD322A00DDE967 /* CompassView.m */; };
+		ACD6EFF119FDAFCB00DDE967 /* EventTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD6EFF019FDAFCB00DDE967 /* EventTitleTableViewCell.m */; };
+		ACD6EFF419FDAFE400DDE967 /* ArtistNameTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD6EFF319FDAFE400DDE967 /* ArtistNameTableViewCell.m */; };
+		ACD6EFF719FDAFF200DDE967 /* SpacetimeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD6EFF619FDAFF200DDE967 /* SpacetimeTableViewCell.m */; };
+		ACD6EFFA19FDAFFF00DDE967 /* EventLinkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD6EFF919FDAFFF00DDE967 /* EventLinkTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -192,6 +197,16 @@
 		ACD6EFE719FD08FD00DDE967 /* PlaylistItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistItem.m; sourceTree = "<group>"; };
 		ACD6EFE919FD1EF000DDE967 /* PlaylistDebuggingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistDebuggingTableViewController.h; sourceTree = "<group>"; };
 		ACD6EFEA19FD1EF000DDE967 /* PlaylistDebuggingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistDebuggingTableViewController.m; sourceTree = "<group>"; };
+		ACD6EFEC19FD322A00DDE967 /* CompassView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompassView.h; sourceTree = "<group>"; };
+		ACD6EFED19FD322A00DDE967 /* CompassView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompassView.m; sourceTree = "<group>"; };
+		ACD6EFEF19FDAFCB00DDE967 /* EventTitleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventTitleTableViewCell.h; sourceTree = "<group>"; };
+		ACD6EFF019FDAFCB00DDE967 /* EventTitleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventTitleTableViewCell.m; sourceTree = "<group>"; };
+		ACD6EFF219FDAFE400DDE967 /* ArtistNameTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistNameTableViewCell.h; sourceTree = "<group>"; };
+		ACD6EFF319FDAFE400DDE967 /* ArtistNameTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistNameTableViewCell.m; sourceTree = "<group>"; };
+		ACD6EFF519FDAFF200DDE967 /* SpacetimeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpacetimeTableViewCell.h; sourceTree = "<group>"; };
+		ACD6EFF619FDAFF200DDE967 /* SpacetimeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpacetimeTableViewCell.m; sourceTree = "<group>"; };
+		ACD6EFF819FDAFFF00DDE967 /* EventLinkTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventLinkTableViewCell.h; sourceTree = "<group>"; };
+		ACD6EFF919FDAFFF00DDE967 /* EventLinkTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventLinkTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -338,6 +353,16 @@
 		ACAE79CD199F661100030E26 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				ACD6EFEC19FD322A00DDE967 /* CompassView.h */,
+				ACD6EFED19FD322A00DDE967 /* CompassView.m */,
+				ACD6EFEF19FDAFCB00DDE967 /* EventTitleTableViewCell.h */,
+				ACD6EFF019FDAFCB00DDE967 /* EventTitleTableViewCell.m */,
+				ACD6EFF219FDAFE400DDE967 /* ArtistNameTableViewCell.h */,
+				ACD6EFF319FDAFE400DDE967 /* ArtistNameTableViewCell.m */,
+				ACD6EFF519FDAFF200DDE967 /* SpacetimeTableViewCell.h */,
+				ACD6EFF619FDAFF200DDE967 /* SpacetimeTableViewCell.m */,
+				ACD6EFF819FDAFFF00DDE967 /* EventLinkTableViewCell.h */,
+				ACD6EFF919FDAFFF00DDE967 /* EventLinkTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -662,6 +687,8 @@
 				ACAE79F7199F8A0B00030E26 /* SongKickVenue.m in Sources */,
 				ACAE7A02199F8FCC00030E26 /* SongKickEventSyncOperation.m in Sources */,
 				AC9738E019A0C0D400A0FDA3 /* SongKickVenueSyncOperation.m in Sources */,
+				ACD6EFEE19FD322A00DDE967 /* CompassView.m in Sources */,
+				ACD6EFFA19FDAFFF00DDE967 /* EventLinkTableViewCell.m in Sources */,
 				ACAE7A09199F944A00030E26 /* SongKickConfiguration.m in Sources */,
 				ACAE79DE199F6C3100030E26 /* CalendarHelper.m in Sources */,
 				ACAE7A0F199FA11D00030E26 /* SongKickDateTime.m in Sources */,
@@ -675,6 +702,7 @@
 				ACAE7A2F199FD67200030E26 /* SyncOperationBase.m in Sources */,
 				ACAE79D1199F66EB00030E26 /* EventsMapViewController.m in Sources */,
 				ACAE79F4199F89CE00030E26 /* SongKickArtist.m in Sources */,
+				ACD6EFF719FDAFF200DDE967 /* SpacetimeTableViewCell.m in Sources */,
 				ACAE79F0199F88F900030E26 /* SongKickEvent.m in Sources */,
 				ACAE7A2C199FD61200030E26 /* SoundCloudArtistTracksRequest.m in Sources */,
 				ACAE7A26199FD5ED00030E26 /* SoundCloudArtistTracksSyncOperation.m in Sources */,
@@ -686,12 +714,14 @@
 				ACAE7A15199FAF7400030E26 /* NSDictionary+RemovesNullValues.m in Sources */,
 				ACAE79F1199F88F900030E26 /* SongKickPerformance.m in Sources */,
 				ACAE7A23199FD5D400030E26 /* SoundCloudArtistSearchOperation.m in Sources */,
+				ACD6EFF119FDAFCB00DDE967 /* EventTitleTableViewCell.m in Sources */,
 				AC9738E319A0C0FB00A0FDA3 /* SongKickVenueRequest.m in Sources */,
 				ACAE7A1F199FD4EB00030E26 /* SoundCloudConfiguration.m in Sources */,
 				ACD6EFEB19FD1EF000DDE967 /* PlaylistDebuggingTableViewController.m in Sources */,
 				ACD6EFE219FC71DC00DDE967 /* EventDetailViewController.m in Sources */,
 				ACAE79D8199F699B00030E26 /* DateFormats.m in Sources */,
 				ACAE79A2199F657E00030E26 /* main.m in Sources */,
+				ACD6EFF419FDAFE400DDE967 /* ArtistNameTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

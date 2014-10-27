@@ -8,7 +8,9 @@
 
 #import "SongKickVenue.h"
 
-@implementation SongKickVenue
+@implementation SongKickVenue{
+    CLLocation * _location;
+}
 +(NSDictionary *)defaultPropertyValues{
     return @{
              @"lat": @0,
@@ -30,7 +32,9 @@
     [[RLMRealm defaultRealm] commitWriteTransaction];
 }
 -(CLLocation *)location{
-    return [[CLLocation alloc] initWithLatitude:self.lat longitude:self.lng];
+    if(!_location) _location =
+        [[CLLocation alloc] initWithLatitude:self.lat longitude:self.lng];
+    return _location;
 }
 
 -(NSString*)address{

@@ -6,3 +6,5 @@
 #import "SongKickArtist.h"
 #import "SoundCloudUser.h"
 #import "SoundCloudTrack.h"
+
+#import <AVHexColor.h>

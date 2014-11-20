@@ -2,7 +2,7 @@
 # platform :ios, "6.0"
 source 'https://github.com/CocoaPods/Specs.git'
 target "GigRadio" do
-  pod 'Realm', '~> 0.85'
+  pod 'Realm', '~> 0.88'
   pod 'CLLocationManager-blocks', '~> 1.1'
   pod 'CMDQueryStringSerialization', '~> 0.3'
   pod 'YLMoment', '~> 0.5'
@@ -14,6 +14,7 @@ target "GigRadio" do
   pod 'UIImage+RTTint', '~> 1.0'
   pod 'SimpleMotionEffects', '~> 1.0'
   pod 'CWLSynthesizeSingleton', '~> 1.0'
+  pod 'AVHexColor', '~> 1.1.0'
 end
 
 target "GigRadioTests" do

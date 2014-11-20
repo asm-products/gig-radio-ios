@@ -16,6 +16,7 @@ CWL_DECLARE_SINGLETON_FOR_CLASS_WITH_ACCESSOR(Playlist, currentPlaylist);
 @property (nonatomic, strong) NSDate * startDate;
 @property (nonatomic, strong) NSDate * endDate;
 
+-(NSInteger) indexOfItem:(PlaylistItem*)item;
 /**
  *  This is asynchronous because we need to hit SoundCloud to fetch each sound cloud user's tracks
  *  Relative to a given item in case the contents of the playlist changes.
@@ -31,5 +32,5 @@ CWL_DECLARE_SINGLETON_FOR_CLASS_WITH_ACCESSOR(Playlist, currentPlaylist);
 -(PlaylistItem*)itemBefore:(PlaylistItem*)item;
 
 -(void)rebuild;
-
+-(void)saveCurrentlyPlayingItem:(PlaylistItem*)item;
 @end

@@ -104,7 +104,7 @@
         [self.playlist rebuild];
         [self.playlist fetchItemAfter:self.currentPlaylistItem callback:^(PlaylistItem *item) {
             self.currentPlaylistItem = item;
-            [self refreshCurrentArtist];
+            [self refreshWithCurrentPlaylistItem];
         }];
         
     }];
@@ -132,9 +132,9 @@
     [super viewWillAppear:animated];
 }
 - (IBAction)didPressRefresh:(id)sender {
-    [self refreshCurrentArtist];
+    [self refreshWithCurrentPlaylistItem];
 }
--(void)refreshCurrentArtist{
+-(void)refreshWithCurrentPlaylistItem{
     if(self.currentPlaylistItem.songKickArtist == nil) {
         // do something
         [self showPlaylistItem:nil];
@@ -148,7 +148,7 @@
         }];
     }
     [self showPlaylistItem:self.currentPlaylistItem];
-    
+    [self.playlist saveCurrentlyPlayingItem: self.currentPlaylistItem];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         if(!self.isPaused){
@@ -170,25 +170,29 @@
     distanceLabel.text =  item.event ? [[df stringFromDistance:item.event.distanceCache] stringByAppendingString:@"\naway"] : @"";
     
     [item.soundCloudUser loadImage:^(UIImage*image){
-        UIColor * tintColor = [UIColor colorWithRed:0.843 green:0.000 blue:0.455 alpha:1];
+        NSInteger colorIndex = 0;//  [self.playlist indexOfItem: self.currentPlaylistItem];
+        UIColor * tintColor = [Colors color:colorIndex % [Colors colors].count];
         
         [[[image toCIImage] imageByApplyingFilters:@[
                                                      [CIFilter filterColorControlsSaturation:0 brightness:0.3 contrast:0.8]
                                                      ]] processToUIImageCompletion:^(UIImage *uiImage) {
             self.artistImageView.image = [uiImage rt_tintedImageWithColor:tintColor level:0.5];
             self.artistImageView.alpha = 0.7;
+            
+            NSMutableDictionary * info = @{
+                                           MPMediaItemPropertyAlbumTitle:[NSString stringWithFormat:@"Upcoming gig: %@", item.event.displayName],
+                                           MPMediaItemPropertyTitle: [NSString stringWithFormat:@"%@ - %@",item.track.title, item.songKickArtist.displayName]
+                                           }.mutableCopy;
+            if(self.artistImageView.image){
+                info[MPMediaItemPropertyArtwork] = [[MPMediaItemArtwork alloc] initWithImage:self.artistImageView.image];
+            }
+            [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:info];
+            
+            
         }];
         
         
         
-        NSMutableDictionary * info = @{
-                                       MPMediaItemPropertyAlbumTitle:[NSString stringWithFormat:@"Upcoming gig: %@", item.event.displayName],
-                                       MPMediaItemPropertyTitle: [NSString stringWithFormat:@"%@ - %@",item.track.title, item.songKickArtist.displayName]
-                                       }.mutableCopy;
-        if(image){
-            info[MPMediaItemPropertyArtwork] = [[MPMediaItemArtwork alloc] initWithImage:image];
-        }
-        [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:info];
     }];
     
     
@@ -257,7 +261,7 @@
 -(void)playNext{
     [self.playlist fetchItemAfter:self.currentPlaylistItem callback:^(PlaylistItem *item) {
         self.currentPlaylistItem = item;
-        [self refreshCurrentArtist];
+        [self refreshWithCurrentPlaylistItem];
     }];
 }
 -(void)playPreviousOrBackToBeginning{
@@ -266,7 +270,7 @@
     }else{
         self.currentPlaylistItem = [self.playlist itemBefore:self.currentPlaylistItem];
         [self.musicEngine playSoundCloudTrack:self.currentPlaylistItem.track];
-        [self refreshCurrentArtist];
+        [self refreshWithCurrentPlaylistItem];
     }
 }
 

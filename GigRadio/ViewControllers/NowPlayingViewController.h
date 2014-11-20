@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GigRadio-Swift.h>
 
 @interface NowPlayingViewController : UIViewController
 @property (nonatomic, strong) NSDate * date;

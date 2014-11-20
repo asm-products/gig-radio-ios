@@ -12,6 +12,12 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking 3
 #define COCOAPODS_VERSION_PATCH_AFNetworking 4
 
+// AVHexColor
+#define COCOAPODS_POD_AVAILABLE_AVHexColor
+#define COCOAPODS_VERSION_MAJOR_AVHexColor 1
+#define COCOAPODS_VERSION_MINOR_AVHexColor 1
+#define COCOAPODS_VERSION_PATCH_AVHexColor 0
+
 // CLLocationManager-blocks
 #define COCOAPODS_POD_AVAILABLE_CLLocationManager_blocks
 #define COCOAPODS_VERSION_MAJOR_CLLocationManager_blocks 1

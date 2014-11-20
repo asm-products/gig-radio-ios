@@ -7,7 +7,6 @@
 //
 
 #import "EventsMapViewController.h"
-
 @interface EventsMapViewController ()
 
 @end

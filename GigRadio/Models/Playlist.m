@@ -68,7 +68,11 @@ CWL_SYNTHESIZE_SINGLETON_FOR_CLASS_WITH_ACCESSOR(Playlist, currentPlaylist)
     }
     return result;
 }
-
+-(NSInteger)indexOfItem:(PlaylistItem *)item{
+    NSInteger result = [self.items indexOfObject:item];
+    if(result == NSNotFound) return 0;
+    return result;
+}
 -(void)fetchItemAfter:(PlaylistItem*)previousItem callback:(void (^)(PlaylistItem * item))callback{
     assert(callback);
     NSInteger indexOfNextItem = [self indexOfItemAfter:previousItem];
@@ -137,6 +141,11 @@ CWL_SYNTHESIZE_SINGLETON_FOR_CLASS_WITH_ACCESSOR(Playlist, currentPlaylist)
     }else{
         return result;
     }
+}
+
+-(void)saveCurrentlyPlayingItem:(PlaylistItem *)item{
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    [defaults set]
 }
 
 @end

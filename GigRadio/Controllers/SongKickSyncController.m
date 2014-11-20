@@ -26,7 +26,7 @@
     SongKickEventRequest * request = [SongKickEventRequest requestWithMinDate:date maxDate:date perPage:50 location:location]; // Using 50. 100 is a bit slow
     NSLog(@"Requesting %@", request.URL.absoluteString);
     SongKickEventSyncOperation * operation = [[SongKickEventSyncOperation alloc] initWithRequest:request];
-    [operation setJsonParseCompletionBlock:^(id result){
+    [operation setJsonParseCompletionBlock:^{
         [SongKickVenue updateDistanceCachesWithLocation:location];
         dispatch_async(dispatch_get_main_queue(), ^{
             if(completionBlock) completionBlock();

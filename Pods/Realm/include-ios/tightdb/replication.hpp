@@ -36,6 +36,8 @@
 #include <tightdb/group.hpp>
 #include <tightdb/group_shared.hpp>
 
+#include <iostream>
+
 namespace tightdb {
 
 
@@ -139,6 +141,7 @@ public:
     void set_table(const Table*, std::size_t col_ndx, std::size_t ndx);
     void set_mixed(const Table*, std::size_t col_ndx, std::size_t ndx, const Mixed& value);
     void set_link(const Table*, std::size_t col_ndx, std::size_t ndx, std::size_t value);
+    void set_link_list(const LinkView&, const Column& values);
 
     void insert_int(const Table*, std::size_t col_ndx, std::size_t ndx, int_fast64_t value);
     void insert_bool(const Table*, std::size_t col_ndx, std::size_t ndx, bool value);
@@ -158,6 +161,8 @@ public:
     void move_last_over(const Table*, std::size_t target_row_ndx, std::size_t last_row_ndx);
     void add_int_to_column(const Table*, std::size_t col_ndx, int_fast64_t value);
     void add_search_index(const Table*, std::size_t col_ndx);
+    void add_primary_key(const Table*, std::size_t col_ndx);
+    void remove_primary_key(const Table*);
     void clear_table(const Table*);
     void optimize_table(const Table*);
 
@@ -285,23 +290,26 @@ private:
         instr_InsertLinkList        = 25,
         instr_RowInsertComplete     = 26,
         instr_InsertEmptyRows       = 27,
-        instr_EraseRow              = 28, // Remove a row
-        instr_MoveLastOver          = 29, // Remove a row by replacing it with the last row
-        instr_AddIntToColumn        = 30, // Add an integer value to all cells in a column
-        instr_ClearTable            = 31, // Remove all rows in selected table
-        instr_OptimizeTable         = 32,
-        instr_SelectDescriptor      = 33, // Select descriptor from currently selected root table
-        instr_InsertColumn          = 34, // Insert new column into to selected descriptor
+        instr_EraseRows             = 28, // Remove (multiple) rows
+        instr_AddIntToColumn        = 29, // Add an integer value to all cells in a column
+        instr_ClearTable            = 30, // Remove all rows in selected table
+        instr_OptimizeTable         = 31,
+        instr_SelectDescriptor      = 32, // Select descriptor from currently selected root table
+        instr_InsertColumn          = 33, // Insert new column into to selected descriptor
+        instr_InsertLinkColumn      = 34, // do, but for a link-type column
         instr_EraseColumn           = 35, // Remove column from selected descriptor
         instr_EraseLinkColumn       = 36, // Remove link-type column from selected descriptor
         instr_RenameColumn          = 37, // Rename column in selected descriptor
         instr_AddSearchIndex        = 38, // Add a search index to a column
-        instr_SelectLinkList        = 39,
-        instr_LinkListSet           = 40, // Assign to link list entry
-        instr_LinkListInsert        = 41, // Insert entry into link list
-        instr_LinkListMove          = 42, // Move an entry within a link list
-        instr_LinkListErase         = 43, // Remove an entry from a link list
-        instr_LinkListClear         = 44  // Ramove all entries from a link list
+        instr_AddPrimaryKey         = 39, // Add a primary key to a table
+        instr_RemovePrimaryKey      = 40, // Remove primary key from a table
+        instr_SelectLinkList        = 41,
+        instr_LinkListSet           = 42, // Assign to link list entry
+        instr_LinkListInsert        = 43, // Insert entry into link list
+        instr_LinkListMove          = 44, // Move an entry within a link list
+        instr_LinkListErase         = 45, // Remove an entry from a link list
+        instr_LinkListClear         = 46, // Ramove all entries from a link list
+        instr_LinkListSetAll        = 47  // Assign to link list entry
     };
 
     util::Buffer<std::size_t> m_subtab_path_buf;
@@ -329,8 +337,10 @@ private:
 
     void string_cmd(Instruction, std::size_t col_ndx, std::size_t ndx,
                     const char* data, std::size_t size);
-
     void mixed_cmd(Instruction, std::size_t col_ndx, std::size_t ndx, const Mixed& value);
+
+    void mixed_value(const Mixed& value);
+    void string_value(const char* data, std::size_t size);
 
     template<class L> void simple_cmd(Instruction, const util::Tuple<L>& numbers);
 
@@ -349,15 +359,19 @@ private:
     static const int max_enc_bytes_per_double = sizeof (double);
     static const int max_enc_bytes_per_num = max_enc_bytes_per_int <
         max_enc_bytes_per_double ? max_enc_bytes_per_double : max_enc_bytes_per_int;
+
+    friend class Group::TransactReverser;
 };
 
 
 class Replication::InputStream {
 public:
-    /// \return The number of extracted bytes. This will always be
-    /// less than or equal to \a size. A value of zero indicates
-    /// end-of-input unless \a size was zero.
-    virtual std::size_t read(char* buffer, std::size_t size) = 0;
+    /// \return the number of accessible bytes.
+    /// A value of zero indicates end-of-input.
+    /// For non-zero return value, \a begin and \a end are
+    /// updated to reflect the start and limit of a
+    /// contiguous memory chunk.
+    virtual size_t next_block(const char*& begin, const char*& end) = 0;
 
     virtual ~InputStream() {}
 };
@@ -394,21 +408,20 @@ public:
     ///     bool erase_group_level_table(std::size_t table_ndx, std::size_t num_tables)
     ///     bool rename_group_level_table(std::size_t table_ndx, StringData new_name)
     ///     bool select_table(std::size_t group_level_ndx, int levels, const std::size_t* path)
-    ///     bool insert_empty_rows(std::size_t row_ndx, std::size_t num_rows)
-    ///     bool erase_row(std::size_t row_ndx)
-    ///     bool move_last_over(std::size_t target_row_ndx, std::size_t last_row_ndx)
+    ///     bool insert_empty_rows(std::size_t row_ndx, std::size_t num_rows, std::size_t tbl_sz, bool unordered)
+    ///     bool erase_rows(std::size_t row_ndx, std::size_t num_rows std::size_t tbl_sz, bool unordered)
     ///     bool clear_table()
-    ///     bool insert_int(std::size_t col_ndx, std::size_t row_ndx, int_fast64_t)
-    ///     bool insert_bool(std::size_t col_ndx, std::size_t row_ndx, bool)
-    ///     bool insert_float(std::size_t col_ndx, std::size_t row_ndx, float)
-    ///     bool insert_double(std::size_t col_ndx, std::size_t row_ndx, double)
-    ///     bool insert_string(std::size_t col_ndx, std::size_t row_ndx, StringData)
-    ///     bool insert_binary(std::size_t col_ndx, std::size_t row_ndx, BinaryData)
-    ///     bool insert_date_time(std::size_t col_ndx, std::size_t row_ndx, DateTime)
-    ///     bool insert_table(std::size_t col_ndx, std::size_t row_ndx)
-    ///     bool insert_mixed(std::size_t col_ndx, std::size_t row_ndx, const Mixed&)
-    ///     bool insert_link(std::size_t col_ndx, std::size_t row_ndx, std::size_t)
-    ///     bool insert_link_list(std::size_t col_ndx, std::size_t row_ndx)
+    ///     bool insert_int(std::size_t col_ndx, std::size_t row_ndx, std::size_t tbl_sz, int_fast64_t)
+    ///     bool insert_bool(std::size_t col_ndx, std::size_t row_ndx, std::size_t tbl_sz, bool)
+    ///     bool insert_float(std::size_t col_ndx, std::size_t row_ndx, std::size_t tbl_sz, float)
+    ///     bool insert_double(std::size_t col_ndx, std::size_t row_ndx, std::size_t tbl_sz, double)
+    ///     bool insert_string(std::size_t col_ndx, std::size_t row_ndx, std::size_t tbl_sz, StringData)
+    ///     bool insert_binary(std::size_t col_ndx, std::size_t row_ndx, std::size_t tbl_sz, BinaryData)
+    ///     bool insert_date_time(std::size_t col_ndx, std::size_t row_ndx, std::size_t tbl_sz, DateTime)
+    ///     bool insert_table(std::size_t col_ndx, std::size_t row_ndx, std::size_t tbl_sz)
+    ///     bool insert_mixed(std::size_t col_ndx, std::size_t row_ndx, std::size_t tbl_sz, const Mixed&)
+    ///     bool insert_link(std::size_t col_ndx, std::size_t row_ndx, std::size_t tbl_sz, std::size_t)
+    ///     bool insert_link_list(std::size_t col_ndx, std::size_t row_ndx, std::size_t tbl_sz)
     ///     bool row_insert_complete()
     ///     bool set_int(std::size_t col_ndx, std::std::size_t row_ndx, int_fast64_t)
     ///     bool set_bool(std::size_t col_ndx, std::size_t row_ndx, bool)
@@ -423,12 +436,16 @@ public:
     ///     bool add_int_to_column(std::size_t col_ndx, int_fast64_t value)
     ///     bool optimize_table()
     ///     bool select_descriptor(int levels, const std::size_t* path)
-    ///     bool insert_column(std::size_t col_ndx, DataType, StringData name,
-    ///                        std::size_t link_target_table_ndx)
-    ///     bool erase_column(std::size_t col_ndx, std::size_t link_target_table_ndx,
-    ///                       std::size_t backlink_col_ndx)
+    ///     bool insert_link_column(std::size_t col_ndx, DataType, StringData name,
+    ///                             std::size_t link_target_table_ndx, std::size_t backlink_col_ndx)
+    ///     bool insert_column(std::size_t col_ndx, DataType, StringData name)
+    ///     bool erase_link_column(std::size_t col_ndx, std::size_t link_target_table_ndx,
+    ///                            std::size_t backlink_col_ndx)
+    ///     bool erase_column(std::size_t col_ndx)
     ///     bool rename_column(std::size_t col_ndx, StringData new_name)
     ///     bool add_search_index(std::size_t col_ndx)
+    ///     bool add_primary_key(std::size_t col_ndx)
+    ///     bool remove_primary_key()
     ///     bool select_link_list(std::size_t col_ndx, std::size_t row_ndx)
     ///     bool link_list_set(std::size_t link_ndx, std::size_t value)
     ///     bool link_list_insert(std::size_t link_ndx, std::size_t value)
@@ -442,16 +459,23 @@ public:
     template<class InstructionHandler> void parse(InstructionHandler&);
 
 private:
+    // The input stream is assumed to consist of chunks of memory organised such that
+    // every instruction resides in a single chunk only.
     InputStream& m_input;
-    static const std::size_t m_input_buffer_size = 4096; // FIXME: Use smaller number when compiling in debug mode
-    util::UniquePtr<char[]> m_input_buffer;
+    // pointer into transaction log, each instruction is parsed from m_input_begin and onwards.
+    // Each instruction are assumed to be contiguous in memory.
     const char* m_input_begin;
+    // pointer to one past current instruction log chunk. If m_input_begin reaches m_input_end,
+    // a call to next_input_buffer will move m_input_begin and m_input_end to a new chunk of
+    // memory. Setting m_input_end to 0 disables this check, and is used if it is already known
+    // that all of the instructions are in memory.
     const char* m_input_end;
     util::StringBuffer m_string_buffer;
     static const int m_max_levels = 1024;
     util::Buffer<std::size_t> m_path;
 
     template<class InstructionHandler> bool do_parse(InstructionHandler&);
+    template<class InstructionHandler> bool parse_one_inst(InstructionHandler& handler);
 
     template<class T> T read_int();
 
@@ -463,11 +487,12 @@ private:
     void read_string(util::StringBuffer&);
     void read_mixed(Mixed*);
 
+    // Advance m_input_begin and m_input_end to reflect the next block of instructions
     // Returns false if no more input was available
-    bool fill_input_buffer();
+    bool next_input_buffer();
 
-    // Returns false if no input was available
-    bool read_char(char&);
+    // return true if input was available
+    bool read_char(char&); // throws
 
     bool is_valid_data_type(int type);
 };
@@ -487,6 +512,7 @@ protected:
 
     static void apply_transact_log(const char* data, std::size_t size, SharedGroup& target,
                                    std::ostream* apply_log = 0);
+    void prepare_to_write();
 
 private:
     const std::string m_database_file;
@@ -500,8 +526,11 @@ private:
     void do_clear_interrupt() TIGHTDB_NOEXCEPT TIGHTDB_OVERRIDE;
     void do_transact_log_reserve(std::size_t n) TIGHTDB_OVERRIDE;
     void do_transact_log_append(const char* data, std::size_t size) TIGHTDB_OVERRIDE;
+    void internal_transact_log_reserve(std::size_t);
 
-    void transact_log_reserve(std::size_t);
+    std::size_t transact_log_size();
+
+    friend class Group::TransactReverser;
 };
 
 
@@ -637,16 +666,17 @@ template<class T> inline char* Replication::encode_int(char* ptr, T value)
     // An explicit constant maximum number of iterations is specified
     // in the hope that it will help the optimizer (to do loop
     // unrolling, for example).
+    typedef unsigned char uchar;
     for (int i=0; i<max_bytes; ++i) {
         if (value >> (bits_per_byte-1) == 0)
             break;
-        *reinterpret_cast<unsigned char*>(ptr) =
-            (1U<<bits_per_byte) | unsigned(value & ((1U<<bits_per_byte)-1));
+        *reinterpret_cast<uchar*>(ptr) =
+            uchar((1U<<bits_per_byte) | unsigned(value & ((1U<<bits_per_byte)-1)));
         ++ptr;
         value >>= bits_per_byte;
     }
-    *reinterpret_cast<unsigned char*>(ptr) =
-        negative ? (1U<<(bits_per_byte-1)) | unsigned(value) : value;
+    *reinterpret_cast<uchar*>(ptr) =
+        uchar(negative ? (1U<<(bits_per_byte-1)) | unsigned(value) : value);
     return ++ptr;
 }
 
@@ -736,20 +766,31 @@ inline void Replication::check_link_list(const LinkView& list)
 inline void Replication::string_cmd(Instruction instr, std::size_t col_ndx,
                                     std::size_t ndx, const char* data, std::size_t size)
 {
-    simple_cmd(instr, util::tuple(col_ndx, ndx, size)); // Throws
-    transact_log_append(data, size); // Throws
+    simple_cmd(instr, util::tuple(col_ndx, ndx)); // Throws
+    string_value(data, size); // Throws
 }
 
+inline void Replication::string_value(const char* data, std::size_t size)
+{
+    char* buf;
+    transact_log_reserve(&buf, max_enc_bytes_per_num);
+    buf = encode_int(buf, size);
+    transact_log_advance(buf);
+    transact_log_append(data, size); // Throws   
+}
 
 inline void Replication::mixed_cmd(Instruction instr, std::size_t col_ndx,
                                    std::size_t ndx, const Mixed& value)
 {
+    simple_cmd(instr, util::tuple(col_ndx, ndx));
+    mixed_value(value);
+}
+
+inline void Replication::mixed_value(const Mixed& value)
+{
     DataType type = value.get_type();
     char* buf;
-    transact_log_reserve(&buf, 1 + 4*max_enc_bytes_per_num); // Throws
-    *buf++ = char(instr);
-    buf = encode_int(buf, col_ndx);
-    buf = encode_int(buf, ndx);
+    transact_log_reserve(&buf, 1 + 2*max_enc_bytes_per_num); // Throws
     buf = encode_int(buf, int(type));
     switch (type) {
         case type_Int:
@@ -825,11 +866,24 @@ inline void Replication::insert_column(const Descriptor& desc, std::size_t col_n
                                        StringData name, const Table* link_target_table)
 {
     check_desc(desc); // Throws
-    simple_cmd(instr_InsertColumn, util::tuple(col_ndx, int(type), name.size())); // Throws
-    transact_log_append(name.data(), name.size()); // Throws
+    typedef _impl::TableFriend tf;
+    TIGHTDB_ASSERT(tf::is_link_type(ColumnType(type)) == (link_target_table != 0));
     if (link_target_table) {
+        simple_cmd(instr_InsertLinkColumn, util::tuple(col_ndx, int(type), name.size())); // Throws
+        transact_log_append(name.data(), name.size()); // Throws
+        typedef _impl::DescriptorFriend df;
         std::size_t target_table_ndx = link_target_table->get_index_in_group();
         append_num(target_table_ndx); // Throws
+        const Table& origin_table = df::get_root_table(desc);
+        TIGHTDB_ASSERT(origin_table.is_group_level());
+        const Spec& target_spec = tf::get_spec(*link_target_table);
+        std::size_t origin_table_ndx = origin_table.get_index_in_group();
+        std::size_t backlink_col_ndx = target_spec.find_backlink_column(origin_table_ndx, col_ndx);
+        append_num(backlink_col_ndx);
+    }
+    else {
+        simple_cmd(instr_InsertColumn, util::tuple(col_ndx, int(type), name.size())); // Throws
+        transact_log_append(name.data(), name.size()); // Throws
     }
 }
 
@@ -841,20 +895,22 @@ inline void Replication::erase_column(const Descriptor& desc, std::size_t col_nd
     typedef _impl::TableFriend tf;
     if (!tf::is_link_type(ColumnType(type))) {
         simple_cmd(instr_EraseColumn, util::tuple(col_ndx)); // Throws
-        return;
     }
+    else { // it's a link column:
 
-    TIGHTDB_ASSERT(desc.is_root());
-    typedef _impl::DescriptorFriend df;
-    const Table& origin_table = df::get_root_table(desc);
-    TIGHTDB_ASSERT(origin_table.is_group_level());
-    const Table& target_table = *tf::get_link_target_table_accessor(origin_table, col_ndx);
-    std::size_t target_table_ndx = target_table.get_index_in_group();
-    const Spec& target_spec = tf::get_spec(target_table);
-    std::size_t origin_table_ndx = origin_table.get_index_in_group();
-    std::size_t backlink_col_ndx = target_spec.find_backlink_column(origin_table_ndx, col_ndx);
-    simple_cmd(instr_EraseLinkColumn, util::tuple(col_ndx, target_table_ndx,
-                                                  backlink_col_ndx)); // Throws
+        TIGHTDB_ASSERT(desc.is_root());
+        typedef _impl::DescriptorFriend df;
+        const Table& origin_table = df::get_root_table(desc);
+        TIGHTDB_ASSERT(origin_table.is_group_level());
+        const Table& target_table = *tf::get_link_target_table_accessor(origin_table, col_ndx);
+        std::size_t target_table_ndx = target_table.get_index_in_group();
+        const Spec& target_spec = tf::get_spec(target_table);
+        std::size_t origin_table_ndx = origin_table.get_index_in_group();
+        std::size_t backlink_col_ndx = target_spec.find_backlink_column(origin_table_ndx, col_ndx);
+        simple_cmd(instr_EraseLinkColumn, util::tuple(col_ndx, target_table_ndx,
+                                                      backlink_col_ndx)); // Throws
+    }
+    return;
 }
 
 inline void Replication::rename_column(const Descriptor& desc, std::size_t col_ndx,
@@ -941,76 +997,79 @@ inline void Replication::insert_int(const Table* t, std::size_t col_ndx,
                                     std::size_t ndx, int_fast64_t value)
 {
     check_table(t); // Throws
-    simple_cmd(instr_InsertInt, util::tuple(col_ndx, ndx, value)); // Throws
+    simple_cmd(instr_InsertInt, util::tuple(col_ndx, ndx, t->size(), value)); // Throws
 }
 
 inline void Replication::insert_bool(const Table* t, std::size_t col_ndx,
                                      std::size_t ndx, bool value)
 {
     check_table(t); // Throws
-    simple_cmd(instr_InsertBool, util::tuple(col_ndx, ndx, value)); // Throws
+    simple_cmd(instr_InsertBool, util::tuple(col_ndx, ndx, t->size(), value)); // Throws
 }
 
 inline void Replication::insert_float(const Table* t, std::size_t col_ndx,
                                       std::size_t ndx, float value)
 {
     check_table(t); // Throws
-    simple_cmd(instr_InsertFloat, util::tuple(col_ndx, ndx, value)); // Throws
+    simple_cmd(instr_InsertFloat, util::tuple(col_ndx, ndx, t->size(), value)); // Throws
 }
 
 inline void Replication::insert_double(const Table* t, std::size_t col_ndx,
                                        std::size_t ndx, double value)
 {
     check_table(t); // Throws
-    simple_cmd(instr_InsertDouble, util::tuple(col_ndx, ndx, value)); // Throws
+    simple_cmd(instr_InsertDouble, util::tuple(col_ndx, ndx, t->size(), value)); // Throws
 }
 
 inline void Replication::insert_string(const Table* t, std::size_t col_ndx,
                                        std::size_t ndx, StringData value)
 {
     check_table(t); // Throws
-    string_cmd(instr_InsertString, col_ndx, ndx, value.data(), value.size()); // Throws
+    simple_cmd(instr_InsertString, util::tuple(col_ndx, ndx, t->size()));
+    string_value(value.data(), value.size());
 }
 
 inline void Replication::insert_binary(const Table* t, std::size_t col_ndx,
                                        std::size_t ndx, BinaryData value)
 {
     check_table(t); // Throws
-    string_cmd(instr_InsertBinary, col_ndx, ndx, value.data(), value.size()); // Throws
+    simple_cmd(instr_InsertBinary, util::tuple(col_ndx, ndx, t->size()));
+    string_value(value.data(), value.size());
 }
 
 inline void Replication::insert_date_time(const Table* t, std::size_t col_ndx,
                                           std::size_t ndx, DateTime value)
 {
     check_table(t); // Throws
-    simple_cmd(instr_InsertDateTime, util::tuple(col_ndx, ndx, value.get_datetime())); // Throws
+    simple_cmd(instr_InsertDateTime, util::tuple(col_ndx, ndx, t->size(), value.get_datetime())); // Throws
 }
 
 inline void Replication::insert_table(const Table* t, std::size_t col_ndx,
                                       std::size_t ndx)
 {
     check_table(t); // Throws
-    simple_cmd(instr_InsertTable, util::tuple(col_ndx, ndx)); // Throws
+    simple_cmd(instr_InsertTable, util::tuple(col_ndx, ndx, t->size())); // Throws
 }
 
 inline void Replication::insert_mixed(const Table* t, std::size_t col_ndx,
                                       std::size_t ndx, const Mixed& value)
 {
     check_table(t); // Throws
-    mixed_cmd(instr_InsertMixed, col_ndx, ndx, value); // Throws
+    simple_cmd(instr_InsertMixed, util::tuple(col_ndx, ndx, t->size()));
+    mixed_value(value); // Throws
 }
 
 inline void Replication::insert_link(const Table* t, std::size_t col_ndx,
                                      std::size_t ndx, std::size_t value)
 {
     check_table(t); // Throws
-    simple_cmd(instr_InsertLink, util::tuple(col_ndx, ndx, value)); // Throws
+    simple_cmd(instr_InsertLink, util::tuple(col_ndx, ndx, t->size(), value)); // Throws
 }
 
 inline void Replication::insert_link_list(const Table* t, std::size_t col_ndx, std::size_t ndx)
 {
     check_table(t); // Throws
-    simple_cmd(instr_InsertLinkList, util::tuple(col_ndx, ndx)); // Throws
+    simple_cmd(instr_InsertLinkList, util::tuple(col_ndx, ndx, t->size())); // Throws
 }
 
 
@@ -1025,24 +1084,28 @@ inline void Replication::insert_empty_rows(const Table* t, std::size_t row_ndx,
                                            std::size_t num_rows)
 {
     check_table(t); // Throws
-    simple_cmd(instr_InsertEmptyRows, util::tuple(row_ndx, num_rows)); // Throws
+
+    // default to unordered, if we are inserting at the end:
+    bool unordered = row_ndx == t->size()-num_rows; 
+
+    simple_cmd(instr_InsertEmptyRows, util::tuple(row_ndx, num_rows, t->size(), unordered)); // Throws
 }
 
 
 inline void Replication::erase_row(const Table* t, std::size_t row_ndx)
 {
     check_table(t); // Throws
-    simple_cmd(instr_EraseRow, util::tuple(row_ndx)); // Throws
+    std::size_t num_rows = 1; // FIXME: might want to make this parameter externally visible?
+    simple_cmd(instr_EraseRows, util::tuple(row_ndx, num_rows, t->size(), false)); // Throws
 }
 
-
-inline void Replication::move_last_over(const Table* t, std::size_t target_row_ndx,
-                                        std::size_t last_row_ndx)
+inline void Replication::move_last_over(const Table* t, std::size_t target_row_ndx, std::size_t last_row_ndx)
 {
     check_table(t); // Throws
-    simple_cmd(instr_MoveLastOver, util::tuple(target_row_ndx, last_row_ndx)); // Throws
+    static_cast<void>(last_row_ndx);
+    TIGHTDB_ASSERT(t->size() == last_row_ndx);
+    simple_cmd(instr_EraseRows, util::tuple(target_row_ndx, 1, t->size(), true)); // Throws    
 }
-
 
 inline void Replication::add_int_to_column(const Table* t, std::size_t col_ndx, int_fast64_t value)
 {
@@ -1055,6 +1118,20 @@ inline void Replication::add_search_index(const Table* t, std::size_t col_ndx)
 {
     check_table(t); // Throws
     simple_cmd(instr_AddSearchIndex, util::tuple(col_ndx)); // Throws
+}
+
+
+inline void Replication::add_primary_key(const Table* t, std::size_t col_ndx)
+{
+    check_table(t); // Throws
+    simple_cmd(instr_AddPrimaryKey, util::tuple(col_ndx)); // Throws
+}
+
+
+inline void Replication::remove_primary_key(const Table* t)
+{
+    check_table(t); // Throws
+    simple_cmd(instr_RemovePrimaryKey, util::tuple()); // Throws
 }
 
 
@@ -1072,13 +1149,19 @@ inline void Replication::optimize_table(const Table* t)
 }
 
 
-inline void Replication::link_list_set(const LinkView& list, std::size_t link_ndx,
-                                       std::size_t value)
+inline void Replication::link_list_set(const LinkView& list, std::size_t link_ndx, std::size_t value)
 {
     check_link_list(list); // Throws
     simple_cmd(instr_LinkListSet, util::tuple(link_ndx, value)); // Throws
 }
 
+inline void Replication::set_link_list(const LinkView& list, const Column& values)
+{
+    check_link_list(list); // Throws
+    simple_cmd(instr_LinkListSetAll, util::tuple(values.size())); // Throws
+    for (size_t i = 0; i < values.size(); i++)
+        append_num(values.get(i));
+}
 
 inline void Replication::link_list_insert(const LinkView& list, std::size_t link_ndx,
                                           std::size_t value)
@@ -1152,16 +1235,14 @@ void Replication::TransactLogParser::parse(InstructionHandler& handler)
 template<class InstructionHandler>
 bool Replication::TransactLogParser::do_parse(InstructionHandler& handler)
 {
-    if (!m_input_buffer)
-        m_input_buffer.reset(new char[m_input_buffer_size]); // Throws
-    m_input_begin = m_input_end = m_input_buffer.get();
+    next_input_buffer();
+    while (m_input_begin != m_input_end || next_input_buffer()) {
 
-    DescriptorRef desc;
-    for (;;) {
         char instr;
         if (!read_char(instr))
-            break;
-// std::cerr << "["<<util::promote(instr)<<"]";
+            return false;
+
+        // std::cout << "parsing " << (int) instr << " @ " << std::hex << (long) m_input_begin << std::endl;
         switch (Instruction(instr)) {
             case instr_SetInt: {
                 std::size_t col_ndx = read_int<std::size_t>(); // Throws
@@ -1251,92 +1332,103 @@ bool Replication::TransactLogParser::do_parse(InstructionHandler& handler)
             case instr_InsertInt: {
                 std::size_t col_ndx = read_int<std::size_t>(); // Throws
                 std::size_t row_ndx = read_int<std::size_t>(); // Throws
+                std::size_t tbl_sz = read_int<std::size_t>(); // Throws
                 // FIXME: Don't depend on the existence of int64_t,
                 // but don't allow values to use more than 64 bits
                 // either.
                 int_fast64_t value = read_int<int64_t>(); // Throws
-                if (!handler.insert_int(col_ndx, row_ndx, value)) // Throws
+                if (!handler.insert_int(col_ndx, row_ndx, tbl_sz, value)) // Throws
                     return false;
                 continue;
             }
             case instr_InsertBool: {
                 std::size_t col_ndx = read_int<std::size_t>(); // Throws
                 std::size_t row_ndx = read_int<std::size_t>(); // Throws
+                std::size_t tbl_sz = read_int<std::size_t>(); // Throws
                 bool value = read_int<bool>(); // Throws
-                if (!handler.insert_bool(col_ndx, row_ndx, value)) // Throws
+                if (!handler.insert_bool(col_ndx, row_ndx, tbl_sz, value)) // Throws
                     return false;
                 continue;
             }
             case instr_InsertFloat: {
                 std::size_t col_ndx = read_int<std::size_t>(); // Throws
                 std::size_t row_ndx = read_int<std::size_t>(); // Throws
+                std::size_t tbl_sz = read_int<std::size_t>(); // Throws
                 float value = read_float(); // Throws
-                if (!handler.insert_float(col_ndx, row_ndx, value)) // Throws
+                if (!handler.insert_float(col_ndx, row_ndx, tbl_sz, value)) // Throws
                     return false;
                 continue;
             }
             case instr_InsertDouble: {
                 std::size_t col_ndx = read_int<std::size_t>(); // Throws
                 std::size_t row_ndx = read_int<std::size_t>(); // Throws
+                std::size_t tbl_sz = read_int<std::size_t>(); // Throws
                 double value = read_double(); // Throws
-                if (!handler.insert_double(col_ndx, row_ndx, value)) // Throws
+                if (!handler.insert_double(col_ndx, row_ndx, tbl_sz, value)) // Throws
                     return false;
                 continue;
             }
             case instr_InsertString: {
                 std::size_t col_ndx = read_int<std::size_t>(); // Throws
                 std::size_t row_ndx = read_int<std::size_t>(); // Throws
+                std::size_t tbl_sz = read_int<std::size_t>(); // Throws
                 read_string(m_string_buffer); // Throws
                 StringData value(m_string_buffer.data(), m_string_buffer.size());
-                if (!handler.insert_string(col_ndx, row_ndx, value)) // Throws
+                if (!handler.insert_string(col_ndx, row_ndx, tbl_sz, value)) // Throws
                     return false;
                 continue;
             }
             case instr_InsertBinary: {
                 std::size_t col_ndx = read_int<std::size_t>(); // Throws
                 std::size_t row_ndx = read_int<std::size_t>(); // Throws
+                std::size_t tbl_sz = read_int<std::size_t>(); // Throws
                 read_string(m_string_buffer); // Throws
                 BinaryData value(m_string_buffer.data(), m_string_buffer.size());
-                if (!handler.insert_binary(col_ndx, row_ndx, value)) // Throws
+                if (!handler.insert_binary(col_ndx, row_ndx, tbl_sz, value)) // Throws
                     return false;
                 continue;
             }
             case instr_InsertDateTime: {
                 std::size_t col_ndx = read_int<std::size_t>(); // Throws
                 std::size_t row_ndx = read_int<std::size_t>(); // Throws
+                std::size_t tbl_sz = read_int<std::size_t>(); // Throws
                 std::time_t value = read_int<std::time_t>(); // Throws
-                if (!handler.insert_date_time(col_ndx, row_ndx, value)) // Throws
+                if (!handler.insert_date_time(col_ndx, row_ndx, tbl_sz, value)) // Throws
                     return false;
                 continue;
             }
             case instr_InsertTable: {
                 std::size_t col_ndx = read_int<std::size_t>(); // Throws
                 std::size_t row_ndx = read_int<std::size_t>(); // Throws
-                if (!handler.insert_table(col_ndx, row_ndx)) // Throws
+                std::size_t tbl_sz = read_int<std::size_t>(); // Throws
+                if (!handler.insert_table(col_ndx, row_ndx, tbl_sz)) // Throws
                     return false;
                 continue;
             }
             case instr_InsertMixed: {
                 std::size_t col_ndx = read_int<std::size_t>(); // Throws
                 std::size_t row_ndx = read_int<std::size_t>(); // Throws
+                std::size_t tbl_sz = read_int<std::size_t>(); // Throws
                 Mixed value;
                 read_mixed(&value); // Throws
-                if (!handler.insert_mixed(col_ndx, row_ndx, value)) // Throws
+                if (!handler.insert_mixed(col_ndx, row_ndx, tbl_sz, value)) // Throws
                     return false;
                 continue;
             }
             case instr_InsertLink: {
                 std::size_t col_ndx = read_int<std::size_t>(); // Throws
                 std::size_t row_ndx = read_int<std::size_t>(); // Throws
+                std::size_t tbl_sz = read_int<std::size_t>(); // Throws
                 std::size_t value = read_int<std::size_t>(); // Throws
-                if (!handler.insert_link(col_ndx, row_ndx, value)) // Throws
+                if (!handler.insert_link(col_ndx, row_ndx, tbl_sz, value)) // Throws
                     return false;
                 continue;
             }
             case instr_InsertLinkList: {
                 std::size_t col_ndx = read_int<std::size_t>(); // Throws
                 std::size_t row_ndx = read_int<std::size_t>(); // Throws
-                if (!handler.insert_link_list(col_ndx, row_ndx)) // Throws
+                std::size_t tbl_sz = read_int<std::size_t>(); // Throws
+                if (!handler.insert_link_list(col_ndx, row_ndx, tbl_sz)) // Throws
                     return false;
                 continue;
             }
@@ -1348,20 +1440,18 @@ bool Replication::TransactLogParser::do_parse(InstructionHandler& handler)
             case instr_InsertEmptyRows: {
                 std::size_t row_ndx = read_int<std::size_t>(); // Throws
                 std::size_t num_rows = read_int<std::size_t>(); // Throws
-                if (!handler.insert_empty_rows(row_ndx, num_rows)) // Throws
+                std::size_t tbl_sz = read_int<std::size_t>(); // Throws
+                bool unordered = read_int<bool>(); // Throws
+                if (!handler.insert_empty_rows(row_ndx, num_rows, tbl_sz, unordered)) // Throws
                     return false;
                 continue;
             }
-            case instr_EraseRow: {
+            case instr_EraseRows: {
                 std::size_t row_ndx = read_int<std::size_t>(); // Throws
-                if (!handler.erase_row(row_ndx)) // Throws
-                    return false;
-                continue;
-            }
-            case instr_MoveLastOver: {
-                std::size_t target_row_ndx = read_int<std::size_t>(); // Throws
-                std::size_t last_row_ndx = read_int<std::size_t>(); // Throws
-                if (!handler.move_last_over(target_row_ndx, last_row_ndx)) // Throws
+                std::size_t num_rows = read_int<std::size_t>(); // Throws
+                std::size_t tbl_sz = read_int<std::size_t>(); // Throws
+                bool unordered = read_int<bool>(); // Throws
+                if (!handler.erase_rows(row_ndx, num_rows, tbl_sz, unordered)) // Throws
                     return false;
                 continue;
             }
@@ -1404,6 +1494,16 @@ bool Replication::TransactLogParser::do_parse(InstructionHandler& handler)
                     return false;
                 continue;
             }
+            case instr_LinkListSetAll: {
+                // todo, log that it's a SetAll we're doing
+                std::size_t size = read_int<std::size_t>(); // Throws
+                for (std::size_t i = 0; i < size; i++) {
+                    std::size_t link = read_int<std::size_t>(); // Throws
+                    if (!handler.link_list_set(i, link)) // Throws
+                        return false;
+                }
+                continue;
+            }
             case instr_LinkListInsert: {
                 std::size_t link_ndx = read_int<std::size_t>(); // Throws
                 std::size_t value = read_int<std::size_t>(); // Throws
@@ -1442,6 +1542,17 @@ bool Replication::TransactLogParser::do_parse(InstructionHandler& handler)
                     return false;
                 continue;
             }
+            case instr_AddPrimaryKey: {
+                std::size_t col_ndx = read_int<std::size_t>(); // Throws
+                if (!handler.add_primary_key(col_ndx)) // Throws
+                    return false;
+                continue;
+            }
+            case instr_RemovePrimaryKey: {
+                if (!handler.remove_primary_key()) // Throws
+                    return false;
+                continue;
+            }
             case instr_InsertColumn: {
                 std::size_t col_ndx = read_int<std::size_t>(); // Throws
                 int type = read_int<int>(); // Throws
@@ -1449,26 +1560,36 @@ bool Replication::TransactLogParser::do_parse(InstructionHandler& handler)
                     return false;
                 read_string(m_string_buffer); // Throws
                 StringData name(m_string_buffer.data(), m_string_buffer.size());
-                std::size_t link_target_table_ndx = tightdb::npos;
-                typedef _impl::TableFriend tf;
-                if (tf::is_link_type(ColumnType(type)))
-                    link_target_table_ndx = read_int<std::size_t>(); // Throws
-                if (!handler.insert_column(col_ndx, DataType(type), name,
-                                           link_target_table_ndx)) // Throws
+                if (!handler.insert_column(col_ndx, DataType(type), name)) // Throws
                     return false;
                 continue;
             }
-            case instr_EraseColumn:
+            case instr_InsertLinkColumn: {
+                std::size_t col_ndx = read_int<std::size_t>(); // Throws
+                int type = read_int<int>(); // Throws
+                if (!is_valid_data_type(type))
+                    return false;
+                read_string(m_string_buffer); // Throws
+                StringData name(m_string_buffer.data(), m_string_buffer.size());
+                std::size_t link_target_table_ndx = read_int<std::size_t>(); // Throws
+                std::size_t backlink_col_ndx = read_int<std::size_t>(); // Throws
+                if (!handler.insert_link_column(col_ndx, DataType(type), name,
+                                                link_target_table_ndx, backlink_col_ndx)) // Throws
+                    return false;
+                continue;
+            }
+            case instr_EraseColumn: {
+                std::size_t col_ndx = read_int<std::size_t>(); // Throws
+                if (!handler.erase_column(col_ndx)) // Throws
+                    return false;
+                continue;
+            }
             case instr_EraseLinkColumn: {
                 std::size_t col_ndx = read_int<std::size_t>(); // Throws
-                std::size_t link_target_table_ndx = tightdb::npos;
-                std::size_t backlink_col_ndx   = 0;
-                if (Instruction(instr) == instr_EraseLinkColumn) {
-                    link_target_table_ndx = read_int<std::size_t>(); // Throws
-                    backlink_col_ndx      = read_int<std::size_t>(); // Throws
-                }
-                if (!handler.erase_column(col_ndx, link_target_table_ndx,
-                                          backlink_col_ndx)) // Throws
+                std::size_t link_target_table_ndx = read_int<std::size_t>(); // Throws
+                std::size_t backlink_col_ndx      = read_int<std::size_t>(); // Throws
+                if (!handler.erase_link_column(col_ndx, link_target_table_ndx,
+                                               backlink_col_ndx)) // Throws
                     return false;
                 continue;
             }
@@ -1524,10 +1645,11 @@ bool Replication::TransactLogParser::do_parse(InstructionHandler& handler)
                 continue;
             }
         }
-
+        // coming here is not possible
+        TIGHTDB_ASSERT(false);
         return false;
-    }
 
+    }
     return true;
 }
 
@@ -1578,7 +1700,7 @@ inline void Replication::TransactLogParser::read_bytes(char* data, std::size_t s
             break;
         const char* to = m_input_begin + avail;
         std::copy(m_input_begin, to, data);
-        if (!fill_input_buffer())
+        if (!next_input_buffer())
             throw BadTransactLog();
         data += avail;
         size -= avail;
@@ -1680,20 +1802,19 @@ inline void Replication::TransactLogParser::read_mixed(Mixed* mixed)
 }
 
 
-inline bool Replication::TransactLogParser::fill_input_buffer()
+inline bool Replication::TransactLogParser::next_input_buffer()
 {
-    const std::size_t n = m_input.read(m_input_buffer.get(), m_input_buffer_size);
-    if (n == 0)
+    std::size_t sz = m_input.next_block(m_input_begin, m_input_end);
+    if (sz == 0)
         return false;
-    m_input_begin = m_input_buffer.get();
-    m_input_end   = m_input_begin + n;
-    return true;
+    else
+        return true;
 }
 
 
 inline bool Replication::TransactLogParser::read_char(char& c)
 {
-    if (m_input_begin == m_input_end && !fill_input_buffer())
+    if (m_input_begin == m_input_end && !next_input_buffer())
         return false;
     c = *m_input_begin++;
     return true;
@@ -1725,7 +1846,12 @@ inline TrivialReplication::TrivialReplication(const std::string& database_file):
 {
 }
 
-inline void TrivialReplication::transact_log_reserve(std::size_t n)
+inline std::size_t TrivialReplication::transact_log_size()
+{
+    return m_transact_log_free_begin - m_transact_log_buffer.data();
+}
+
+inline void TrivialReplication::internal_transact_log_reserve(std::size_t n)
 {
     char* data = m_transact_log_buffer.data();
     std::size_t size = m_transact_log_free_begin - data;

@@ -16,42 +16,44 @@
 //
 ////////////////////////////////////////////////////////////////////////////
 
-#import "RLMRealm.h"
+#import "RLMAccessor.h"
+#import "RLMResults.h"
 
 //
 // Table modifications
 //
 
-// update tables in realm to the targetSchema and set schema on realm
-// returns true if modifications were made
-// NOTE: must be called from within write transaction if initializeSchema is true
-bool RLMRealmSetSchema(RLMRealm *realm, RLMSchema *targetSchema, bool initializeSchema = false);
+// sets a realm's schema to a copy of targetSchema
+// caches table accessors on each objectSchema
+void RLMRealmSetSchema(RLMRealm *realm, RLMSchema *targetSchema, bool verifyAndAlignColumns = true);
 
-// initialize a realm if needed with the given schema
-// for uninitialized dbs, the initial version is set and tables are created for the target schema
-// existing dbs are validated against the target schema
-void RLMRealmInitializeWithSchema(RLMRealm *realm, RLMSchema *targetSchema);
+// sets a realm's schema to a copy of targetSchema and creates/updates tables
+// if update existing is true, updates existing tables, otherwise validates existing tables
+// NOTE: must be called from within write transaction
+void RLMRealmCreateTables(RLMRealm *realm, RLMSchema *targetSchema, bool updateExisting = false);
 
-// initialize a read-only realm with the given schema
-void RLMRealmInitializeReadOnlyWithSchema(RLMRealm *realm, RLMSchema *targetSchema);
 
 //
 // Adding, Removing, Getting Objects
 //
 
 // add an object to the given realm
-// if tryUpdate is 'true', update an existing object with the same primary key value
-void RLMAddObjectToRealm(RLMObject *object, RLMRealm *realm, bool tryUpdate = false);
+void RLMAddObjectToRealm(RLMObject *object, RLMRealm *realm, RLMSetFlag options = 0);
 
 // delete an object from its realm
-void RLMDeleteObjectFromRealm(RLMObject *object);
+void RLMDeleteObjectFromRealm(RLMObject *object, RLMRealm *realm);
+
+// deletes all objects from a realm
+void RLMDeleteAllObjectsFromRealm(RLMRealm *realm);
 
 // get objects of a given class
-RLMArray *RLMGetObjects(RLMRealm *realm, NSString *objectClassName, NSPredicate *predicate);
+RLMResults *RLMGetObjects(RLMRealm *realm, NSString *objectClassName, NSPredicate *predicate);
+
+// get an object with the given primary key
+id RLMGetObject(RLMRealm *realm, NSString *objectClassName, id key);
 
 // create object from array or dictionary
-// if tryUpdate is 'true', update an existing object with the same primary key value
-RLMObject *RLMCreateObjectInRealmWithValue(RLMRealm *realm, NSString *className, id value, bool tryUpdate = false);
+RLMObject *RLMCreateObjectInRealmWithValue(RLMRealm *realm, NSString *className, id value, RLMSetFlag options = 0);
 
 
 //

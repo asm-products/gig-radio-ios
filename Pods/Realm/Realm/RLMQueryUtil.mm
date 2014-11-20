@@ -17,10 +17,11 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #import "RLMQueryUtil.hpp"
-#import "RLMUtil.hpp"
-#import "RLMProperty_Private.h"
+#import "RLMArray.h"
 #import "RLMObjectSchema_Private.hpp"
 #import "RLMObject_Private.h"
+#import "RLMProperty_Private.h"
+#import "RLMUtil.hpp"
 
 #include <tightdb.hpp>
 using namespace tightdb;
@@ -279,8 +280,12 @@ void add_link_constraint_to_query(tightdb::Query & query,
                                  NSPredicateOperatorType operatorType,
                                  NSUInteger column,
                                  RLMObject *obj) {
-    RLMPrecondition(operatorType == NSEqualToPredicateOperatorType,
-                    @"Invalid operator type", @"Only 'Equal' operator supported for object comparison");
+    RLMPrecondition(operatorType == NSEqualToPredicateOperatorType || operatorType == NSNotEqualToPredicateOperatorType,
+                    @"Invalid operator type", @"Only 'Equal' and 'Not Equal' operators supported for object comparison");
+    if (operatorType == NSNotEqualToPredicateOperatorType) {
+        query.Not();
+    }
+
     if (obj) {
         query.links_to(column, obj->_row.get_index());
     }
@@ -292,9 +297,9 @@ void add_link_constraint_to_query(tightdb::Query & query,
 // iterate over an array of subpredicates, using @func to build a query from each
 // one and ORing them together
 template<typename Func>
-void process_or_group(Query &query, id value, Func&& func) {
-    NSArray *array = RLMDynamicCast<NSArray>(value);
-    RLMPrecondition(array, @"Invalid value", @"IN clause requires an array of items");
+void process_or_group(Query &query, id array, Func&& func) {
+    RLMPrecondition([array conformsToProtocol:@protocol(NSFastEnumeration)],
+                    @"Invalid value", @"IN clause requires an array of items");
 
     query.group();
 
@@ -307,6 +312,20 @@ void process_or_group(Query &query, id value, Func&& func) {
 
         func(item);
     }
+
+    if (first) {
+        // Queries can't be empty, so if there's zero things in the OR group
+        // validation will fail. Work around this by adding an expression which
+        // will never find any rows in a table.
+        // FIXME: this should be supported by core in some way
+        struct FalseExpression : tightdb::Expression {
+            size_t find_first(size_t, size_t) const override { return tightdb::not_found; }
+            void set_table() override {}
+            const Table* get_table() override { return nullptr; }
+        };
+        query.expression(new FalseExpression);
+    }
+
     query.end_group();
 }
 
@@ -395,12 +414,12 @@ RLMProperty *get_property_from_key_path(RLMSchema *schema, RLMObjectSchema *desc
             if (isAny) {
                 RLMPrecondition(prop.type == RLMPropertyTypeArray,
                                 @"Invalid predicate",
-                                @"RLMArray predicates must contain the ANY modifier");
+                                @"ANY modifier can only be used for RLMArray properties");
             }
             else {
                 RLMPrecondition(prop.type != RLMPropertyTypeArray,
                                 @"Invalid predicate",
-                                @"ANY modifier can only be used for RLMArray properties");
+                                @"RLMArray predicates must contain the ANY modifier");
             }
         }
 
@@ -411,6 +430,17 @@ RLMProperty *get_property_from_key_path(RLMSchema *schema, RLMObjectSchema *desc
     }
 
     return prop;
+}
+
+void validate_property_value(RLMProperty *prop, id value, NSString *err) {
+    if (prop.type == RLMPropertyTypeArray) {
+        RLMPrecondition([RLMDynamicCast<RLMObject>(value).objectSchema.className isEqualToString:prop.objectClassName],
+                        @"Invalid value", err, prop.objectClassName);
+    }
+    else {
+        RLMPrecondition(RLMIsObjectValidForProperty(value, prop),
+                        @"Invalid value", err, RLMTypeToString(prop.type));
+    }
 }
 
 void update_query_with_value_expression(RLMSchema *schema,
@@ -436,27 +466,14 @@ void update_query_with_value_expression(RLMSchema *schema,
     if (pred.predicateOperatorType == NSInPredicateOperatorType) {
         process_or_group(query, value, [&](id item) {
             id normalized = value_from_constant_expression_or_value(item);
-            RLMPrecondition(RLMIsObjectValidForProperty(normalized, prop),
-                            @"Invalid value", @"object in IN clause must be of type %@",
-                            RLMTypeToString(prop.type));
+            validate_property_value(prop, normalized, @"Object in IN clause must be of type %@");
             add_constraint_to_query(query, prop.type, NSEqualToPredicateOperatorType,
                                     pred.options, indexes, index, normalized);
         });
         return;
     }
 
-    // validate value
-    if (prop.type == RLMPropertyTypeArray) {
-        Class cls = [value class];
-        RLMPrecondition(RLMIsKindOfclass(cls, RLMObject.class) && [[cls className] isEqualToString:prop.objectClassName],
-                        @"Invalid value", @"object must be of type %@", prop.objectClassName);
-    }
-    else {
-        RLMPrecondition(RLMIsObjectValidForProperty(value, prop),
-                        @"Invalid value", @"object must be of type %@", RLMTypeToString(prop.type));
-    }
-
-    // finally cast to native types and add query clause
+    validate_property_value(prop, value, @"object must be of type %@");
     add_constraint_to_query(query, prop.type, pred.predicateOperatorType,
                             pred.options, indexes, index, value);
 }
@@ -622,6 +639,27 @@ void update_query_with_predicate(NSPredicate *predicate, RLMSchema *schema,
     }
 }
 
+RLMProperty *RLMValidatedPropertyForSort(RLMObjectSchema *schema, NSString *propName) {
+    // validate
+    RLMProperty *prop = schema[propName];
+    RLMPrecondition(prop, @"Invalid sort column", @"Column named '%@' not found.", prop);
+
+    switch (prop.type) {
+        case RLMPropertyTypeBool:
+        case RLMPropertyTypeDate:
+        case RLMPropertyTypeDouble:
+        case RLMPropertyTypeFloat:
+        case RLMPropertyTypeInt:
+        case RLMPropertyTypeString:
+            break;
+
+        default:
+            @throw RLMPredicateException(@"Invalid sort column type",
+                                         @"Sorting is only supported on Bool, Date, Double, Float, Integer and String columns.");
+    }
+    return prop;
+}
+
 } // namespace
 
 void RLMUpdateQueryWithPredicate(tightdb::Query *query, NSPredicate *predicate, RLMSchema *schema,
@@ -643,28 +681,21 @@ void RLMUpdateQueryWithPredicate(tightdb::Query *query, NSPredicate *predicate, 
                     (int)validateMessage.size(), validateMessage.c_str());
 }
 
-void RLMUpdateViewWithOrder(tightdb::TableView &view, RLMObjectSchema *schema, NSString *property, BOOL ascending)
+void RLMGetColumnIndices(RLMObjectSchema *schema, NSArray *properties,
+                         std::vector<size_t> &columns, std::vector<bool> &order) {
+    columns.reserve(properties.count);
+    order.reserve(properties.count);
+
+    for (RLMSortDescriptor *descriptor in properties) {
+        columns.push_back(RLMValidatedPropertyForSort(schema, descriptor.property).column);
+        order.push_back(descriptor.ascending);
+    }
+}
+
+void RLMUpdateViewWithOrder(tightdb::TableView &view, RLMObjectSchema *schema, NSArray *properties)
 {
-    if (!property || property.length == 0) {
-        return;
-    }
-
-    // validate
-    RLMProperty *prop = schema[property];
-    RLMPrecondition(prop, @"Invalid sort column", @"Column named '%@' not found.", property);
-
-    switch (prop.type) {
-        case RLMPropertyTypeBool:
-        case RLMPropertyTypeDate:
-        case RLMPropertyTypeDouble:
-        case RLMPropertyTypeFloat:
-        case RLMPropertyTypeInt:
-        case RLMPropertyTypeString:
-            view.sort(prop.column, ascending);
-            break;
-
-        default:
-            @throw RLMPredicateException(@"Invalid sort column type",
-                                         @"Sorting is only supported on Bool, Date, Double, Float, Integer and String columns.");
-    }
+    std::vector<size_t> columns;
+    std::vector<bool> order;
+    RLMGetColumnIndices(schema, properties, columns, order);
+    view.sort(move(columns), move(order));
 }

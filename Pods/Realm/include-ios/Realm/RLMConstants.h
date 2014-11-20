@@ -22,7 +22,8 @@
 
 typedef NS_OPTIONS(NSUInteger, RLMPropertyAttributes) {
 /**
- Create an index for this property for improved search performance.
+ Create an index for this property for improved search performance. Only string properties
+ can be indexed. Returning this for properties of any other type will have no effect.
  */
     RLMPropertyAttributeIndexed = 1 << 2,
 
@@ -136,7 +137,7 @@ typedef NS_ENUM(NSString, RLMRealmNotification) {
  */
     RLMRealmDidChangeNotification,
 /**
- Posted by RLMRealm when a write transaction has been committed to a RLMRealm on
+ Posted by RLMRealm when a write transaction has been committed to an RLMRealm on
  a different thread for the same file. This is not posted if
  [autorefresh]([RLMRealm autorefresh]) is enabled or if the RLMRealm is
  refreshed before the notifcation has a chance to run.

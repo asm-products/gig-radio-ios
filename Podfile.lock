@@ -5,7 +5,7 @@ PODS:
   - CMDQueryStringSerialization (0.3.1):
     - ISO8601
   - CocoaLumberjack (1.9.2):
-    - CocoaLumberjack/Extensions
+    - CocoaLumberjack/Extensions (= 1.9.2)
   - CocoaLumberjack/Core (1.9.2)
   - CocoaLumberjack/Extensions (1.9.2):
     - CocoaLumberjack/Core
@@ -15,9 +15,9 @@ PODS:
   - ISO8601 (0.1.1)
   - NCMusicEngine (0.1.5):
     - AFNetworking (~> 1.1)
-  - Realm (0.85.0):
-    - Realm/Headers
-  - Realm/Headers (0.85.0)
+  - Realm (0.87.4):
+    - Realm/Headers (= 0.87.4)
+  - Realm/Headers (0.87.4)
   - SimpleMotionEffects (1.0.0)
   - UIActionSheet+Blocks (0.8.1)
   - UIImage+RTTint (1.0.0)
@@ -32,7 +32,7 @@ DEPENDENCIES:
   - Functional.m (~> 1.0)
   - HTCoreImage (~> 1.0)
   - NCMusicEngine (~> 0.1)
-  - Realm (~> 0.85)
+  - Realm (~> 0.87)
   - SimpleMotionEffects (~> 1.0)
   - UIActionSheet+Blocks (~> 0.8)
   - UIImage+RTTint (~> 1.0)
@@ -49,10 +49,10 @@ SPEC CHECKSUMS:
   HTCoreImage: 1f2a5f9a88d7893106452e7ffcc6c0ec80b37662
   ISO8601: a6afce5fbe854024802367c814fac4aa8d3586f9
   NCMusicEngine: 7a425491514dade9fa6e2c2b78712c8a8bc0b0d0
-  Realm: 01c074b534be68b55ba4228a3b16cf41da7af14d
+  Realm: 17d0d9c94b38d15223fa3e806ead0e0562765e46
   SimpleMotionEffects: 35af9b11ca30d7152ea8f6752ea4c87387d80b8f
   UIActionSheet+Blocks: c8b9c02f3d08964e8f7a4202f004a639c15eab80
   UIImage+RTTint: 6ce8073821eafc53fef7dd6222621e9fcb3138a3
   YLMoment: a5e6733c66490fd736db325f5d339cb511bdfb54
 
-COCOAPODS: 0.34.4
+COCOAPODS: 0.35.0

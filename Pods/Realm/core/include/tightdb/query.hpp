@@ -56,6 +56,7 @@ class SequentialGetterBase;
 class Query {
 public:
     Query(const Table& table, RowIndexes* tv = null_ptr);
+    Query(const Table& table, const LinkViewRef& lv);
     Query();
     Query(const Query& copy); // FIXME: Try to remove this
     struct TCopyExpressionTag {};
@@ -67,9 +68,6 @@ public:
 
     Query& expression(Expression* compare, bool auto_delete = false);
     Expression* get_expression();
-
-    // Conditions: Query only rows contained in tv
-    Query& tableview(TableView& tv); // throws
 
     // Find links that point to a specific target row 
 
@@ -308,6 +306,8 @@ private:
     friend class XQueryAccessorInt;
     friend class XQueryAccessorString;
     friend class TableViewBase;
+
+    LinkViewRef m_source_link_view;
 };
 
 // Implementation:

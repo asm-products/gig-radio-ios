@@ -48,7 +48,7 @@
 
 // create property map when setting property array
 -(void)setProperties:(NSArray *)properties {
-    NSMutableDictionary *map = [NSMutableDictionary dictionaryWithCapacity:_properties.count];
+    NSMutableDictionary *map = [NSMutableDictionary dictionaryWithCapacity:properties.count];
     for (RLMProperty *prop in properties) {
         map[prop.name] = prop;
     }
@@ -68,17 +68,31 @@
 
 + (instancetype)schemaForObjectClass:(Class)objectClass createAccessors:(BOOL)create {
     RLMObjectSchema *schema = [RLMObjectSchema new];
-    schema.className = [objectClass className];
+
+    // determine classname from objectclass as className method has not yet been updated
+    NSString *className = NSStringFromClass(objectClass);
+    if ([RLMSwiftSupport isSwiftClassName:className]) {
+        className = [RLMSwiftSupport demangleClassName:className];
+    }
+    schema.className = className;
     schema.objectClass = objectClass;
 
-    // create array of RLMProperties
-    schema.properties = [self propertiesForClass:objectClass];
+    // create array of RLMProperties, inserting properties of superclasses first
+    Class cls = objectClass;
+    NSArray *props = @[];
+    while (cls != RLMObject.class) {
+        props = [[RLMObjectSchema propertiesForClass:cls] arrayByAddingObjectsFromArray:props];
+        cls = class_getSuperclass(cls);
+    }
+    schema.properties = props;
 
     if (NSString *primaryKey = [objectClass primaryKey]) {
         for (RLMProperty *prop in schema.properties) {
             if ([primaryKey isEqualToString:prop.name]) {
-                // FIXME - re-enable when we have core suppport
-                //attr = attr | RLMPropertyAttributeIndexed;
+                 // FIXME - enable for ints when we have core suppport
+                if (prop.type == RLMPropertyTypeString) {
+                    prop.attributes |= RLMPropertyAttributeIndexed;
+                }
                 schema.primaryKeyProperty = prop;
                 break;
             }
@@ -86,7 +100,7 @@
 
         if (!schema.primaryKeyProperty) {
             NSString *message = [NSString stringWithFormat:@"Primary key property '%@' does not exist on object '%@'",
-                                 primaryKey, schema.className];
+                                 primaryKey, className];
             @throw [NSException exceptionWithName:@"RLMException" reason:message userInfo:nil];
         }
         if (schema.primaryKeyProperty.type != RLMPropertyTypeInt && schema.primaryKeyProperty.type != RLMPropertyTypeString) {
@@ -100,7 +114,7 @@
         schema.standaloneClass = RLMStandaloneAccessorClassForObjectClass(objectClass, schema);
 
         RLMReplaceSharedSchemaMethod(objectClass, schema);
-        RLMReplaceClassNameMethod(objectClass, schema.className);
+        RLMReplaceClassNameMethod(objectClass, className);
     }
 
     return schema;
@@ -126,15 +140,20 @@
         }
 
         RLMPropertyAttributes atts = [objectClass attributesForProperty:propertyName];
+        RLMProperty *prop = nil;
         if (isSwiftClass) {
-            [propArray addObject:[[RLMProperty alloc] initSwiftPropertyWithName:propertyName
-                                                                     attributes:atts
-                                                                       property:props[i]
-                                                                       instance:swiftObjectInstance]];
+            prop = [[RLMProperty alloc] initSwiftPropertyWithName:propertyName
+                                                       attributes:atts
+                                                         property:props[i]
+                                                         instance:swiftObjectInstance];
         }
         else {
-            [propArray addObject:[[RLMProperty alloc] initWithName:propertyName attributes:atts property:props[i]]];
+            prop = [[RLMProperty alloc] initWithName:propertyName attributes:atts property:props[i]];
         }
+
+        if (prop) {
+            [propArray addObject:prop];
+         }
     }
     free(props);
 
@@ -194,10 +213,15 @@
 
 - (id)copyWithZone:(NSZone *)zone {
     RLMObjectSchema *schema = [[RLMObjectSchema allocWithZone:zone] init];
-    schema.properties = self.properties;
-    schema.objectClass = self.objectClass;
-    schema.className = self.className;
-    schema.primaryKeyProperty = schema[_primaryKeyProperty.name];
+    schema->_properties = _properties;
+    schema->_propertiesByName = _propertiesByName;
+    schema->_objectClass = _objectClass;
+    schema->_className = _className;
+    schema->_objectClass = _objectClass;
+    schema->_accessorClass = _accessorClass;
+    schema->_standaloneClass = _standaloneClass;
+    schema.primaryKeyProperty = _primaryKeyProperty;
+    // _table not copied as it's tightdb::Group-specific
     return schema;
 }
 

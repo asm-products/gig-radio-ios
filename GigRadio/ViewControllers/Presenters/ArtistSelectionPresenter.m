@@ -36,7 +36,7 @@
     [realm commitWriteTransaction];
     
     NSMutableArray * artists = [NSMutableArray new];
-    for (SongKickEvent*event in [self.events arraySortedByProperty:@"distanceCache" ascending:YES]) {
+    for (SongKickEvent*event in [self.events sortedResultsUsingProperty:@"distanceCache" ascending:YES]) {
         for (SongKickPerformance * performance in event.performance) {
             [artists addObject:performance.artist];
         }
@@ -73,7 +73,7 @@
     NSLog(@"ERRRORRR: NO EVENT!");
     return nil;
 }
--(RLMArray *)artistTracks:(SoundCloudUser *)user{
+-(RLMResults *)artistTracks:(SoundCloudUser *)user{
     return [SoundCloudTrack objectsWhere:@"user_id == %i", user.id];
 }
 

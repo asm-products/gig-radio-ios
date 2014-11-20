@@ -11,7 +11,7 @@
 #import <YLMoment.h>
 
 @interface Playlist()
-@property (nonatomic, strong) RLMArray * events;
+@property (nonatomic, strong) RLMResults * events;
 @property (nonatomic, strong) NSMutableArray * items;
 @property (nonatomic, strong) SoundCloudSyncController * soundCloudSyncController;
 @end
@@ -55,7 +55,7 @@ CWL_SYNTHESIZE_SINGLETON_FOR_CLASS_WITH_ACCESSOR(Playlist, currentPlaylist)
  */
 -(NSArray*)createItemsPerArtistArray{
     NSMutableArray * result = [NSMutableArray new];
-    for (SongKickEvent*event in [self.events arraySortedByProperty:@"distanceCache" ascending:YES]) {
+    for (SongKickEvent*event in [self.events sortedResultsUsingProperty:@"distanceCache" ascending:YES]) {
         for (SongKickPerformance * performance in event.performance) {
             // unless artist has been disliked
             PlaylistItem * item = [PlaylistItem new];
@@ -145,7 +145,7 @@ CWL_SYNTHESIZE_SINGLETON_FOR_CLASS_WITH_ACCESSOR(Playlist, currentPlaylist)
 
 -(void)saveCurrentlyPlayingItem:(PlaylistItem *)item{
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    [defaults set]
+//    [defaults set]
 }
 
 @end

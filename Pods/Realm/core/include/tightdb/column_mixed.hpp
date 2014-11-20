@@ -64,7 +64,7 @@ public:
 
     void adj_accessors_insert_rows(std::size_t, std::size_t) TIGHTDB_NOEXCEPT TIGHTDB_OVERRIDE;
     void adj_accessors_erase_row(std::size_t) TIGHTDB_NOEXCEPT TIGHTDB_OVERRIDE;
-    void adj_accessors_move_last_over(std::size_t, std::size_t) TIGHTDB_NOEXCEPT TIGHTDB_OVERRIDE;
+    void adj_accessors_move(std::size_t, std::size_t) TIGHTDB_NOEXCEPT TIGHTDB_OVERRIDE;
     void adj_acc_clear_root_table() TIGHTDB_NOEXCEPT TIGHTDB_OVERRIDE;
 
     void update_from_parent(std::size_t) TIGHTDB_NOEXCEPT TIGHTDB_OVERRIDE;
@@ -148,8 +148,7 @@ public:
     void Verify() const TIGHTDB_OVERRIDE;
     void Verify(const Table&, std::size_t) const TIGHTDB_OVERRIDE;
     void to_dot(std::ostream&, StringData title) const TIGHTDB_OVERRIDE;
-    void dump_node_structure(std::ostream&, int level) const TIGHTDB_OVERRIDE;
-    using ColumnBase::dump_node_structure;
+    void do_dump_node_structure(std::ostream&, int) const TIGHTDB_OVERRIDE;
 #endif
 
 private:

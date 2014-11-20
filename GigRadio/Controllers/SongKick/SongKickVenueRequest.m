@@ -17,7 +17,7 @@
     
     
     NSMutableString * uri = [SongKickConfiguration baseUri].mutableCopy;
-    [uri appendFormat:@"/venues/%i.json?%@",venueId,[CMDQueryStringSerialization queryStringWithDictionary:query]];
+    [uri appendFormat:@"/venues/%li.json?%@",(long)venueId,[CMDQueryStringSerialization queryStringWithDictionary:query]];
     return [self requestWithURL:[NSURL URLWithString:uri]];
     
 }

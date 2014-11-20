@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 #import "SyncOperationBase.h"
 @interface SoundCloudArtistTracksSyncOperation : SyncOperationBase
-@property (nonatomic) NSInteger * soundCloudUserId;
+@property (nonatomic) NSInteger soundCloudUserId;
 @end

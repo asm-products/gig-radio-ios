@@ -2,7 +2,7 @@
 # platform :ios, "6.0"
 source 'https://github.com/CocoaPods/Specs.git'
 target "GigRadio" do
-  pod 'Realm', '~> 0.88'
+  pod 'Realm', '~> 0.87'
   pod 'CLLocationManager-blocks', '~> 1.1'
   pod 'CMDQueryStringSerialization', '~> 0.3'
   pod 'YLMoment', '~> 0.5'

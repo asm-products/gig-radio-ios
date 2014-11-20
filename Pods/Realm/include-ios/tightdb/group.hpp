@@ -292,11 +292,6 @@ public:
     ///
     /// \throw CrossTableLinkTarget Thrown by remove_table() if the specified
     /// table is the target of a link column of a different table.
-    ///
-    /// \throw InvalidArgument Thrown by get_table(), get_table_name(),
-    /// remove_table(), and rename_table() if \a index is not a valid table
-    /// index, i.e., if it is greater than, or equal to the number of tables in
-    /// the group.
 
     bool has_table(StringData name) const TIGHTDB_NOEXCEPT;
     std::size_t find_table(StringData name) const TIGHTDB_NOEXCEPT;
@@ -495,8 +490,11 @@ private:
     Replication* get_replication() const TIGHTDB_NOEXCEPT;
     void set_replication(Replication*) TIGHTDB_NOEXCEPT;
     class TransactAdvancer;
+    class TransactReverser;
     void advance_transact(ref_type new_top_ref, std::size_t new_file_size,
                           const BinaryData* logs_begin, const BinaryData* logs_end);
+    void reverse_transact(ref_type new_top_ref, const BinaryData& log);
+    void refresh_dirty_accessors();
 #endif
 
 #ifdef TIGHTDB_DEBUG
@@ -508,6 +506,8 @@ private:
     friend class GroupWriter;
     friend class SharedGroup;
     friend class _impl::GroupFriend;
+    friend class Replication;
+    friend class TrivialReplication;
 };
 
 
@@ -587,7 +587,7 @@ inline StringData Group::get_table_name(std::size_t table_ndx) const
 {
     TIGHTDB_ASSERT(is_attached());
     if (table_ndx >= m_table_names.size())
-        throw InvalidArgument();
+        throw LogicError(LogicError::table_index_out_of_range);
     return m_table_names.get(table_ndx);
 }
 

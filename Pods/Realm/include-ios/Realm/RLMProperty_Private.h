@@ -34,6 +34,7 @@
 // private setters
 @property (nonatomic, assign) NSUInteger column;
 @property (nonatomic, readwrite, assign) RLMPropertyType type;
+@property (nonatomic, readwrite) RLMPropertyAttributes attributes;
 
 // private properties
 @property (nonatomic, copy) NSString *objcRawType;
@@ -42,6 +43,8 @@
 // getter and setter names
 @property (nonatomic, copy) NSString *getterName;
 @property (nonatomic, copy) NSString *setterName;
+@property (nonatomic) SEL getterSel;
+@property (nonatomic) SEL setterSel;
 @property (nonatomic, copy) NSString *objectClassName;
 @property (nonatomic, assign) BOOL isPrimary;
 

@@ -18,7 +18,7 @@
         NSDictionary * dict = json.firstObject;
         NSLog(@"Dealing with user %@", dict[@"full_name"]);
         RLMRealm * realm = [RLMRealm defaultRealm];
-        RLMArray * foundUsers = [SoundCloudUser objectsWhere:@"id == %@", dict[@"id"]];
+        RLMResults * foundUsers = [SoundCloudUser objectsWhere:@"id == %@", dict[@"id"]];
         if(foundUsers.count > 0){
             NSLog(@"already got user %@", dict[@"full_name"]);
             self.foundUserId = ((SoundCloudUser*)foundUsers.firstObject).id;

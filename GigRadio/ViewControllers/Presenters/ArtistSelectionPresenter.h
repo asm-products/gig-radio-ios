@@ -15,7 +15,7 @@
 
 @interface ArtistSelectionPresenter : NSObject
 @property (nonatomic, strong) NSDate * date;
-@property (nonatomic, strong) RLMArray * events;
+@property (nonatomic, strong) RLMResults * events;
 @property (nonatomic, strong) NSArray * artists;
 +(instancetype)presenterForDate:(NSDate*)date;
 -(instancetype)initWithDate:(NSDate*)date;
@@ -26,5 +26,5 @@
  *  This breaks if an artist plays more than one gig in the given time frame
  */
 -(SongKickEvent*)eventWithArtist:(SongKickArtist*)artist;
--(RLMArray*)artistTracks:(SoundCloudUser*)user;
+-(RLMResults*)artistTracks:(SoundCloudUser*)user;
 @end

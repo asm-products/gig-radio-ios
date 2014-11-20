@@ -26,6 +26,7 @@
              @"genre":@"",
              @"title":@"",
              @"description":@"",
+             @"trackDescription":@"",
              @"label_name":@"",
              @"track_type":@"",
              @"uri":@"",

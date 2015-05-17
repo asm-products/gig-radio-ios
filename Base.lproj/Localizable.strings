@@ -1,0 +1,11 @@
+/* 
+  GigRadio.strings
+  GigRadio
+
+  Created by Michael Forrest on 17/05/2015.
+  Copyright (c) 2015 Good To Hear. All rights reserved.
+*/
+"LocationPrompt.Title" = "Access location?";
+"LocationPrompt.Message" = "Gig Radio works best if you allow it to access your location. Continue?";
+"LocationPrompt.Deny" = "No thanks";
+"LocationPrompt.Continue" = "Yes please";

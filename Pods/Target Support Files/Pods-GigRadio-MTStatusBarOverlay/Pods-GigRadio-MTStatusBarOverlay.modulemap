@@ -1,0 +1,6 @@
+framework module MTStatusBarOverlay {
+  umbrella header "Pods-GigRadio-MTStatusBarOverlay-umbrella.h"
+
+  export *
+  module * { export * }
+}

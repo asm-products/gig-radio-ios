@@ -1,0 +1,57 @@
+
+/* Class = "UILabel"; text = "[LINK]"; ObjectID = "1a5-Eg-1b5"; */
+"1a5-Eg-1b5.text" = "[LINK]";
+
+/* Class = "UIViewController"; title = "First"; ObjectID = "CZ4-MO-1fc"; */
+"CZ4-MO-1fc.title" = "First";
+
+/* Class = "UILabel"; text = "[Artist name]"; ObjectID = "DmO-qZ-S7N"; */
+"DmO-qZ-S7N.text" = "[Artist name]";
+
+/* Class = "UILabel"; text = "[0]"; ObjectID = "DnB-bQ-ch5"; */
+"DnB-bQ-ch5.text" = "[0]";
+
+/* Class = "UILabel"; text = "0:00"; ObjectID = "EQU-3P-7v4"; */
+"EQU-3P-7v4.text" = "0:00";
+
+/* Class = "UIButton"; normalTitle = "[Now playing:]"; ObjectID = "HRp-5e-wkX"; */
+"HRp-5e-wkX.normalTitle" = "[Now playing:]";
+
+/* Class = "UIButton"; normalTitle = "[Date]"; ObjectID = "KH9-oO-xgf"; */
+"KH9-oO-xgf.normalTitle" = "[Date]";
+
+/* Class = "UIButton"; normalTitle = "19:00 at The Handlebar, 3 miles away"; ObjectID = "OCP-y4-r3A"; */
+"OCP-y4-r3A.normalTitle" = "19:00 at The Handlebar, 3 miles away";
+
+/* Class = "UILabel"; text = "0:00"; ObjectID = "OOv-Ig-sVM"; */
+"OOv-Ig-sVM.text" = "0:00";
+
+/* Class = "UILabel"; text = "[Event title]"; ObjectID = "PHW-6p-geh"; */
+"PHW-6p-geh.text" = "[Event title]";
+
+/* Class = "UILabel"; text = "[Distance]"; ObjectID = "X4C-mO-taQ"; */
+"X4C-mO-taQ.text" = "[Distance]";
+
+/* Class = "UILabel"; text = "[MON]"; ObjectID = "XOj-5Y-Bp6"; */
+"XOj-5Y-Bp6.text" = "[MON]";
+
+/* Class = "UIButton"; normalTitle = "[Artist]"; ObjectID = "gwx-Id-NE2"; */
+"gwx-Id-NE2.normalTitle" = "[Artist]";
+
+/* Class = "UILabel"; text = "[Event time]"; ObjectID = "nOc-4C-aDy"; */
+"nOc-4C-aDy.text" = "[Event time]";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "qQR-Bh-ETk"; */
+"qQR-Bh-ETk.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "First"; ObjectID = "u1e-5L-l1D"; */
+"u1e-5L-l1D.title" = "First";
+
+/* Class = "UIButton"; normalTitle = "[Venue]"; ObjectID = "vFR-Om-TzQ"; */
+"vFR-Om-TzQ.normalTitle" = "[Venue]";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "y7h-Sh-j0q"; */
+"y7h-Sh-j0q.text" = "Label";
+
+/* Class = "UILabel"; text = "[Address]"; ObjectID = "z5i-JC-MHs"; */
+"z5i-JC-MHs.text" = "[Address]";

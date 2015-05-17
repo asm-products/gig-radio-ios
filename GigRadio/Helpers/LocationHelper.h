@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+
 @import CoreLocation;
 @interface LocationHelper : NSObject
-+(void)lookupWithError:(void(^)(NSError* error))errorHandler completion:(void(^)(CLLocation* location))completionHandler;
++(void)lookUp:(void(^)(CLLocation*location, NSError*error))completionHandler;
 @end

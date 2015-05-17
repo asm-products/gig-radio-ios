@@ -1,0 +1,6 @@
+framework module CMDQueryStringSerialization {
+  umbrella header "Pods-GigRadio-CMDQueryStringSerialization-umbrella.h"
+
+  export *
+  module * { export * }
+}

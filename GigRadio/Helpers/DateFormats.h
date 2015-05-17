@@ -7,12 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-
 @interface DateFormats : NSObject
 +(NSDateFormatter*)dayOfTheWeekFormatter;
++(NSDateFormatter*)dayOfTheWeekShortFormatter;
 +(NSDateFormatter*)dayOfTheMonthFormatter;
++(NSDateFormatter*)monthShortFormatter;
 +(NSDateFormatter*)querystringDateFormatter;
 +(NSDateFormatter*)dateTimeFormat;
 +(NSDateFormatter*)soundCloudDateFormat;
 +(NSDateFormatter*)eventDateFormatter;
++(NSDateFormatter*)monthAndYearFormatter;
 @end

@@ -1,0 +1,6 @@
+framework module SimpleMotionEffects {
+  umbrella header "Pods-GigRadio-SimpleMotionEffects-umbrella.h"
+
+  export *
+  module * { export * }
+}

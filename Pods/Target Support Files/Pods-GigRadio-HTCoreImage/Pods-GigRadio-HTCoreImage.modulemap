@@ -1,0 +1,6 @@
+framework module HTCoreImage {
+  umbrella header "Pods-GigRadio-HTCoreImage-umbrella.h"
+
+  export *
+  module * { export * }
+}

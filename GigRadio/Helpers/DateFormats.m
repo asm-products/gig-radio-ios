@@ -21,8 +21,17 @@
 +(NSDateFormatter *)dayOfTheWeekFormatter{
     formatter(@"EEEE")
 }
++(NSDateFormatter *)dayOfTheWeekShortFormatter{
+    formatter(@"EEE");
+}
 +(NSDateFormatter *)dayOfTheMonthFormatter{
     formatter(@"dd")
+}
++(NSDateFormatter *)monthShortFormatter{
+    formatter(@"MMM")
+}
++(NSDateFormatter*)monthAndYearFormatter{
+    formatter(@"MMMM yyyy")
 }
 +(NSDateFormatter *)querystringDateFormatter{
     formatter(@"yyyy-MM-dd");

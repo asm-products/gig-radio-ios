@@ -1,2 +1,4 @@
 /* Localized versions of Info.plist keys */
 
+"NSLocationWhenInUseUsageDescription" = "Gig Radio will be most accurate if you give it your location";
+"NSLocationAlwaysUsageDescription" = "If you want to use the app while driving and continuously hear music in venues you pass, you'll need to enable this option";

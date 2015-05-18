@@ -23,8 +23,14 @@ class SongKickEvent: Object {
     dynamic var series = SongKickDisplayName()
     
     dynamic var distanceCache: Double = 0
+    dynamic var date:NSDate = NSDate(timeIntervalSince1970: 0) // don't accidentally accumulate events for today; set this long in the past
     
     override static func primaryKey()->String?{
         return "id"
+    }
+    
+    
+    class func eventCountOnDate(date:NSDate)->Int{
+        return Realm().objects(SongKickEvent).filter("date = %@", date).count
     }
 }

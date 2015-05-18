@@ -10,16 +10,19 @@ import UIKit
 import MediaPlayer
 import CoreLocation
 
-class MainViewController: UIViewController, UICollectionViewDelegate, CLLocationManagerDelegate {
-
+class MainViewController: UIViewController, UICollectionViewDelegate, CLLocationManagerDelegate, DatePickerViewControllerDelegate {
+    let DatePickerOffScreen:CGFloat = -80
+    
     @IBOutlet weak var headerDateButton: UIButton!
     @IBOutlet weak var dateSelectorRevealConstraint: NSLayoutConstraint!
     @IBOutlet weak var volumeView: MPVolumeView!
     
     @IBOutlet weak var loadingView: UIView!
     var datePicker: DatePickerViewController?
-
+    @IBOutlet weak var datePickerButtons: UIView!
+    
     var playlist: Playlist?
+    var location: CLLocation?
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return (loadingView != nil && loadingView.alpha < 1) ? .LightContent : .Default
@@ -37,6 +40,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
 //        volumeView.setMaximumVolumeSliderImage(UIImage(named: "speaker-loud"), forState: .Normal)
         // deal with location stuff here because we might need to show UI
         LocationHelper.lookUp { (location, error) -> Void in
+            self.location = location
             self.playlist = Playlist(accurateLocation: location != nil)
             self.playlist?.loadFirstItem({ (item, error) -> Void in
                 self.hideLoadingView()
@@ -55,23 +59,57 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let dest = segue.destinationViewController as? DatePickerViewController{
             self.datePicker = dest
+            dest.delegate = self
             let swipe = UISwipeGestureRecognizer(target: self, action: "didSwipeUpDatePicker")
             swipe.direction = .Up
             dest.view.addGestureRecognizer(swipe)
         }
     }
-    func didSwipeUpDatePicker(){
-        slideDatePickerTo(-datePicker!.view.frame.size.height)
+    func datePickerDidChangeVisibleRange(startDate: NSDate, endDate: NSDate) {
+//        datePicker?.activity.startAnimating()
+        SongKickClient.sharedClient.getEvents(startDate, end: endDate, location: location) { (error) -> Void in
+            if error != nil{
+                println("SongKick error: \(error!.localizedDescription)")
+            }
+            self.datePicker?.refresh()
+//            self.datePicker?.activity.stopAnimating()
+        }
     }
-    func slideDatePickerTo(y: CGFloat){
+    func datePickerDidSelectDate(startDate: NSDate) {
+        
+    }
+    @IBAction func didPressTodayButton(sender: AnyObject) {
+        datePicker?.scrollToToday(true)
+    }
+    @IBAction func didPressDismissButton(sender: AnyObject) {
+        hideDatePickerAnimated(true)
+    }
+    func hideDatePickerAnimated(animated:Bool){
+        setDatePickerHidden(true, animated: animated)
+    }
+    func showDatePickerAnimated(animated:Bool){
+        setDatePickerHidden(false, animated: animated)
+    }
+    func didSwipeUpDatePicker(){
+        hideDatePickerAnimated(true)
+    }
+    func setDatePickerHidden(hidden: Bool, animated: Bool){
+        let y = hidden ? DatePickerOffScreen : 0
         dateSelectorRevealConstraint.constant = y
         view.setNeedsUpdateConstraints()
-        UIView.animateWithDuration(0.4, animations: { () -> Void in
+        
+        let animations = { () -> Void in
+            self.datePickerButtons.alpha = hidden ? 0 : 1
             self.view.layoutIfNeeded()
             self.setNeedsStatusBarAppearanceUpdate()
-        })
+        }
+        if animated{
+            UIView.animateWithDuration(0.4, animations: animations)
+        }else{
+            animations()
+        }
     }
     @IBAction func didPressDateHeader(sender: AnyObject) {
-        slideDatePickerTo(0)
+        showDatePickerAnimated(true)
     }
 }

@@ -14,4 +14,12 @@
     result.day = count;
     return result;
 }
++(NSDate *)startOfUTCDay:(NSDate *)date{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSCalendarUnit calendarUnits = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
+    
+    NSDateComponents *components = [calendar components:calendarUnits
+                                                fromDate:date];
+    return [calendar dateFromComponents:components];
+}
 @end

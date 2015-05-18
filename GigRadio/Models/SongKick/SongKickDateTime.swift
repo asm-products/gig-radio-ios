@@ -27,4 +27,14 @@ class SongKickDateTime: Object {
         }
         return result
     }
+    
+    func parsedDate()->NSDate?{
+        if let result = DateFormats.querystringDateFormatter().dateFromString(date){
+            return result
+        }else if let result = DateFormats.dateTimeFormat().dateFromString(datetime){
+            return result
+        }else{
+            return nil
+        }
+    }
 }

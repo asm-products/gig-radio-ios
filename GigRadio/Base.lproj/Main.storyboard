@@ -172,6 +172,44 @@
                                     <constraint firstItem="egG-9n-J9i" firstAttribute="top" secondItem="K5Z-AU-XgA" secondAttribute="top" constant="8" id="yGL-kE-7il"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hMd-lP-W9k" userLabel="DatePickerButtons">
+                                <rect key="frame" x="16" y="64" width="288" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mSr-92-cPH" customClass="RoundedButton" customModule="GigRadio" customModuleProvider="target">
+                                        <rect key="frame" x="146" y="6" width="96" height="30"/>
+                                        <color key="backgroundColor" red="0.12941176470588237" green="0.12941176470588237" blue="0.12941176470588237" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Dismiss">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didPressDismissButton:" destination="9o0-oO-PbL" eventType="touchUpInside" id="rLe-2A-rbc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u3i-Yg-M39" customClass="RoundedButton" customModule="GigRadio" customModuleProvider="target">
+                                        <rect key="frame" x="46" y="6" width="96" height="30"/>
+                                        <color key="backgroundColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="96" id="9MK-xl-lO4"/>
+                                        </constraints>
+                                        <state key="normal" title="Today">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didPressTodayButton:" destination="9o0-oO-PbL" eventType="touchUpInside" id="pH8-V0-8Lz"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="mSr-92-cPH" secondAttribute="centerX" constant="-50" id="8u2-B9-5bM"/>
+                                    <constraint firstAttribute="width" constant="288" id="Ggz-35-QfR"/>
+                                    <constraint firstItem="u3i-Yg-M39" firstAttribute="width" secondItem="mSr-92-cPH" secondAttribute="width" id="TRV-H0-z8g"/>
+                                    <constraint firstItem="u3i-Yg-M39" firstAttribute="top" secondItem="mSr-92-cPH" secondAttribute="top" id="gd3-Vj-GI1"/>
+                                    <constraint firstAttribute="height" constant="44" id="le7-Sv-WRb"/>
+                                    <constraint firstItem="mSr-92-cPH" firstAttribute="top" secondItem="hMd-lP-W9k" secondAttribute="top" constant="6" id="m3k-Q6-BnH"/>
+                                    <constraint firstAttribute="centerX" secondItem="u3i-Yg-M39" secondAttribute="centerX" constant="50" id="uHK-0T-HcF"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RkO-aP-Zdc" userLabel="Top Bar">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                 <subviews>
@@ -225,7 +263,7 @@
                                         </state>
                                     </button>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UVv-t0-1md">
-                                        <rect key="frame" x="0.0" y="-64" width="320" height="64"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="64" id="gax-ml-awE"/>
                                         </constraints>
@@ -233,20 +271,28 @@
                                             <segue destination="1TN-cP-OPD" kind="embed" id="7uK-n6-3O8"/>
                                         </connections>
                                     </containerView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RJ2-Np-nRp" userLabel="GradientOverlayView" customClass="GradientOverlayView" customModule="GigRadio" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25490196078431371" alpha="0.57999999999999996" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="Cxa-TZ-4n2" firstAttribute="leading" secondItem="RkO-aP-Zdc" secondAttribute="leading" id="Hem-aW-cgj"/>
                                     <constraint firstAttribute="bottom" secondItem="MgT-VK-qEg" secondAttribute="bottom" id="KZr-yD-E6d"/>
                                     <constraint firstAttribute="height" constant="64" id="M2y-bk-lbg"/>
+                                    <constraint firstItem="UVv-t0-1md" firstAttribute="leading" secondItem="RJ2-Np-nRp" secondAttribute="leading" id="Nfm-EK-vIk"/>
+                                    <constraint firstItem="UVv-t0-1md" firstAttribute="top" secondItem="RJ2-Np-nRp" secondAttribute="top" id="QUu-Sb-q3G"/>
                                     <constraint firstItem="MgT-VK-qEg" firstAttribute="leading" secondItem="dlj-Iq-DE6" secondAttribute="trailing" constant="8" id="Seo-66-bbi"/>
-                                    <constraint firstItem="UVv-t0-1md" firstAttribute="top" secondItem="RkO-aP-Zdc" secondAttribute="top" constant="-64" id="WtS-Qz-UpB" userLabel="Date Selection"/>
+                                    <constraint firstItem="UVv-t0-1md" firstAttribute="bottom" secondItem="RJ2-Np-nRp" secondAttribute="bottom" id="T9y-KB-BqH"/>
+                                    <constraint firstItem="UVv-t0-1md" firstAttribute="top" secondItem="RkO-aP-Zdc" secondAttribute="top" id="WtS-Qz-UpB" userLabel="Date Selection"/>
                                     <constraint firstAttribute="bottom" secondItem="Cxa-TZ-4n2" secondAttribute="bottom" id="e6c-uW-DeN"/>
                                     <constraint firstItem="dlj-Iq-DE6" firstAttribute="leading" secondItem="Cxa-TZ-4n2" secondAttribute="trailing" constant="8" id="eJk-eg-ZfO"/>
                                     <constraint firstAttribute="trailing" secondItem="UVv-t0-1md" secondAttribute="trailing" id="iAJ-ib-DWf"/>
                                     <constraint firstItem="UVv-t0-1md" firstAttribute="leading" secondItem="RkO-aP-Zdc" secondAttribute="leading" id="ltB-Yb-Gr5"/>
                                     <constraint firstAttribute="bottom" secondItem="dlj-Iq-DE6" secondAttribute="bottom" id="qKJ-YZ-9OB"/>
                                     <constraint firstAttribute="trailing" secondItem="MgT-VK-qEg" secondAttribute="trailing" id="rHM-xJ-5Vi"/>
+                                    <constraint firstItem="UVv-t0-1md" firstAttribute="trailing" secondItem="RJ2-Np-nRp" secondAttribute="trailing" id="uQD-SU-CLd"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -262,9 +308,11 @@
                             <constraint firstItem="GuS-1z-BRD" firstAttribute="top" secondItem="3ng-Uy-GUO" secondAttribute="top" id="RPI-1p-WLy"/>
                             <constraint firstItem="2mn-Mi-rT5" firstAttribute="top" secondItem="Ddx-7F-TCX" secondAttribute="bottom" id="VNN-fv-K5q"/>
                             <constraint firstItem="RkO-aP-Zdc" firstAttribute="top" secondItem="3ng-Uy-GUO" secondAttribute="top" id="Vcn-xT-ZpN"/>
+                            <constraint firstAttribute="centerX" secondItem="hMd-lP-W9k" secondAttribute="centerX" id="fRS-7d-XPa"/>
                             <constraint firstAttribute="bottom" secondItem="K5Z-AU-XgA" secondAttribute="bottom" id="gYC-7P-bhF"/>
                             <constraint firstAttribute="trailing" secondItem="K5Z-AU-XgA" secondAttribute="trailing" id="qlR-Mo-BGt"/>
                             <constraint firstAttribute="trailing" secondItem="GuS-1z-BRD" secondAttribute="trailing" id="s3G-nu-vbP"/>
+                            <constraint firstItem="hMd-lP-W9k" firstAttribute="top" secondItem="RkO-aP-Zdc" secondAttribute="bottom" id="w4A-iC-cDG"/>
                             <constraint firstAttribute="trailing" secondItem="Ddx-7F-TCX" secondAttribute="trailing" id="zLH-LU-naT"/>
                         </constraints>
                     </view>
@@ -273,6 +321,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
+                        <outlet property="datePickerButtons" destination="hMd-lP-W9k" id="V3d-q2-rBN"/>
                         <outlet property="dateSelectorRevealConstraint" destination="WtS-Qz-UpB" id="gaT-9J-XP0"/>
                         <outlet property="headerDateButton" destination="dlj-Iq-DE6" id="4Mk-Gm-Mjx"/>
                         <outlet property="loadingView" destination="Ddx-7F-TCX" id="gdB-EF-LoJ"/>
@@ -810,7 +859,7 @@
         <scene sceneID="fpK-US-oUY">
             <objects>
                 <collectionViewController id="1TN-cP-OPD" customClass="DatePickerViewController" customModule="GigRadio" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="SOg-Ld-FU9">
+                    <collectionView key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="SOg-Ld-FU9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.17254901960784313" green="0.17254901960784313" blue="0.17647058823529413" alpha="1" colorSpace="calibratedRGB"/>
@@ -821,38 +870,69 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="px2-P8-AyF" customClass="PickerDayCollectionViewCell" customModule="GigRadio" customModuleProvider="target">
+                            <collectionViewCell autoresizesSubviews="NO" opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="px2-P8-AyF" customClass="PickerDayCollectionViewCell" customModule="GigRadio" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="87"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[0]" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DnB-bQ-ch5">
-                                            <rect key="frame" x="14" y="34" width="21" height="24"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DnB-bQ-ch5">
+                                            <rect key="frame" x="14" y="31" width="22" height="24"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[MON]" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XOj-5Y-Bp6">
-                                            <rect key="frame" x="10" y="26" width="30" height="12"/>
+                                            <rect key="frame" x="10" y="21" width="30" height="12"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7De-hO-XHl" customClass="SignalStrengthIndicator" customModule="GigRadio" customModuleProvider="target">
+                                            <rect key="frame" x="18" y="52" width="16" height="1"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="16" id="IYh-lh-4M2"/>
+                                                <constraint firstAttribute="height" constant="1" id="g8E-oj-vDQ"/>
+                                            </constraints>
+                                        </view>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="today-indicator.png" translatesAutoresizingMaskIntoConstraints="NO" id="7m8-hR-qDW" userLabel="SelectionIndicator Bottom">
+                                            <rect key="frame" x="18" y="58" width="15" height="5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="15" id="Srx-Dr-BQf"/>
+                                                <constraint firstAttribute="height" constant="5" id="cWb-DG-uGP"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="today-indicator-top.png" translatesAutoresizingMaskIntoConstraints="NO" id="nCG-dh-Shy" userLabel="SelectionIndicator Top">
+                                            <rect key="frame" x="17" y="16" width="15" height="5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="5" id="1mV-sE-0mq"/>
+                                                <constraint firstAttribute="width" constant="15" id="uqb-Vq-8EG"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="7De-hO-XHl" firstAttribute="top" secondItem="DnB-bQ-ch5" secondAttribute="bottom" constant="1" id="0MP-el-LvP"/>
+                                    <constraint firstAttribute="centerX" secondItem="7m8-hR-qDW" secondAttribute="centerX" id="CGa-Bh-veP"/>
                                     <constraint firstAttribute="centerX" secondItem="DnB-bQ-ch5" secondAttribute="centerX" id="GsC-SY-Lqg"/>
-                                    <constraint firstItem="DnB-bQ-ch5" firstAttribute="top" secondItem="XOj-5Y-Bp6" secondAttribute="bottom" constant="-4" id="VcI-Ow-s7v"/>
+                                    <constraint firstItem="DnB-bQ-ch5" firstAttribute="top" secondItem="XOj-5Y-Bp6" secondAttribute="bottom" constant="-2" id="VcI-Ow-s7v"/>
+                                    <constraint firstItem="nCG-dh-Shy" firstAttribute="bottom" secondItem="XOj-5Y-Bp6" secondAttribute="top" id="Vu4-6j-wzE"/>
+                                    <constraint firstItem="7m8-hR-qDW" firstAttribute="top" secondItem="7De-hO-XHl" secondAttribute="bottom" constant="1" id="W6G-l0-wx2"/>
+                                    <constraint firstAttribute="centerX" secondItem="nCG-dh-Shy" secondAttribute="centerX" id="lSR-4a-L2I"/>
                                     <constraint firstAttribute="centerX" secondItem="XOj-5Y-Bp6" secondAttribute="centerX" id="rzP-sB-ElW"/>
-                                    <constraint firstItem="XOj-5Y-Bp6" firstAttribute="top" secondItem="px2-P8-AyF" secondAttribute="topMargin" constant="18" id="vKw-dr-VHW"/>
+                                    <constraint firstAttribute="centerX" secondItem="7De-hO-XHl" secondAttribute="centerX" id="u6o-o3-j1L"/>
+                                    <constraint firstItem="XOj-5Y-Bp6" firstAttribute="top" secondItem="px2-P8-AyF" secondAttribute="topMargin" constant="13" id="vKw-dr-VHW"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="dayOfTheMonthLabel" destination="DnB-bQ-ch5" id="1Eu-fu-GH8"/>
                                     <outlet property="dayOfTheWeekLabel" destination="XOj-5Y-Bp6" id="wcL-nu-99r"/>
+                                    <outlet property="selectionIndicator" destination="7m8-hR-qDW" id="C9k-jq-i75"/>
+                                    <outlet property="selectionIndicatorTop" destination="nCG-dh-Shy" id="LMu-l9-SZ9"/>
+                                    <outlet property="signalStrengthIndicator" destination="7De-hO-XHl" id="Qq7-WX-rGY"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -950,6 +1030,8 @@
         <image name="speaker-loud.png" width="22" height="28"/>
         <image name="speaker-quiet.png" width="11" height="28"/>
         <image name="star.png" width="25" height="25"/>
+        <image name="today-indicator-top.png" width="15" height="10"/>
+        <image name="today-indicator.png" width="15" height="10"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jLK-XF-bFa"/>

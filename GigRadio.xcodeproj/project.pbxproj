@@ -90,6 +90,15 @@
 		ACAE7A15199FAF7400030E26 /* NSDictionary+RemovesNullValues.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE7A14199FAF7400030E26 /* NSDictionary+RemovesNullValues.m */; };
 		ACD1C8CB1B0941E300CF038C /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD1C8CA1B0941E300CF038C /* MediaPlayer.framework */; };
 		ACD1C8CD1B0944F500CF038C /* foo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ACD1C8CC1B0944F500CF038C /* foo.jpg */; };
+		ACD1C8D11B0A62D200CF038C /* GradientOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD1C8D01B0A62D200CF038C /* GradientOverlayView.swift */; };
+		ACD1C8D31B0A67EB00CF038C /* SignalStrengthIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD1C8D21B0A67EB00CF038C /* SignalStrengthIndicator.swift */; };
+		ACD1C8D71B0A7F3800CF038C /* today-indicator.png in Resources */ = {isa = PBXBuildFile; fileRef = ACD1C8D41B0A7F3800CF038C /* today-indicator.png */; };
+		ACD1C8D81B0A7F3800CF038C /* today-indicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACD1C8D51B0A7F3800CF038C /* today-indicator@2x.png */; };
+		ACD1C8D91B0A7F3800CF038C /* today-indicator@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACD1C8D61B0A7F3800CF038C /* today-indicator@3x.png */; };
+		ACD1C8DD1B0A813E00CF038C /* today-indicator-top.png in Resources */ = {isa = PBXBuildFile; fileRef = ACD1C8DA1B0A813E00CF038C /* today-indicator-top.png */; };
+		ACD1C8DE1B0A813E00CF038C /* today-indicator-top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACD1C8DB1B0A813E00CF038C /* today-indicator-top@2x.png */; };
+		ACD1C8DF1B0A813E00CF038C /* today-indicator-top@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACD1C8DC1B0A813E00CF038C /* today-indicator-top@3x.png */; };
+		ACD1C8E21B0A855D00CF038C /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD1C8E11B0A855D00CF038C /* RoundedButton.swift */; };
 		ACD6EFD819FC44BD00DDE967 /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACD6EFD619FC44BD00DDE967 /* star@2x.png */; };
 		ACD6EFD919FC44BD00DDE967 /* starred@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACD6EFD719FC44BD00DDE967 /* starred@2x.png */; };
 		ACDAF9E11B08DEDC003B411A /* SongKickConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDAF9E01B08DEDC003B411A /* SongKickConfiguration.swift */; };
@@ -216,6 +225,15 @@
 		ACAE7A14199FAF7400030E26 /* NSDictionary+RemovesNullValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+RemovesNullValues.m"; sourceTree = "<group>"; };
 		ACD1C8CA1B0941E300CF038C /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		ACD1C8CC1B0944F500CF038C /* foo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = foo.jpg; path = Debug/foo.jpg; sourceTree = "<group>"; };
+		ACD1C8D01B0A62D200CF038C /* GradientOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientOverlayView.swift; sourceTree = "<group>"; };
+		ACD1C8D21B0A67EB00CF038C /* SignalStrengthIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalStrengthIndicator.swift; sourceTree = "<group>"; };
+		ACD1C8D41B0A7F3800CF038C /* today-indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "today-indicator.png"; sourceTree = "<group>"; };
+		ACD1C8D51B0A7F3800CF038C /* today-indicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "today-indicator@2x.png"; sourceTree = "<group>"; };
+		ACD1C8D61B0A7F3800CF038C /* today-indicator@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "today-indicator@3x.png"; sourceTree = "<group>"; };
+		ACD1C8DA1B0A813E00CF038C /* today-indicator-top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "today-indicator-top.png"; sourceTree = "<group>"; };
+		ACD1C8DB1B0A813E00CF038C /* today-indicator-top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "today-indicator-top@2x.png"; sourceTree = "<group>"; };
+		ACD1C8DC1B0A813E00CF038C /* today-indicator-top@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "today-indicator-top@3x.png"; sourceTree = "<group>"; };
+		ACD1C8E11B0A855D00CF038C /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		ACD22F5D1A287B0800EFBE59 /* Speech.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Speech.playground; sourceTree = "<group>"; };
 		ACD6EFD619FC44BD00DDE967 /* star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star@2x.png"; sourceTree = "<group>"; };
 		ACD6EFD719FC44BD00DDE967 /* starred@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "starred@2x.png"; sourceTree = "<group>"; };
@@ -323,6 +341,12 @@
 		AC5E952F19FC0B4C005B9872 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				ACD1C8DA1B0A813E00CF038C /* today-indicator-top.png */,
+				ACD1C8DB1B0A813E00CF038C /* today-indicator-top@2x.png */,
+				ACD1C8DC1B0A813E00CF038C /* today-indicator-top@3x.png */,
+				ACD1C8D41B0A7F3800CF038C /* today-indicator.png */,
+				ACD1C8D51B0A7F3800CF038C /* today-indicator@2x.png */,
+				ACD1C8D61B0A7F3800CF038C /* today-indicator@3x.png */,
 				ACD1C8CC1B0944F500CF038C /* foo.jpg */,
 				ACDAF9EC1B08F49B003B411A /* launch-logo.png */,
 				ACDAF9ED1B08F49B003B411A /* launch-logo@2x.png */,
@@ -468,8 +492,11 @@
 		ACAE79CD199F661100030E26 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				ACD1C8E01B0A853800CF038C /* UI */,
 				AC43E88C1A8CFE010060FD80 /* Cells */,
 				ACDAF9E41B08E13D003B411A /* CompassView.swift */,
+				ACD1C8D01B0A62D200CF038C /* GradientOverlayView.swift */,
+				ACD1C8D21B0A67EB00CF038C /* SignalStrengthIndicator.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -553,6 +580,14 @@
 				AC3CB98D1B08D35A009203E1 /* SoundCloudTrack.swift */,
 			);
 			path = SoundCloud;
+			sourceTree = "<group>";
+		};
+		ACD1C8E01B0A853800CF038C /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				ACD1C8E11B0A855D00CF038C /* RoundedButton.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		ACD22F5C1A287AEA00EFBE59 /* Playgrounds */ = {
@@ -655,7 +690,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC5E954119FC0B4D005B9872 /* compass_background@2x.png in Resources */,
+				ACD1C8DD1B0A813E00CF038C /* today-indicator-top.png in Resources */,
 				AC3CB9321B089AC4009203E1 /* play.png in Resources */,
+				ACD1C8DF1B0A813E00CF038C /* today-indicator-top@3x.png in Resources */,
 				AC3CB95A1B08B4A3009203E1 /* playback-thumb.png in Resources */,
 				AC3CB92E1B089AC4009203E1 /* forward@3x.png in Resources */,
 				AC3CB95F1B08B4A3009203E1 /* playback-track@3x.png in Resources */,
@@ -663,6 +700,7 @@
 				AC3CB9511B08AA2C009203E1 /* speaker-quiet@3x.png in Resources */,
 				AC3CB94F1B08AA2C009203E1 /* speaker-quiet.png in Resources */,
 				ACD6EFD919FC44BD00DDE967 /* starred@2x.png in Resources */,
+				ACD1C8D71B0A7F3800CF038C /* today-indicator.png in Resources */,
 				AC5E954919FC0B4D005B9872 /* menu@2x.png in Resources */,
 				AC3CB9391B089AF7009203E1 /* rewind@2x.png in Resources */,
 				ACD6EFD819FC44BD00DDE967 /* star@2x.png in Resources */,
@@ -675,6 +713,7 @@
 				AC3CB93F1B08A276009203E1 /* settings.png in Resources */,
 				AC3CB9711B08B7DF009203E1 /* disclosure-left@3x.png in Resources */,
 				AC3CB96D1B08B7DF009203E1 /* disclosure-down@2x.png in Resources */,
+				ACD1C8DE1B0A813E00CF038C /* today-indicator-top@2x.png in Resources */,
 				AC3CB95C1B08B4A3009203E1 /* playback-thumb@3x.png in Resources */,
 				AC3CB92C1B089AC4009203E1 /* forward.png in Resources */,
 				ACDAF9F01B08F49B003B411A /* launch-logo@2x.png in Resources */,
@@ -699,7 +738,9 @@
 				AC3CB92F1B089AC4009203E1 /* pause.png in Resources */,
 				AC5E954319FC0B4D005B9872 /* compass_needle@2x.png in Resources */,
 				AC3CB9741B08B7DF009203E1 /* disclosure-right@3x.png in Resources */,
+				ACD1C8D81B0A7F3800CF038C /* today-indicator@2x.png in Resources */,
 				AC3CB94E1B08AA2C009203E1 /* speaker-loud@3x.png in Resources */,
+				ACD1C8D91B0A7F3800CF038C /* today-indicator@3x.png in Resources */,
 				AC3CB95B1B08B4A3009203E1 /* playback-thumb@2x.png in Resources */,
 				AC3CB9751B08B7DF009203E1 /* disclosure-up.png in Resources */,
 				AC3CB94C1B08AA2C009203E1 /* speaker-loud.png in Resources */,
@@ -804,6 +845,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACD1C8D31B0A67EB00CF038C /* SignalStrengthIndicator.swift in Sources */,
 				ACAE7A0C199F967E00030E26 /* LocationHelper.m in Sources */,
 				AC43E88B1A8CFD0F0060FD80 /* DatePickerViewController.swift in Sources */,
 				AC3CB9531B08B1C6009203E1 /* PlaybackSlider.swift in Sources */,
@@ -814,6 +856,7 @@
 				ACDAF9E11B08DEDC003B411A /* SongKickConfiguration.swift in Sources */,
 				AC3CB9841B08CDCC009203E1 /* SongKickEvent.swift in Sources */,
 				AC3CB97B1B08C989009203E1 /* FlyerCollectionViewCell.swift in Sources */,
+				ACD1C8E21B0A855D00CF038C /* RoundedButton.swift in Sources */,
 				AC3CB93B1B089EBC009203E1 /* MainViewController.swift in Sources */,
 				ACDAF9E91B08E945003B411A /* FlyersCollectionViewController.swift in Sources */,
 				AC43E88E1A8CFE2B0060FD80 /* PickerDayCollectionViewCell.swift in Sources */,
@@ -824,6 +867,7 @@
 				AC3CB9881B08D027009203E1 /* SongKickArtist.swift in Sources */,
 				AC3CB98C1B08D265009203E1 /* SoundCloudUser.swift in Sources */,
 				ACAE7A15199FAF7400030E26 /* NSDictionary+RemovesNullValues.m in Sources */,
+				ACD1C8D11B0A62D200CF038C /* GradientOverlayView.swift in Sources */,
 				ACDAFA131B090BDC003B411A /* Dictionary+Querystrings.swift in Sources */,
 				AC3CB9801B08CBEB009203E1 /* Async.swift in Sources */,
 				AC3CB9941B08D8C2009203E1 /* AppDelegate.swift in Sources */,

@@ -8,17 +8,27 @@
 
 import UIKit
 
+protocol DatePickerViewControllerDelegate{
+    func datePickerDidChangeVisibleRange(startDate: NSDate, endDate: NSDate)
+    func datePickerDidSelectDate(startDate: NSDate)
+}
+
 class DatePickerViewController: UICollectionViewController, UIScrollViewDelegate, UICollectionViewDelegateFlowLayout {
     let DaysPerScreen = 10
-    var day0: NSDate = NSDate()
+    var day0: NSDate = CalendarHelper.startOfUTCDay(NSDate())
     var daysOffset = 0
     
     var centeredDateCache: NSDate?
     var backgroundView: UIView!
     var monthLabel: UILabel?
+    
+//    var activity: UIActivityIndicatorView!
+    
+    var delegate: DatePickerViewControllerDelegate!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -33,12 +43,24 @@ class DatePickerViewController: UICollectionViewController, UIScrollViewDelegate
         view.frame = frame
         label.frame = CGRectMake(0, 0, view.bounds.width, 22)
         view.addSubview(label)
-        label.text = "FUCKS"
+        
+//        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
+//        activityIndicator.hidesWhenStopped = true
+//        activityIndicator.frame = CGRectMake(100, 0, 20, 20)
+//        view.addSubview(activityIndicator)
+//        self.activity = activityIndicator
+        
         collectionView!.backgroundView = view
         backgroundView = view
         monthLabel = label
         
         updateDateHeadingIfNeeded()
+    }
+    func scrollToToday(animated: Bool){
+        collectionView?.scrollRectToVisible(CGRectMake(200, 0, 40, 40), animated: animated)
+    }
+    func refresh(){
+        collectionView?.reloadData()
     }
     // MARK: CollectionViewDataSource
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -49,9 +71,7 @@ class DatePickerViewController: UICollectionViewController, UIScrollViewDelegate
      }
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! PickerDayCollectionViewCell
-        let date = dateAtIndexPath(indexPath)
-        cell.dayOfTheMonthLabel.text = DateFormats.dayOfTheMonthFormatter().stringFromDate(date)
-        cell.dayOfTheWeekLabel.text = DateFormats.dayOfTheWeekShortFormatter().stringFromDate(date)
+        cell.date = dateAtIndexPath(indexPath)
         return cell
     }
     func dateAtIndexPath(indexPath:NSIndexPath)->NSDate{
@@ -68,6 +88,24 @@ class DatePickerViewController: UICollectionViewController, UIScrollViewDelegate
             collectionView?.reloadData()
         }
         updateDateHeadingIfNeeded()
+    }
+    override func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if decelerate == false{
+            finishedChangingDateRange()
+        }
+    }
+    override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        finishedChangingDateRange()
+    }
+    func finishedChangingDateRange(){
+        var cells = collectionView!.visibleCells() as! [PickerDayCollectionViewCell]
+        cells.sort { (a, b) -> Bool in
+            a.date.compare(b.date) == NSComparisonResult.OrderedAscending
+        }
+        if let first = cells.first,
+            let last = cells.last{
+                delegate.datePickerDidChangeVisibleRange(first.date, endDate: last.date)
+        }
     }
     func updateDateHeadingIfNeeded(){
         let superview = collectionView!.superview!

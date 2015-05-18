@@ -41,11 +41,14 @@ class Playlist: NSObject, CLLocationManagerDelegate {
     }
     func figureOutWhatToPlayNext(){
         let realm = Realm()
-        let item = PlaylistItem()
-        item.id = "0"
-        item.songKickEvent = realm.objects(SongKickEvent).first!
-        realm.write {
-            realm.add(item, update: true)
+        if let event = realm.objects(SongKickEvent).first{
+            let item = PlaylistItem()
+            item.id = "0"
+            item.songKickEvent = event
+                realm.write {
+                    realm.add(item, update: true)
+            }
+            
         }
     }
     

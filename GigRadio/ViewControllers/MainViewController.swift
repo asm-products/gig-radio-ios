@@ -33,11 +33,13 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         view.bringSubviewToFront(loadingView) // for ease of authoring I put the loading view at the back of the storyboard once I laid it out
+        hideDatePickerAnimated(false)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-//        volumeView.setMinimumVolumeSliderImage(UIImage(named: "speaker-quiet"), forState: .Normal)
+//        volumeView.setMinimumVolumeSliderImage(UIImage(named: "speaker-quiet"), forState: .Normal)§
 //        volumeView.setMaximumVolumeSliderImage(UIImage(named: "speaker-loud"), forState: .Normal)
+        volumeView.setVolumeThumbImage(UIImage(named: "volume-thumb"), forState: .Normal)
         // deal with location stuff here because we might need to show UI
         LocationHelper.lookUp { (location, error) -> Void in
             self.location = location

@@ -45,6 +45,7 @@ class Playlist: NSObject, CLLocationManagerDelegate {
             let item = PlaylistItem()
             item.id = "0"
             item.songKickEvent = event
+            item.songKickArtist = event.performance[0].artist
                 realm.write {
                     realm.add(item, update: true)
             }

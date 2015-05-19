@@ -55,7 +55,7 @@
                                 <rect key="frame" x="0.0" y="373" width="320" height="195"/>
                                 <subviews>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="qml-N3-rWM" customClass="MPVolumeView">
-                                        <rect key="frame" x="29" y="157" width="255" height="31"/>
+                                        <rect key="frame" x="35" y="157" width="279" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="pYF-jw-coh"/>
                                         </constraints>
@@ -130,15 +130,8 @@
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="egG-9n-J9i" customClass="PlaybackSlider" customModule="GigRadio" customModuleProvider="target">
                                         <rect key="frame" x="40" y="8" width="240" height="31"/>
                                     </slider>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="speaker-loud.png" translatesAutoresizingMaskIntoConstraints="NO" id="XsM-yH-leC">
-                                        <rect key="frame" x="286" y="151" width="30" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="Dn0-Cm-097"/>
-                                            <constraint firstAttribute="width" constant="30" id="af9-S0-df1"/>
-                                        </constraints>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="speaker-quiet.png" translatesAutoresizingMaskIntoConstraints="NO" id="UMz-pc-C0I">
-                                        <rect key="frame" x="0.0" y="151" width="30" height="30"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="speaker-loud.png" translatesAutoresizingMaskIntoConstraints="NO" id="UMz-pc-C0I">
+                                        <rect key="frame" x="6" y="151" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="0gR-M5-1iw"/>
                                             <constraint firstAttribute="height" constant="30" id="6Pi-4T-u15"/>
@@ -148,23 +141,21 @@
                                 <color key="backgroundColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25490196078431371" alpha="0.57999999999999996" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="TnY-Pu-iv5" firstAttribute="leading" secondItem="Vfq-i4-zJK" secondAttribute="trailing" constant="30" id="2Dj-TA-KPh"/>
-                                    <constraint firstItem="XsM-yH-leC" firstAttribute="leading" secondItem="qml-N3-rWM" secondAttribute="trailing" constant="4" id="95C-X9-JZk"/>
-                                    <constraint firstAttribute="bottom" secondItem="XsM-yH-leC" secondAttribute="bottom" constant="14" id="DjT-sS-f1v"/>
                                     <constraint firstItem="qml-N3-rWM" firstAttribute="top" secondItem="TnY-Pu-iv5" secondAttribute="bottom" constant="4" id="Erl-kB-Jrd"/>
                                     <constraint firstAttribute="bottom" secondItem="UMz-pc-C0I" secondAttribute="bottom" constant="14" id="KZA-rI-Z3P"/>
                                     <constraint firstItem="egG-9n-J9i" firstAttribute="leading" secondItem="OOv-Ig-sVM" secondAttribute="trailing" constant="10" id="Lnj-hn-TJA"/>
                                     <constraint firstItem="qml-N3-rWM" firstAttribute="leading" secondItem="UMz-pc-C0I" secondAttribute="trailing" constant="1" id="Rcf-mt-bK2"/>
                                     <constraint firstAttribute="bottom" secondItem="qml-N3-rWM" secondAttribute="bottom" constant="8" id="RsR-Uc-oT3"/>
                                     <constraint firstAttribute="trailing" secondItem="EQU-3P-7v4" secondAttribute="trailing" constant="8" id="TCi-fQ-F3L"/>
-                                    <constraint firstItem="UMz-pc-C0I" firstAttribute="leading" secondItem="K5Z-AU-XgA" secondAttribute="leading" id="Tdq-S1-SYT"/>
+                                    <constraint firstItem="UMz-pc-C0I" firstAttribute="leading" secondItem="K5Z-AU-XgA" secondAttribute="leading" constant="6" id="Tdq-S1-SYT"/>
                                     <constraint firstItem="R6b-jW-cHV" firstAttribute="leading" secondItem="TnY-Pu-iv5" secondAttribute="trailing" constant="30" id="ZIy-1O-Mxe"/>
                                     <constraint firstItem="TnY-Pu-iv5" firstAttribute="top" secondItem="X0f-hA-0eG" secondAttribute="bottom" id="c2N-fK-QAS"/>
                                     <constraint firstItem="OOv-Ig-sVM" firstAttribute="leading" secondItem="K5Z-AU-XgA" secondAttribute="leading" constant="8" id="e1v-mc-ADg"/>
-                                    <constraint firstAttribute="trailing" secondItem="XsM-yH-leC" secondAttribute="trailing" constant="4" id="erF-S4-bke"/>
                                     <constraint firstItem="egG-9n-J9i" firstAttribute="centerY" secondItem="EQU-3P-7v4" secondAttribute="centerY" constant="0.5" id="ezK-23-L70"/>
                                     <constraint firstItem="egG-9n-J9i" firstAttribute="centerY" secondItem="OOv-Ig-sVM" secondAttribute="centerY" constant="0.5" id="jQe-OE-03H"/>
                                     <constraint firstItem="X0f-hA-0eG" firstAttribute="top" secondItem="egG-9n-J9i" secondAttribute="bottom" constant="14" id="nvC-rb-ZLO"/>
                                     <constraint firstAttribute="centerX" secondItem="X0f-hA-0eG" secondAttribute="centerX" id="qfI-lk-w9J"/>
+                                    <constraint firstAttribute="trailing" secondItem="qml-N3-rWM" secondAttribute="trailing" constant="8" id="qlD-zD-Pj5"/>
                                     <constraint firstItem="Vfq-i4-zJK" firstAttribute="centerY" secondItem="TnY-Pu-iv5" secondAttribute="centerY" id="rdR-hs-UYG"/>
                                     <constraint firstAttribute="centerX" secondItem="TnY-Pu-iv5" secondAttribute="centerX" id="uDO-3D-1xa"/>
                                     <constraint firstItem="EQU-3P-7v4" firstAttribute="leading" secondItem="egG-9n-J9i" secondAttribute="trailing" constant="10" id="wr7-gX-EnX"/>
@@ -223,7 +214,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dlj-Iq-DE6">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dlj-Iq-DE6" customClass="ButtonWithRightAlignedImage" customModule="GigRadio" customModuleProvider="target">
                                         <rect key="frame" x="52" y="20" width="216" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="tql-xQ-M6a"/>
@@ -263,7 +254,7 @@
                                         </state>
                                     </button>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UVv-t0-1md">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                        <rect key="frame" x="0.0" y="-80" width="320" height="64"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="64" id="gax-ml-awE"/>
                                         </constraints>
@@ -272,7 +263,7 @@
                                         </connections>
                                     </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RJ2-Np-nRp" userLabel="GradientOverlayView" customClass="GradientOverlayView" customModule="GigRadio" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                        <rect key="frame" x="0.0" y="-80" width="320" height="64"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
@@ -285,7 +276,7 @@
                                     <constraint firstItem="UVv-t0-1md" firstAttribute="top" secondItem="RJ2-Np-nRp" secondAttribute="top" id="QUu-Sb-q3G"/>
                                     <constraint firstItem="MgT-VK-qEg" firstAttribute="leading" secondItem="dlj-Iq-DE6" secondAttribute="trailing" constant="8" id="Seo-66-bbi"/>
                                     <constraint firstItem="UVv-t0-1md" firstAttribute="bottom" secondItem="RJ2-Np-nRp" secondAttribute="bottom" id="T9y-KB-BqH"/>
-                                    <constraint firstItem="UVv-t0-1md" firstAttribute="top" secondItem="RkO-aP-Zdc" secondAttribute="top" id="WtS-Qz-UpB" userLabel="Date Selection"/>
+                                    <constraint firstItem="UVv-t0-1md" firstAttribute="top" secondItem="RkO-aP-Zdc" secondAttribute="top" constant="-80" id="WtS-Qz-UpB" userLabel="Date Selection"/>
                                     <constraint firstAttribute="bottom" secondItem="Cxa-TZ-4n2" secondAttribute="bottom" id="e6c-uW-DeN"/>
                                     <constraint firstItem="dlj-Iq-DE6" firstAttribute="leading" secondItem="Cxa-TZ-4n2" secondAttribute="trailing" constant="8" id="eJk-eg-ZfO"/>
                                     <constraint firstAttribute="trailing" secondItem="UVv-t0-1md" secondAttribute="trailing" id="iAJ-ib-DWf"/>
@@ -359,8 +350,8 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PQN-5h-Cxj">
                                             <rect key="frame" x="0.0" y="65" width="320" height="320"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OCP-y4-r3A">
-                                                    <rect key="frame" x="58" y="270" width="207" height="50"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OCP-y4-r3A" customClass="ButtonWithRightAlignedImage" customModule="GigRadio" customModuleProvider="target">
+                                                    <rect key="frame" x="44" y="270" width="207" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="pUQ-b8-sSt"/>
                                                     </constraints>
@@ -431,7 +422,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="OCP-y4-r3A" secondAttribute="bottom" id="YdX-gl-pl2"/>
                                                 <constraint firstItem="ju0-2L-yA2" firstAttribute="leading" secondItem="PQN-5h-Cxj" secondAttribute="leading" constant="8" id="lsK-mV-bQh"/>
                                                 <constraint firstItem="1Xz-0O-AJN" firstAttribute="top" secondItem="PQN-5h-Cxj" secondAttribute="top" id="opw-b0-Uiu"/>
-                                                <constraint firstItem="OCP-y4-r3A" firstAttribute="leading" secondItem="xQz-9Y-5aB" secondAttribute="trailing" constant="8" id="yXT-aF-CrQ"/>
+                                                <constraint firstItem="OCP-y4-r3A" firstAttribute="leading" secondItem="xQz-9Y-5aB" secondAttribute="trailing" constant="-6" id="yXT-aF-CrQ"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -1028,7 +1019,6 @@
         <image name="rewind.png" width="28" height="17"/>
         <image name="settings.png" width="20" height="20"/>
         <image name="speaker-loud.png" width="22" height="28"/>
-        <image name="speaker-quiet.png" width="11" height="28"/>
         <image name="star.png" width="25" height="25"/>
         <image name="today-indicator-top.png" width="15" height="10"/>
         <image name="today-indicator.png" width="15" height="10"/>

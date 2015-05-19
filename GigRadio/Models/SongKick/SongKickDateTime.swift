@@ -37,4 +37,7 @@ class SongKickDateTime: Object {
             return nil
         }
     }
+    func parsedDateTime()->NSDate?{
+        return DateFormats.dateTimeFormat().dateFromString(datetime)
+    }
 }

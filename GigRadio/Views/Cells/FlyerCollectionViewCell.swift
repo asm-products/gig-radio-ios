@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class FlyerCollectionViewCell: UICollectionViewCell {
     
@@ -21,16 +22,30 @@ class FlyerCollectionViewCell: UICollectionViewCell {
                 lineupLabel.attributedText = attributedLineupText
                 imageView.image = UIImage(named: "foo.jpg")
             }
+            compass.destination = playlistItem?.songKickEvent.venue.location()
+            let startTime = playlistItem!.songKickEvent.start.parsedDateTime()
+            let time = startTime == nil ? "" : DateFormats.timeFormatter().stringFromDate(startTime!)
+            let venue = playlistItem!.songKickEvent.venue.displayName
+            let df = MKDistanceFormatter()
+            df.unitStyle = .Abbreviated
+            let distance = df.stringFromDistance(playlistItem!.songKickEvent.distanceCache)
+            let template = t("TimeVenueAndDistance.Title")
+            let text = String(format: template, arguments: [time, venue, distance])
+            detailsButton.setTitle(text, forState: .Normal)
         }
     }
-    
+    let FocusedArtistAttributes = [NSFontAttributeName: UIFont(name: "Roboto-Light", size: 36)!]
+    let DefaultAttributes = [NSFontAttributeName: UIFont(name: "Roboto-Light", size: 24)!]
     
     var attributedLineupText: NSAttributedString{
         if let item = playlistItem{
-            let highlightedArtist = item.songKickArtist
+            let focusedArtist = item.songKickArtist
             let result = NSMutableAttributedString(string: "")
             for performance in item.songKickEvent.performance{
-                result.appendAttributedString(NSAttributedString(string: performance.artist.displayName))
+                let attributes: [NSObject:AnyObject] = ( (performance.artist.id == focusedArtist.id) ? FocusedArtistAttributes : DefaultAttributes)
+                let string = NSAttributedString(string: performance.artist.displayName, attributes: attributes)
+                
+                result.appendAttributedString(string)
             }
             return result
         }else{

@@ -9,3 +9,4 @@
 "LocationPrompt.Message" = "Gig Radio works best if you allow it to access your location. Continue?";
 "LocationPrompt.Deny" = "No thanks";
 "LocationPrompt.Continue" = "Yes please";
+"TimeVenueAndDistance.Title" = "%@ at %@, %@ away";

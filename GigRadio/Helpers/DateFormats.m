@@ -13,6 +13,8 @@
     static dispatch_once_t onceToken; \
     dispatch_once(&onceToken, ^{ \
         formatter = [NSDateFormatter new]; \
+        NSLocale *enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]; \
+        [formatter setLocale:enUSPOSIXLocale]; \
         formatter.dateFormat = format; \
     }); \
     return formatter;
@@ -37,12 +39,24 @@
     formatter(@"yyyy-MM-dd");
 }
 +(NSDateFormatter *)dateTimeFormat{
-    formatter(@"yyyy-MM-dd'T'HH:mm:ssZZZZZ"); // 2014-08-16T14:00:00+0200
+    formatter(@"yyyy-MM-dd'T'HH:mm:ssZ"); // 2014-08-16T14:00:00+0200
 }
 +(NSDateFormatter*)soundCloudDateFormat{
-    formatter(@"yyyy/MM/dd HH:mm:ss ZZZZZ"); // 2014/04/25 20:50:44 +0000
+    formatter(@"yyyy/MM/dd HH:mm:ss Z"); // 2014/04/25 20:50:44 +0000
 }
 +(NSDateFormatter*)eventDateFormatter{
     formatter(@"HH:mm EEEE MMM dd");
+}
++(NSDateFormatter *)timeFormatter{
+    static NSDateFormatter * formatter = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        formatter = [NSDateFormatter new];
+        formatter.timeStyle = NSDateFormatterShortStyle;
+        
+        
+    });
+    return formatter;
+
 }
 @end

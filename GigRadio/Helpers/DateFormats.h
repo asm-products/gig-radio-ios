@@ -17,4 +17,5 @@
 +(NSDateFormatter*)soundCloudDateFormat;
 +(NSDateFormatter*)eventDateFormatter;
 +(NSDateFormatter*)monthAndYearFormatter;
++(NSDateFormatter*)timeFormatter;
 @end

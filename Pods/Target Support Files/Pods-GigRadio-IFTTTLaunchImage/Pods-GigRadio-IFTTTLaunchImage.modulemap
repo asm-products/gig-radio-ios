@@ -1,6 +1,0 @@
-framework module IFTTTLaunchImage {
-  umbrella header "Pods-GigRadio-IFTTTLaunchImage-umbrella.h"
-
-  export *
-  module * { export * }
-}

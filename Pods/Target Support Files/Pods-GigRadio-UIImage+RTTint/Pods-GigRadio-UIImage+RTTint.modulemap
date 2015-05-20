@@ -1,6 +1,0 @@
-framework module UIImage_RTTint {
-  umbrella header "Pods-GigRadio-UIImage+RTTint-umbrella.h"
-
-  export *
-  module * { export * }
-}

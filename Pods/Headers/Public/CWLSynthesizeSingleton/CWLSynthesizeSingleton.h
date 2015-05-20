@@ -1,1 +1,0 @@
-../../../CWLSynthesizeSingleton/CWLSynthesizeSingleton.h

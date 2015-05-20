@@ -1,1 +1,0 @@
-../../../HTCoreImage/HTFloatEqual.h

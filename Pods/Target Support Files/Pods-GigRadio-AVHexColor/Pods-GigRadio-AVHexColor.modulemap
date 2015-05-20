@@ -1,6 +1,0 @@
-framework module AVHexColor {
-  umbrella header "Pods-GigRadio-AVHexColor-umbrella.h"
-
-  export *
-  module * { export * }
-}

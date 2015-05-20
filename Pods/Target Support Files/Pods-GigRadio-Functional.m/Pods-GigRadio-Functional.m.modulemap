@@ -1,6 +1,0 @@
-framework module Functional_m {
-  umbrella header "Pods-GigRadio-Functional.m-umbrella.h"
-
-  export *
-  module * { export * }
-}

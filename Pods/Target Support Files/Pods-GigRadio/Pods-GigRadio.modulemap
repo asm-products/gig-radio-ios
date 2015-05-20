@@ -1,6 +1,0 @@
-framework module Pods_GigRadio {
-  umbrella header "Pods-GigRadio-umbrella.h"
-
-  export *
-  module * { export * }
-}

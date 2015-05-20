@@ -1,9 +1,0 @@
-#include "Pods-GigRadio-CocoaLumberjack.xcconfig"
-CONFIGURATION_BUILD_DIR = $PODS_FRAMEWORK_BUILD_PATH
-FRAMEWORK_SEARCH_PATHS = "$PODS_FRAMEWORK_BUILD_PATH"
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/CocoaLumberjack" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AVHexColor" "${PODS_ROOT}/Headers/Public/CLLocationManager-blocks" "${PODS_ROOT}/Headers/Public/CMDQueryStringSerialization" "${PODS_ROOT}/Headers/Public/CWLSynthesizeSingleton" "${PODS_ROOT}/Headers/Public/CocoaLumberjack" "${PODS_ROOT}/Headers/Public/Functional.m" "${PODS_ROOT}/Headers/Public/HTCoreImage" "${PODS_ROOT}/Headers/Public/IFTTTLaunchImage" "${PODS_ROOT}/Headers/Public/ISO8601" "${PODS_ROOT}/Headers/Public/MTStatusBarOverlay" "${PODS_ROOT}/Headers/Public/Realm" "${PODS_ROOT}/Headers/Public/Realm/realm" "${PODS_ROOT}/Headers/Public/RealmSwift" "${PODS_ROOT}/Headers/Public/SVProgressHUD" "${PODS_ROOT}/Headers/Public/SimpleMotionEffects" "${PODS_ROOT}/Headers/Public/SwiftyJSON" "${PODS_ROOT}/Headers/Public/UIActionSheet+Blocks" "${PODS_ROOT}/Headers/Public/UIImage+RTTint" "${PODS_ROOT}/Headers/Public/YLMoment"
-OTHER_LDFLAGS = -ObjC
-PODS_FRAMEWORK_BUILD_PATH = $(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-GigRadio
-PODS_ROOT = ${SRCROOT}
-SKIP_INSTALL = YES

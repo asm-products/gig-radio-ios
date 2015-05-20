@@ -1,1 +1,0 @@
-../../../IFTTTLaunchImage/IFTTTLaunchImage/UIDevice+IFTTTLaunchImage.h

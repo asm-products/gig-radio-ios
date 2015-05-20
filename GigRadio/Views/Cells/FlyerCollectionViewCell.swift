@@ -16,24 +16,42 @@ class FlyerCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var lineupLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
+    override class func layerClass()->AnyClass{
+        return CAGradientLayer.self
+    }
+    
     var playlistItem: PlaylistItem?{
         didSet{
             if let lineupLabel = lineupLabel{
                 lineupLabel.attributedText = attributedLineupText
-                imageView.image = UIImage(named: "foo.jpg")
             }
-            compass.destination = playlistItem?.songKickEvent.venue.location()
-            let startTime = playlistItem!.songKickEvent.start.parsedDateTime()
-            let time = startTime == nil ? "" : DateFormats.timeFormatter().stringFromDate(startTime!)
-            let venue = playlistItem!.songKickEvent.venue.displayName
-            let df = MKDistanceFormatter()
-            df.unitStyle = .Abbreviated
-            let distance = df.stringFromDistance(playlistItem!.songKickEvent.distanceCache)
-            let template = t("TimeVenueAndDistance.Title")
-            let text = String(format: template, arguments: [time, venue, distance])
-            detailsButton.setTitle(text, forState: .Normal)
+            imageView.image = nil
+            if let item = playlistItem{
+                updateGradient(item.colorIndex)
+                imageView.image = desaturatedImage(item.songKickArtist.imageUrl())
+                compass.destination = item.songKickEvent.venue.location()
+                let startTime = item.songKickEvent.start.parsedDateTime()
+                let time = startTime == nil ? "" : DateFormats.timeFormatter().stringFromDate(startTime!)
+                let venue = item.songKickEvent.venue.displayName
+                let df = MKDistanceFormatter()
+                df.unitStyle = .Abbreviated
+                let distance = df.stringFromDistance(item.songKickEvent.distanceCache)
+                let template = t("TimeVenueAndDistance.Title")
+                let text = String(format: template, arguments: [time, venue, distance])
+                detailsButton.setTitle(text, forState: .Normal)
+                
+            }
+            
         }
     }
+    func updateGradient(index:Int){
+        let layer = self.layer as! CAGradientLayer
+        layer.colors = Colors.gradient(index).map({$0.CGColor})
+        layer.startPoint = CGPoint(x: 0, y: 0)
+        layer.endPoint = CGPoint(x: 0, y: 1)
+    }
+    
+    
     let FocusedArtistAttributes = [NSFontAttributeName: UIFont(name: "Roboto-Light", size: 36)!]
     let DefaultAttributes = [NSFontAttributeName: UIFont(name: "Roboto-Light", size: 24)!]
     

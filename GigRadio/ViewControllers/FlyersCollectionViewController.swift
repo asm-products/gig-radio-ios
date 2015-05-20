@@ -15,11 +15,22 @@ class FlyersCollectionViewController: UICollectionViewController, UICollectionVi
     var runs: Results<PlaylistRun>!
     override func viewDidLoad() {
         super.viewDidLoad()
-        reload()
+        reload(nil)
     }
-    func reload(){
+    func reload(callback:(()->Void)?){
         runs = Realm().objects(PlaylistRun)
-        collectionView?.reloadData()
+        if let run = runs.last{
+            var urls = [String]()
+            for item in run.items{
+                urls.append(item.songKickArtist.imageUrl())
+            }
+            preload(urls){
+                preprocessImages(urls, { () -> Void in
+                    self.collectionView?.reloadData()
+                    callback?()                    
+                })
+            }
+        }
     }
 
     // MARK: UICollectionViewDataSource

@@ -18,8 +18,7 @@ class SongKickArtist: Object {
     override static func primaryKey()->String?{
         return "id"
     }
-    func imageURL()->NSURL{
-        let path = "http://images.sk-static.com/images/media/profile_images/artists/\(id)/huge_avatar"
-        return NSURL(string: path)!
+    func imageUrl()->String{
+        return "http://images.sk-static.com/images/media/profile_images/artists/\(id)/huge_avatar"
     }
 }

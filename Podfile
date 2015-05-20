@@ -19,6 +19,9 @@ target "GigRadio" do
   pod 'IFTTTLaunchImage'
   pod 'SwiftyJSON', '~> 2.2'
   pod 'MTStatusBarOverlay', '~> 0.9'
+  pod 'TWRDownloadManager', '~> 1.1'
+  pod 'CryptoSwift', '~> 0.0'
+  pod 'TMCache', '~> 2.1'
 end
 
 target "GigRadioTests" do

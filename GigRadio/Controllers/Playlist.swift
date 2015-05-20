@@ -18,6 +18,7 @@ class Playlist: NSObject {
         let realm = Realm()
         let events = realm.objects(SongKickEvent).filter("id in %@", ids)
         var itemsToRemove = [PlaylistItem]()
+        
         for item in run.items{
             if item.hasBeenPlayed == false{
                 // remove it if it's not in the new set
@@ -56,7 +57,16 @@ class Playlist: NSObject {
                         run.items.append(item)
                     }
                 }
-                
+            }
+            
+            var gradientIndex = 0
+            let incrementGradientIndex:()->Void = {
+                gradientIndex += 1
+                gradientIndex %= Colors.gradients().count
+            }
+            for item in run.items{
+                item.colorIndex = gradientIndex
+                incrementGradientIndex()
             }
         }
 

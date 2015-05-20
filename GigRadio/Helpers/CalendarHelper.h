@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-
 @interface CalendarHelper : NSObject
 +(NSDateComponents*)days:(NSInteger)count;
 +(NSDate*)startOfUTCDay:(NSDate*)date;

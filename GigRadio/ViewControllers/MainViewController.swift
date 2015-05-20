@@ -46,8 +46,9 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
                 if let ids = eventIds{
                     Playlist.sharedPlaylist.updateLatestRunWithEventIds(ids)
                 }
-                self.flyersController?.reload()
-                self.hideLoadingView()
+                self.flyersController?.reload {
+                    self.hideLoadingView()
+                }
             })
         }
     }

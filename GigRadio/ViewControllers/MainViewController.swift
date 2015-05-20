@@ -18,10 +18,10 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
     @IBOutlet weak var volumeView: MPVolumeView!
     
     @IBOutlet weak var loadingView: UIView!
-    var datePicker: DatePickerViewController?
     @IBOutlet weak var datePickerButtons: UIView!
-    
-    var playlist: Playlist?
+
+    var datePicker: DatePickerViewController?
+    var flyersController: FlyersCollectionViewController?
     var location: CLLocation?
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -37,14 +37,16 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-//        volumeView.setMinimumVolumeSliderImage(UIImage(named: "speaker-quiet"), forState: .Normal)§
-//        volumeView.setMaximumVolumeSliderImage(UIImage(named: "speaker-loud"), forState: .Normal)
         volumeView.setVolumeThumbImage(UIImage(named: "volume-thumb"), forState: .Normal)
         // deal with location stuff here because we might need to show UI
+        
         LocationHelper.lookUp { (location, error) -> Void in
             self.location = location
-            self.playlist = Playlist(accurateLocation: location != nil)
-            self.playlist?.loadFirstItem({ (item, error) -> Void in
+            SongKickClient.sharedClient.getEvents(NSDate(), location: location, completion: { (eventIds, error) -> Void in
+                if let ids = eventIds{
+                    Playlist.sharedPlaylist.updateLatestRunWithEventIds(ids)
+                }
+                self.flyersController?.reload()
                 self.hideLoadingView()
             })
         }
@@ -62,14 +64,13 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
         if let dest = segue.destinationViewController as? DatePickerViewController{
             self.datePicker = dest
             dest.delegate = self
-            let swipe = UISwipeGestureRecognizer(target: self, action: "didSwipeUpDatePicker")
-            swipe.direction = .Up
-            dest.view.addGestureRecognizer(swipe)
+        }else if let dest = segue.destinationViewController as? FlyersCollectionViewController{
+            self.flyersController = dest
         }
     }
     func datePickerDidChangeVisibleRange(startDate: NSDate, endDate: NSDate) {
 //        datePicker?.activity.startAnimating()
-        SongKickClient.sharedClient.getEvents(startDate, end: endDate, location: location) { (error) -> Void in
+        SongKickClient.sharedClient.getEvents(startDate, end: endDate, location: location) { (results,error) -> Void in
             if error != nil{
                 println("SongKick error: \(error!.localizedDescription)")
             }

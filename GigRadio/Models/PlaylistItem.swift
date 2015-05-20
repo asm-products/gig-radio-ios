@@ -13,12 +13,15 @@ class PlaylistItem: Object {
     dynamic var id = NSUUID().UUIDString
     dynamic var songKickEvent = SongKickEvent()
     dynamic var songKickArtist = SongKickArtist()
+    
     dynamic var soundCloudUser = SoundCloudUser()
     dynamic var soundCloudTrack = SoundCloudTrack()
+    
     dynamic var colorIndex = 0
-    dynamic var mightHaveCrashed = true // guilty until proven innocent
     dynamic var createdAt = NSDate()
     
+    
+    dynamic var hasBeenPlayed = false
     
     override static func primaryKey()->String?{
         return "id"

@@ -15,11 +15,11 @@ class SongKickClient: NSObject {
     
     lazy var session: NSURLSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
     
-    func getEvents(date: NSDate, location: CLLocation?, completion:(error:NSError?)->Void){
+    func getEvents(date: NSDate, location: CLLocation?, completion:(results:[Int]?,error:NSError?)->Void){
         getEvents(date, end: date, location: location, completion: completion)
     }
     // http://www.songkick.com/developer/event-search
-    func getEvents(start: NSDate, end: NSDate, location: CLLocation?, completion:(error:NSError?)->Void){
+    func getEvents(start: NSDate, end: NSDate, location: CLLocation?, completion:(results:[Int]?,error:NSError?)->Void){
         var params: [String:AnyObject] = [
             "min_date": DateFormats.querystringDateFormatter().stringFromDate(start),
             "max_date": DateFormats.querystringDateFormatter().stringFromDate(end)
@@ -36,14 +36,15 @@ class SongKickClient: NSObject {
                 if response.statusCode != 200{
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         if let message = json["resultsPage"]["error"]["message"].object as? String{
-                            completion(error: NSError(domain: "SongKick", code: response.statusCode, userInfo: [NSLocalizedDescriptionKey: message]))
+                            completion(results: nil,error: NSError(domain: "SongKick", code: response.statusCode, userInfo: [NSLocalizedDescriptionKey: message]))
                         }else{
-                            completion(error: error)
+                            completion(results:nil,error: error)
                         }
                     })
                 }else{
                     let events = json["resultsPage"]["results"]["event"]
                     println("Fetched \(events.count) event(s) from SongKick")
+                    var ids = [Int]()
                     if events.error == nil{
                         let realm = Realm()
                         realm.write {
@@ -54,12 +55,13 @@ class SongKickClient: NSObject {
                                     if let date = model.start.parsedDate(){
                                         model.date = date
                                     }
+                                    ids.append(model.id)
                                 }
                             }
                         }
                     }
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        completion(error: events.error)
+                        completion(results:ids, error: events.error)
                     })
                     
                 }

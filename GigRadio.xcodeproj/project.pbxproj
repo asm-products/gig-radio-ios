@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		565620CB695699A252AC2666 /* Pods_GigRadio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4707A7DD71C739979C8D02F3 /* Pods_GigRadio.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		AC08D4D61B0CD3290082D424 /* PlaylistRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08D4D51B0CD3290082D424 /* PlaylistRun.swift */; };
+		AC08D4D81B0CE5AB0082D424 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08D4D71B0CE5AB0082D424 /* Playlist.swift */; };
 		AC1EB93F19B1171300BF7EAF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC1EB93E19B1171300BF7EAF /* Crashlytics.framework */; };
 		AC31FFD41B091E6300456C12 /* SongKickDisplayName.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31FFD31B091E6300456C12 /* SongKickDisplayName.swift */; };
 		AC3CB92C1B089AC4009203E1 /* forward.png in Resources */ = {isa = PBXBuildFile; fileRef = AC3CB9221B089AC4009203E1 /* forward.png */; };
@@ -120,7 +122,6 @@
 		ACDAF9F41B08FAD8003B411A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACDAF9F61B08FAD8003B411A /* Main.storyboard */; };
 		ACDAF9FE1B08FB72003B411A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ACDAFA001B08FB72003B411A /* Localizable.strings */; };
 		ACDAFA071B08FBE1003B411A /* I18nHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDAFA061B08FBE1003B411A /* I18nHelper.swift */; };
-		ACDAFA091B090494003B411A /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDAFA081B090494003B411A /* Playlist.swift */; };
 		ACDAFA0D1B090900003B411A /* SongKickClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDAFA0C1B090900003B411A /* SongKickClient.swift */; };
 		ACDAFA0F1B090908003B411A /* SoundCloudClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDAFA0E1B090908003B411A /* SoundCloudClient.swift */; };
 		ACDAFA131B090BDC003B411A /* Dictionary+Querystrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDAFA121B090BDC003B411A /* Dictionary+Querystrings.swift */; };
@@ -140,6 +141,8 @@
 		0C88CA704AA7C5FC060C979D /* Pods-GigRadio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GigRadio.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GigRadio/Pods-GigRadio.debug.xcconfig"; sourceTree = "<group>"; };
 		4707A7DD71C739979C8D02F3 /* Pods_GigRadio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GigRadio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76A8A8CA5724D9E3EA5BF797 /* Pods-GigRadio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GigRadio.release.xcconfig"; path = "Pods/Target Support Files/Pods-GigRadio/Pods-GigRadio.release.xcconfig"; sourceTree = "<group>"; };
+		AC08D4D51B0CD3290082D424 /* PlaylistRun.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistRun.swift; sourceTree = "<group>"; };
+		AC08D4D71B0CE5AB0082D424 /* Playlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		AC1EB93E19B1171300BF7EAF /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		AC31FFD31B091E6300456C12 /* SongKickDisplayName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongKickDisplayName.swift; sourceTree = "<group>"; };
 		AC3CB9221B089AC4009203E1 /* forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forward.png; sourceTree = "<group>"; };
@@ -270,7 +273,6 @@
 		ACDAFA041B08FB98003B411A /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ACDAFA051B08FB98003B411A /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ACDAFA061B08FBE1003B411A /* I18nHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = I18nHelper.swift; sourceTree = "<group>"; };
-		ACDAFA081B090494003B411A /* Playlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		ACDAFA0C1B090900003B411A /* SongKickClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongKickClient.swift; sourceTree = "<group>"; };
 		ACDAFA0E1B090908003B411A /* SoundCloudClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundCloudClient.swift; sourceTree = "<group>"; };
 		ACDAFA121B090BDC003B411A /* Dictionary+Querystrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Querystrings.swift"; sourceTree = "<group>"; };
@@ -549,6 +551,7 @@
 				ACAE7A30199FDA1300030E26 /* SoundCloud */,
 				ACAE79EB199F88D000030E26 /* SongKick */,
 				AC3CB98F1B08D52A009203E1 /* PlaylistItem.swift */,
+				AC08D4D51B0CD3290082D424 /* PlaylistRun.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -571,9 +574,9 @@
 			isa = PBXGroup;
 			children = (
 				ACDAF9E61B08E45F003B411A /* MusicEngine.swift */,
-				ACDAFA081B090494003B411A /* Playlist.swift */,
 				ACDAFA0C1B090900003B411A /* SongKickClient.swift */,
 				ACDAFA0E1B090908003B411A /* SoundCloudClient.swift */,
+				AC08D4D71B0CE5AB0082D424 /* Playlist.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -868,9 +871,9 @@
 			files = (
 				ACD1C8D31B0A67EB00CF038C /* SignalStrengthIndicator.swift in Sources */,
 				ACAE7A0C199F967E00030E26 /* LocationHelper.m in Sources */,
+				AC08D4D81B0CE5AB0082D424 /* Playlist.swift in Sources */,
 				AC43E88B1A8CFD0F0060FD80 /* DatePickerViewController.swift in Sources */,
 				AC3CB9531B08B1C6009203E1 /* PlaybackSlider.swift in Sources */,
-				ACDAFA091B090494003B411A /* Playlist.swift in Sources */,
 				AC31FFD41B091E6300456C12 /* SongKickDisplayName.swift in Sources */,
 				ACDAF9E31B08DEEA003B411A /* SoundCloudConfiguration.swift in Sources */,
 				ACAE79DE199F6C3100030E26 /* CalendarHelper.m in Sources */,
@@ -886,6 +889,7 @@
 				ACDAFA0F1B090908003B411A /* SoundCloudClient.swift in Sources */,
 				AC3CB9921B08D73E009203E1 /* SongKickMetroArea.swift in Sources */,
 				AC3CB9881B08D027009203E1 /* SongKickArtist.swift in Sources */,
+				AC08D4D61B0CD3290082D424 /* PlaylistRun.swift in Sources */,
 				AC3CB98C1B08D265009203E1 /* SoundCloudUser.swift in Sources */,
 				ACAE7A15199FAF7400030E26 /* NSDictionary+RemovesNullValues.m in Sources */,
 				ACD1C8D11B0A62D200CF038C /* GradientOverlayView.swift in Sources */,

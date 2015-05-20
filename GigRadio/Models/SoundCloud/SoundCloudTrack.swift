@@ -39,8 +39,11 @@ class SoundCloudTrack: Object {
     dynamic var favoritingsCount = 0
     dynamic var commentCount = 0
     
+    override static func primaryKey()->String?{
+        return "id"
+    }
+    
     func playbackURL()->NSURL{
         return NSURL(string: "\(self.streamUrl)?client_id=\(SoundCloudConfiguration().clientId)")!
     }
-
 }

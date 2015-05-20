@@ -32,5 +32,4 @@ class SoundCloudUser: Object {
     override static func primaryKey()->String?{
         return "id"
     }
-
 }

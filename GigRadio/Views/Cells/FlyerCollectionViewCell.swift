@@ -41,9 +41,10 @@ class FlyerCollectionViewCell: UICollectionViewCell {
         if let item = playlistItem{
             let focusedArtist = item.songKickArtist
             let result = NSMutableAttributedString(string: "")
-            for performance in item.songKickEvent.performance{
+            let acts = item.songKickEvent.performance
+            for (index, performance) in enumerate(acts){
                 let attributes: [NSObject:AnyObject] = ( (performance.artist.id == focusedArtist.id) ? FocusedArtistAttributes : DefaultAttributes)
-                let string = NSAttributedString(string: performance.artist.displayName, attributes: attributes)
+                let string = NSAttributedString(string: performance.artist.displayName + (index < acts.count - 1 ? "\n" : ""), attributes: attributes)
                 
                 result.appendAttributedString(string)
             }

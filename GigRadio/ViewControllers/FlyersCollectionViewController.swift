@@ -11,41 +11,36 @@ import RealmSwift
 
 let reuseIdentifier = "Flyer"
 
-class FlyersCollectionViewController: UICollectionViewController, UIScrollViewDelegate, UICollectionViewDelegateFlowLayout {
-
+class FlyersCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    var runs: Results<PlaylistRun>!
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.collectionView!.registerClass(FlyerCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        reload()
+    }
+    func reload(){
+        runs = Realm().objects(PlaylistRun)
+        collectionView?.reloadData()
     }
 
     // MARK: UICollectionViewDataSource
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
+        return runs.count
     }
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return runs[section].items.count
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! FlyerCollectionViewCell
     
-        let playlistItem = playlistItemAtIndex(indexPath.row)
+        let playlistItem = playlistItemAtIndexPath(indexPath)
         cell.playlistItem = playlistItem
     
         return cell
     }
 
-    func playlistItemAtIndex(index:Int)->PlaylistItem?{
-        return Realm().objects(PlaylistItem).last
-    }
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
-        if scrollView.contentOffset.x > self.view.bounds.width{
-            scrollView.contentOffset = CGPoint(x: 0, y: 0)
-            collectionView?.reloadData()
-        }else if scrollView.contentOffset.x < 0{
-            scrollView.contentOffset = CGPoint(x: self.view.bounds.width, y: 0)
-            collectionView?.reloadData()
-        }
+    func playlistItemAtIndexPath(indexPath:NSIndexPath)->PlaylistItem?{
+        return runs[indexPath.section].items[indexPath.row]
     }
     // MARK: Layout Delegate
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{

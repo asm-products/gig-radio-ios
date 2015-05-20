@@ -9,6 +9,7 @@
 import UIKit
 import MediaPlayer
 import CoreLocation
+import SVProgressHUD
 
 class MainViewController: UIViewController, UICollectionViewDelegate, CLLocationManagerDelegate, DatePickerViewControllerDelegate {
     let DatePickerOffScreen:CGFloat = -80
@@ -42,15 +43,21 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
         
         LocationHelper.lookUp { (location, error) -> Void in
             self.location = location
-            SongKickClient.sharedClient.getEvents(NSDate(), location: location, completion: { (eventIds, error) -> Void in
-                if let ids = eventIds{
-                    Playlist.sharedPlaylist.updateLatestRunWithEventIds(ids)
-                }
-                self.flyersController?.reload {
-                    self.hideLoadingView()
-                }
-            })
+            self.fetchEventsForDate(NSDate()){
+                self.setDateHeading(NSDate())
+                self.hideLoadingView()
+            }
         }
+    }
+    func fetchEventsForDate(date:NSDate, callback:()->Void){
+        SongKickClient.sharedClient.getEvents(date, location: location, completion: { (eventIds, error) -> Void in
+            if let ids = eventIds{
+                Playlist.sharedPlaylist.updateLatestRunWithEventIds(ids)
+            }
+            self.flyersController?.reload {
+                callback()
+            }
+        })
     }
     // MARK: Loading
     func hideLoadingView(){
@@ -70,17 +77,33 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
         }
     }
     func datePickerDidChangeVisibleRange(startDate: NSDate, endDate: NSDate) {
-//        datePicker?.activity.startAnimating()
         SongKickClient.sharedClient.getEvents(startDate, end: endDate, location: location) { (results,error) -> Void in
             if error != nil{
                 println("SongKick error: \(error!.localizedDescription)")
             }
             self.datePicker?.refresh()
-//            self.datePicker?.activity.stopAnimating()
         }
     }
     func datePickerDidSelectDate(startDate: NSDate) {
+        let status = DateFormats.todayFormatter().stringFromDate(startDate)
+        SVProgressHUD.showWithStatus(status, maskType: .Black)
+        hideDatePickerAnimated(true)
+        setDateHeading(startDate)
+        self.fetchEventsForDate(startDate){
+            SVProgressHUD.dismiss()
+        }
+    }
+    func setDateHeading(date:NSDate){
+        var title = NSMutableAttributedString()
+        title.appendAttributedString(NSAttributedString(string: "GIG RADIO\n", attributes: Typography.RobotoLight(12)))
+        // WARN: Potentially broken in the US!
+        let dateString = DateFormats.todayFormatter().stringFromDate(date)
+        title.appendAttributedString(NSAttributedString(string: dateString, attributes: Typography.RobotoRegular(12)))
         
+        let style = NSMutableParagraphStyle()
+        style.alignment = .Center
+        title.addAttribute(NSParagraphStyleAttributeName, value: style, range: NSMakeRange(0, title.length))
+        headerDateButton.setAttributedTitle(title, forState: .Normal)
     }
     @IBAction func didPressTodayButton(sender: AnyObject) {
         datePicker?.scrollToToday(true)

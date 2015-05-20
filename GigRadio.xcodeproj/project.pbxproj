@@ -69,6 +69,7 @@
 		AC43E88B1A8CFD0F0060FD80 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC43E88A1A8CFD0F0060FD80 /* DatePickerViewController.swift */; };
 		AC43E88E1A8CFE2B0060FD80 /* PickerDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC43E88D1A8CFE2B0060FD80 /* PickerDayCollectionViewCell.swift */; };
 		AC53D01A1A1E829900F30767 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC53D0191A1E829900F30767 /* Colors.swift */; };
+		AC5E8D011B0D1F5A00E43A07 /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E8D001B0D1F5A00E43A07 /* Typography.swift */; };
 		AC5E954019FC0B4D005B9872 /* compass_background.png in Resources */ = {isa = PBXBuildFile; fileRef = AC5E953019FC0B4C005B9872 /* compass_background.png */; };
 		AC5E954119FC0B4D005B9872 /* compass_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC5E953119FC0B4C005B9872 /* compass_background@2x.png */; };
 		AC5E954219FC0B4D005B9872 /* compass_needle.png in Resources */ = {isa = PBXBuildFile; fileRef = AC5E953219FC0B4C005B9872 /* compass_needle.png */; };
@@ -207,6 +208,7 @@
 		AC43E88A1A8CFD0F0060FD80 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		AC43E88D1A8CFE2B0060FD80 /* PickerDayCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerDayCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC53D0191A1E829900F30767 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		AC5E8D001B0D1F5A00E43A07 /* Typography.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
 		AC5E953019FC0B4C005B9872 /* compass_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compass_background.png; sourceTree = "<group>"; };
 		AC5E953119FC0B4C005B9872 /* compass_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "compass_background@2x.png"; sourceTree = "<group>"; };
 		AC5E953219FC0B4C005B9872 /* compass_needle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compass_needle.png; sourceTree = "<group>"; };
@@ -547,6 +549,7 @@
 				ACDAFA061B08FBE1003B411A /* I18nHelper.swift */,
 				AC08D4D91B0CF9190082D424 /* CachingHelper.swift */,
 				AC863F541B0D10BE00A6A9D3 /* CompletionCounter.swift */,
+				AC5E8D001B0D1F5A00E43A07 /* Typography.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -885,6 +888,7 @@
 				ACAE79DE199F6C3100030E26 /* CalendarHelper.m in Sources */,
 				ACDAF9E11B08DEDC003B411A /* SongKickConfiguration.swift in Sources */,
 				AC08D4DA1B0CF9190082D424 /* CachingHelper.swift in Sources */,
+				AC5E8D011B0D1F5A00E43A07 /* Typography.swift in Sources */,
 				AC3CB9841B08CDCC009203E1 /* SongKickEvent.swift in Sources */,
 				AC3CB97B1B08C989009203E1 /* FlyerCollectionViewCell.swift in Sources */,
 				ACD1C8E21B0A855D00CF038C /* RoundedButton.swift in Sources */,

@@ -18,4 +18,5 @@
 +(NSDateFormatter*)eventDateFormatter;
 +(NSDateFormatter*)monthAndYearFormatter;
 +(NSDateFormatter*)timeFormatter;
++(NSDateFormatter*)todayFormatter;
 @end

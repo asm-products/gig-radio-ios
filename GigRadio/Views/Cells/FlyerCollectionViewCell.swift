@@ -56,7 +56,7 @@ class FlyerCollectionViewCell: UICollectionViewCell {
     }
     
     
-    let FocusedArtistAttributes = [NSFontAttributeName: UIFont(name: "Roboto-Light", size: 36)!]
+    let FocusedArtistAttributes = [NSFontAttributeName: UIFont(name: "Roboto-Light", size: 40)!]
     let DefaultAttributes = [NSFontAttributeName: UIFont(name: "Roboto-Light", size: 24)!]
     
     var attributedLineupText: NSAttributedString{

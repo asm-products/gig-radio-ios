@@ -15,6 +15,9 @@ class CompletionCounter{
     init(total:Int, completion:()->Void){
         self.total = total
         self.completion = completion
+        if total == 0{
+            completion()
+        }
     }
     func click(){
         count += 1

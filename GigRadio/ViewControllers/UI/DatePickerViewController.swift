@@ -118,6 +118,11 @@ class DatePickerViewController: UICollectionViewController, UIScrollViewDelegate
             centeredDateCache = date
         }
     }
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let date = dateAtIndexPath(indexPath)
+        delegate.datePickerDidSelectDate(date)
+    }
+    
     // MARK: Layout Delegate
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{
         return CGSize(width: view.frame.width / CGFloat(DaysPerScreen), height: view.frame.size.height)

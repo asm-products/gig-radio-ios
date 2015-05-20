@@ -47,6 +47,9 @@
 +(NSDateFormatter*)eventDateFormatter{
     formatter(@"HH:mm EEEE MMM dd");
 }
++(NSDateFormatter *)todayFormatter{
+    formatter(@"EEEE MMMM dd yyyy")
+}
 +(NSDateFormatter *)timeFormatter{
     static NSDateFormatter * formatter = nil;
     static dispatch_once_t onceToken;

@@ -15,7 +15,23 @@ class CachingHelper: NSObject {
 
     }
 }
-
+extension UIImage{
+    func isFullyTransparent()->Bool{
+        let onePixel = CGRect(x: 0, y: 0, width: 1, height: 1)
+        UIGraphicsBeginImageContextWithOptions(onePixel.size, false, 0)
+        drawInRect(onePixel)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext();
+        return image.getPixelAlpha(onePixel.origin) == 0
+    }
+    func getPixelAlpha(pos: CGPoint) -> CGFloat {
+        var pixelData = CGDataProviderCopyData(CGImageGetDataProvider(self.CGImage))
+        var data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
+        var pixelInfo: Int = ((Int(self.size.width) * Int(pos.y)) + Int(pos.x)) * 4
+        var a = CGFloat(data[pixelInfo+3]) / CGFloat(255.0)
+        return a
+    }
+}
 
 func preloadImage(url: String){
     TWRDownloadManager.sharedManager().downloadFileForURL(url, progressBlock: { (progress) -> Void in
@@ -44,7 +60,13 @@ func cachedImage(url:String)->UIImage?{
     let name = url.md5()
     if TWRDownloadManager.sharedManager().fileExistsWithName(name){
         let path = TWRDownloadManager.sharedManager().localPathForFile(name)
-        return UIImage(contentsOfFile: path)
+        let result = UIImage(contentsOfFile: path)
+        // naughty SongKick CDN returns an empty transparent image instead of a 404 so we have to hack to check for a clear image
+        if (result!.isFullyTransparent()){
+            return nil
+        }else{
+            return result
+        }
     }else{
         return nil
     }

@@ -28,7 +28,11 @@ class FlyerCollectionViewCell: UICollectionViewCell {
             imageView.image = nil
             if let item = playlistItem{
                 updateGradient(item.colorIndex)
-                imageView.image = desaturatedImage(item.songKickArtist.imageUrl())
+                if let image = cachedImage(item.songKickArtist.imageUrl()){
+                    imageView.image = image
+                }else{
+                    imageView.image = UIImage(named: "flyer-placeholder")
+                }
                 compass.destination = item.songKickEvent.venue.location()
                 let startTime = item.songKickEvent.start.parsedDateTime()
                 let time = startTime == nil ? "" : DateFormats.timeFormatter().stringFromDate(startTime!)

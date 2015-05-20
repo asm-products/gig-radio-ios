@@ -25,10 +25,8 @@ class FlyersCollectionViewController: UICollectionViewController, UICollectionVi
                 urls.append(item.songKickArtist.imageUrl())
             }
             preload(urls){
-                preprocessImages(urls, { () -> Void in
-                    self.collectionView?.reloadData()
-                    callback?()                    
-                })
+                self.collectionView?.reloadData()
+                callback?()                    
             }
         }
     }

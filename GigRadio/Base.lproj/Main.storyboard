@@ -94,7 +94,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X0f-hA-0eG">
-                                        <rect key="frame" x="127" y="52" width="67" height="32"/>
+                                        <rect key="frame" x="127.5" y="52" width="66.5" height="32"/>
                                         <attributedString key="attributedText">
                                             <fragment>
                                                 <string key="content">Everlong
@@ -116,18 +116,18 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOv-Ig-sVM">
-                                        <rect key="frame" x="8" y="15" width="24" height="15"/>
+                                        <rect key="frame" x="8" y="15.5" width="23.5" height="14.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQU-3P-7v4">
-                                        <rect key="frame" x="288" y="15" width="24" height="15"/>
+                                        <rect key="frame" x="288.5" y="15.5" width="23.5" height="14.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="egG-9n-J9i" customClass="PlaybackSlider" customModule="GigRadio" customModuleProvider="target">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="egG-9n-J9i" customClass="PlaybackSlider" customModule="GigRadio" customModuleProvider="target">
                                         <rect key="frame" x="40" y="8" width="240" height="31"/>
                                     </slider>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="speaker-loud.png" translatesAutoresizingMaskIntoConstraints="NO" id="UMz-pc-C0I">
@@ -137,10 +137,14 @@
                                             <constraint firstAttribute="height" constant="30" id="6Pi-4T-u15"/>
                                         </constraints>
                                     </imageView>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="a4X-tp-mFR">
+                                        <rect key="frame" x="292" y="13" width="20" height="20"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25490196078431371" alpha="0.57999999999999996" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="TnY-Pu-iv5" firstAttribute="leading" secondItem="Vfq-i4-zJK" secondAttribute="trailing" constant="30" id="2Dj-TA-KPh"/>
+                                    <constraint firstAttribute="trailing" secondItem="a4X-tp-mFR" secondAttribute="trailing" constant="8" id="6EL-4i-6wk"/>
                                     <constraint firstItem="qml-N3-rWM" firstAttribute="top" secondItem="TnY-Pu-iv5" secondAttribute="bottom" constant="4" id="Erl-kB-Jrd"/>
                                     <constraint firstAttribute="bottom" secondItem="UMz-pc-C0I" secondAttribute="bottom" constant="14" id="KZA-rI-Z3P"/>
                                     <constraint firstItem="egG-9n-J9i" firstAttribute="leading" secondItem="OOv-Ig-sVM" secondAttribute="trailing" constant="10" id="Lnj-hn-TJA"/>
@@ -150,6 +154,7 @@
                                     <constraint firstItem="UMz-pc-C0I" firstAttribute="leading" secondItem="K5Z-AU-XgA" secondAttribute="leading" constant="6" id="Tdq-S1-SYT"/>
                                     <constraint firstItem="R6b-jW-cHV" firstAttribute="leading" secondItem="TnY-Pu-iv5" secondAttribute="trailing" constant="30" id="ZIy-1O-Mxe"/>
                                     <constraint firstItem="TnY-Pu-iv5" firstAttribute="top" secondItem="X0f-hA-0eG" secondAttribute="bottom" id="c2N-fK-QAS"/>
+                                    <constraint firstItem="a4X-tp-mFR" firstAttribute="centerY" secondItem="egG-9n-J9i" secondAttribute="centerY" id="dHf-IV-dcf"/>
                                     <constraint firstItem="OOv-Ig-sVM" firstAttribute="leading" secondItem="K5Z-AU-XgA" secondAttribute="leading" constant="8" id="e1v-mc-ADg"/>
                                     <constraint firstItem="egG-9n-J9i" firstAttribute="centerY" secondItem="EQU-3P-7v4" secondAttribute="centerY" constant="0.5" id="ezK-23-L70"/>
                                     <constraint firstItem="egG-9n-J9i" firstAttribute="centerY" secondItem="OOv-Ig-sVM" secondAttribute="centerY" constant="0.5" id="jQe-OE-03H"/>
@@ -854,7 +859,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.17254901960784313" green="0.17254901960784313" blue="0.17647058823529413" alpha="1" colorSpace="calibratedRGB"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Zhf-vL-j3R" customClass="FixedHeaderFlowLayout" customModule="GigRadio" customModuleProvider="target">
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Zhf-vL-j3R">
                             <size key="itemSize" width="50" height="87"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -880,27 +885,16 @@
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7De-hO-XHl" customClass="SignalStrengthIndicator" customModule="GigRadio" customModuleProvider="target">
-                                            <rect key="frame" x="18" y="52" width="16" height="1"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7De-hO-XHl" customClass="SignalStrengthIndicator" customModule="GigRadio" customModuleProvider="target">
+                                            <rect key="frame" x="17" y="56" width="16" height="1"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="16" id="IYh-lh-4M2"/>
                                                 <constraint firstAttribute="height" constant="1" id="g8E-oj-vDQ"/>
                                             </constraints>
                                         </view>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="today-indicator.png" translatesAutoresizingMaskIntoConstraints="NO" id="7m8-hR-qDW" userLabel="SelectionIndicator Bottom">
-                                            <rect key="frame" x="18" y="58" width="15" height="5"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="15" id="Srx-Dr-BQf"/>
-                                                <constraint firstAttribute="height" constant="5" id="cWb-DG-uGP"/>
-                                            </constraints>
-                                        </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="today-indicator-top.png" translatesAutoresizingMaskIntoConstraints="NO" id="nCG-dh-Shy" userLabel="SelectionIndicator Top">
-                                            <rect key="frame" x="17" y="16" width="15" height="5"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="5" id="1mV-sE-0mq"/>
-                                                <constraint firstAttribute="width" constant="15" id="uqb-Vq-8EG"/>
-                                            </constraints>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar-selection.png" translatesAutoresizingMaskIntoConstraints="NO" id="XYU-Sa-XbJ">
+                                            <rect key="frame" x="11" y="30" width="29" height="42"/>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -908,12 +902,10 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="7De-hO-XHl" firstAttribute="top" secondItem="DnB-bQ-ch5" secondAttribute="bottom" constant="1" id="0MP-el-LvP"/>
-                                    <constraint firstAttribute="centerX" secondItem="7m8-hR-qDW" secondAttribute="centerX" id="CGa-Bh-veP"/>
+                                    <constraint firstAttribute="centerX" secondItem="XYU-Sa-XbJ" secondAttribute="centerX" id="3wh-ah-QAv"/>
+                                    <constraint firstAttribute="centerY" secondItem="XYU-Sa-XbJ" secondAttribute="centerY" constant="-8" id="FaR-Kv-Bzx"/>
                                     <constraint firstAttribute="centerX" secondItem="DnB-bQ-ch5" secondAttribute="centerX" id="GsC-SY-Lqg"/>
                                     <constraint firstItem="DnB-bQ-ch5" firstAttribute="top" secondItem="XOj-5Y-Bp6" secondAttribute="bottom" constant="-2" id="VcI-Ow-s7v"/>
-                                    <constraint firstItem="nCG-dh-Shy" firstAttribute="bottom" secondItem="XOj-5Y-Bp6" secondAttribute="top" id="Vu4-6j-wzE"/>
-                                    <constraint firstItem="7m8-hR-qDW" firstAttribute="top" secondItem="7De-hO-XHl" secondAttribute="bottom" constant="1" id="W6G-l0-wx2"/>
-                                    <constraint firstAttribute="centerX" secondItem="nCG-dh-Shy" secondAttribute="centerX" id="lSR-4a-L2I"/>
                                     <constraint firstAttribute="centerX" secondItem="XOj-5Y-Bp6" secondAttribute="centerX" id="rzP-sB-ElW"/>
                                     <constraint firstAttribute="centerX" secondItem="7De-hO-XHl" secondAttribute="centerX" id="u6o-o3-j1L"/>
                                     <constraint firstItem="XOj-5Y-Bp6" firstAttribute="top" secondItem="px2-P8-AyF" secondAttribute="topMargin" constant="13" id="vKw-dr-VHW"/>
@@ -921,8 +913,7 @@
                                 <connections>
                                     <outlet property="dayOfTheMonthLabel" destination="DnB-bQ-ch5" id="1Eu-fu-GH8"/>
                                     <outlet property="dayOfTheWeekLabel" destination="XOj-5Y-Bp6" id="wcL-nu-99r"/>
-                                    <outlet property="selectionIndicator" destination="7m8-hR-qDW" id="C9k-jq-i75"/>
-                                    <outlet property="selectionIndicatorTop" destination="nCG-dh-Shy" id="LMu-l9-SZ9"/>
+                                    <outlet property="selectionIndicator" destination="XYU-Sa-XbJ" id="xj9-lj-c7p"/>
                                     <outlet property="signalStrengthIndicator" destination="7De-hO-XHl" id="Qq7-WX-rGY"/>
                                 </connections>
                             </collectionViewCell>
@@ -1009,6 +1000,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="calendar-selection.png" width="29" height="42"/>
         <image name="disclosure-down.png" width="15" height="10"/>
         <image name="disclosure-right.png" width="10" height="15"/>
         <image name="first" width="30" height="30"/>
@@ -1020,8 +1012,6 @@
         <image name="settings.png" width="20" height="20"/>
         <image name="speaker-loud.png" width="22" height="28"/>
         <image name="star.png" width="25" height="25"/>
-        <image name="today-indicator-top.png" width="15" height="10"/>
-        <image name="today-indicator.png" width="15" height="10"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jLK-XF-bFa"/>

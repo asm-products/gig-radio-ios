@@ -11,6 +11,9 @@
 		AC08D4D61B0CD3290082D424 /* PlaylistRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08D4D51B0CD3290082D424 /* PlaylistRun.swift */; };
 		AC08D4D81B0CE5AB0082D424 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08D4D71B0CE5AB0082D424 /* Playlist.swift */; };
 		AC08D4DA1B0CF9190082D424 /* CachingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08D4D91B0CF9190082D424 /* CachingHelper.swift */; };
+		AC0B0AD21B0E72B900B03F11 /* calendar-selection.png in Resources */ = {isa = PBXBuildFile; fileRef = AC0B0ACF1B0E72B900B03F11 /* calendar-selection.png */; };
+		AC0B0AD31B0E72B900B03F11 /* calendar-selection@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC0B0AD01B0E72B900B03F11 /* calendar-selection@2x.png */; };
+		AC0B0AD41B0E72B900B03F11 /* calendar-selection@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC0B0AD11B0E72B900B03F11 /* calendar-selection@3x.png */; };
 		AC1EB93F19B1171300BF7EAF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC1EB93E19B1171300BF7EAF /* Crashlytics.framework */; };
 		AC31FFD41B091E6300456C12 /* SongKickDisplayName.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31FFD31B091E6300456C12 /* SongKickDisplayName.swift */; };
 		AC3CB92C1B089AC4009203E1 /* forward.png in Resources */ = {isa = PBXBuildFile; fileRef = AC3CB9221B089AC4009203E1 /* forward.png */; };
@@ -147,6 +150,9 @@
 		AC08D4D51B0CD3290082D424 /* PlaylistRun.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistRun.swift; sourceTree = "<group>"; };
 		AC08D4D71B0CE5AB0082D424 /* Playlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		AC08D4D91B0CF9190082D424 /* CachingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachingHelper.swift; sourceTree = "<group>"; };
+		AC0B0ACF1B0E72B900B03F11 /* calendar-selection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-selection.png"; sourceTree = "<group>"; };
+		AC0B0AD01B0E72B900B03F11 /* calendar-selection@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-selection@2x.png"; sourceTree = "<group>"; };
+		AC0B0AD11B0E72B900B03F11 /* calendar-selection@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-selection@3x.png"; sourceTree = "<group>"; };
 		AC1EB93E19B1171300BF7EAF /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		AC31FFD31B091E6300456C12 /* SongKickDisplayName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongKickDisplayName.swift; sourceTree = "<group>"; };
 		AC3CB9221B089AC4009203E1 /* forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forward.png; sourceTree = "<group>"; };
@@ -360,6 +366,9 @@
 		AC5E952F19FC0B4C005B9872 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				AC0B0ACF1B0E72B900B03F11 /* calendar-selection.png */,
+				AC0B0AD01B0E72B900B03F11 /* calendar-selection@2x.png */,
+				AC0B0AD11B0E72B900B03F11 /* calendar-selection@3x.png */,
 				AC863F561B0D15FA00A6A9D3 /* flyer-placeholder.png */,
 				ACD1C8E81B0A9E0B00CF038C /* volume-thumb.png */,
 				ACD1C8E91B0A9E0B00CF038C /* volume-thumb@2x.png */,
@@ -751,6 +760,7 @@
 				ACD1C8E31B0A923000CF038C /* Roboto-Bold.ttf in Resources */,
 				ACDAF9F01B08F49B003B411A /* launch-logo@2x.png in Resources */,
 				AC3CB92D1B089AC4009203E1 /* forward@2x.png in Resources */,
+				AC0B0AD31B0E72B900B03F11 /* calendar-selection@2x.png in Resources */,
 				ACDAF9EF1B08F49B003B411A /* launch-logo.png in Resources */,
 				AC3CB9341B089AC4009203E1 /* play@3x.png in Resources */,
 				AC3CB9501B08AA2C009203E1 /* speaker-quiet@2x.png in Resources */,
@@ -775,10 +785,12 @@
 				ACD1C8D81B0A7F3800CF038C /* today-indicator@2x.png in Resources */,
 				AC3CB94E1B08AA2C009203E1 /* speaker-loud@3x.png in Resources */,
 				ACD1C8D91B0A7F3800CF038C /* today-indicator@3x.png in Resources */,
+				AC0B0AD41B0E72B900B03F11 /* calendar-selection@3x.png in Resources */,
 				AC3CB95B1B08B4A3009203E1 /* playback-thumb@2x.png in Resources */,
 				AC3CB9751B08B7DF009203E1 /* disclosure-up.png in Resources */,
 				AC3CB94C1B08AA2C009203E1 /* speaker-loud.png in Resources */,
 				ACAE79A0199F657E00030E26 /* InfoPlist.strings in Resources */,
+				AC0B0AD21B0E72B900B03F11 /* calendar-selection.png in Resources */,
 				AC3CB95D1B08B4A3009203E1 /* playback-track.png in Resources */,
 				AC3CB9381B089AF7009203E1 /* rewind.png in Resources */,
 				AC3CB9731B08B7DF009203E1 /* disclosure-right@2x.png in Resources */,

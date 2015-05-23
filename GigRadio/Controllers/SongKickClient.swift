@@ -43,7 +43,7 @@ class SongKickClient: NSObject {
                     })
                 }else{
                     let events = json["resultsPage"]["results"]["event"]
-                    println("Fetched \(events.count) event(s) from SongKick")
+                    println("Fetched \(events.count) event(s) from SongKick via \(url)")
                     var ids = [Int]()
                     if events.error == nil{
                         let realm = Realm()

@@ -76,6 +76,9 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
             self.flyersController = dest
         }
     }
+    // MARK: MediaPlayer
+    
+    // MARK: DatePicker
     func datePickerDidChangeVisibleRange(startDate: NSDate, endDate: NSDate) {
         SongKickClient.sharedClient.getEvents(startDate, end: endDate, location: location) { (results,error) -> Void in
             if error != nil{
@@ -95,10 +98,10 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
     }
     func setDateHeading(date:NSDate){
         var title = NSMutableAttributedString()
-        title.appendAttributedString(NSAttributedString(string: "GIG RADIO\n", attributes: Typography.RobotoLight(12)))
+        title.appendAttributedString(NSAttributedString(string: "GIG RADIO\n", attributes: Typography.HeaderRegular(13)))
         // WARN: Potentially broken in the US!
         let dateString = DateFormats.todayFormatter().stringFromDate(date)
-        title.appendAttributedString(NSAttributedString(string: dateString, attributes: Typography.RobotoRegular(12)))
+        title.appendAttributedString(NSAttributedString(string: dateString, attributes: Typography.HeaderLight(13)))
         
         let style = NSMutableParagraphStyle()
         style.alignment = .Center

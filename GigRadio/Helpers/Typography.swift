@@ -14,18 +14,17 @@ class Typography: NSObject {
     let DefaultAttributes = [NSFontAttributeName: UIFont(name: "Roboto-Light", size: 24)!]
     
     
-    // misnamed cos white now
-    class func RobotoRegular(size:CGFloat)->[String:AnyObject]{
+    class func HeaderLight(size:CGFloat)->[String:AnyObject]{
         return [
-            NSFontAttributeName: UIFont(name: "Roboto-Regular", size: size)!,
+            NSFontAttributeName: UIFont(name: "HelveticaNeue-Light", size: size)!,
             NSForegroundColorAttributeName: UIColor.whiteColor()
-        
         ]
     }
-    class func RobotoLight(size:CGFloat)->[String:AnyObject]{
+    class func HeaderRegular(size:CGFloat)->[String:AnyObject]{
         return [
-            NSFontAttributeName: UIFont(name: "Roboto-Light", size: size)!,
+            NSFontAttributeName: UIFont(name: "HelveticaNeue-Bold", size: size)!,
             NSForegroundColorAttributeName: UIColor.whiteColor()
+        
         ]
     }
 }

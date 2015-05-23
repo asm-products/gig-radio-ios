@@ -21,7 +21,7 @@ class CompletionCounter{
     }
     func click(){
         count += 1
-        if count == total - 1{
+        if count == total{
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.completion()
             })

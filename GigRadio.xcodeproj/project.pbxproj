@@ -81,6 +81,8 @@
 		AC5E954519FC0B4D005B9872 /* disclosure_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC5E953519FC0B4C005B9872 /* disclosure_small@2x.png */; };
 		AC5E954819FC0B4D005B9872 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = AC5E953819FC0B4C005B9872 /* menu.png */; };
 		AC5E954919FC0B4D005B9872 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC5E953919FC0B4D005B9872 /* menu@2x.png */; };
+		AC7AC1D91B1127B7002A550C /* TransportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7AC1D81B1127B7002A550C /* TransportViewController.swift */; };
+		AC7AC1DB1B11EB34002A550C /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AC7AC1DA1B11EB34002A550C /* Settings.bundle */; };
 		AC863F551B0D10BE00A6A9D3 /* CompletionCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC863F541B0D10BE00A6A9D3 /* CompletionCounter.swift */; };
 		AC863F571B0D15FA00A6A9D3 /* flyer-placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = AC863F561B0D15FA00A6A9D3 /* flyer-placeholder.png */; };
 		ACAE7996199F657E00030E26 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACAE7995199F657E00030E26 /* Foundation.framework */; };
@@ -223,6 +225,8 @@
 		AC5E953519FC0B4C005B9872 /* disclosure_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclosure_small@2x.png"; sourceTree = "<group>"; };
 		AC5E953819FC0B4C005B9872 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
 		AC5E953919FC0B4D005B9872 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
+		AC7AC1D81B1127B7002A550C /* TransportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportViewController.swift; sourceTree = "<group>"; };
+		AC7AC1DA1B11EB34002A550C /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		AC863F541B0D10BE00A6A9D3 /* CompletionCounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletionCounter.swift; sourceTree = "<group>"; };
 		AC863F561B0D15FA00A6A9D3 /* flyer-placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flyer-placeholder.png"; sourceTree = "<group>"; };
 		ACAE7992199F657E00030E26 /* GigRadio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GigRadio.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -498,6 +502,7 @@
 				ACAE799E199F657E00030E26 /* InfoPlist.strings */,
 				ACAE79A3199F657E00030E26 /* GigRadio-Prefix.pch */,
 				ACDAF9EA1B08F431003B411A /* LaunchScreen.xib */,
+				AC7AC1DA1B11EB34002A550C /* Settings.bundle */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -539,6 +544,7 @@
 				ACD6EFDD19FC546700DDE967 /* GigRadio-Bridging-Header.h */,
 				AC3CB93A1B089EBC009203E1 /* MainViewController.swift */,
 				ACDAF9E81B08E945003B411A /* FlyersCollectionViewController.swift */,
+				AC7AC1D81B1127B7002A550C /* TransportViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -725,6 +731,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC7AC1DB1B11EB34002A550C /* Settings.bundle in Resources */,
 				AC5E954119FC0B4D005B9872 /* compass_background@2x.png in Resources */,
 				ACD1C8DD1B0A813E00CF038C /* today-indicator-top.png in Resources */,
 				AC3CB9321B089AC4009203E1 /* play.png in Resources */,
@@ -892,6 +899,7 @@
 			files = (
 				ACD1C8D31B0A67EB00CF038C /* SignalStrengthIndicator.swift in Sources */,
 				ACAE7A0C199F967E00030E26 /* LocationHelper.m in Sources */,
+				AC7AC1D91B1127B7002A550C /* TransportViewController.swift in Sources */,
 				AC08D4D81B0CE5AB0082D424 /* Playlist.swift in Sources */,
 				AC43E88B1A8CFD0F0060FD80 /* DatePickerViewController.swift in Sources */,
 				AC3CB9531B08B1C6009203E1 /* PlaybackSlider.swift in Sources */,

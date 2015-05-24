@@ -18,13 +18,19 @@ target "GigRadio" do
   pod 'SVProgressHUD'
   pod 'IFTTTLaunchImage'
   pod 'SwiftyJSON', '~> 2.2'
-  pod 'MTStatusBarOverlay', '~> 0.9'
   pod 'TWRDownloadManager', '~> 1.1'
   pod 'CryptoSwift', '~> 0.0'
   pod 'TMCache', '~> 2.1'
+  pod 'StreamingKit', '~> 0.1'
 end
 
 target "GigRadioTests" do
 
+end
+
+# copy in acknowledgments
+post_install do | installer |
+    require 'fileutils'
+    FileUtils.cp_r('Pods/Target Support Files/Pods-GigRadio/Pods-GigRadio-Acknowledgements.plist', 'GigRadio/Settings.bundle/Acknowledgements.plist', :remove_destination => true)
 end
 

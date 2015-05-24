@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MediaPlayer
 import CoreLocation
 import SVProgressHUD
 
@@ -16,7 +15,6 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
     
     @IBOutlet weak var headerDateButton: UIButton!
     @IBOutlet weak var dateSelectorRevealConstraint: NSLayoutConstraint!
-    @IBOutlet weak var volumeView: MPVolumeView!
     
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var datePickerButtons: UIView!
@@ -38,7 +36,6 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        volumeView.setVolumeThumbImage(UIImage(named: "volume-thumb"), forState: .Normal)
         // deal with location stuff here because we might need to show UI
         
         LocationHelper.lookUp { (location, error) -> Void in

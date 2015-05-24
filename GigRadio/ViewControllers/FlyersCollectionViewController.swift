@@ -11,8 +11,13 @@ import RealmSwift
 
 let reuseIdentifier = "Flyer"
 
+protocol FlyersCollectionViewControllerDelegate{
+    func heightOfTransportArea()->CGFloat
+}
+
 class FlyersCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     var runs: Results<PlaylistRun>!
+    var delegate: FlyersCollectionViewControllerDelegate!
     override func viewDidLoad() {
         super.viewDidLoad()
         reload(nil)
@@ -44,7 +49,7 @@ class FlyersCollectionViewController: UICollectionViewController, UICollectionVi
     
         let playlistItem = playlistItemAtIndexPath(indexPath)
         cell.playlistItem = playlistItem
-    
+        cell.baselineConstraint.constant = delegate.heightOfTransportArea()
         return cell
     }
 

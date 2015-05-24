@@ -10,11 +10,12 @@ import UIKit
 import CoreLocation
 import SVProgressHUD
 
-class MainViewController: UIViewController, UICollectionViewDelegate, CLLocationManagerDelegate, DatePickerViewControllerDelegate {
+class MainViewController: UIViewController, UICollectionViewDelegate, CLLocationManagerDelegate, DatePickerViewControllerDelegate,FlyersCollectionViewControllerDelegate {
     let DatePickerOffScreen:CGFloat = -80
     
     @IBOutlet weak var headerDateButton: UIButton!
     @IBOutlet weak var dateSelectorRevealConstraint: NSLayoutConstraint!
+    @IBOutlet weak var transportContainer: UIView!
     
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var datePickerButtons: UIView!
@@ -71,10 +72,9 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
             dest.delegate = self
         }else if let dest = segue.destinationViewController as? FlyersCollectionViewController{
             self.flyersController = dest
+            flyersController?.delegate = self
         }
     }
-    // MARK: MediaPlayer
-    
     // MARK: DatePicker
     func datePickerDidChangeVisibleRange(startDate: NSDate, endDate: NSDate) {
         SongKickClient.sharedClient.getEvents(startDate, end: endDate, location: location) { (results,error) -> Void in
@@ -87,9 +87,9 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
     func datePickerDidSelectDate(startDate: NSDate) {
         let status = DateFormats.todayFormatter().stringFromDate(startDate)
         SVProgressHUD.showWithStatus(status, maskType: .Black)
-        hideDatePickerAnimated(true)
         setDateHeading(startDate)
         self.fetchEventsForDate(startDate){
+            self.hideDatePickerAnimated(true)
             SVProgressHUD.dismiss()
         }
     }
@@ -138,5 +138,8 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
     }
     @IBAction func didPressDateHeader(sender: AnyObject) {
         showDatePickerAnimated(true)
+    }
+    func heightOfTransportArea() -> CGFloat {
+        return transportContainer.frame.size.height
     }
 }

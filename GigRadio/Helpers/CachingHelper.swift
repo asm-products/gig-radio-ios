@@ -41,14 +41,16 @@ func preloadImage(url: String){
 }
 func preload(urls:[String], callback: ()->Void){
     let counter = CompletionCounter(total: urls.count, completion: callback)
+    let downloads = TWRDownloadManager.sharedManager()
     for url in urls{
         let name = url.md5()
-        if TWRDownloadManager.sharedManager().fileExistsWithName(name){
+        if downloads.fileExistsWithName(name) || downloads.isFileDownloadingForUrl(url, withProgressBlock: { (progress) -> Void in
+        }){
             counter.click()
         }else{
             // download manager uses 'lastpathcomponent' to differentiate downloads but this doesn't work on songKick artist image urls
             // where the id is in the middle and last component is always the same
-            TWRDownloadManager.sharedManager().downloadFileForURL(url, withName: name, inDirectoryNamed: nil, progressBlock: { (progress) -> Void in
+            downloads.downloadFileForURL(url, withName: name, inDirectoryNamed: nil, progressBlock: { (progress) -> Void in
             }, completionBlock: { (success) -> Void in
                 counter.click()
             }, enableBackgroundMode: false)

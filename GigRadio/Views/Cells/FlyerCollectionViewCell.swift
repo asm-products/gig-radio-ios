@@ -15,6 +15,7 @@ class FlyerCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var detailsButton: UIButton!
     @IBOutlet weak var lineupLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var baselineConstraint: NSLayoutConstraint!
     
     override class func layerClass()->AnyClass{
         return CAGradientLayer.self

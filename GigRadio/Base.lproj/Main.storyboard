@@ -226,7 +226,7 @@
         <scene sceneID="ks1-7y-4nm">
             <objects>
                 <collectionViewController automaticallyAdjustsScrollViewInsets="NO" id="nBz-M3-urm" customClass="FlyersCollectionViewController" customModule="GigRadio" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" indicatorStyle="white" dataMode="prototypes" id="s7k-zj-JgI">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" indicatorStyle="white" dataMode="prototypes" id="s7k-zj-JgI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="kIc-SP-V1o">
@@ -250,7 +250,7 @@
                                             <rect key="frame" x="0.0" y="65" width="320" height="320"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OCP-y4-r3A" customClass="ButtonWithRightAlignedImage" customModule="GigRadio" customModuleProvider="target">
-                                                    <rect key="frame" x="44" y="270" width="207" height="50"/>
+                                                    <rect key="frame" x="44" y="270" width="211" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="pUQ-b8-sSt"/>
                                                     </constraints>
@@ -260,7 +260,7 @@
                                                     </state>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ju0-2L-yA2">
-                                                    <rect key="frame" x="8" y="159" width="304" height="111"/>
+                                                    <rect key="frame" x="8" y="219" width="304" height="50.5"/>
                                                     <attributedString key="attributedText">
                                                         <fragment>
                                                             <string key="content">Ben Folds
@@ -299,21 +299,38 @@
                                                         <constraint firstAttribute="height" constant="50" id="vdA-yn-PBN"/>
                                                     </constraints>
                                                 </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WcH-nG-phb">
+                                                    <rect key="frame" x="273" y="273" width="44" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="44" id="FyW-IA-Fx3"/>
+                                                        <constraint firstAttribute="height" constant="44" id="apm-LE-UGc"/>
+                                                    </constraints>
+                                                    <state key="normal" image="tracks-avail-3.png">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="WUh-Ym-QLh">
+                                                    <rect key="frame" x="285" y="285" width="20" height="20"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="PQN-5h-Cxj" secondAttribute="height" multiplier="1:1" id="1L6-Cb-p8B"/>
                                                 <constraint firstItem="xQz-9Y-5aB" firstAttribute="leading" secondItem="PQN-5h-Cxj" secondAttribute="leading" id="4B4-5c-WkK"/>
                                                 <constraint firstAttribute="trailing" secondItem="ju0-2L-yA2" secondAttribute="trailing" constant="8" id="6XB-0g-r15"/>
+                                                <constraint firstAttribute="trailing" secondItem="WcH-nG-phb" secondAttribute="trailing" constant="3" id="7xl-tX-Wav"/>
                                                 <constraint firstItem="OCP-y4-r3A" firstAttribute="top" secondItem="ju0-2L-yA2" secondAttribute="bottom" id="ArC-vw-VlF"/>
+                                                <constraint firstItem="WcH-nG-phb" firstAttribute="centerY" secondItem="WUh-Ym-QLh" secondAttribute="centerY" id="Ox7-FH-a3D"/>
                                                 <constraint firstAttribute="bottom" secondItem="xQz-9Y-5aB" secondAttribute="bottom" id="Vgz-w0-JxX"/>
                                                 <constraint firstAttribute="bottom" secondItem="OCP-y4-r3A" secondAttribute="bottom" id="YdX-gl-pl2"/>
                                                 <constraint firstItem="ju0-2L-yA2" firstAttribute="leading" secondItem="PQN-5h-Cxj" secondAttribute="leading" constant="8" id="lsK-mV-bQh"/>
+                                                <constraint firstItem="OCP-y4-r3A" firstAttribute="centerY" secondItem="WcH-nG-phb" secondAttribute="centerY" id="pd1-VU-xL9"/>
+                                                <constraint firstItem="WcH-nG-phb" firstAttribute="centerX" secondItem="WUh-Ym-QLh" secondAttribute="centerX" id="r0v-J1-gy1"/>
                                                 <constraint firstItem="OCP-y4-r3A" firstAttribute="leading" secondItem="xQz-9Y-5aB" secondAttribute="trailing" constant="-6" id="yXT-aF-CrQ"/>
                                             </constraints>
                                         </view>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Xz-0O-AJN" userLabel="Star">
-                                            <rect key="frame" x="272.5" y="72" width="44" height="44"/>
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Xz-0O-AJN" userLabel="Star">
+                                            <rect key="frame" x="272" y="72" width="44" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="44" id="TNh-6W-iuV"/>
                                                 <constraint firstAttribute="width" constant="44" id="a7w-9J-VRM"/>
@@ -342,6 +359,8 @@
                                     <outlet property="detailsButton" destination="OCP-y4-r3A" id="fgm-k1-pSW"/>
                                     <outlet property="imageView" destination="CQZ-ju-8C9" id="gwx-mY-ZyR"/>
                                     <outlet property="lineupLabel" destination="ju0-2L-yA2" id="Opw-CZ-4Be"/>
+                                    <outlet property="trackAvailabilityButton" destination="WcH-nG-phb" id="nIk-Pl-LPI"/>
+                                    <outlet property="trackFetchingIndicator" destination="WUh-Ym-QLh" id="G4x-CV-9mi"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -480,6 +499,9 @@
                                         <state key="normal" image="forward.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="didPressForward:" destination="4aX-CJ-N7g" eventType="touchUpInside" id="Czz-cr-duT"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vfq-i4-zJK" userLabel="Rewind">
                                         <rect key="frame" x="53" y="101" width="43" height="43"/>
@@ -490,6 +512,9 @@
                                         <state key="normal" image="rewind.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="didPressRewind:" destination="4aX-CJ-N7g" eventType="touchUpInside" id="daT-9p-BEV"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TnY-Pu-iv5" userLabel="Play">
                                         <rect key="frame" x="126" y="88" width="69" height="69"/>
@@ -500,8 +525,11 @@
                                         <state key="normal" image="play.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="didPressPlayPause:" destination="4aX-CJ-N7g" eventType="touchUpInside" id="mhh-TW-JtO"/>
+                                        </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X0f-hA-0eG">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X0f-hA-0eG">
                                         <rect key="frame" x="119" y="54" width="81" height="33.5"/>
                                         <attributedString key="attributedText">
                                             <fragment>
@@ -530,13 +558,16 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQU-3P-7v4">
-                                        <rect key="frame" x="288" y="20" width="23.5" height="14.5"/>
+                                        <rect key="frame" x="284.5" y="20" width="23.5" height="14.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="egG-9n-J9i" customClass="PlaybackSlider" customModule="GigRadio" customModuleProvider="target">
-                                        <rect key="frame" x="40" y="0.0" width="240" height="55.5"/>
+                                        <rect key="frame" x="29.5" y="0.0" width="257" height="56.5"/>
+                                        <connections>
+                                            <action selector="didDragPlaybackTime:" destination="4aX-CJ-N7g" eventType="valueChanged" id="oYb-07-kP2"/>
+                                        </connections>
                                     </slider>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="speaker-loud.png" translatesAutoresizingMaskIntoConstraints="NO" id="UMz-pc-C0I">
                                         <rect key="frame" x="6" y="151" width="30" height="30"/>
@@ -546,19 +577,19 @@
                                         </constraints>
                                     </imageView>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="a4X-tp-mFR">
-                                        <rect key="frame" x="292" y="17" width="20" height="20"/>
+                                        <rect key="frame" x="286.5" y="18" width="20" height="20"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25490196078431371" alpha="0.57999999999999996" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="TnY-Pu-iv5" firstAttribute="leading" secondItem="Vfq-i4-zJK" secondAttribute="trailing" constant="30" id="2Dj-TA-KPh"/>
-                                    <constraint firstAttribute="trailing" secondItem="a4X-tp-mFR" secondAttribute="trailing" constant="8" id="6EL-4i-6wk"/>
+                                    <constraint firstItem="a4X-tp-mFR" firstAttribute="centerX" secondItem="EQU-3P-7v4" secondAttribute="centerX" id="38z-di-sk6"/>
                                     <constraint firstItem="qml-N3-rWM" firstAttribute="top" secondItem="TnY-Pu-iv5" secondAttribute="bottom" id="Erl-kB-Jrd"/>
                                     <constraint firstAttribute="bottom" secondItem="UMz-pc-C0I" secondAttribute="bottom" constant="14" id="KZA-rI-Z3P"/>
-                                    <constraint firstItem="egG-9n-J9i" firstAttribute="leading" secondItem="OOv-Ig-sVM" secondAttribute="trailing" constant="10" id="Lnj-hn-TJA"/>
+                                    <constraint firstItem="egG-9n-J9i" firstAttribute="leading" secondItem="OOv-Ig-sVM" secondAttribute="trailing" id="Lnj-hn-TJA"/>
                                     <constraint firstItem="qml-N3-rWM" firstAttribute="leading" secondItem="UMz-pc-C0I" secondAttribute="trailing" constant="1" id="Rcf-mt-bK2"/>
                                     <constraint firstAttribute="bottom" secondItem="qml-N3-rWM" secondAttribute="bottom" constant="8" id="RsR-Uc-oT3"/>
-                                    <constraint firstAttribute="trailing" secondItem="EQU-3P-7v4" secondAttribute="trailing" constant="8" id="TCi-fQ-F3L"/>
+                                    <constraint firstAttribute="trailing" secondItem="EQU-3P-7v4" secondAttribute="trailing" constant="12" id="TCi-fQ-F3L"/>
                                     <constraint firstItem="UMz-pc-C0I" firstAttribute="leading" secondItem="K5Z-AU-XgA" secondAttribute="leading" constant="6" id="Tdq-S1-SYT"/>
                                     <constraint firstItem="R6b-jW-cHV" firstAttribute="leading" secondItem="TnY-Pu-iv5" secondAttribute="trailing" constant="30" id="ZIy-1O-Mxe"/>
                                     <constraint firstItem="TnY-Pu-iv5" firstAttribute="top" secondItem="X0f-hA-0eG" secondAttribute="bottom" id="c2N-fK-QAS"/>
@@ -571,7 +602,7 @@
                                     <constraint firstAttribute="trailing" secondItem="qml-N3-rWM" secondAttribute="trailing" constant="8" id="qlD-zD-Pj5"/>
                                     <constraint firstItem="Vfq-i4-zJK" firstAttribute="centerY" secondItem="TnY-Pu-iv5" secondAttribute="centerY" id="rdR-hs-UYG"/>
                                     <constraint firstAttribute="centerX" secondItem="TnY-Pu-iv5" secondAttribute="centerX" id="uDO-3D-1xa"/>
-                                    <constraint firstItem="EQU-3P-7v4" firstAttribute="leading" secondItem="egG-9n-J9i" secondAttribute="trailing" constant="10" id="wr7-gX-EnX"/>
+                                    <constraint firstItem="EQU-3P-7v4" firstAttribute="leading" secondItem="egG-9n-J9i" secondAttribute="trailing" id="wr7-gX-EnX"/>
                                     <constraint firstItem="R6b-jW-cHV" firstAttribute="centerY" secondItem="TnY-Pu-iv5" secondAttribute="centerY" id="x43-1q-1S5"/>
                                     <constraint firstItem="egG-9n-J9i" firstAttribute="top" secondItem="K5Z-AU-XgA" secondAttribute="top" id="yGL-kE-7il"/>
                                 </constraints>
@@ -617,6 +648,7 @@
         <image name="settings.png" width="20" height="20"/>
         <image name="speaker-loud.png" width="22" height="28"/>
         <image name="star.png" width="25" height="25"/>
+        <image name="tracks-avail-3.png" width="23" height="22"/>
     </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

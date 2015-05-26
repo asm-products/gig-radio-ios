@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import SVProgressHUD
 
-class MainViewController: UIViewController, UICollectionViewDelegate, CLLocationManagerDelegate, DatePickerViewControllerDelegate,FlyersCollectionViewControllerDelegate {
+class MainViewController: UIViewController, UICollectionViewDelegate, CLLocationManagerDelegate, DatePickerViewControllerDelegate,FlyersCollectionViewControllerDelegate,TransportViewControllerDelegate {
     let DatePickerOffScreen:CGFloat = -80
     
     @IBOutlet weak var headerDateButton: UIButton!
@@ -22,7 +22,9 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
 
     var datePicker: DatePickerViewController?
     var flyersController: FlyersCollectionViewController?
+    var transportController: TransportViewController!
     var location: CLLocation?
+    
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return (loadingView != nil && loadingView.alpha < 1) ? .LightContent : .Default
@@ -38,7 +40,6 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
     override func viewDidLoad() {
         super.viewDidLoad()
         // deal with location stuff here because we might need to show UI
-        
         LocationHelper.lookUp { (location, error) -> Void in
             self.location = location
             self.fetchEventsForDate(NSDate()){
@@ -50,13 +51,66 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
     func fetchEventsForDate(date:NSDate, callback:()->Void){
         SongKickClient.sharedClient.getEvents(date, location: location, completion: { (eventIds, error) -> Void in
             if let ids = eventIds{
-                Playlist.sharedPlaylist.updateLatestRunWithEventIds(ids)
+                Playlist.sharedPlaylist.updateLatestRunWithEventIds(ids, date: date)
             }
             self.flyersController?.reload {
-                callback()
+                let run = PlaylistRun.current()
+                self.setCurrentItemIndex(run.indexOfLastUnplayedItem(), run:run){ success in
+                    if success == false{
+                        self.tryNextPlaylistItem()
+                    }
+                    callback()
+                        
+                }
             }
         })
     }
+    func didFinishPlayback() {
+//        tryNextPlaylistItem()
+    }
+    func tryNextPlaylistItem(){
+        
+    }
+    func setCurrentItemIndex(itemIndex: Int?,run:PlaylistRun,  callback:(success:Bool)->Void){
+        if itemIndex == nil{
+            callback(success: false)
+            return
+        }
+        // scroll to right performance
+        let indexPath = NSIndexPath(forItem: itemIndex!, inSection: run.globalIndex()!)
+        flyersController?.collectionView?.scrollToItemAtIndexPath(indexPath, atScrollPosition: .CenteredHorizontally, animated: false)
+        let cell = flyersController?.collectionView?.cellForItemAtIndexPath(indexPath) as! FlyerCollectionViewCell?
+        let item = run.items[itemIndex!]
+        cell?.trackFetchingIndicator.startAnimating()
+        cell?.trackAvailabilityButton.hidden = true
+        item.determineSoundCloudUser(){ user,error in
+            cell?.trackFetchingIndicator.hidden = true
+            if user == nil{
+                cell?.trackAvailabilityButton.setImage(UIImage(named:"tracks-avail-0"), forState: .Normal)
+                callback(success: false)
+            }else{
+                item.determineTracksAvailable(){ trackCount,error in
+                    if trackCount == nil{
+                        cell?.updateTrackAvailabilityIcon(0)
+                        callback(success: false)
+                    }else{
+                        cell?.updateTrackAvailabilityIcon(trackCount!)
+                        item.determineNextTrackToPlay(){ track in
+                            if track == nil{
+                                callback(success:false)
+                            }else{
+                                self.transportController.setBufferingDisplay(true)
+                                self.transportController.play(item){ success in
+                                    callback(success:success)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     // MARK: Loading
     func hideLoadingView(){
         UIView.animateWithDuration(0.3, animations: { () -> Void in
@@ -73,6 +127,9 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
         }else if let dest = segue.destinationViewController as? FlyersCollectionViewController{
             self.flyersController = dest
             flyersController?.delegate = self
+        }else if let dest = segue.destinationViewController as? TransportViewController{
+            self.transportController = dest
+            dest.delegate = self
         }
     }
     // MARK: DatePicker

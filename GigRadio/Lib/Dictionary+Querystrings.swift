@@ -13,7 +13,7 @@ extension Dictionary{
         var result = [String]()
         for (key, value) in self{
             let value = "\(value)"
-            result.append("\(key)=\(value.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)")
+            result.append("\(key)=\(value.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)")
         }
         return "&".join(result)
     }

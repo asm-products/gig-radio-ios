@@ -12,7 +12,9 @@ import RealmSwift
 class Playlist: NSObject {
     static let sharedPlaylist = Playlist()
     
-    func updateLatestRunWithEventIds(ids:[Int]){
+//    var currentItemIndexPath
+    
+    func updateLatestRunWithEventIds(ids:[Int], date: NSDate){
         var run = PlaylistRun.current()
         
         let realm = Realm()
@@ -50,6 +52,7 @@ class Playlist: NSObject {
                 if eventMissingFromRun{
                     for performance in event.performance{
                         let item = PlaylistItem()
+                        item.date = date
                         item.songKickEvent = event
                         item.songKickArtist = performance.artist
                         item.soundCloudUser = soundCloudUser!

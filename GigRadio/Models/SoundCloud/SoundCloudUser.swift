@@ -28,6 +28,7 @@ class SoundCloudUser: Object {
     dynamic var followingsCount: Int = 0
 
     dynamic var tracks = List<SoundCloudTrack>()
+    dynamic var tracksHaveBeenChecked = false
     
     override static func primaryKey()->String?{
         return "id"

@@ -11,6 +11,8 @@ import RealmSwift
 
 class PlaylistItem: Object {
     dynamic var id = NSUUID().UUIDString
+    
+    dynamic var date: NSDate = CalendarHelper.startOfUTCDay(NSDate()) // should be UTC-start-of-day
     dynamic var songKickEvent = SongKickEvent()
     dynamic var songKickArtist = SongKickArtist()
     
@@ -25,5 +27,54 @@ class PlaylistItem: Object {
     
     override static func primaryKey()->String?{
         return "id"
+    }
+    
+    
+    func determineSoundCloudUser(callback:(user:SoundCloudUser?,error:NSError?)->Void){
+        if soundCloudUser.id != 0{
+            callback(user: self.soundCloudUser, error:nil)
+        }else{
+            SoundCloudClient.sharedClient.findUser(songKickArtist.displayName) { (user,error) -> Void in
+                if user != nil{
+                    Realm().write {
+                        self.soundCloudUser = user!
+                    }
+                }
+                callback(user: user, error:error)
+            }
+        }
+    }
+    func determineTracksAvailable(callback:(trackCount:Int?,error:NSError?)->Void){
+        if soundCloudUser.tracksHaveBeenChecked{
+            callback(trackCount: self.soundCloudUser.tracks.count, error:nil)
+        }else{
+            SoundCloudClient.sharedClient.getTracks(soundCloudUser){ error in
+                if error == nil{
+                    Realm().write{
+                        self.soundCloudUser.tracksHaveBeenChecked = true
+                    }
+                }
+                callback(trackCount: self.soundCloudUser.tracks.count, error:error)
+            }
+        }
+    }
+    func determineNextTrackToPlay(callback:(SoundCloudTrack?)->Void){
+        // find all the playlist items that include this user
+        // reject any tracks that have been included in a playlist already
+        // return the next track. We should filter on the date. probably just the date
+        let realm = Realm()
+        let allPlaylistItems = realm.objects(PlaylistItem).filter("date = %@", self.date)
+        for track in soundCloudUser.tracks{
+            if allPlaylistItems.filter("soundCloudTrack = %@", track).count == 0{
+                realm.write {
+                    self.soundCloudTrack = track
+                }
+                callback(track)
+                return
+            }
+        }
+        callback(nil)
+        
+        
     }
 }

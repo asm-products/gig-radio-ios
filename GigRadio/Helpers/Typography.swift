@@ -13,7 +13,6 @@ class Typography: NSObject {
     let FocusedArtistAttributes = [NSFontAttributeName: UIFont(name: "Roboto-Light", size: 36)!]
     let DefaultAttributes = [NSFontAttributeName: UIFont(name: "Roboto-Light", size: 24)!]
     
-    
     class func HeaderLight(size:CGFloat)->[String:AnyObject]{
         return [
             NSFontAttributeName: UIFont(name: "HelveticaNeue-Light", size: size)!,

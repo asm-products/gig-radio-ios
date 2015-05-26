@@ -23,4 +23,15 @@ class PlaylistRun: Object {
             return run
         }
     }
+    func indexOfLastUnplayedItem()->Int?{
+        for (index,item) in enumerate(items){
+            if item.hasBeenPlayed == false{
+                return index
+            }
+        }
+        return nil
+    }
+    func globalIndex()->Int?{
+        return Realm().objects(PlaylistRun).indexOf(self)
+    }
 }

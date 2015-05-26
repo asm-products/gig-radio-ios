@@ -43,7 +43,7 @@ class SoundCloudTrack: Object {
         return "id"
     }
     
-    func playbackURL()->NSURL{
-        return NSURL(string: "\(self.streamUrl)?client_id=\(SoundCloudConfiguration().clientId)")!
+    func playbackUrl()->String{
+        return "\(self.streamUrl)?client_id=\(SoundCloudConfiguration().clientId)"
     }
 }

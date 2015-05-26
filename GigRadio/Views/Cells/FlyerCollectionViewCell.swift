@@ -16,6 +16,8 @@ class FlyerCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var lineupLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var baselineConstraint: NSLayoutConstraint!
+    @IBOutlet weak var trackAvailabilityButton: UIButton!
+    @IBOutlet weak var trackFetchingIndicator: UIActivityIndicatorView!
     
     override class func layerClass()->AnyClass{
         return CAGradientLayer.self
@@ -54,6 +56,13 @@ class FlyerCollectionViewCell: UICollectionViewCell {
         layer.colors = Colors.gradient(index).map({$0.CGColor})
         layer.startPoint = CGPoint(x: 0, y: 0)
         layer.endPoint = CGPoint(x: 0, y: 1)
+    }
+    func updateTrackAvailabilityIcon(count:Int){
+        var imageName = "track-avail-0"
+        if count > 0 {imageName = "track-avail-1"}
+        if count > 1 {imageName = "track-avail-2"}
+        if count > 2 {imageName = "track-avail-3"}
+        trackAvailabilityButton.setImage(UIImage(named: imageName), forState: .Normal)
     }
     
     

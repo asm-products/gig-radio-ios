@@ -31,41 +31,40 @@ class SongKickClient: NSObject {
         }
         let url = urlWithParams(params, resource: "events")
         session.dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
-            if let response = response as? NSHTTPURLResponse{
-                let json = JSON(data: data)
-                if response.statusCode != 200{
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        if let message = json["resultsPage"]["error"]["message"].object as? String{
-                            completion(results: nil,error: NSError(domain: "SongKick", code: response.statusCode, userInfo: [NSLocalizedDescriptionKey: message]))
-                        }else{
-                            completion(results:nil,error: error)
-                        }
-                    })
-                }else{
-                    let events = json["resultsPage"]["results"]["event"]
-                    println("Fetched \(events.count) event(s) from SongKick via \(url)")
-                    var ids = [Int]()
-                    if events.error == nil{
-                        let realm = Realm()
-                        realm.write {
-                            for event in events.object as! NSArray{
-                                if let event = event as? NSDictionary{
-                                    let event = event.dictionaryWithoutNullValues()
-                                    let model = realm.create(SongKickEvent.self, value: event, update: true)
-                                    if let date = model.start.parsedDate(){
-                                        model.date = date
-                                    }
-                                    ids.append(model.id)
+            let response = response as! NSHTTPURLResponse
+            let json = JSON(data: data)
+            if response.statusCode != 200{
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    if let message = json["resultsPage"]["error"]["message"].object as? String{
+                        completion(results: nil,error: NSError(domain: "SongKick", code: response.statusCode, userInfo: [NSLocalizedDescriptionKey: message]))
+                    }else{
+                        completion(results:nil,error: error)
+                    }
+                })
+            }else{
+                let events = json["resultsPage"]["results"]["event"]
+                println("Fetched \(events.count) event(s) from SongKick via \(url)")
+                var ids = [Int]()
+                if events.error == nil{
+                    let realm = Realm()
+                    realm.write {
+                        for event in events.object as! NSArray{
+                            if let event = event as? NSDictionary{
+                                let event = event.dictionaryWithoutNullValues()
+                                let model = realm.create(SongKickEvent.self, value: event, update: true)
+                                if let date = model.start.parsedDate(){
+                                    model.date = date
                                 }
+                                ids.append(model.id)
                             }
                         }
                     }
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        completion(results:ids, error: events.error)
-                    })
-                    
                 }
-            }
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    completion(results:ids, error: events.error)
+                })
+                
+                }
         }).resume()
         
     }

@@ -11,6 +11,7 @@
         </mutableArray>
         <mutableArray key="Roboto-Light.ttf">
             <string>Roboto-Light</string>
+            <string>Roboto-Light</string>
         </mutableArray>
         <mutableArray key="Roboto-Regular.ttf">
             <string>Roboto-Regular</string>
@@ -140,7 +141,7 @@
                                             <action selector="didPressDateHeader:" destination="9o0-oO-PbL" eventType="touchUpInside" id="zOW-Cl-aGe"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cxa-TZ-4n2" userLabel="Settings">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cxa-TZ-4n2" userLabel="Settings">
                                         <rect key="frame" x="0.0" y="20" width="44" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="44" id="xeG-ML-pXf"/>
@@ -276,8 +277,8 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OCP-y4-r3A" customClass="ButtonWithRightAlignedImage" customModule="GigRadio" customModuleProvider="target">
-                                                    <rect key="frame" x="44" y="270" width="207" height="50"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OCP-y4-r3A" customClass="ButtonWithRightAlignedImage" customModule="GigRadio" customModuleProvider="target">
+                                                    <rect key="frame" x="44" y="270" width="223" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="pUQ-b8-sSt"/>
                                                     </constraints>
@@ -285,6 +286,9 @@
                                                     <state key="normal" title="19:00 at The Handlebar, 3 miles away" image="disclosure-right.png">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="didPressEventLinkButton:" destination="WV7-54-S4d" eventType="touchUpInside" id="kuh-Ag-fpk"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ju0-2L-yA2">
                                                     <rect key="frame" x="8" y="159" width="304" height="111"/>
@@ -425,7 +429,7 @@
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="117" id="x70-HV-FoS" customClass="FavouriteItemTableViewCell" customModule="GigRadio" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x70-HV-FoS" id="Ibx-D0-Q3F">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" tableViewCell="x70-HV-FoS" id="Ibx-D0-Q3F">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tonight" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ye7-Mw-OaL">
@@ -434,10 +438,17 @@
                                             <color key="textColor" red="0.97647058823529409" green="0.78431372549019607" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nEX-fL-IO5">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nEX-fL-IO5">
                                             <rect key="frame" x="8" y="8" width="259.5" height="100.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Label">
+                                                    <attributes>
+                                                        <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -455,6 +466,7 @@
                                 <connections>
                                     <outlet property="mainLabel" destination="nEX-fL-IO5" id="iXs-5a-Bs0"/>
                                     <outlet property="tonightLabel" destination="ye7-Mw-OaL" id="TIn-NZ-10K"/>
+                                    <segue destination="LuZ-eH-5xI" kind="show" identifier="GigPage" id="3RL-8F-0Al"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -747,23 +759,236 @@
             </objects>
             <point key="canvasLocation" x="875" y="619.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Edit Playlist Item View Controller-->
+        <scene sceneID="h3T-jt-zvq">
+            <objects>
+                <tableViewController id="aWD-Lc-3cG" customClass="EditPlaylistItemViewController" customModule="GigRadio" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="N9I-Nl-3Ws">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="SAN-jD-Iib">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="149" id="69t-xd-Dv9">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="69t-xd-Dv9" id="XzT-Hn-rpL">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aig-Y8-kDj">
+                                                    <rect key="frame" x="8" y="8" width="97" height="88.5"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HJ4-pr-Qfm">
+                                                    <rect key="frame" x="113" y="44" width="207" height="47.5"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="We searched SoundCloud for &quot;Get Inuit&quot; and found ">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.80000001192092896" green="0.80000001192092896" blue="0.80000001192092896" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <font key="NSFont" size="13" name="HelveticaNeue"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="GetInuit. ">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.80000001192092896" green="0.80000001192092896" blue="0.80000001192092896" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <font key="NSFont" size="13" name="HelveticaNeue-Italic"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="If we got it wrong, you can fix that here.">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.80000001192092896" green="0.80000001192092896" blue="0.80000001192092896" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <font key="NSFont" size="13" name="HelveticaNeue"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWh-fO-nAi">
+                                                    <rect key="frame" x="8" y="110" width="78" height="30"/>
+                                                    <state key="normal" title="Play more">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Get Inuit" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qfw-lM-6kI">
+                                                    <rect key="frame" x="113" y="8" width="199" height="31"/>
+                                                    <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="24"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="46X-lC-gCc">
+                                                    <rect key="frame" x="216" y="111" width="93" height="30"/>
+                                                    <state key="normal" title="Don't play">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZf-rP-xZc">
+                                                    <rect key="frame" x="103" y="111" width="93" height="30"/>
+                                                    <state key="normal" title="SoundCloud">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="s5C-Bt-zTC" detailTextLabel="Hj2-Ca-hTU" style="IBUITableViewCellStyleSubtitle" id="ozu-iY-QMc">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ozu-iY-QMc" id="xLA-B2-B5y">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Pick a different SoundCloud user" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="s5C-Bt-zTC">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="13 other candidates" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hj2-Ca-hTU">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="ZQm-wa-ZDp" detailTextLabel="F9g-2L-SKq" style="IBUITableViewCellStyleSubtitle" id="BkF-wT-iwm">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BkF-wT-iwm" id="tfP-2W-JWY">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Pick a different track to play" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZQm-wa-ZDp">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="52 others available" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="F9g-2L-SKq">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="aWD-Lc-3cG" id="v8O-ae-X7v"/>
+                            <outlet property="delegate" destination="aWD-Lc-3cG" id="pic-je-3PI"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="6Bj-e4-pFr">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="ZaU-Cl-IM8">
+                            <connections>
+                                <action selector="didPressDone:" destination="aWD-Lc-3cG" id="1Ts-oe-atQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ay7-5O-oth" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1276" y="1126"/>
+        </scene>
+        <!--Gig Info View Controller-->
         <scene sceneID="fhK-Tg-dGk">
             <objects>
-                <viewController id="LuZ-eH-5xI" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GigPage" id="LuZ-eH-5xI" customClass="GigInfoViewController" customModule="GigRadio" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tew-B4-b50"/>
                         <viewControllerLayoutGuide type="bottom" id="EFC-je-nvy"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cgx-NL-Y7K">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5hx-ML-LwC">
+                                <rect key="frame" x="16" y="183" width="288" height="312"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sKG-vi-e9n">
+                                <rect key="frame" x="55" y="503" width="211" height="30"/>
+                                <state key="normal" title="Show directions in CityMapper">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didPressDirectionsButton:" destination="LuZ-eH-5xI" eventType="touchUpInside" id="8MP-y3-Tuc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4q-Va-QSV">
+                                <rect key="frame" x="98" y="538" width="124" height="30"/>
+                                <state key="normal" title="Open in SongKick">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didPressSongKickButton:" destination="LuZ-eH-5xI" eventType="touchUpInside" id="aX7-bi-YMC"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="247" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JYO-ya-RIh">
+                                <rect key="frame" x="16" y="72" width="288" height="111"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">Ben Folds
+</string>
+                                        <attributes>
+                                            <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="24" name="Roboto-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Foo Fighters">
+                                        <attributes>
+                                            <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="36" name="Roboto-Light"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+30 Seconds to Mars</string>
+                                        <attributes>
+                                            <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="24" name="Roboto-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="5hx-ML-LwC" firstAttribute="leading" secondItem="cgx-NL-Y7K" secondAttribute="leadingMargin" id="1Ee-uA-xMo"/>
+                            <constraint firstItem="5hx-ML-LwC" firstAttribute="trailing" secondItem="cgx-NL-Y7K" secondAttribute="trailingMargin" id="2JO-SW-29l"/>
+                            <constraint firstItem="JYO-ya-RIh" firstAttribute="top" secondItem="cgx-NL-Y7K" secondAttribute="topMargin" constant="72" id="4Lp-HW-mpl"/>
+                            <constraint firstAttribute="centerX" secondItem="s4q-Va-QSV" secondAttribute="centerX" id="5eR-W9-Kid"/>
+                            <constraint firstItem="EFC-je-nvy" firstAttribute="top" secondItem="s4q-Va-QSV" secondAttribute="bottom" id="EFI-eq-E7s"/>
+                            <constraint firstItem="sKG-vi-e9n" firstAttribute="top" secondItem="5hx-ML-LwC" secondAttribute="bottom" constant="8" id="Rs8-wW-ISU"/>
+                            <constraint firstAttribute="centerX" secondItem="s4q-Va-QSV" secondAttribute="centerX" id="cty-MP-O9f"/>
+                            <constraint firstItem="5hx-ML-LwC" firstAttribute="top" secondItem="JYO-ya-RIh" secondAttribute="bottom" id="egE-LZ-HU1"/>
+                            <constraint firstAttribute="centerX" secondItem="sKG-vi-e9n" secondAttribute="centerX" id="ffg-TL-ojB"/>
+                            <constraint firstItem="JYO-ya-RIh" firstAttribute="leading" secondItem="cgx-NL-Y7K" secondAttribute="leadingMargin" id="iwH-qY-Ifz"/>
+                            <constraint firstItem="JYO-ya-RIh" firstAttribute="trailing" secondItem="cgx-NL-Y7K" secondAttribute="trailingMargin" id="rSf-rK-TMK"/>
+                            <constraint firstItem="s4q-Va-QSV" firstAttribute="top" secondItem="sKG-vi-e9n" secondAttribute="bottom" constant="5" id="ya5-eL-uHt"/>
+                        </constraints>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <connections>
+                        <outlet property="directionsButton" destination="sKG-vi-e9n" id="VVd-JJ-zHZ"/>
+                        <outlet property="mainLabel" destination="JYO-ya-RIh" id="vxJ-W6-SFz"/>
+                        <outlet property="mapView" destination="5hx-ML-LwC" id="2N8-ZG-V12"/>
+                        <outlet property="songKickButton" destination="s4q-Va-QSV" id="Iu4-yv-t8o"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OQ7-Yg-VU7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1015" y="1073"/>
+            <point key="canvasLocation" x="1700" y="523"/>
         </scene>
         <!--Playlist Table View Controller-->
         <scene sceneID="mUr-5D-qBt">
@@ -808,6 +1033,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M87-1E-v64" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1305" y="637.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="z9c-EU-2B5">
+            <objects>
+                <navigationController storyboardIdentifier="EditPlaylistItemNav" automaticallyAdjustsScrollViewInsets="NO" id="3Zw-uJ-dYi" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="H6e-Cm-HcS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="aWD-Lc-3cG" kind="relationship" relationship="rootViewController" id="hLA-6v-10v"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mTw-tK-EOO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="875" y="1126"/>
         </scene>
     </scenes>
     <resources>

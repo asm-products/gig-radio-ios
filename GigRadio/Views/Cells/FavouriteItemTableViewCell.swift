@@ -17,7 +17,7 @@ class FavouriteItemTableViewCell: UITableViewCell {
             var text = NSMutableAttributedString(string: "")
             let br = NSAttributedString(string: "\n")
             let date = NSAttributedString(string: DateFormats.todayFormatter().stringFromDate(favourite.event.date), attributes: Typography.RobotoBold(16))
-            let artists = NSAttributedString(string: join(",", favourite.event.artistNames()), attributes: Typography.RobotoRegular(24))
+            let artists = NSAttributedString(string: join(", ", favourite.event.artistNames()), attributes: Typography.RobotoRegular(24))
             let timeAndDate = NSAttributedString(string: PlaylistHelper.dateAndVenueText(favourite.event), attributes: Typography.RobotoLight(16))
             text.appendAttributedString(date)
             text.appendAttributedString(br)

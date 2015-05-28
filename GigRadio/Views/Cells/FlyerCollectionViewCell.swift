@@ -9,6 +9,12 @@
 import UIKit
 import MapKit
 
+protocol FlyerCollectionViewCellDelegate{
+    func flyerCellShowEventButtonPressed(event:SongKickEvent)
+    func flyerCellTrackCountButtonPressed(item:PlaylistItem)
+    func flyerCellPlayButtonPressed(item:PlaylistItem)
+}
+
 class FlyerCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var compass: CompassView!
@@ -19,6 +25,8 @@ class FlyerCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var trackAvailabilityButton: UIButton!
     @IBOutlet weak var trackFetchingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var favouriteButton: UIButton!
+    
+    var delegate : FlyerCollectionViewCellDelegate!
     
     override class func layerClass()->AnyClass{
         return CAGradientLayer.self
@@ -97,7 +105,10 @@ class FlyerCollectionViewCell: UICollectionViewCell {
         }
     }
     @IBAction func didPressTracksIndicatorButton(sender: AnyObject) {
-        let titles = playlistItem?.soundCloudUser.tracks.valueForKey("title")
-        println("tracks \(titles)")
+        delegate.flyerCellTrackCountButtonPressed(playlistItem!)
+    }
+    
+    @IBAction func didPressEventLinkButton(sender: AnyObject) {
+        delegate.flyerCellShowEventButtonPressed(playlistItem!.songKickEvent)
     }
 }

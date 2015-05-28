@@ -15,7 +15,7 @@ protocol FlyersCollectionViewControllerDelegate{
     func heightOfTransportArea()->CGFloat
 }
 
-class FlyersCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class FlyersCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, FlyerCollectionViewCellDelegate {
     var runs: Results<PlaylistRun>!
     var delegate: FlyersCollectionViewControllerDelegate!
     override func viewDidLoad() {
@@ -49,6 +49,7 @@ class FlyersCollectionViewController: UICollectionViewController, UICollectionVi
     
         let playlistItem = playlistItemAtIndexPath(indexPath)
         cell.playlistItem = playlistItem
+        cell.delegate = self
         cell.baselineConstraint.constant = delegate.heightOfTransportArea()
         playlistItem?.determineSoundCloudUser({ (user, error) -> Void in
             playlistItem?.determineTracksAvailable({ (trackCount, error) -> Void in
@@ -63,6 +64,24 @@ class FlyersCollectionViewController: UICollectionViewController, UICollectionVi
     func playlistItemAtIndexPath(indexPath:NSIndexPath)->PlaylistItem?{
         return runs[indexPath.section].items[indexPath.row]
     }
+    func flyerCellShowEventButtonPressed(event: SongKickEvent) {
+        if let controller = storyboard?.instantiateViewControllerWithIdentifier("GigPage") as? GigInfoViewController{
+            controller.event = event
+            navigationController?.pushViewController(controller, animated: true)
+        }
+    }
+    func flyerCellPlayButtonPressed(item: PlaylistItem) {
+        
+    }
+    func flyerCellTrackCountButtonPressed(item: PlaylistItem) {
+        if let nav = storyboard?.instantiateViewControllerWithIdentifier("EditPlaylistItemNav") as? UINavigationController{
+            if let root = nav.topViewController  as? EditPlaylistItemViewController{
+                root.playlistItem = item
+                presentViewController(nav, animated: true, completion: nil)
+            }
+        }
+    }
+    
     // MARK: Layout Delegate
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{
         return CGSize(width: collectionView.frame.width , height: collectionView.frame.size.height)

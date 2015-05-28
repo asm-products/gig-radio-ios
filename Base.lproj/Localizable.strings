@@ -11,3 +11,5 @@
 "LocationPrompt.Continue" = "Yes please";
 "TimeVenueAndDistance.Title" = "%@ at %@";
 "TimeVenueAndDistance.Distance" = ", %@ away";
+"Favourites.Upcoming" = "Coming up...";
+"Favourites.Past" = "Past gigs";

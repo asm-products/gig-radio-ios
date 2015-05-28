@@ -18,7 +18,9 @@ class FavouritesTableViewController: UITableViewController {
     var past = Favourite.pastEvents()
     override func viewDidLoad() {
         super.viewDidLoad()
-         self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100
+        self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -45,22 +47,34 @@ class FavouritesTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! FavouriteItemTableViewCell
-        switch Section(rawValue: indexPath.section)!{
-        case .Upcoming: cell.favourite = upcoming[indexPath.row]
-        case .Past: cell.favourite = upcoming[indexPath.row]
-        default:
-            break
-        }
+        cell.favourite = favouriteAtIndexPath(indexPath)
         return cell
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
+    func favouriteAtIndexPath(indexPath:NSIndexPath)->Favourite?{
+        switch Section(rawValue: indexPath.section)!{
+        case .Upcoming: return upcoming[indexPath.row]
+        case .Past: return past[indexPath.row]
+        default:
+            return nil
+        }
     }
-    */
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch Section(rawValue: section)!{
+        case .Upcoming: return t("Favourites.Upcoming")
+        case .Past: return t("Favourites.Past")
+        default: return nil
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let dest = segue.destinationViewController as? GigInfoViewController{
+            if let indexPath = tableView.indexPathForSelectedRow(){
+                dest.event = favouriteAtIndexPath(indexPath)!.event
+            }
+        }
+    }
+
+
 
     /*
     // Override to support editing the table view.
@@ -74,29 +88,8 @@ class FavouritesTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
 
-    }
-    */
 
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

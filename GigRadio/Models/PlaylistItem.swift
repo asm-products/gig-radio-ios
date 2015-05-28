@@ -22,7 +22,7 @@ class PlaylistItem: Object {
     dynamic var colorIndex = 0
     dynamic var createdAt = NSDate()
     
-    
+    dynamic var userHasBeenChecked = false
     dynamic var hasBeenPlayed = false
     
     override static func primaryKey()->String?{
@@ -35,8 +35,9 @@ class PlaylistItem: Object {
             callback(user: self.soundCloudUser, error:nil)
         }else{
             SoundCloudClient.sharedClient.findUser(songKickArtist.displayName) { (user,error) -> Void in
-                if user != nil{
-                    Realm().write {
+                Realm().write{
+                    self.userHasBeenChecked = true
+                    if user != nil{
                         self.soundCloudUser = user!
                     }
                 }
@@ -46,15 +47,13 @@ class PlaylistItem: Object {
     }
     func determineTracksAvailable(callback:(trackCount:Int?,error:NSError?)->Void){
         if soundCloudUser.tracksHaveBeenChecked{
-            callback(trackCount: self.soundCloudUser.tracks.count, error:nil)
+            callback(trackCount: self.soundCloudUser.tracks.filter("streamable = %@", true).count, error:nil)
         }else{
             SoundCloudClient.sharedClient.getTracks(soundCloudUser){ error in
-                if error == nil{
-                    Realm().write{
-                        self.soundCloudUser.tracksHaveBeenChecked = true
-                    }
+                Realm().write{
+                    self.soundCloudUser.tracksHaveBeenChecked = true
                 }
-                callback(trackCount: self.soundCloudUser.tracks.count, error:error)
+                callback(trackCount: self.soundCloudUser.tracks.filter("streamable = %@", true).count, error:error)
             }
         }
     }
@@ -65,16 +64,21 @@ class PlaylistItem: Object {
         let realm = Realm()
         let allPlaylistItems = realm.objects(PlaylistItem).filter("date = %@", self.date)
         for track in soundCloudUser.tracks{
-            if allPlaylistItems.filter("soundCloudTrack = %@", track).count == 0{
-                realm.write {
-                    self.soundCloudTrack = track
+            if track.streamable{
+                if allPlaylistItems.filter("soundCloudTrack = %@", track).count == 0{
+                    realm.write {
+                        self.soundCloudTrack = track
+                    }
+                    callback(track)
+                    return
                 }
-                callback(track)
-                return
             }
         }
         callback(nil)
-        
-        
+    }
+    func markPlayed(){
+        Realm().write {
+            self.hasBeenPlayed = true
+        }
     }
 }

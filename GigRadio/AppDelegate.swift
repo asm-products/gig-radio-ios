@@ -7,13 +7,14 @@
 //
 
 import UIKit
-
+import RealmSwift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
+        setSchemaVersion(2, Realm.defaultPath) { migration, oldSchemaVersion in
+        }
         return true
     }
 

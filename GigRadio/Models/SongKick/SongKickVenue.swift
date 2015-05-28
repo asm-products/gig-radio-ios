@@ -27,16 +27,26 @@ class SongKickVenue: Object {
 //    override static func primaryKey()->String?{
 //        return "id"
 //    }
-    class func updateDistanceCachesWithLocation(location: CLLocation){
-        let realm = Realm()
-        realm.write { () -> Void in
-            for venue in realm.objects(SongKickVenue){
-                venue.distanceCache = venue.location().distanceFromLocation(location)
+    class func updateDistanceCachesWithLocation(location: CLLocation?){
+        if let location = location{
+            let realm = Realm()
+            realm.write { () -> Void in
+                for venue in realm.objects(SongKickVenue){
+                    if let dest = venue.location(){
+                        venue.distanceCache = location.distanceFromLocation(dest)
+                    }else{
+                        venue.distanceCache = 0 // not necessary unless upgrading dev version of app
+                    }
+                }
             }
         }
     }
-    func location()->CLLocation {
-        return CLLocation(latitude: self.lat, longitude: self.lng)
+    func location()->CLLocation?{
+        if lat == 0 || lng == 0{
+            return nil
+        }else{
+            return CLLocation(latitude: self.lat, longitude: self.lng)
+        }
     }
     
     func address()->String{

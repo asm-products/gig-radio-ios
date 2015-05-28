@@ -50,6 +50,13 @@ class FlyersCollectionViewController: UICollectionViewController, UICollectionVi
         let playlistItem = playlistItemAtIndexPath(indexPath)
         cell.playlistItem = playlistItem
         cell.baselineConstraint.constant = delegate.heightOfTransportArea()
+        playlistItem?.determineSoundCloudUser({ (user, error) -> Void in
+            playlistItem?.determineTracksAvailable({ (trackCount, error) -> Void in
+                if cell.playlistItem == playlistItem{
+                    cell.playlistItem = playlistItem // update if it's not been reused by now.
+                }
+            })
+        })
         return cell
     }
 

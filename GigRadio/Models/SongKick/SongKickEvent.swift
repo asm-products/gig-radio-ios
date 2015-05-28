@@ -28,7 +28,13 @@ class SongKickEvent: Object {
     override static func primaryKey()->String?{
         return "id"
     }
-    
+    func artistNames()->[String]{
+        var names = [String]()
+        for p in performance{
+           names.append(p.artist.displayName)
+        }
+        return names
+    }
     
     class func eventCountOnDate(date:NSDate)->Int{
         return Realm().objects(SongKickEvent).filter("date = %@", date).count

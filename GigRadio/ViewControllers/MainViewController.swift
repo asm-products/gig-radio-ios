@@ -19,6 +19,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
     
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var datePickerButtons: UIView!
+    @IBOutlet weak var favouritesCountLabel: UILabel! 
 
     var datePicker: DatePickerViewController?
     var flyersController: FlyersCollectionViewController?
@@ -39,6 +40,8 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateFavouritesCount()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateFavouritesCount", name: FAVOURITE_COUNT_CHANGED, object: nil)
         // deal with location stuff here because we might need to show UI
         LocationHelper.lookUp { (location, error) -> Void in
             self.location = location
@@ -48,27 +51,37 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
             }
         }
     }
+    func updateFavouritesCount(){
+        favouritesCountLabel.layer.cornerRadius = 8
+        let count = Favourite.futureEvents().count
+        if count > 0{
+            favouritesCountLabel.hidden = false
+            favouritesCountLabel.text = "\(count)"
+        }else{
+            favouritesCountLabel.hidden = true
+        }
+    }
     func fetchEventsForDate(date:NSDate, callback:()->Void){
         SongKickClient.sharedClient.getEvents(date, location: location, completion: { (eventIds, error) -> Void in
             if let ids = eventIds{
                 Playlist.sharedPlaylist.updateLatestRunWithEventIds(ids, date: date)
             }
+            SongKickVenue.updateDistanceCachesWithLocation(self.location)
             self.flyersController?.reload {
-                let run = PlaylistRun.current()
-                self.setCurrentItemIndex(run.indexOfLastUnplayedItem(), run:run){ success in
-                    if success == false{
-                        self.tryNextPlaylistItem()
-                    }
-                    callback()
-                        
-                }
+                self.playNextTrack()
+                callback()
             }
         })
     }
-    func didFinishPlayback() {
-//        tryNextPlaylistItem()
+    func playNextTrack(){
+        var run = PlaylistRun.current()
+        self.setCurrentItemIndex(run.indexOfLastUnplayedItem(), run:run){ success in
+            if success == false{
+                self.playNextTrack()
+            }
+        }
     }
-    func tryNextPlaylistItem(){
+    func playPreviousTrack() {
         
     }
     func setCurrentItemIndex(itemIndex: Int?,run:PlaylistRun,  callback:(success:Bool)->Void){
@@ -78,7 +91,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
         }
         // scroll to right performance
         let indexPath = NSIndexPath(forItem: itemIndex!, inSection: run.globalIndex()!)
-        flyersController?.collectionView?.scrollToItemAtIndexPath(indexPath, atScrollPosition: .CenteredHorizontally, animated: false)
+        flyersController?.collectionView?.scrollToItemAtIndexPath(indexPath, atScrollPosition: .CenteredHorizontally, animated: true)
         let cell = flyersController?.collectionView?.cellForItemAtIndexPath(indexPath) as! FlyerCollectionViewCell?
         let item = run.items[itemIndex!]
         cell?.trackFetchingIndicator.startAnimating()
@@ -92,11 +105,13 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
                 item.determineTracksAvailable(){ trackCount,error in
                     if trackCount == nil{
                         cell?.updateTrackAvailabilityIcon(0)
+                        item.markPlayed()
                         callback(success: false)
                     }else{
                         cell?.updateTrackAvailabilityIcon(trackCount!)
                         item.determineNextTrackToPlay(){ track in
                             if track == nil{
+                                item.markPlayed()
                                 callback(success:false)
                             }else{
                                 self.transportController.setBufferingDisplay(true)

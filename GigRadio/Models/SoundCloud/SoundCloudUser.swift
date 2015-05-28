@@ -33,4 +33,14 @@ class SoundCloudUser: Object {
     override static func primaryKey()->String?{
         return "id"
     }
+    var couldHaveTracksAvailable:Bool{
+        return tracksHaveBeenChecked == false || tracks.count > 0
+    }
+    func displayName()->String{
+       var result = fullName
+        if result == ""{
+            result = username
+        }
+        return result
+    }
 }

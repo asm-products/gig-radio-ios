@@ -9,8 +9,10 @@
 import UIKit
 import MediaPlayer
 import StreamingKit
+import AVFoundation
 protocol TransportViewControllerDelegate{
-    func didFinishPlayback()
+    func playNextTrack()
+    func playPreviousTrack()
 }
 
 class TransportViewController: UIViewController,STKAudioPlayerDelegate{
@@ -30,18 +32,6 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate{
     
     var playlistItem: PlaylistItem?
     
-    let TrackTitleAttributes = [NSFontAttributeName: UIFont(name: "Roboto-Bold", size: 12)!]
-    let TrackArtistAttributes = [NSFontAttributeName: UIFont(name: "Roboto-Regular", size: 12)!]
-    
-    var attributedTitleText: NSAttributedString{
-        var result = NSMutableAttributedString(string: "")
-        let trackText = NSAttributedString(string: playlistItem!.soundCloudTrack.title, attributes: TrackTitleAttributes)
-        let artistText = NSAttributedString(string: playlistItem!.soundCloudUser.fullName, attributes: TrackArtistAttributes)
-        result.appendAttributedString(trackText)
-        result.appendAttributedString(NSAttributedString(string: "\n"))
-        result.appendAttributedString(artistText)
-        return result
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,11 +39,14 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate{
         displayLink.frameInterval = 60
         displayLink.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSDefaultRunLoopMode)
         audioPlayer.delegate = self
+        
         volumeView.setVolumeThumbImage(UIImage(named: "volume-thumb"), forState: .Normal)
     }
     func play(item:PlaylistItem, callback:(success:Bool)->Void){
+        AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: nil)
         self.playlistItem = item
-        trackInfoLabel.attributedText = attributedTitleText
+        item.markPlayed()
+        trackInfoLabel.attributedText = PlaylistHelper.attributedTrackInfoText(playlistItem!, separator: "\n")
         audioPlayer.play(item.soundCloudTrack.playbackUrl())
         callback(success: true)
     }
@@ -107,7 +100,14 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate{
     }
     /// Raised when an item has finished playing
     func audioPlayer(audioPlayer: STKAudioPlayer!, didFinishPlayingQueueItemId queueItemId: NSObject!, withReason stopReason: STKAudioPlayerStopReason, andProgress progress: Double, andDuration duration: Double){
-        delegate.didFinishPlayback()
+        switch stopReason.value{
+        case STKAudioPlayerStopReasonNone.value:
+            println("Stopped for no reason")
+        case STKAudioPlayerStopReasonEof.value:
+            delegate.playNextTrack()
+        default:
+            println("Player stopped for STKAudioPlayerStopReason.\(stopReason.value)")
+        }
     }
     /// Raised when an unexpected and possibly unrecoverable error has occured (usually best to recreate the STKAudioPlauyer)
     func audioPlayer(audioPlayer: STKAudioPlayer!, unexpectedError errorCode: STKAudioPlayerErrorCode){
@@ -121,8 +121,10 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate{
         }
     }
     @IBAction func didPressForward(sender: AnyObject) {
+        delegate.playNextTrack()
     }
     @IBAction func didPressRewind(sender: AnyObject) {
+        delegate.playPreviousTrack()
     }
     @IBAction func didDragPlaybackTime(sender: UISlider) {
         audioPlayer.seekToTime( Double(sender.value) * audioPlayer.duration )

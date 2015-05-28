@@ -12,24 +12,40 @@ import RealmSwift
 class PlaylistRun: Object {
     dynamic var items = List<PlaylistItem>()
     dynamic var createdAt = NSDate()
-    
-    class func current()->PlaylistRun{
-        let realm = Realm()
-        if let run = realm.objects(PlaylistRun).last{
-            return run
-        }else{
-            let run = PlaylistRun()
-            realm.write { realm.add(run, update: false) }
-            return run
+    class func allRunsInReverseOrder()->[PlaylistRun]{
+        var result = [PlaylistRun]()
+        for run in Realm().objects(PlaylistRun).sorted("createdAt", ascending: false){
+            result.append(run)
         }
+        return result
+    }
+    class func current()->PlaylistRun{
+        if let run = Realm().objects(PlaylistRun).last{
+            if run.isComplete(){
+                return createNewRun()
+            }else{
+                return run
+            }
+        }else{
+            return createNewRun()
+        }
+    }
+    class func createNewRun()->PlaylistRun{
+        let run = PlaylistRun()
+        let realm = Realm()
+        realm.write { realm.add(run, update: false) }
+        return run
     }
     func indexOfLastUnplayedItem()->Int?{
         for (index,item) in enumerate(items){
-            if item.hasBeenPlayed == false{
+            if item.hasBeenPlayed == false && ((item.userHasBeenChecked == false && item.soundCloudUser.id == 0) || item.soundCloudUser.couldHaveTracksAvailable){
                 return index
             }
         }
         return nil
+    }
+    func isComplete()->Bool{
+        return indexOfLastUnplayedItem() == nil
     }
     func globalIndex()->Int?{
         return Realm().objects(PlaylistRun).indexOf(self)

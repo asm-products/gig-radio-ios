@@ -18,6 +18,7 @@ class FlyerCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var baselineConstraint: NSLayoutConstraint!
     @IBOutlet weak var trackAvailabilityButton: UIButton!
     @IBOutlet weak var trackFetchingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var favouriteButton: UIButton!
     
     override class func layerClass()->AnyClass{
         return CAGradientLayer.self
@@ -36,17 +37,13 @@ class FlyerCollectionViewCell: UICollectionViewCell {
                 }else{
                     imageView.image = UIImage(named: "flyer-placeholder")
                 }
-                compass.destination = item.songKickEvent.venue.location()
-                let startTime = item.songKickEvent.start.parsedDateTime()
-                let time = startTime == nil ? "" : DateFormats.timeFormatter().stringFromDate(startTime!)
-                let venue = item.songKickEvent.venue.displayName
-                let df = MKDistanceFormatter()
-                df.unitStyle = .Abbreviated
-                let distance = df.stringFromDistance(item.songKickEvent.distanceCache)
-                let template = t("TimeVenueAndDistance.Title")
-                let text = String(format: template, arguments: [time, venue, distance])
-                detailsButton.setTitle(text, forState: .Normal)
+                if let location = item.songKickEvent.venue.location(){
+                   compass.destination =  location
+                }
                 
+                detailsButton.setTitle(PlaylistHelper.dateAndVenueText(item.songKickEvent), forState: .Normal)
+                updateTrackAvailabilityIcon(item.soundCloudUser.tracks.count)
+                updateFavouriteState(item)
             }
             
         }
@@ -58,11 +55,7 @@ class FlyerCollectionViewCell: UICollectionViewCell {
         layer.endPoint = CGPoint(x: 0, y: 1)
     }
     func updateTrackAvailabilityIcon(count:Int){
-        var imageName = "track-avail-0"
-        if count > 0 {imageName = "track-avail-1"}
-        if count > 1 {imageName = "track-avail-2"}
-        if count > 2 {imageName = "track-avail-3"}
-        trackAvailabilityButton.setImage(UIImage(named: imageName), forState: .Normal)
+        trackAvailabilityButton.setTitle("\(count)", forState: .Normal)
     }
     
     
@@ -84,5 +77,27 @@ class FlyerCollectionViewCell: UICollectionViewCell {
         }else{
             return NSAttributedString(string: "Error")
         }
+    }
+    func updateFavouriteState(item:PlaylistItem){
+        if Favourite.findByEvent(item.songKickEvent) != nil{
+            favouriteButton.setImage(UIImage(named: "starred"), forState: .Normal)
+        }else{
+            favouriteButton.setImage(UIImage(named: "star"), forState: .Normal)
+        }
+    }
+    @IBAction func didPressFavouriteButton(sender: AnyObject) {
+        if let item = playlistItem{
+            if let favourite = Favourite.findByEvent(item.songKickEvent){
+                Favourite.remove(favourite)
+            }else{
+                Favourite.add(item.songKickEvent)
+            }
+            updateFavouriteState(item)
+            NSNotificationCenter.defaultCenter().postNotificationName(FAVOURITE_COUNT_CHANGED, object: nil)
+        }
+    }
+    @IBAction func didPressTracksIndicatorButton(sender: AnyObject) {
+        let titles = playlistItem?.soundCloudUser.tracks.valueForKey("title")
+        println("tracks \(titles)")
     }
 }

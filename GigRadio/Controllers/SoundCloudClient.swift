@@ -39,15 +39,17 @@ class SoundCloudClient: NSObject {
     func getTracks(user:SoundCloudUser, completion:(error:NSError?)->Void){
         let url = urlWithParams([:], resource: "users/\(user.id)/tracks")
         self.get(url) { json, error in
-            println("fetched \(json.count) track(s) from SoundCloud via \(url)")
-            let realm = Realm()
-            realm.write {
-                for item in json.object as! NSArray{
-                    var item = item.dictionaryWithoutNullValues()
-                    item = (item as NSDictionary).dictionaryWithCamelCaseKeys()
-                    item["createdAt"] = DateFormats.soundCloudDateFormat().dateFromString(item["createdAt"] as! String)
-                    let track = realm.create(SoundCloudTrack.self, value: item, update: true)
-                    user.tracks.append(track)
+            println("fetched \(json.count) track(s) from SoundCloud via \(url) with erro \(error)")
+            if error == nil{
+                let realm = Realm()
+                realm.write {
+                    for item in json.object as! NSArray{
+                        var item = item.dictionaryWithoutNullValues()
+                        item = (item as NSDictionary).dictionaryWithCamelCaseKeys()
+                        item["createdAt"] = DateFormats.soundCloudDateFormat().dateFromString(item["createdAt"] as! String)
+                        let track = realm.create(SoundCloudTrack.self, value: item, update: true)
+                        user.tracks.append(track)
+                    }
                 }
             }
             completion(error: error)
@@ -65,7 +67,13 @@ class SoundCloudClient: NSObject {
             let json = JSON(data:data)
             Async.main {
                 if response.statusCode != 200{
-                    completion(json: json,error: error)
+                    if error == nil{
+                        let error = NSError(domain: "SoundCloud", code: response.statusCode, userInfo: json.object as! [NSObject : AnyObject])
+                        completion(json: json,error: error)
+                    }else{
+                        completion(json: json,error: error)
+                    }
+
                 }else{
                     completion(json: json,error: nil)
                 }

@@ -11,3 +11,6 @@ import UIKit
 func t(key:String)->String{
     return NSLocalizedString(key, tableName: nil, bundle: NSBundle.mainBundle(), value: "", comment: "")
 }
+func template(key:String, values:[CVarArgType])->String{
+    return String(format: t(key), arguments: values)
+}

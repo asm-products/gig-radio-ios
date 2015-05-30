@@ -33,8 +33,14 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
     override func prefersStatusBarHidden() -> Bool {
         return dateSelectorRevealConstraint == nil ||  dateSelectorRevealConstraint.constant == 0
     }
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: true)
         view.bringSubviewToFront(loadingView) // for ease of authoring I put the loading view at the back of the storyboard once I laid it out
         hideDatePickerAnimated(false)
     }

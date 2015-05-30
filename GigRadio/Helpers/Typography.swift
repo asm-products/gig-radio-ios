@@ -36,4 +36,8 @@ class Typography: NSObject {
         
         ]
     }
+    class func initBarButtonStyles(){
+        UIBarButtonItem.appearance().setTitleTextAttributes(RobotoLight(14), forState: .Normal)
+        UIBarButtonItem.appearance().setBackButtonBackgroundImage(UIImage(named: "disclosure-left")?.stretchableImageWithLeftCapWidth(10, topCapHeight: 0), forState: .Normal, barMetrics: UIBarMetrics.Default)
+    }
 }

@@ -52,12 +52,5 @@ class SongKickVenue: Object {
     func address()->String{
         return "\(street) \(zip)"
     }
-    func appleMapsUri()->String{
-        return "http://maps.apple.com/?daddr=\(address().stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding))"
-    }
-    func citymapperUri()->String{
-        // citymapper://directions?endcoord=51.563612,-0.073299&endname=Abney%20Park%20Cemetery&endaddress=Stoke%20Newington%20High%20Street
-        return "citymapper://directions?endcoord=\(lat),\(lng)&endname=\(displayName.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding))&endaddress=\(address().stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding))"
-    }
     
 }

@@ -14,8 +14,13 @@
 		AC0B0AD21B0E72B900B03F11 /* calendar-selection.png in Resources */ = {isa = PBXBuildFile; fileRef = AC0B0ACF1B0E72B900B03F11 /* calendar-selection.png */; };
 		AC0B0AD31B0E72B900B03F11 /* calendar-selection@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC0B0AD01B0E72B900B03F11 /* calendar-selection@2x.png */; };
 		AC0B0AD41B0E72B900B03F11 /* calendar-selection@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC0B0AD11B0E72B900B03F11 /* calendar-selection@3x.png */; };
+		AC10155F1B19C93E000FC5A9 /* MapLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC10155E1B19C93E000FC5A9 /* MapLink.swift */; };
 		AC1EB93F19B1171300BF7EAF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC1EB93E19B1171300BF7EAF /* Crashlytics.framework */; };
 		AC31FFD41B091E6300456C12 /* SongKickDisplayName.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31FFD31B091E6300456C12 /* SongKickDisplayName.swift */; };
+		AC3C78F11B1929B700586FC7 /* BlacklistedArtists.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3C78F01B1929B700586FC7 /* BlacklistedArtists.swift */; };
+		AC3C78F51B19B16300586FC7 /* settings-small.png in Resources */ = {isa = PBXBuildFile; fileRef = AC3C78F21B19B16300586FC7 /* settings-small.png */; };
+		AC3C78F61B19B16300586FC7 /* settings-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC3C78F31B19B16300586FC7 /* settings-small@2x.png */; };
+		AC3C78F71B19B16300586FC7 /* settings-small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC3C78F41B19B16300586FC7 /* settings-small@3x.png */; };
 		AC3CB92C1B089AC4009203E1 /* forward.png in Resources */ = {isa = PBXBuildFile; fileRef = AC3CB9221B089AC4009203E1 /* forward.png */; };
 		AC3CB92D1B089AC4009203E1 /* forward@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC3CB9231B089AC4009203E1 /* forward@2x.png */; };
 		AC3CB92E1B089AC4009203E1 /* forward@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC3CB9241B089AC4009203E1 /* forward@3x.png */; };
@@ -184,8 +189,13 @@
 		AC0B0ACF1B0E72B900B03F11 /* calendar-selection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-selection.png"; sourceTree = "<group>"; };
 		AC0B0AD01B0E72B900B03F11 /* calendar-selection@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-selection@2x.png"; sourceTree = "<group>"; };
 		AC0B0AD11B0E72B900B03F11 /* calendar-selection@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-selection@3x.png"; sourceTree = "<group>"; };
+		AC10155E1B19C93E000FC5A9 /* MapLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapLink.swift; sourceTree = "<group>"; };
 		AC1EB93E19B1171300BF7EAF /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		AC31FFD31B091E6300456C12 /* SongKickDisplayName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongKickDisplayName.swift; sourceTree = "<group>"; };
+		AC3C78F01B1929B700586FC7 /* BlacklistedArtists.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlacklistedArtists.swift; sourceTree = "<group>"; };
+		AC3C78F21B19B16300586FC7 /* settings-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-small.png"; sourceTree = "<group>"; };
+		AC3C78F31B19B16300586FC7 /* settings-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-small@2x.png"; sourceTree = "<group>"; };
+		AC3C78F41B19B16300586FC7 /* settings-small@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-small@3x.png"; sourceTree = "<group>"; };
 		AC3CB9221B089AC4009203E1 /* forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forward.png; sourceTree = "<group>"; };
 		AC3CB9231B089AC4009203E1 /* forward@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forward@2x.png"; sourceTree = "<group>"; };
 		AC3CB9241B089AC4009203E1 /* forward@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forward@3x.png"; sourceTree = "<group>"; };
@@ -430,6 +440,9 @@
 		AC5E952F19FC0B4C005B9872 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				AC3C78F21B19B16300586FC7 /* settings-small.png */,
+				AC3C78F31B19B16300586FC7 /* settings-small@2x.png */,
+				AC3C78F41B19B16300586FC7 /* settings-small@3x.png */,
 				AC8F43061B1782CB00EA51BD /* playlist.png */,
 				AC8F43071B1782CB00EA51BD /* playlist@2x.png */,
 				AC8F43081B1782CB00EA51BD /* playlist@3x.png */,
@@ -663,6 +676,8 @@
 				AC3CB98F1B08D52A009203E1 /* PlaylistItem.swift */,
 				AC08D4D51B0CD3290082D424 /* PlaylistRun.swift */,
 				AC8F43161B178DDC00EA51BD /* Favourite.swift */,
+				AC3C78F01B1929B700586FC7 /* BlacklistedArtists.swift */,
+				AC10155E1B19C93E000FC5A9 /* MapLink.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -854,6 +869,7 @@
 				ACD1C8ED1B0A9E0B00CF038C /* volume-thumb@3x.png in Resources */,
 				AC3CB95E1B08B4A3009203E1 /* playback-track@2x.png in Resources */,
 				AC3CB93F1B08A276009203E1 /* settings.png in Resources */,
+				AC3C78F61B19B16300586FC7 /* settings-small@2x.png in Resources */,
 				AC3CB9711B08B7DF009203E1 /* disclosure-left@3x.png in Resources */,
 				AC3CB96D1B08B7DF009203E1 /* disclosure-down@2x.png in Resources */,
 				ACD1C8DE1B0A813E00CF038C /* today-indicator-top@2x.png in Resources */,
@@ -878,6 +894,7 @@
 				AC5E954419FC0B4D005B9872 /* disclosure_small.png in Resources */,
 				AC3CB9701B08B7DF009203E1 /* disclosure-left@2x.png in Resources */,
 				ACDAF9EB1B08F431003B411A /* LaunchScreen.xib in Resources */,
+				AC3C78F51B19B16300586FC7 /* settings-small.png in Resources */,
 				AC7AC1EF1B121071002A550C /* tracks-avail-2@2x.png in Resources */,
 				AC3CB9721B08B7DF009203E1 /* disclosure-right.png in Resources */,
 				ACDAF9F11B08F49B003B411A /* launch-logo@3x.png in Resources */,
@@ -912,6 +929,7 @@
 				AC3CB94D1B08AA2C009203E1 /* speaker-loud@2x.png in Resources */,
 				AC3CB9771B08B7DF009203E1 /* disclosure-up@3x.png in Resources */,
 				AC3CB9311B089AC4009203E1 /* pause@3x.png in Resources */,
+				AC3C78F71B19B16300586FC7 /* settings-small@3x.png in Resources */,
 				AC3CB96C1B08B7DF009203E1 /* disclosure-down.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1036,10 +1054,12 @@
 				AC3CB9881B08D027009203E1 /* SongKickArtist.swift in Sources */,
 				AC08D4D61B0CD3290082D424 /* PlaylistRun.swift in Sources */,
 				AC3CB98C1B08D265009203E1 /* SoundCloudUser.swift in Sources */,
+				AC10155F1B19C93E000FC5A9 /* MapLink.swift in Sources */,
 				AC8F43131B1786EE00EA51BD /* FavouriteItemTableViewCell.swift in Sources */,
 				ACAE7A15199FAF7400030E26 /* NSDictionary+RemovesNullValues.m in Sources */,
 				ACD1C8D11B0A62D200CF038C /* GradientOverlayView.swift in Sources */,
 				ACD1C8E71B0A93A200CF038C /* ButtonWithRightAlignedImage.swift in Sources */,
+				AC3C78F11B1929B700586FC7 /* BlacklistedArtists.swift in Sources */,
 				ACDAFA131B090BDC003B411A /* Dictionary+Querystrings.swift in Sources */,
 				AC3CB9801B08CBEB009203E1 /* Async.swift in Sources */,
 				AC3CB9941B08D8C2009203E1 /* AppDelegate.swift in Sources */,

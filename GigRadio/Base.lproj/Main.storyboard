@@ -11,7 +11,6 @@
         </mutableArray>
         <mutableArray key="Roboto-Light.ttf">
             <string>Roboto-Light</string>
-            <string>Roboto-Light</string>
         </mutableArray>
         <mutableArray key="Roboto-Regular.ttf">
             <string>Roboto-Regular</string>
@@ -112,6 +111,15 @@
                                             <segue destination="6FC-7d-niu" kind="show" id="4Cw-qo-hM7"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4K-8c-KN1">
+                                        <rect key="frame" x="298" y="23.5" width="16.5" height="17.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="16" id="Y94-BD-K5l"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="13"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dlj-Iq-DE6" customClass="ButtonWithRightAlignedImage" customModule="GigRadio" customModuleProvider="target">
                                         <rect key="frame" x="52" y="20" width="216" height="44"/>
                                         <constraints>
@@ -164,15 +172,6 @@
                                         <rect key="frame" x="0.0" y="-80" width="320" height="64"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4K-8c-KN1">
-                                        <rect key="frame" x="298.5" y="23" width="16.5" height="17.5"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="16" id="Y94-BD-K5l"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="13"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25490196078431371" alpha="0.57999999999999996" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -228,6 +227,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="nZs-hu-qPR"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
@@ -271,7 +271,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PQN-5h-Cxj">
                                             <rect key="frame" x="0.0" y="65" width="320" height="320"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bso-oz-jl7" userLabel="play-button">
+                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bso-oz-jl7" userLabel="play-button">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="270"/>
                                                     <state key="normal" image="play-large.png">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -562,12 +562,18 @@
         <!--Navigation Controller-->
         <scene sceneID="EQs-IV-i8P">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="qNN-Td-4yW" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qNN-Td-4yW" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="l3R-mk-pvw">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" backIndicatorImage="disclosure-left.png" id="l3R-mk-pvw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.0" green="0.35294117650000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="24"/>
+                            <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -759,28 +765,32 @@
             </objects>
             <point key="canvasLocation" x="875" y="619.5"/>
         </scene>
-        <!--Edit Playlist Item View Controller-->
+        <!--Get Inuit-->
         <scene sceneID="h3T-jt-zvq">
             <objects>
                 <tableViewController id="aWD-Lc-3cG" customClass="EditPlaylistItemViewController" customModule="GigRadio" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="N9I-Nl-3Ws">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="N9I-Nl-3Ws">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection id="SAN-jD-Iib">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="149" id="69t-xd-Dv9">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="110" id="69t-xd-Dv9">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="69t-xd-Dv9" id="XzT-Hn-rpL">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aig-Y8-kDj">
-                                                    <rect key="frame" x="8" y="8" width="97" height="88.5"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aig-Y8-kDj">
+                                                    <rect key="frame" x="8" y="8" width="90" height="90"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="90" id="5Qm-jW-qXV"/>
+                                                        <constraint firstAttribute="width" constant="90" id="XvB-SF-172"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HJ4-pr-Qfm">
-                                                    <rect key="frame" x="113" y="44" width="207" height="47.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HJ4-pr-Qfm">
+                                                    <rect key="frame" x="106" y="8" width="206" height="90"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="We searched SoundCloud for &quot;Get Inuit&quot; and found ">
                                                             <attributes>
@@ -806,31 +816,15 @@
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWh-fO-nAi">
-                                                    <rect key="frame" x="8" y="110" width="78" height="30"/>
-                                                    <state key="normal" title="Play more">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Get Inuit" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qfw-lM-6kI">
-                                                    <rect key="frame" x="113" y="8" width="199" height="31"/>
-                                                    <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="24"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="46X-lC-gCc">
-                                                    <rect key="frame" x="216" y="111" width="93" height="30"/>
-                                                    <state key="normal" title="Don't play">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZf-rP-xZc">
-                                                    <rect key="frame" x="103" y="111" width="93" height="30"/>
-                                                    <state key="normal" title="SoundCloud">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="aig-Y8-kDj" firstAttribute="top" secondItem="XzT-Hn-rpL" secondAttribute="topMargin" id="4bi-uu-1p6"/>
+                                                <constraint firstItem="aig-Y8-kDj" firstAttribute="leading" secondItem="XzT-Hn-rpL" secondAttribute="leadingMargin" id="7HI-9O-uTv"/>
+                                                <constraint firstItem="HJ4-pr-Qfm" firstAttribute="trailing" secondItem="XzT-Hn-rpL" secondAttribute="trailingMargin" id="JCF-qw-3Uz"/>
+                                                <constraint firstItem="HJ4-pr-Qfm" firstAttribute="top" secondItem="XzT-Hn-rpL" secondAttribute="topMargin" id="UbD-1S-RmA"/>
+                                                <constraint firstItem="HJ4-pr-Qfm" firstAttribute="leading" secondItem="aig-Y8-kDj" secondAttribute="trailing" constant="8" id="rCh-80-iqV"/>
+                                                <constraint firstItem="aig-Y8-kDj" firstAttribute="height" secondItem="HJ4-pr-Qfm" secondAttribute="height" id="yBR-Xv-rHt"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
@@ -843,17 +837,18 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Pick a different SoundCloud user" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="s5C-Bt-zTC">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="13 other candidates" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hj2-Ca-hTU">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="ZQm-wa-ZDp" detailTextLabel="F9g-2L-SKq" style="IBUITableViewCellStyleSubtitle" id="BkF-wT-iwm">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -864,17 +859,66 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Pick a different track to play" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZQm-wa-ZDp">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="52 others available" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="F9g-2L-SKq">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="GNT-SI-LDp" style="IBUITableViewCellStyleDefault" id="Tgr-XS-BiU">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tgr-XS-BiU" id="9XF-Ht-o0a">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="View on SoundCloud" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GNT-SI-LDp">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="7Ya-3t-mvF" style="IBUITableViewCellStyleDefault" id="j0z-My-qse">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j0z-My-qse" id="5D9-4k-yWO">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Play all tracks" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7Ya-3t-mvF">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="tsV-bY-ZeS" style="IBUITableViewCellStyleDefault" id="pSi-qR-6TD">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pSi-qR-6TD" id="XR4-a7-ufi">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Don't play tracks by this artist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tsV-bY-ZeS">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -884,13 +928,22 @@
                             <outlet property="delegate" destination="aWD-Lc-3cG" id="pic-je-3PI"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="6Bj-e4-pFr">
+                    <navigationItem key="navigationItem" title="Get Inuit" id="6Bj-e4-pFr">
                         <barButtonItem key="rightBarButtonItem" title="Done" id="ZaU-Cl-IM8">
                             <connections>
                                 <action selector="didPressDone:" destination="aWD-Lc-3cG" id="1Ts-oe-atQ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="doNotPlayTracksCell" destination="pSi-qR-6TD" id="0B4-v3-8am"/>
+                        <outlet property="explanationLabel" destination="HJ4-pr-Qfm" id="D5h-oG-s1j"/>
+                        <outlet property="imageView" destination="aig-Y8-kDj" id="6jK-9J-RAW"/>
+                        <outlet property="pickDifferentTrackCell" destination="BkF-wT-iwm" id="VBl-ph-QJL"/>
+                        <outlet property="playAllTracksCell" destination="j0z-My-qse" id="PBG-XZ-rv3"/>
+                        <outlet property="selectSoundCloudUserCell" destination="ozu-iY-QMc" id="jz2-zl-G6a"/>
+                        <outlet property="viewOnSoundCloudCell" destination="Tgr-XS-BiU" id="NaO-7y-VhV"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ay7-5O-oth" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -909,10 +962,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5hx-ML-LwC">
-                                <rect key="frame" x="16" y="183" width="288" height="312"/>
+                                <rect key="frame" x="16" y="183" width="288" height="281"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sKG-vi-e9n">
-                                <rect key="frame" x="55" y="503" width="211" height="30"/>
+                                <rect key="frame" x="55" y="472" width="211" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="7QW-RG-Wwa"/>
+                                </constraints>
                                 <state key="normal" title="Show directions in CityMapper">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -921,7 +977,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4q-Va-QSV">
-                                <rect key="frame" x="98" y="538" width="124" height="30"/>
+                                <rect key="frame" x="98" y="516" width="124" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="51z-6G-1i1"/>
+                                </constraints>
                                 <state key="normal" title="Open in SongKick">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -961,6 +1020,19 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vbs-2L-2Na">
+                                <rect key="frame" x="276" y="472" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="1da-bi-unE"/>
+                                    <constraint firstAttribute="width" constant="44" id="sgz-lX-Xzw"/>
+                                </constraints>
+                                <state key="normal" image="settings-small.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didPressDirectionsSettings:" destination="LuZ-eH-5xI" eventType="touchUpInside" id="ShH-f4-Iz0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -968,25 +1040,43 @@
                             <constraint firstItem="5hx-ML-LwC" firstAttribute="trailing" secondItem="cgx-NL-Y7K" secondAttribute="trailingMargin" id="2JO-SW-29l"/>
                             <constraint firstItem="JYO-ya-RIh" firstAttribute="top" secondItem="cgx-NL-Y7K" secondAttribute="topMargin" constant="72" id="4Lp-HW-mpl"/>
                             <constraint firstAttribute="centerX" secondItem="s4q-Va-QSV" secondAttribute="centerX" id="5eR-W9-Kid"/>
-                            <constraint firstItem="EFC-je-nvy" firstAttribute="top" secondItem="s4q-Va-QSV" secondAttribute="bottom" id="EFI-eq-E7s"/>
+                            <constraint firstItem="EFC-je-nvy" firstAttribute="top" secondItem="s4q-Va-QSV" secondAttribute="bottom" constant="8" id="EFI-eq-E7s"/>
                             <constraint firstItem="sKG-vi-e9n" firstAttribute="top" secondItem="5hx-ML-LwC" secondAttribute="bottom" constant="8" id="Rs8-wW-ISU"/>
                             <constraint firstAttribute="centerX" secondItem="s4q-Va-QSV" secondAttribute="centerX" id="cty-MP-O9f"/>
+                            <constraint firstItem="sKG-vi-e9n" firstAttribute="centerY" secondItem="vbs-2L-2Na" secondAttribute="centerY" id="d14-bB-GmP"/>
                             <constraint firstItem="5hx-ML-LwC" firstAttribute="top" secondItem="JYO-ya-RIh" secondAttribute="bottom" id="egE-LZ-HU1"/>
+                            <constraint firstItem="5hx-ML-LwC" firstAttribute="trailing" secondItem="vbs-2L-2Na" secondAttribute="trailing" constant="-16" id="fSg-x6-Shg"/>
                             <constraint firstAttribute="centerX" secondItem="sKG-vi-e9n" secondAttribute="centerX" id="ffg-TL-ojB"/>
                             <constraint firstItem="JYO-ya-RIh" firstAttribute="leading" secondItem="cgx-NL-Y7K" secondAttribute="leadingMargin" id="iwH-qY-Ifz"/>
                             <constraint firstItem="JYO-ya-RIh" firstAttribute="trailing" secondItem="cgx-NL-Y7K" secondAttribute="trailingMargin" id="rSf-rK-TMK"/>
-                            <constraint firstItem="s4q-Va-QSV" firstAttribute="top" secondItem="sKG-vi-e9n" secondAttribute="bottom" constant="5" id="ya5-eL-uHt"/>
+                            <constraint firstItem="s4q-Va-QSV" firstAttribute="top" secondItem="sKG-vi-e9n" secondAttribute="bottom" id="ya5-eL-uHt"/>
                         </constraints>
                     </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <navigationItem key="navigationItem" id="3dL-U8-SDQ">
+                        <barButtonItem key="rightBarButtonItem" image="star.png" style="plain" id="OLx-tT-1xW">
+                            <connections>
+                                <action selector="didPressFavouriteButton:" destination="LuZ-eH-5xI" id="uru-Mc-IYa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="directionsButton" destination="sKG-vi-e9n" id="VVd-JJ-zHZ"/>
+                        <outlet property="directionsSettingButton" destination="vbs-2L-2Na" id="ABu-rd-bcv"/>
+                        <outlet property="favouriteButton" destination="OLx-tT-1xW" id="US1-Mj-VPm"/>
                         <outlet property="mainLabel" destination="JYO-ya-RIh" id="vxJ-W6-SFz"/>
                         <outlet property="mapView" destination="5hx-ML-LwC" id="2N8-ZG-V12"/>
                         <outlet property="songKickButton" destination="s4q-Va-QSV" id="Iu4-yv-t8o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OQ7-Yg-VU7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationBar contentMode="scaleToFill" id="Aa3-60-j5T">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <items>
+                        <navigationItem title="Title" id="EDT-Ga-s2S"/>
+                    </items>
+                </navigationBar>
             </objects>
             <point key="canvasLocation" x="1700" y="523"/>
         </scene>
@@ -1040,10 +1130,14 @@
                 <navigationController storyboardIdentifier="EditPlaylistItemNav" automaticallyAdjustsScrollViewInsets="NO" id="3Zw-uJ-dYi" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="H6e-Cm-HcS">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="H6e-Cm-HcS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="24"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1058,6 +1152,7 @@
     <resources>
         <image name="calendar-selection.png" width="29" height="42"/>
         <image name="disclosure-down.png" width="15" height="10"/>
+        <image name="disclosure-left.png" width="10" height="15"/>
         <image name="disclosure-right.png" width="10" height="15"/>
         <image name="forward.png" width="28" height="17"/>
         <image name="launch-logo.png" width="134" height="158"/>
@@ -1066,6 +1161,7 @@
         <image name="play.png" width="21" height="26"/>
         <image name="playlist.png" width="28" height="17"/>
         <image name="rewind.png" width="28" height="17"/>
+        <image name="settings-small.png" width="20" height="20"/>
         <image name="settings.png" width="20" height="20"/>
         <image name="speaker-loud.png" width="22" height="28"/>
         <image name="star.png" width="25" height="25"/>

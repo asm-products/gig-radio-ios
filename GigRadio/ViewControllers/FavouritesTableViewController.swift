@@ -22,14 +22,6 @@ class FavouritesTableViewController: UITableViewController {
         tableView.estimatedRowHeight = 100
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: true)
-    }
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: true)
-    }
 
     // MARK: - Table view data source
 
@@ -76,17 +68,14 @@ class FavouritesTableViewController: UITableViewController {
 
 
 
-    /*
-    // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            // Delete the row from the data source
+            let favourite = favouriteAtIndexPath(indexPath)!
+            Favourite.remove(favourite)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            NSNotificationCenter.defaultCenter().postNotificationName(FAVOURITE_COUNT_CHANGED, object: nil)
+        }
     }
-    */
 
 
 

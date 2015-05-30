@@ -15,6 +15,10 @@ class GigInfoViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var directionsButton: UIButton!
     @IBOutlet weak var songKickButton: UIButton!
+    @IBOutlet weak var favouriteButton: UIBarButtonItem!
+    @IBOutlet weak var directionsSettingButton: UIButton!
+    
+    var mapLink: MapLink!
     
     var event:SongKickEvent!
     
@@ -33,6 +37,8 @@ class GigInfoViewController: UIViewController {
         text.appendAttributedString(location)
         mainLabel.attributedText = text
         
+        updateDirectionsButton()
+        updateFavouriteButton()
         
         mapView.showsUserLocation = true
         if let location = event.venue.location(){
@@ -45,25 +51,61 @@ class GigInfoViewController: UIViewController {
         }
         
     }
-
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: true)
+    func updateFavouriteButton(){
+        if Favourite.findByEvent(self.event) != nil{
+            favouriteButton.image = UIImage(named: "starred")
+        }else{
+            favouriteButton.image = UIImage(named: "star")
+        }
     }
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: true)
+    @IBAction func didPressFavouriteButton(sender: AnyObject) {
+        if let favourite = Favourite.findByEvent(event){
+            Favourite.remove(favourite)
+        }else{
+            Favourite.add(event)
+        }
+        updateFavouriteButton()
+        NSNotificationCenter.defaultCenter().postNotificationName(FAVOURITE_COUNT_CHANGED, object: nil)
     }
-    
     @IBAction func didPressDirectionsButton(sender: AnyObject) {
+        if let link = mapLink{
+            UIApplication.sharedApplication().openURL(link.appURL)
+        }
     }
     @IBAction func didPressSongKickButton(sender: AnyObject) {
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        let url = NSURL(string: "songkick://events/\(event.id)")!
+        let app = UIApplication.sharedApplication()
+        if app.canOpenURL(url){
+            app.openURL(url)
+        }else{
+            let url = NSURL(string: "https://www.songkick.com/concerts/\(event.id)")!
+            app.openURL(url)
+        }
     }
     
+    func updateDirectionsButton(){
+        if let link = MapLink.preferredMapLink(event.venue){
+            directionsButton.enabled = true
+            let title = template("Directions.ButtonTitle", [link.displayName])
+            directionsButton.setTitle(title, forState: .Normal)
+            mapLink = link
+        }else{
+            directionsButton.enabled = false
+        }
+    }
+    @IBAction func didPressDirectionsSettings(sender: AnyObject) {
+        let sheet = UIAlertController(title: t("Directions.SettingsTitle"), message: nil, preferredStyle: .ActionSheet)
+        for link in MapLink.allMapLinks(event.venue){
+            sheet.addAction(UIAlertAction(title: t("Directions.ButtonTitle"), style: .Default){ action in
+                MapLink.saveMapLinkPreference(link)
+                self.updateDirectionsButton()
+            })
+        }
+        sheet.addAction(UIAlertAction(title: t("Cancel"), style: .Cancel) { action in
+        })
+        presentViewController(sheet, animated: true, completion: nil)
+        
+    }
 
     /*
     // MARK: - Navigation

@@ -41,14 +41,30 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate{
         audioPlayer.delegate = self
         
         volumeView.setVolumeThumbImage(UIImage(named: "volume-thumb"), forState: .Normal)
+        
     }
     func play(item:PlaylistItem, callback:(success:Bool)->Void){
         AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: nil)
+        AVAudioSession.sharedInstance().setActive(true, error: nil)
+        UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
+        self.becomeFirstResponder()
+        
         self.playlistItem = item
         item.markPlayed()
         trackInfoLabel.attributedText = PlaylistHelper.attributedTrackInfoText(playlistItem!, separator: "\n")
         audioPlayer.play(item.soundCloudTrack.playbackUrl())
+        
+        MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = [
+            MPMediaItemPropertyAlbumTitle: "Upcoming gig: \(item.songKickEvent.displayName)",
+            MPMediaItemPropertyTitle: "\(item.soundCloudTrack.title) - \(item.soundCloudUser.username)",
+            MPMediaItemPropertyPlaybackDuration: item.soundCloudTrack.duration / 1000,
+            MPNowPlayingInfoPropertyElapsedPlaybackTime: 0,
+            
+        ]
         callback(success: true)
+    }
+    override func canBecomeFirstResponder() -> Bool {
+        return true
     }
     func displayLinkCallback(){
         let formatter = NSDateComponentsFormatter()
@@ -59,6 +75,9 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate{
         playbackSlider.setValue(Float(value), animated: false)
         playbackTimeView.text = formatter.stringFromTimeInterval(audioPlayer.progress)
         timeRemainingView.text = formatter.stringFromTimeInterval(audioPlayer.duration - audioPlayer.progress)
+//        MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = [
+//            MPMediaV
+//        ]
     }
     
     func setBufferingDisplay(buffering:Bool){
@@ -128,5 +147,19 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate{
     }
     @IBAction func didDragPlaybackTime(sender: UISlider) {
         audioPlayer.seekToTime( Double(sender.value) * audioPlayer.duration )
+    }
+    override func remoteControlReceivedWithEvent(event: UIEvent) {
+        switch event.subtype{
+        case .RemoteControlTogglePlayPause: didPressPlayPause(self)
+        case .RemoteControlNextTrack: didPressForward(self)
+        case .RemoteControlPreviousTrack: didPressRewind(self)
+        case .RemoteControlPlay:
+            audioPlayer.resume()
+            AVAudioSession.sharedInstance().setActive(true, error: nil)
+        case .RemoteControlPause:
+            audioPlayer.pause()
+        default:
+            println("ignored \(event)")
+        }
     }
 }

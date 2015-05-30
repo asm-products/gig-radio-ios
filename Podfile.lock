@@ -20,6 +20,9 @@ PODS:
   - Realm/Headers (0.92.3)
   - RealmSwift (0.92.3):
     - Realm (= 0.92.3)
+  - SDWebImage (3.7.2):
+    - SDWebImage/Core (= 3.7.2)
+  - SDWebImage/Core (3.7.2)
   - SimpleMotionEffects (1.0.0)
   - StreamingKit (0.1.25)
   - SVProgressHUD (1.1.3)
@@ -42,6 +45,7 @@ DEPENDENCIES:
   - IFTTTLaunchImage
   - NSDictionary+TRVSUnderscoreCamelCaseAdditions (~> 0.1)
   - RealmSwift (~> 0.92)
+  - SDWebImage (~> 3.7)
   - SimpleMotionEffects (~> 1.0)
   - StreamingKit (~> 0.1)
   - SVProgressHUD
@@ -66,6 +70,7 @@ SPEC CHECKSUMS:
   NSDictionary+TRVSUnderscoreCamelCaseAdditions: 2d3cb6d3ef929149b37c3c65dfc60170e89d1861
   Realm: bf604805d5e897850da488260f93889f510924b3
   RealmSwift: a5e48c7d5774eaa299b0b3a843add3b55e7f0061
+  SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
   SimpleMotionEffects: 3f669e8f3a9bc3ffe50f27d9eeed380b28b6a733
   StreamingKit: f00c054cfd0f59d88c8be7a2270e208302ce48c4
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1

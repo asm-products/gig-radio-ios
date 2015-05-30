@@ -12,6 +12,7 @@ import SwiftyJSON
 
 protocol EditPlaylistItemViewControllerDelegate{
     func editSoundCloudUserDidChangeUserForPerformance(performance:PlaylistPerformance)
+    func editSoundCloudUserDidBlacklistUser(user:SoundCloudUser)
 }
 
 class EditPlaylistItemViewController: UITableViewController,SoundCloudUsersTableViewControllerDelegate {
@@ -37,12 +38,14 @@ class EditPlaylistItemViewController: UITableViewController,SoundCloudUsersTable
                 self.imageView.image = cachedImage(self.performance.soundCloudUser.avatarUrl)
             }
         }
-        explanationLabel.text = NSString(format: t("SoundCloudUser.Explanation"), performance.songKickArtist.displayName, performance.soundCloudUser.username) as String
+        var unstreamableTracksCount = performance.soundCloudUser.tracks.filter("streamable = false").count
+        explanationLabel.text = NSString(format: t("SoundCloudUser.Explanation"), performance.songKickArtist.displayName, performance.soundCloudUser.username, unstreamableTracksCount) as String
         
         SoundCloudClient.sharedClient.findUsers(performance.songKickArtist.displayName, completion: { (json, error) -> Void in
             self.users = json
             self.updateCountCell()
         })
+        updateBlacklistingCell()
     }
     func updateCountCell(){
         if let users = users{
@@ -61,14 +64,24 @@ class EditPlaylistItemViewController: UITableViewController,SoundCloudUsersTable
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         switch cell!{
         case viewOnSoundCloudCell: viewOnSoundCloud()
-        case doNotPlayTracksCell: disableArtist()
+        case doNotPlayTracksCell: toggleArtist()
         default:
             println("skip")
         }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
-    func disableArtist(){
-        
+    func toggleArtist(){
+        if BlacklistedArtist.includes(performance.soundCloudUser){
+            BlacklistedArtist.remove(performance.soundCloudUser)
+        }else{
+            BlacklistedArtist.add(performance.soundCloudUser)
+            delegate.editSoundCloudUserDidBlacklistUser(performance.soundCloudUser)
+        }
+        updateBlacklistingCell()
+    }
+    func updateBlacklistingCell(){
+        let text = BlacklistedArtist.includes(performance.soundCloudUser) ? t("Blacklisting.DoPlay") : t("Blacklisting.DoNotPlay")
+        doNotPlayTracksCell.textLabel?.text = text
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let dest = segue.destinationViewController as? SoundCloudUsersTableViewController{

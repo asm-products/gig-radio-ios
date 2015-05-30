@@ -24,9 +24,9 @@ class SongKickVenue: Object {
     dynamic var distanceCache: Double = 0
     
     
-//    override static func primaryKey()->String?{
-//        return "id"
-//    }
+    override static func primaryKey()->String?{
+        return "id"
+    }
     class func updateDistanceCachesWithLocation(location: CLLocation?){
         if let location = location{
             let realm = Realm()

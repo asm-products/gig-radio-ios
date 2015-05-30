@@ -11,9 +11,8 @@ import RealmSwift
 import SwiftyJSON
 import NSDictionary_TRVSUnderscoreCamelCaseAdditions
 
-class SoundCloudClient: NSObject {
+class SoundCloudClient: ApiClientBase {
     static let sharedClient = SoundCloudClient()
-    lazy var session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
     class func createSoundCloudUser(json:NSDictionary)->SoundCloudUser{
         var dict:NSDictionary = json.dictionaryWithoutNullValues()
         dict = dict.dictionaryWithCamelCaseKeys()
@@ -68,26 +67,5 @@ class SoundCloudClient: NSObject {
         params["client_id"] = SoundCloudConfiguration().clientId
         let uri = SoundCloudConfiguration().baseUri.stringByAppendingPathComponent("\(resource).json?\(params.querystring())")
         return NSURL(string: uri)!
-    }
-    func get(url:NSURL,completion:(json:JSON,error:NSError?)->Void){
-        session.dataTaskWithURL(url, completionHandler: { data, response, error in
-            let response = response as! NSHTTPURLResponse
-            let json = JSON(data:data)
-            Async.main {
-                if response.statusCode != 200{
-                    if error == nil{
-                        let error = NSError(domain: "SoundCloud", code: response.statusCode, userInfo: json.object as? [NSObject : AnyObject])
-                        completion(json: json,error: error)
-                    }else{
-                        completion(json: json,error: error)
-                    }
-
-                }else{
-                    completion(json: json,error: nil)
-                }
-            }
-        }).resume()
-        return
-        
     }
 }

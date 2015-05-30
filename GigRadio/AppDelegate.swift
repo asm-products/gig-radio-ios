@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Typography.initBarButtonStyles()
         
-        setSchemaVersion(2, Realm.defaultPath) { migration, oldSchemaVersion in
+        setSchemaVersion(3, Realm.defaultPath) { migration, oldSchemaVersion in
         }
         return true
     }

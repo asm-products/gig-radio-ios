@@ -230,4 +230,15 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
             playNextTrack()
         }
     }
+    
+    func editSoundCloudUserDidBlacklistUser(user:SoundCloudUser){
+        let wasPlaying = playlist.currentTrack?.performance.soundCloudUser == user
+        if wasPlaying{
+            playPreviousTrack()
+        }
+        playlist.removeTracksBySoundCloudUser(user)
+        if wasPlaying{
+            playNextTrack()
+        }
+    }
 }

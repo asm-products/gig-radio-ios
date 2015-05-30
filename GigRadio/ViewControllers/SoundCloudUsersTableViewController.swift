@@ -62,7 +62,7 @@ class SoundCloudUsersTableViewController: UITableViewController {
         let dict = userAtIndexPath(indexPath).dictionaryWithCamelCaseKeys() as NSDictionary
         let user = SoundCloudUser(value: dict.dictionaryWithoutNullValues())
         cell.user = user
-        cell.textLabel?.text = "\(user.username) (\(user.fullName), \(user.city) \(user.country))"
+        cell.textLabel?.text = "\(user.displayName()) (\(user.city), \(user.country))"
         cell.detailTextLabel?.text = "\(user.trackCount) track(s), \(user.followersCount) follower(s)"
         preload([user.avatarUrl]) {
             cell.imageView?.image = cachedImage(user.avatarUrl)

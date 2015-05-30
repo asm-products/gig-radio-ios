@@ -10,10 +10,8 @@ import UIKit
 import RealmSwift
 import SwiftyJSON
 
-class SongKickClient: NSObject {
+class SongKickClient: ApiClientBase {
     static let sharedClient = SongKickClient()
-    
-    lazy var session: NSURLSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
     
     func getEvents(date: NSDate, location: CLLocation?, completion:(results:[Int]?,error:NSError?)->Void){
         getEvents(date, end: date, location: location, completion: completion)
@@ -30,18 +28,8 @@ class SongKickClient: NSObject {
             params["location"] = "clientip"
         }
         let url = urlWithParams(params, resource: "events")
-        session.dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
-            let response = response as! NSHTTPURLResponse
-            let json = JSON(data: data)
-            if response.statusCode != 200{
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    if let message = json["resultsPage"]["error"]["message"].object as? String{
-                        completion(results: nil,error: NSError(domain: "SongKick", code: response.statusCode, userInfo: [NSLocalizedDescriptionKey: message]))
-                    }else{
-                        completion(results:nil,error: error)
-                    }
-                })
-            }else{
+        self.get(url, completion: { json, error in
+            if error == nil{
                 let events = json["resultsPage"]["results"]["event"]
                 println("Fetched \(events.count) event(s) from SongKick via \(url)")
                 var ids = [Int]()
@@ -60,13 +48,34 @@ class SongKickClient: NSObject {
                         }
                     }
                 }
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                Async.main {
                     completion(results:ids, error: events.error)
-                })
-                
                 }
-        }).resume()
+            }else{
+                Async.main {
+                    completion(results: nil, error: error)
+                }
+            }
+        })
         
+    }
+    func getVenueDetails(venue:SongKickVenue, completion:()->Void){
+        if venue.street != ""{
+            completion()
+            return
+        }
+        let url = urlWithParams([:], resource: "venues/\(venue.id)")
+        self.get(url) { json, error in
+            if error == nil{
+                var object:NSDictionary = json["resultsPage"]["results"]["venue"].object as! NSDictionary
+                object = object.dictionaryWithoutNullValues()
+                let realm = Realm()
+                realm.write{
+                    realm.create(SongKickVenue.self, value: object, update: true)
+                }
+                completion()
+            }
+        }
     }
     
     func urlWithParams(params: [String:AnyObject], resource: String)->NSURL{

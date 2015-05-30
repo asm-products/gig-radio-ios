@@ -24,19 +24,10 @@ class GigInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let date = NSAttributedString(string: DateFormats.eventDateFormatter().stringFromDate(event.date), attributes: Typography.RobotoBold(13))
-        let artists = NSAttributedString(string: join("\n",event.artistNames()), attributes: Typography.RobotoLight(24))
-        let location = NSAttributedString(string: "\(event.venue.displayName)\n\(event.venue.address())", attributes: Typography.RobotoRegular(13))
-        
-        let text = NSMutableAttributedString(string: "")
-        let br = NSAttributedString(string: "\n")
-        text.appendAttributedString(date)
-        text.appendAttributedString(br)
-        text.appendAttributedString(artists)
-        text.appendAttributedString(br)
-        text.appendAttributedString(location)
-        mainLabel.attributedText = text
-        
+        updateText()
+        SongKickClient.sharedClient.getVenueDetails(event.venue){
+            self.updateText()
+        }
         updateDirectionsButton()
         updateFavouriteButton()
         
@@ -50,6 +41,20 @@ class GigInfoViewController: UIViewController {
             mapView.addAnnotation(annotation)
         }
         
+    }
+    func updateText(){
+        let date = NSAttributedString(string: DateFormats.todayFormatter().stringFromDate(event.date), attributes: Typography.RobotoBold(13))
+        let artists = NSAttributedString(string: join("\n",event.artistNames()), attributes: Typography.RobotoLight(24))
+        let location = NSAttributedString(string: "\(event.venue.displayName)\n\(event.venue.address())", attributes: Typography.RobotoRegular(13))
+        
+        let text = NSMutableAttributedString(string: "")
+        let br = NSAttributedString(string: "\n")
+        text.appendAttributedString(date)
+        text.appendAttributedString(br)
+        text.appendAttributedString(artists)
+        text.appendAttributedString(br)
+        text.appendAttributedString(location)
+        mainLabel.attributedText = text
     }
     func updateFavouriteButton(){
         if Favourite.findByEvent(self.event) != nil{
@@ -104,7 +109,6 @@ class GigInfoViewController: UIViewController {
         sheet.addAction(UIAlertAction(title: t("Cancel"), style: .Cancel) { action in
         })
         presentViewController(sheet, animated: true, completion: nil)
-        
     }
 
     /*

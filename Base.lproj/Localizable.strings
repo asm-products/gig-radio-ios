@@ -13,8 +13,10 @@
 "TimeVenueAndDistance.Distance" = ", %@ away";
 "Favourites.Upcoming" = "Coming up...";
 "Favourites.Past" = "Past gigs";
-"SoundCloudUser.Explanation" = "We searched SoundCloud for '%@' and found '%@'. If we got it wrong, you can fix that here.";
+"SoundCloudUser.Explanation" = "We searched SoundCloud for '%@' and found '%@'. This user has %i unstreamable track(s). If we got it wrong, you can fix that here.";
 "Directions.SettingsTitle" = "Set Your Preferred Mapping App";
 "Directions.ButtonTitle" = "Show directions in %@";
 "SoundCloudUsers.CountOthersAvailable" = "%i more available";
 "SoundCloudUsers.SearchTitle" = "Results for '%@'";
+"Blacklisting.DoNotPlay" = "Don't play tracks by this artist";
+"Blacklisting.DoPlay" = "Do play tracks by this artist";

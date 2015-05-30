@@ -134,4 +134,17 @@ class Playlist: Object {
             realm.delete(tracks)
         }
     }
+    func removeTracksBySoundCloudUser(user: SoundCloudUser){
+        let realm = Realm()
+        var ids = [String]()
+        for track in self.tracks{
+            if track.performance.soundCloudUser == user{
+                ids.append(track.id)
+            }
+        }
+        let tracks = self.tracks.filter("id in %@", ids)
+        realm.write {
+            realm.delete(tracks)
+        }
+    }
 }

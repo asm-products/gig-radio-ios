@@ -107,6 +107,7 @@
 		AC863F551B0D10BE00A6A9D3 /* CompletionCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC863F541B0D10BE00A6A9D3 /* CompletionCounter.swift */; };
 		AC863F571B0D15FA00A6A9D3 /* flyer-placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = AC863F561B0D15FA00A6A9D3 /* flyer-placeholder.png */; };
 		AC8AB7791B1A6F7400A673E1 /* SoundCloudUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8AB7781B1A6F7400A673E1 /* SoundCloudUserTableViewCell.swift */; };
+		AC8AB77B1B1A7D7600A673E1 /* ApiClientBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8AB77A1B1A7D7600A673E1 /* ApiClientBase.swift */; };
 		AC8F43091B1782CB00EA51BD /* playlist.png in Resources */ = {isa = PBXBuildFile; fileRef = AC8F43061B1782CB00EA51BD /* playlist.png */; };
 		AC8F430A1B1782CB00EA51BD /* playlist@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC8F43071B1782CB00EA51BD /* playlist@2x.png */; };
 		AC8F430B1B1782CB00EA51BD /* playlist@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC8F43081B1782CB00EA51BD /* playlist@3x.png */; };
@@ -288,6 +289,7 @@
 		AC863F541B0D10BE00A6A9D3 /* CompletionCounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletionCounter.swift; sourceTree = "<group>"; };
 		AC863F561B0D15FA00A6A9D3 /* flyer-placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flyer-placeholder.png"; sourceTree = "<group>"; };
 		AC8AB7781B1A6F7400A673E1 /* SoundCloudUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundCloudUserTableViewCell.swift; sourceTree = "<group>"; };
+		AC8AB77A1B1A7D7600A673E1 /* ApiClientBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClientBase.swift; sourceTree = "<group>"; };
 		AC8F43061B1782CB00EA51BD /* playlist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playlist.png; sourceTree = "<group>"; };
 		AC8F43071B1782CB00EA51BD /* playlist@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playlist@2x.png"; sourceTree = "<group>"; };
 		AC8F43081B1782CB00EA51BD /* playlist@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playlist@3x.png"; sourceTree = "<group>"; };
@@ -712,6 +714,7 @@
 				ACDAF9E61B08E45F003B411A /* MusicEngine.swift */,
 				ACDAFA0C1B090900003B411A /* SongKickClient.swift */,
 				ACDAFA0E1B090908003B411A /* SoundCloudClient.swift */,
+				AC8AB77A1B1A7D7600A673E1 /* ApiClientBase.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1041,6 +1044,7 @@
 				AC3CB9531B08B1C6009203E1 /* PlaybackSlider.swift in Sources */,
 				AC6B7C741B17BBFE00989883 /* EditPlaylistItemViewController.swift in Sources */,
 				AC31FFD41B091E6300456C12 /* SongKickDisplayName.swift in Sources */,
+				AC8AB77B1B1A7D7600A673E1 /* ApiClientBase.swift in Sources */,
 				ACDAF9E31B08DEEA003B411A /* SoundCloudConfiguration.swift in Sources */,
 				ACAE79DE199F6C3100030E26 /* CalendarHelper.m in Sources */,
 				ACDAF9E11B08DEDC003B411A /* SongKickConfiguration.swift in Sources */,

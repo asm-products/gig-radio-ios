@@ -7,15 +7,14 @@
 //
 
 import UIKit
-
-class EditPlaylistItemViewController: UITableViewController {
+import RealmSwift
+import SwiftyJSON
+class EditPlaylistItemViewController: UITableViewController,SoundCloudUsersTableViewControllerDelegate {
     var performance: PlaylistPerformance!
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var explanationLabel: UILabel!
     @IBOutlet weak var selectSoundCloudUserCell: UITableViewCell!
-    @IBOutlet weak var pickDifferentTrackCell: UITableViewCell!
-    @IBOutlet weak var playAllTracksCell: UITableViewCell!
     @IBOutlet weak var doNotPlayTracksCell: UITableViewCell!
     @IBOutlet weak var viewOnSoundCloudCell: UITableViewCell!
     override func viewDidLoad() {
@@ -29,16 +28,15 @@ class EditPlaylistItemViewController: UITableViewController {
             }
         }
         explanationLabel.text = NSString(format: t("SoundCloudUser.Explanation"), performance.songKickArtist.displayName, performance.soundCloudUser.username) as String
+        
+        SoundCloudClient.sharedClient.findUsers(performance.songKickArtist.displayName, completion: { (json, error) -> Void in
+            let count = json.count - 1
+            self.selectSoundCloudUserCell.detailTextLabel?.text = template("SoundCloudUsers.CountOthersAvailable", [count])
+        })
     }
-
     @IBAction func didPressDone(sender: AnyObject) {
         navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func viewOnSoundCloud() {
         let url = NSURL(string:"soundcloud://users:\(performance.soundCloudUser.id)")!
         let app = UIApplication.sharedApplication()
@@ -53,26 +51,25 @@ class EditPlaylistItemViewController: UITableViewController {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         switch cell!{
         case viewOnSoundCloudCell: viewOnSoundCloud()
-        case selectSoundCloudUserCell: showSoundCloudUserList()
-        case pickDifferentTrackCell: showTracksList()
-        case playAllTracksCell: playAllTracks()
         case doNotPlayTracksCell: disableArtist()
         default:
             println("skip")
         }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
-    func showSoundCloudUserList(){
-        
-    }
-    func showTracksList(){
-        
-    }
-    func playAllTracks(){
-        
-    }
     func disableArtist(){
         
     }
-
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let dest = segue.destinationViewController as? SoundCloudUsersTableViewController{
+            dest.selectedSoundCloudUser = performance.soundCloudUser
+            dest.songKickArtist = performance.songKickArtist
+            dest.delegate = self
+        }
+    }
+    func soundCloudUsersTableDidSelectUser(user: SoundCloudUser) {
+        Realm().write{
+            self.performance.soundCloudUser = user
+        }
+    }
 }

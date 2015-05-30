@@ -14,26 +14,34 @@ import NSDictionary_TRVSUnderscoreCamelCaseAdditions
 class SoundCloudClient: NSObject {
     static let sharedClient = SoundCloudClient()
     lazy var session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-    
+    class func createSoundCloudUser(json:NSDictionary)->SoundCloudUser{
+        var dict:NSDictionary = json.dictionaryWithoutNullValues()
+        dict = dict.dictionaryWithCamelCaseKeys()
+        let realm = Realm()
+        realm.beginWrite()
+        let user = realm.create(SoundCloudUser.self, value: dict, update: true)
+        realm.commitWrite()
+        return user
+    }
     func findUser(name:String,completion:(user:SoundCloudUser?, error:NSError?)->Void){
+        findUsers(name, completion: { (json, error) -> Void in
+            if json.count > 0{
+                let user = SoundCloudClient.createSoundCloudUser(json[0].object as! NSDictionary)
+                completion(user:user, error:nil)
+            }else{
+                // FIXME: when no user found, create an appropriate error
+                completion(user: nil, error: error)
+            }
+        })
+    }
+    func findUsers(name:String, completion:(json:JSON,error:NSError?)->Void){
         var params:[String:AnyObject] = [
             "q": name
         ]
         let url = urlWithParams(params, resource: "users")
         self.get(url) { json, error in
             println("fetched \(json.count) user(s) from SoundCloud via \(url)")
-            if json.count > 0{
-                var dict:NSDictionary = json[0].object.dictionaryWithoutNullValues()
-                dict = dict.dictionaryWithCamelCaseKeys()
-                let realm = Realm()
-                realm.beginWrite()
-                let user = realm.create(SoundCloudUser.self, value: dict, update: true)
-                realm.commitWrite()
-                completion(user:user, error:nil)
-            }else{
-                // FIXME: when no user found, create an appropriate error
-                completion(user: nil, error: error)
-            }
+            completion(json: json, error: error)
         }
     }
     func getTracks(user:SoundCloudUser, completion:(error:NSError?)->Void){

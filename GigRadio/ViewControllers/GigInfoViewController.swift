@@ -96,7 +96,7 @@ class GigInfoViewController: UIViewController {
     @IBAction func didPressDirectionsSettings(sender: AnyObject) {
         let sheet = UIAlertController(title: t("Directions.SettingsTitle"), message: nil, preferredStyle: .ActionSheet)
         for link in MapLink.allMapLinks(event.venue){
-            sheet.addAction(UIAlertAction(title: t("Directions.ButtonTitle"), style: .Default){ action in
+            sheet.addAction(UIAlertAction(title: link.displayName, style: .Default){ action in
                 MapLink.saveMapLinkPreference(link)
                 self.updateDirectionsButton()
             })

@@ -16,6 +16,7 @@
 		AC10155F1B19C93E000FC5A9 /* MapLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC10155E1B19C93E000FC5A9 /* MapLink.swift */; };
 		AC1015611B19E36B000FC5A9 /* PlaylistTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1015601B19E36B000FC5A9 /* PlaylistTrack.swift */; };
 		AC1015631B1A1C7B000FC5A9 /* NextTrackFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1015621B1A1C7B000FC5A9 /* NextTrackFinder.swift */; };
+		AC1015651B1A2E1A000FC5A9 /* SoundCloudUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1015641B1A2E1A000FC5A9 /* SoundCloudUsersTableViewController.swift */; };
 		AC1EB93F19B1171300BF7EAF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC1EB93E19B1171300BF7EAF /* Crashlytics.framework */; };
 		AC31FFD41B091E6300456C12 /* SongKickDisplayName.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31FFD31B091E6300456C12 /* SongKickDisplayName.swift */; };
 		AC3C78F11B1929B700586FC7 /* BlacklistedArtists.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3C78F01B1929B700586FC7 /* BlacklistedArtists.swift */; };
@@ -192,6 +193,7 @@
 		AC10155E1B19C93E000FC5A9 /* MapLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapLink.swift; sourceTree = "<group>"; };
 		AC1015601B19E36B000FC5A9 /* PlaylistTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistTrack.swift; sourceTree = "<group>"; };
 		AC1015621B1A1C7B000FC5A9 /* NextTrackFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextTrackFinder.swift; sourceTree = "<group>"; };
+		AC1015641B1A2E1A000FC5A9 /* SoundCloudUsersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundCloudUsersTableViewController.swift; sourceTree = "<group>"; };
 		AC1EB93E19B1171300BF7EAF /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		AC31FFD31B091E6300456C12 /* SongKickDisplayName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongKickDisplayName.swift; sourceTree = "<group>"; };
 		AC3C78F01B1929B700586FC7 /* BlacklistedArtists.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlacklistedArtists.swift; sourceTree = "<group>"; };
@@ -645,6 +647,7 @@
 				AC8F430E1B17838C00EA51BD /* PlaylistTableViewController.swift */,
 				AC6B7C711B17A8FC00989883 /* GigInfoViewController.swift */,
 				AC6B7C731B17BBFE00989883 /* EditPlaylistItemViewController.swift */,
+				AC1015641B1A2E1A000FC5A9 /* SoundCloudUsersTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1050,6 +1053,7 @@
 				ACDAF9E91B08E945003B411A /* FlyersCollectionViewController.swift in Sources */,
 				AC43E88E1A8CFE2B0060FD80 /* PickerDayCollectionViewCell.swift in Sources */,
 				AC53D01A1A1E829900F30767 /* Colors.swift in Sources */,
+				AC1015651B1A2E1A000FC5A9 /* SoundCloudUsersTableViewController.swift in Sources */,
 				AC8F43151B178C4000EA51BD /* PlaylistHelper.swift in Sources */,
 				AC3CB9901B08D52A009203E1 /* PlaylistPerformance.swift in Sources */,
 				ACDAFA0F1B090908003B411A /* SoundCloudClient.swift in Sources */,

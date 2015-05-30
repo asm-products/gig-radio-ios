@@ -58,7 +58,7 @@ class PlaylistPerformance: Object {
     func determineNextTrackToPlay(callback:(track:PlaylistTrack?)->Void){
         let realm = Realm()
         for track in soundCloudUser.tracks{
-            if track.streamable{
+            if track.streamable && track.duration / 60000 <= 10{ // don't play tracks over 10 minutes (TODO: turn this into a setting)
                 if playlist.tracks.filter("soundCloudTrack = %@", track).count == 0{
                     
                     realm.beginWrite()

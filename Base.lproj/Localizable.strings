@@ -16,3 +16,4 @@
 "SoundCloudUser.Explanation" = "We searched SoundCloud for '%@' and found '%@'. If we got it wrong, you can fix that here.";
 "Directions.SettingsTitle" = "Set Your Preferred Mapping App";
 "Directions.ButtonTitle" = "Show directions in %@";
+"SoundCloudUsers.CountOthersAvailable" = "%i more available";

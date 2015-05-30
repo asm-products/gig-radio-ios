@@ -149,7 +149,11 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
         for date in utcDates{
             let playlist = Playlist.findOrCreateForUtcDate(date)
             playlist.setLocation(self.playlist.location) // TODO: figure out if this is right when we've picked a specific city
-            playlist.fetchEvents{
+            if playlist.performances.count == 0{
+                playlist.fetchEvents{
+                    counter.click()
+                }
+            }else{
                 counter.click()
             }
         }

@@ -11,8 +11,7 @@ import MapKit
 
 protocol FlyerCollectionViewCellDelegate{
     func flyerCellShowEventButtonPressed(event:SongKickEvent)
-    func flyerCellTrackCountButtonPressed(item:PlaylistItem)
-    func flyerCellPlayButtonPressed(item:PlaylistItem)
+    func flyerCellTrackCountButtonPressed(performance:PlaylistPerformance)
 }
 
 class FlyerCollectionViewCell: UICollectionViewCell {
@@ -32,13 +31,13 @@ class FlyerCollectionViewCell: UICollectionViewCell {
         return CAGradientLayer.self
     }
     
-    var playlistItem: PlaylistItem?{
+    var performance: PlaylistPerformance?{
         didSet{
             if let lineupLabel = lineupLabel{
                 lineupLabel.attributedText = attributedLineupText
             }
             imageView.image = nil
-            if let item = playlistItem{
+            if let item = performance{
                 updateGradient(item.colorIndex)
                 if let image = cachedImage(item.songKickArtist.imageUrl()){
                     imageView.image = image
@@ -71,7 +70,7 @@ class FlyerCollectionViewCell: UICollectionViewCell {
     let DefaultAttributes = [NSFontAttributeName: UIFont(name: "Roboto-Light", size: 24)!]
     
     var attributedLineupText: NSAttributedString{
-        if let item = playlistItem{
+        if let item = performance{
             let focusedArtist = item.songKickArtist
             let result = NSMutableAttributedString(string: "")
             let acts = item.songKickEvent.performance
@@ -86,7 +85,7 @@ class FlyerCollectionViewCell: UICollectionViewCell {
             return NSAttributedString(string: "Error")
         }
     }
-    func updateFavouriteState(item:PlaylistItem){
+    func updateFavouriteState(item:PlaylistPerformance){
         if Favourite.findByEvent(item.songKickEvent) != nil{
             favouriteButton.setImage(UIImage(named: "starred"), forState: .Normal)
         }else{
@@ -94,7 +93,7 @@ class FlyerCollectionViewCell: UICollectionViewCell {
         }
     }
     @IBAction func didPressFavouriteButton(sender: AnyObject) {
-        if let item = playlistItem{
+        if let item = performance{
             if let favourite = Favourite.findByEvent(item.songKickEvent){
                 Favourite.remove(favourite)
             }else{
@@ -105,10 +104,10 @@ class FlyerCollectionViewCell: UICollectionViewCell {
         }
     }
     @IBAction func didPressTracksIndicatorButton(sender: AnyObject) {
-        delegate.flyerCellTrackCountButtonPressed(playlistItem!)
+        delegate.flyerCellTrackCountButtonPressed(performance!)
     }
     
     @IBAction func didPressEventLinkButton(sender: AnyObject) {
-        delegate.flyerCellShowEventButtonPressed(playlistItem!.songKickEvent)
+        delegate.flyerCellShowEventButtonPressed(performance!.songKickEvent)
     }
 }

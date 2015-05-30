@@ -9,7 +9,7 @@
 import UIKit
 
 protocol DatePickerViewControllerDelegate{
-    func datePickerDidChangeVisibleRange(startDate: NSDate, endDate: NSDate)
+    func datePickerDidChangeVisibleDates(utcDates:[NSDate])
     func datePickerDidSelectDate(startDate: NSDate)
 }
 
@@ -28,8 +28,6 @@ class DatePickerViewController: UICollectionViewController, UIScrollViewDelegate
     var centeredDateCache: NSDate?
     var backgroundView: UIView!
     var monthLabel: UILabel?
-    
-//    var activity: UIActivityIndicatorView!
     
     var delegate: DatePickerViewControllerDelegate!
     override func viewDidLoad() {
@@ -50,12 +48,6 @@ class DatePickerViewController: UICollectionViewController, UIScrollViewDelegate
         view.frame = frame
         label.frame = CGRectMake(0, 0, view.bounds.width, 22)
         view.addSubview(label)
-        
-//        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
-//        activityIndicator.hidesWhenStopped = true
-//        activityIndicator.frame = CGRectMake(100, 0, 20, 20)
-//        view.addSubview(activityIndicator)
-//        self.activity = activityIndicator
         
         collectionView!.backgroundView = view
         backgroundView = view
@@ -93,15 +85,6 @@ class DatePickerViewController: UICollectionViewController, UIScrollViewDelegate
         return (indexPath.row + daysOffset).daysAfter(day0)
     }
     override func scrollViewDidScroll(scrollView: UIScrollView) {
-//        if scrollView.contentOffset.x > self.view.bounds.width{
-//            daysOffset += DaysPerScreen
-//            scrollView.contentOffset = CGPoint(x: 0, y:0)// cool, this preserves the momentum
-//            collectionView?.reloadData()
-//        }else if scrollView.contentOffset.x < 0{
-//            daysOffset -= DaysPerScreen
-//            scrollView.contentOffset = CGPoint(x:self.view.bounds.width, y: 0)
-//            collectionView?.reloadData()
-//        }
         updateDateHeadingIfNeeded()
     }
     override func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
@@ -117,10 +100,7 @@ class DatePickerViewController: UICollectionViewController, UIScrollViewDelegate
         cells.sort { (a, b) -> Bool in
             a.date.compare(b.date) == NSComparisonResult.OrderedAscending
         }
-        if let first = cells.first,
-            let last = cells.last{
-                delegate.datePickerDidChangeVisibleRange(first.date, endDate: last.date)
-        }
+        delegate.datePickerDidChangeVisibleDates(cells.map({$0.date}))
     }
     func updateDateHeadingIfNeeded(){
         let superview = collectionView!.superview!

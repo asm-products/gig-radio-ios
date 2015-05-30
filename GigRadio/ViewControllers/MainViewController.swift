@@ -24,9 +24,11 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
     var datePicker: DatePickerViewController?
     var flyersController: FlyersCollectionViewController?
     var transportController: TransportViewController!
-    var location: CLLocation?
     
-    
+    var playlist: Playlist!
+    func getPlaylist()->Playlist{
+        return playlist
+    }
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return (loadingView != nil && loadingView.alpha < 1) ? .LightContent : .Default
     }
@@ -46,14 +48,23 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        if playlist == nil{
+            playlist = Playlist.findOrCreateForUtcDate( CalendarHelper.startOfUTCDay(NSDate()))
+        }
+        flyersController?.playlist = playlist
+        playlist.currentTrack = playlist.tracks.last
         updateFavouritesCount()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateFavouritesCount", name: FAVOURITE_COUNT_CHANGED, object: nil)
         // deal with location stuff here because we might need to show UI
         LocationHelper.lookUp { (location, error) -> Void in
-            self.location = location
-            self.fetchEventsForDate(NSDate()){
-                self.setDateHeading(NSDate())
-                self.hideLoadingView()
+            self.playlist.setLocation(location)
+            self.playlist.fetchEvents {
+                self.setDateHeading(self.playlist.utcDate)
+                self.flyersController?.reload{
+                    self.playNextTrack() // maybe check whether it was playing on last launch? But I think I prefer straight up playback - launching the app is like turning on a radio.
+                    self.hideLoadingView()
+                }
+
             }
         }
     }
@@ -67,68 +78,45 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
             favouritesCountLabel.hidden = true
         }
     }
-    func fetchEventsForDate(date:NSDate, callback:()->Void){
-        SongKickClient.sharedClient.getEvents(date, location: location, completion: { (eventIds, error) -> Void in
-            if let ids = eventIds{
-                Playlist.sharedPlaylist.updateLatestRunWithEventIds(ids, date: date)
-            }
-            SongKickVenue.updateDistanceCachesWithLocation(self.location)
+    func changeDate(date:NSDate, callback:()->Void){
+        let location = playlist.location
+        self.playlist = Playlist.findOrCreateForUtcDate(CalendarHelper.startOfUTCDay(date)) // being cautious
+        playlist.setLocation(location)
+        flyersController?.playlist = playlist
+        playlist.fetchEvents {
             self.flyersController?.reload {
                 self.playNextTrack()
                 callback()
             }
-        })
+        }
     }
     func playNextTrack(){
-        var run = PlaylistRun.current()
-        self.setCurrentItemIndex(run.indexOfLastUnplayedItem(), run:run){ success in
-            if success == false{
-                self.playNextTrack()
+        playlist.determineTrackAfter(playlist.currentTrack){ track in
+            if let track = track{
+                self.playlist.currentTrack = track
+                self.displayAndPlayTrack(track)
             }
         }
     }
     func playPreviousTrack() {
-        
-    }
-    func setCurrentItemIndex(itemIndex: Int?,run:PlaylistRun,  callback:(success:Bool)->Void){
-        if itemIndex == nil{
-            callback(success: false)
-            return
-        }
-        // scroll to right performance
-        let indexPath = NSIndexPath(forItem: itemIndex!, inSection: run.globalIndex()!)
-        flyersController?.collectionView?.scrollToItemAtIndexPath(indexPath, atScrollPosition: .CenteredHorizontally, animated: true)
-        let cell = flyersController?.collectionView?.cellForItemAtIndexPath(indexPath) as! FlyerCollectionViewCell?
-        let item = run.items[itemIndex!]
-        cell?.trackFetchingIndicator.startAnimating()
-        cell?.trackAvailabilityButton.hidden = true
-        item.determineSoundCloudUser(){ user,error in
-            cell?.trackFetchingIndicator.hidden = true
-            if user == nil{
-                cell?.trackAvailabilityButton.setImage(UIImage(named:"tracks-avail-0"), forState: .Normal)
-                callback(success: false)
-            }else{
-                item.determineTracksAvailable(){ trackCount,error in
-                    if trackCount == nil{
-                        cell?.updateTrackAvailabilityIcon(0)
-                        item.markPlayed()
-                        callback(success: false)
-                    }else{
-                        cell?.updateTrackAvailabilityIcon(trackCount!)
-                        item.determineNextTrackToPlay(){ track in
-                            if track == nil{
-                                item.markPlayed()
-                                callback(success:false)
-                            }else{
-                                self.transportController.setBufferingDisplay(true)
-                                self.transportController.play(item){ success in
-                                    callback(success:success)
-                                }
-                            }
-                        }
-                    }
-                }
+        if var index = playlist.tracks.indexOf(playlist.currentTrack!){
+            index -= 1
+            if index > 0{
+                let track = playlist.tracks[index]
+                playlist.currentTrack = track
+                displayAndPlayTrack(track)
             }
+        }
+    }
+    func displayAndPlayTrack(track:PlaylistTrack){
+        if let performanceIndex = playlist.performances.indexOf(track.performance){
+            let indexPath = NSIndexPath(forItem: performanceIndex, inSection: 0)
+            flyersController?.collectionView?.scrollToItemAtIndexPath(indexPath, atScrollPosition: .CenteredHorizontally, animated: true)
+            if let cell = flyersController?.collectionView?.cellForItemAtIndexPath(indexPath) as? FlyerCollectionViewCell{
+                cell.updateTrackAvailabilityIcon(track.performance.soundCloudUser.tracks.count)
+                cell.trackFetchingIndicator.stopAnimating()
+            }
+            self.transportController.play(track)
         }
     }
     
@@ -154,19 +142,23 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
         }
     }
     // MARK: DatePicker
-    func datePickerDidChangeVisibleRange(startDate: NSDate, endDate: NSDate) {
-        SongKickClient.sharedClient.getEvents(startDate, end: endDate, location: location) { (results,error) -> Void in
-            if error != nil{
-                println("SongKick error: \(error!.localizedDescription)")
-            }
+    func datePickerDidChangeVisibleDates(utcDates:[NSDate]) {
+        let counter = CompletionCounter(total: utcDates.count) {
             self.datePicker?.refresh()
+        }
+        for date in utcDates{
+            let playlist = Playlist.findOrCreateForUtcDate(date)
+            playlist.setLocation(self.playlist.location) // TODO: figure out if this is right when we've picked a specific city
+            playlist.fetchEvents{
+                counter.click()
+            }
         }
     }
     func datePickerDidSelectDate(startDate: NSDate) {
         let status = DateFormats.todayFormatter().stringFromDate(startDate)
         SVProgressHUD.showWithStatus(status, maskType: .Black)
         setDateHeading(startDate)
-        self.fetchEventsForDate(startDate){
+        self.changeDate(startDate){
             self.hideDatePickerAnimated(true)
             SVProgressHUD.dismiss()
         }

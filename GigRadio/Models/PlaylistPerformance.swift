@@ -9,27 +9,25 @@
 import UIKit
 import RealmSwift
 
-class PlaylistItem: Object {
+class PlaylistPerformance: Object {
     dynamic var id = NSUUID().UUIDString
+    override static func primaryKey()->String?{
+        return "id"
+    }
     
-    dynamic var date: NSDate = CalendarHelper.startOfUTCDay(NSDate()) // should be UTC-start-of-day
     dynamic var songKickEvent = SongKickEvent()
     dynamic var songKickArtist = SongKickArtist()
-    
     dynamic var soundCloudUser = SoundCloudUser()
-    dynamic var soundCloudTrack = SoundCloudTrack()
     
     dynamic var colorIndex = 0
     dynamic var createdAt = NSDate()
     
     dynamic var userHasBeenChecked = false
-    dynamic var hasBeenPlayed = false
     
-    override static func primaryKey()->String?{
-        return "id"
+    
+    var playlist: Playlist{
+        return linkingObjects(Playlist.self, forProperty: "performances").first!
     }
-    
-    
     func determineSoundCloudUser(callback:(user:SoundCloudUser?,error:NSError?)->Void){
         if soundCloudUser.id != 0{
             callback(user: self.soundCloudUser, error:nil)
@@ -57,28 +55,24 @@ class PlaylistItem: Object {
             }
         }
     }
-    func determineNextTrackToPlay(callback:(SoundCloudTrack?)->Void){
-        // find all the playlist items that include this user
-        // reject any tracks that have been included in a playlist already
-        // return the next track. We should filter on the date. probably just the date
+    func determineNextTrackToPlay(callback:(track:PlaylistTrack?)->Void){
         let realm = Realm()
-        let allPlaylistItems = realm.objects(PlaylistItem).filter("date = %@", self.date)
         for track in soundCloudUser.tracks{
             if track.streamable{
-                if allPlaylistItems.filter("soundCloudTrack = %@", track).count == 0{
-                    realm.write {
-                        self.soundCloudTrack = track
-                    }
-                    callback(track)
+                if playlist.tracks.filter("soundCloudTrack = %@", track).count == 0{
+                    
+                    realm.beginWrite()
+                    let playlistTrack = PlaylistTrack()
+                    playlistTrack.soundCloudTrack = track
+                    playlistTrack.performance = self
+                    playlist.tracks.append(playlistTrack)
+                    realm.commitWrite()
+                    
+                    callback(track:playlistTrack)
                     return
                 }
             }
         }
-        callback(nil)
-    }
-    func markPlayed(){
-        Realm().write {
-            self.hasBeenPlayed = true
-        }
+        callback(track:nil)
     }
 }

@@ -13,6 +13,7 @@ import AVFoundation
 protocol TransportViewControllerDelegate{
     func playNextTrack()
     func playPreviousTrack()
+    func getPlaylist()->Playlist
 }
 
 class TransportViewController: UIViewController,STKAudioPlayerDelegate{
@@ -30,7 +31,7 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate{
     var audioPlayer = STKAudioPlayer()
     var displayLink: CADisplayLink!
     
-    var playlistItem: PlaylistItem?
+    var track: PlaylistTrack?
     
     
     override func viewDidLoad() {
@@ -43,25 +44,24 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate{
         volumeView.setVolumeThumbImage(UIImage(named: "volume-thumb"), forState: .Normal)
         
     }
-    func play(item:PlaylistItem, callback:(success:Bool)->Void){
+    func play(track:PlaylistTrack){
+        setBufferingDisplay(true)
         AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: nil)
         AVAudioSession.sharedInstance().setActive(true, error: nil)
         UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
         self.becomeFirstResponder()
         
-        self.playlistItem = item
-        item.markPlayed()
-        trackInfoLabel.attributedText = PlaylistHelper.attributedTrackInfoText(playlistItem!, separator: "\n")
-        audioPlayer.play(item.soundCloudTrack.playbackUrl())
+        self.track = track
+        trackInfoLabel.attributedText = PlaylistHelper.attributedTrackInfoText(track, separator: "\n")
+        audioPlayer.play(track.soundCloudTrack.playbackUrl())
         
         MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = [
-            MPMediaItemPropertyAlbumTitle: "Upcoming gig: \(item.songKickEvent.displayName)",
-            MPMediaItemPropertyTitle: "\(item.soundCloudTrack.title) - \(item.soundCloudUser.username)",
-            MPMediaItemPropertyPlaybackDuration: item.soundCloudTrack.duration / 1000,
+            MPMediaItemPropertyAlbumTitle: "Upcoming gig: \(track.performance.songKickEvent.displayName)",
+            MPMediaItemPropertyTitle: "\(track.soundCloudTrack.title) - \(track.performance.soundCloudUser.username)",
+            MPMediaItemPropertyPlaybackDuration: track.soundCloudTrack.duration / 1000,
             MPNowPlayingInfoPropertyElapsedPlaybackTime: 0,
             
         ]
-        callback(success: true)
     }
     override func canBecomeFirstResponder() -> Bool {
         return true
@@ -87,6 +87,7 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate{
         }else{
             bufferingActivityIndicator.stopAnimating()
             timeRemainingView.hidden = false
+            displayLinkCallback()
         }
     }
     func setPlayButtonDisplayState(playing:Bool){
@@ -95,12 +96,11 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate{
     }
     /// Raised when an item has started playing
     func audioPlayer(audioPlayer: STKAudioPlayer!, didStartPlayingQueueItemId queueItemId: NSObject!){
-        bufferingActivityIndicator.stopAnimating()
-        timeRemainingView.hidden = false
     }
     /// Raised when an item has finished buffering (may or may not be the currently playing item)
     /// This event may be raised multiple times for the same item if seek is invoked on the player
     func audioPlayer(audioPlayer: STKAudioPlayer!, didFinishBufferingSourceWithQueueItemId queueItemId: NSObject!){
+        setBufferingDisplay(false)
     }
     /// Raised when the state of the player has changed
     func audioPlayer(audioPlayer: STKAudioPlayer!, stateChanged state: STKAudioPlayerState, previousState: STKAudioPlayerState){
@@ -109,7 +109,6 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate{
             setBufferingDisplay(true)
         case STKAudioPlayerStatePaused.value,STKAudioPlayerStateStopped.value:
             setPlayButtonDisplayState(false)
-            setBufferingDisplay(false)
         case STKAudioPlayerStatePlaying.value:
             setPlayButtonDisplayState(true)
             setBufferingDisplay(false)
@@ -140,6 +139,7 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate{
         }
     }
     @IBAction func didPressForward(sender: AnyObject) {
+        setBufferingDisplay(true)
         delegate.playNextTrack()
     }
     @IBAction func didPressRewind(sender: AnyObject) {
@@ -160,6 +160,11 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate{
             audioPlayer.pause()
         default:
             println("ignored \(event)")
+        }
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let dest = segue.destinationViewController as? PlaylistTableViewController{
+            dest.playlist = delegate.getPlaylist()
         }
     }
 }

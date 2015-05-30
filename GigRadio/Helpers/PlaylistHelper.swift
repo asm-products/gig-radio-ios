@@ -15,13 +15,13 @@ let TrackArtistAttributes = [NSFontAttributeName: UIFont(name: "Roboto-Regular",
 class PlaylistHelper: NSObject {
    
     
-    class func attributedTrackInfoText(item:PlaylistItem, separator:String)-> NSAttributedString{
-        if item.soundCloudTrack.id == 0{
+    class func attributedTrackInfoText(track:PlaylistTrack, separator:String)-> NSAttributedString{
+        if track.soundCloudTrack.id == 0{
             return NSAttributedString(string: "")
         }
         var result = NSMutableAttributedString(string: "")
-        let trackText = NSAttributedString(string: item.soundCloudTrack.title, attributes: TrackTitleAttributes)
-        let artistText = NSAttributedString(string: item.soundCloudUser.displayName(), attributes: TrackArtistAttributes)
+        let trackText = NSAttributedString(string: track.soundCloudTrack.title, attributes: TrackTitleAttributes)
+        let artistText = NSAttributedString(string: track.performance.soundCloudUser.displayName(), attributes: TrackArtistAttributes)
         result.appendAttributedString(trackText)
         result.appendAttributedString(NSAttributedString(string: separator))
         result.appendAttributedString(artistText)

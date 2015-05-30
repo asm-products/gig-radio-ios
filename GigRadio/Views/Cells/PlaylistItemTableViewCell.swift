@@ -10,9 +10,9 @@ import UIKit
 
 class PlaylistItemTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
-    var playlistItem: PlaylistItem!{
+    var track: PlaylistTrack!{
         didSet{
-            titleLabel.attributedText = PlaylistHelper.attributedTrackInfoText(playlistItem, separator: " - ")
+            titleLabel.attributedText = PlaylistHelper.attributedTrackInfoText(track, separator: " - ")
         }
     }
     override func awakeFromNib() {

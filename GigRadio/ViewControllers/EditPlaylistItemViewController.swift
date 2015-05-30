@@ -9,7 +9,7 @@
 import UIKit
 
 class EditPlaylistItemViewController: UITableViewController {
-    var playlistItem: PlaylistItem!
+    var performance: PlaylistPerformance!
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var explanationLabel: UILabel!
@@ -20,15 +20,15 @@ class EditPlaylistItemViewController: UITableViewController {
     @IBOutlet weak var viewOnSoundCloudCell: UITableViewCell!
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = playlistItem.songKickArtist.displayName
-        if let image = cachedImage(playlistItem.soundCloudUser.avatarUrl){
+        navigationItem.title = performance.songKickArtist.displayName
+        if let image = cachedImage(performance.soundCloudUser.avatarUrl){
             imageView.image = image
         }else{
-            preload([playlistItem.soundCloudUser.avatarUrl]){
-                self.imageView.image = cachedImage(self.playlistItem.soundCloudUser.avatarUrl)
+            preload([performance.soundCloudUser.avatarUrl]){
+                self.imageView.image = cachedImage(self.performance.soundCloudUser.avatarUrl)
             }
         }
-        explanationLabel.text = NSString(format: t("SoundCloudUser.Explanation"), playlistItem.songKickArtist.displayName, playlistItem.soundCloudUser.username) as String
+        explanationLabel.text = NSString(format: t("SoundCloudUser.Explanation"), performance.songKickArtist.displayName, performance.soundCloudUser.username) as String
     }
 
     @IBAction func didPressDone(sender: AnyObject) {
@@ -40,12 +40,12 @@ class EditPlaylistItemViewController: UITableViewController {
     }
     
     func viewOnSoundCloud() {
-        let url = NSURL(string:"soundcloud://users:\(playlistItem.soundCloudUser.id)")!
+        let url = NSURL(string:"soundcloud://users:\(performance.soundCloudUser.id)")!
         let app = UIApplication.sharedApplication()
         if app.canOpenURL(url){
             app.openURL(url)
         }else{
-            let url = NSURL(string: "https://soundcloud.com/\(playlistItem.soundCloudUser.permalink)")!
+            let url = NSURL(string: "https://soundcloud.com/\(performance.soundCloudUser.permalink)")!
             app.openURL(url)
         }
     }

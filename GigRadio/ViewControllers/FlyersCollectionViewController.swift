@@ -16,17 +16,16 @@ protocol FlyersCollectionViewControllerDelegate{
 }
 
 class FlyersCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, FlyerCollectionViewCellDelegate {
-    var runs: Results<PlaylistRun>!
+    var playlist: Playlist?
     var delegate: FlyersCollectionViewControllerDelegate!
     override func viewDidLoad() {
         super.viewDidLoad()
         reload(nil)
     }
     func reload(callback:(()->Void)?){
-        runs = Realm().objects(PlaylistRun)
-        if let run = runs.last{
-            var urls = [String]()
-            for item in run.items{
+        var urls = [String]()
+        if let playlist = playlist{
+            for item in playlist.performances{
                 urls.append(item.songKickArtist.imageUrl())
             }
             preload(urls){
@@ -38,31 +37,31 @@ class FlyersCollectionViewController: UICollectionViewController, UICollectionVi
 
     // MARK: UICollectionViewDataSource
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return runs.count
+        return playlist == nil ? 0 : 1
     }
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return runs[section].items.count
+        return playlist!.performances.count
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! FlyerCollectionViewCell
     
-        let playlistItem = playlistItemAtIndexPath(indexPath)
-        cell.playlistItem = playlistItem
+        let performance = performanceAtIndexPath(indexPath)
+        cell.performance = performance
         cell.delegate = self
         cell.baselineConstraint.constant = delegate.heightOfTransportArea()
-        playlistItem?.determineSoundCloudUser({ (user, error) -> Void in
-            playlistItem?.determineTracksAvailable({ (trackCount, error) -> Void in
-                if cell.playlistItem == playlistItem{
-                    cell.playlistItem = playlistItem // update if it's not been reused by now.
+        performance?.determineSoundCloudUser({ (user, error) -> Void in
+            performance?.determineTracksAvailable({ (trackCount, error) -> Void in
+                if cell.performance == performance{
+                    cell.performance = performance // update if it's not been reused by now.
                 }
             })
         })
         return cell
     }
 
-    func playlistItemAtIndexPath(indexPath:NSIndexPath)->PlaylistItem?{
-        return runs[indexPath.section].items[indexPath.row]
+    func performanceAtIndexPath(indexPath:NSIndexPath)->PlaylistPerformance?{
+        return playlist!.performances[indexPath.row]
     }
     func flyerCellShowEventButtonPressed(event: SongKickEvent) {
         if let controller = storyboard?.instantiateViewControllerWithIdentifier("GigPage") as? GigInfoViewController{
@@ -70,13 +69,10 @@ class FlyersCollectionViewController: UICollectionViewController, UICollectionVi
             navigationController?.pushViewController(controller, animated: true)
         }
     }
-    func flyerCellPlayButtonPressed(item: PlaylistItem) {
-        
-    }
-    func flyerCellTrackCountButtonPressed(item: PlaylistItem) {
+    func flyerCellTrackCountButtonPressed(performance:PlaylistPerformance) {
         if let nav = storyboard?.instantiateViewControllerWithIdentifier("EditPlaylistItemNav") as? UINavigationController{
             if let root = nav.topViewController  as? EditPlaylistItemViewController{
-                root.playlistItem = item
+                root.performance = performance
                 presentViewController(nav, animated: true, completion: nil)
             }
         }

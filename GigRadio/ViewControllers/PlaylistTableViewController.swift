@@ -9,32 +9,26 @@
 import UIKit
 
 class PlaylistTableViewController: UITableViewController {
-    var runs: [PlaylistRun]!
+    var playlist: Playlist!
     override func viewDidLoad() {
         super.viewDidLoad()
-        runs = PlaylistRun.allRunsInReverseOrder()
     }
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return runs.count
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let run = runs[section]
-        return run.items.count
+        return playlist.tracks.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! PlaylistItemTableViewCell
-        let items = runs[indexPath.section].items
+        let items = playlist.tracks
         let item = items[ items.count - indexPath.row - 1]
-        cell.playlistItem = item
+        cell.track = item
         return cell
-    }
-    
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return DateFormats.dateTimeFormat().stringFromDate(runs[section].createdAt)
     }
 
 }

@@ -18,7 +18,8 @@ class PickerDayCollectionViewCell: UICollectionViewCell {
         didSet{
             dayOfTheMonthLabel.text = DateFormats.dayOfTheMonthFormatter().stringFromDate(date)
             dayOfTheWeekLabel.text = DateFormats.dayOfTheWeekShortFormatter().stringFromDate(date)
-            let eventsCount = SongKickEvent.eventCountOnDate(date)
+            let playlist = Playlist.findOrCreateForUtcDate(date)
+            let eventsCount = playlist.performances.count
             signalStrengthIndicator.strength = Float(eventsCount) / 10.0
             
         }

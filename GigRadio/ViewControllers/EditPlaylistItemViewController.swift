@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SDWebImage
 
 class EditPlaylistItemViewController: UITableViewController {
     var playlistItem: PlaylistItem!

@@ -4,4 +4,3 @@
 #import "LocationHelper.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "NSDictionary+RemovesNullValues.h"
-#import <MTStatusBarOverlay/MTStatusBarOverlay.h>

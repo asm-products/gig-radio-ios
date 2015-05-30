@@ -62,12 +62,15 @@ func cachedImage(url:String)->UIImage?{
     let name = url.md5()
     if TWRDownloadManager.sharedManager().fileExistsWithName(name){
         let path = TWRDownloadManager.sharedManager().localPathForFile(name)
-        let result = UIImage(contentsOfFile: path)
+        if let result = UIImage(contentsOfFile: path){
         // naughty SongKick CDN returns an empty transparent image instead of a 404 so we have to hack to check for a clear image
-        if (result!.isFullyTransparent()){
-            return nil
+            if (result.isFullyTransparent()){
+                return nil
+            }else{
+                return result
+            }
         }else{
-            return result
+            return nil
         }
     }else{
         return nil

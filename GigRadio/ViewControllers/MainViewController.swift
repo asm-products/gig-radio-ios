@@ -109,14 +109,20 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
         }
     }
     func displayAndPlayTrack(track:PlaylistTrack){
+        scrollToPerformance(track.performance)
         if let performanceIndex = playlist.performances.indexOf(track.performance){
             let indexPath = NSIndexPath(forItem: performanceIndex, inSection: 0)
-            flyersController?.collectionView?.scrollToItemAtIndexPath(indexPath, atScrollPosition: .CenteredHorizontally, animated: true)
             if let cell = flyersController?.collectionView?.cellForItemAtIndexPath(indexPath) as? FlyerCollectionViewCell{
                 cell.updateTrackAvailabilityIcon(track.performance.soundCloudUser.tracks.count)
                 cell.trackFetchingIndicator.stopAnimating()
             }
             self.transportController.play(track)
+        }
+    }
+    func scrollToPerformance(performance: PlaylistPerformance) {
+        if let performanceIndex = playlist.performances.indexOf(performance){
+            let indexPath = NSIndexPath(forItem: performanceIndex, inSection: 0)
+            flyersController?.collectionView?.scrollToItemAtIndexPath(indexPath, atScrollPosition: .CenteredHorizontally, animated: true)
         }
     }
     
@@ -215,5 +221,13 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
     }
     func heightOfTransportArea() -> CGFloat {
         return transportContainer.frame.size.height
+    }
+    func editSoundCloudUserDidChangeUserForPerformance(performance:PlaylistPerformance){
+        if playlist.currentTrack?.performance == performance{
+            // bit hacky
+            playPreviousTrack()
+            playlist.removeTracksForPerformance(performance)
+            playNextTrack()
+        }
     }
 }

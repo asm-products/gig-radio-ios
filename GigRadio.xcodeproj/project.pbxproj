@@ -106,6 +106,7 @@
 		AC7AC1F31B121071002A550C /* tracks-avail-3@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC7AC1E71B121071002A550C /* tracks-avail-3@3x.png */; };
 		AC863F551B0D10BE00A6A9D3 /* CompletionCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC863F541B0D10BE00A6A9D3 /* CompletionCounter.swift */; };
 		AC863F571B0D15FA00A6A9D3 /* flyer-placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = AC863F561B0D15FA00A6A9D3 /* flyer-placeholder.png */; };
+		AC8AB7791B1A6F7400A673E1 /* SoundCloudUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8AB7781B1A6F7400A673E1 /* SoundCloudUserTableViewCell.swift */; };
 		AC8F43091B1782CB00EA51BD /* playlist.png in Resources */ = {isa = PBXBuildFile; fileRef = AC8F43061B1782CB00EA51BD /* playlist.png */; };
 		AC8F430A1B1782CB00EA51BD /* playlist@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC8F43071B1782CB00EA51BD /* playlist@2x.png */; };
 		AC8F430B1B1782CB00EA51BD /* playlist@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC8F43081B1782CB00EA51BD /* playlist@3x.png */; };
@@ -286,6 +287,7 @@
 		AC7AC1E71B121071002A550C /* tracks-avail-3@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tracks-avail-3@3x.png"; sourceTree = "<group>"; };
 		AC863F541B0D10BE00A6A9D3 /* CompletionCounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletionCounter.swift; sourceTree = "<group>"; };
 		AC863F561B0D15FA00A6A9D3 /* flyer-placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flyer-placeholder.png"; sourceTree = "<group>"; };
+		AC8AB7781B1A6F7400A673E1 /* SoundCloudUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundCloudUserTableViewCell.swift; sourceTree = "<group>"; };
 		AC8F43061B1782CB00EA51BD /* playlist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playlist.png; sourceTree = "<group>"; };
 		AC8F43071B1782CB00EA51BD /* playlist@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playlist@2x.png"; sourceTree = "<group>"; };
 		AC8F43081B1782CB00EA51BD /* playlist@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playlist@3x.png"; sourceTree = "<group>"; };
@@ -437,6 +439,7 @@
 				AC3CB97A1B08C989009203E1 /* FlyerCollectionViewCell.swift */,
 				AC8F43101B1786DF00EA51BD /* PlaylistItemTableViewCell.swift */,
 				AC8F43121B1786EE00EA51BD /* FavouriteItemTableViewCell.swift */,
+				AC8AB7781B1A6F7400A673E1 /* SoundCloudUserTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1043,6 +1046,7 @@
 				ACDAF9E11B08DEDC003B411A /* SongKickConfiguration.swift in Sources */,
 				AC08D4DA1B0CF9190082D424 /* CachingHelper.swift in Sources */,
 				AC5E8D011B0D1F5A00E43A07 /* Typography.swift in Sources */,
+				AC8AB7791B1A6F7400A673E1 /* SoundCloudUserTableViewCell.swift in Sources */,
 				AC3CB9841B08CDCC009203E1 /* SongKickEvent.swift in Sources */,
 				AC3CB97B1B08C989009203E1 /* FlyerCollectionViewCell.swift in Sources */,
 				AC8F43111B1786DF00EA51BD /* PlaylistItemTableViewCell.swift in Sources */,

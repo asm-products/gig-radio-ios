@@ -11,7 +11,7 @@ import RealmSwift
 
 let reuseIdentifier = "Flyer"
 
-protocol FlyersCollectionViewControllerDelegate{
+protocol FlyersCollectionViewControllerDelegate: EditPlaylistItemViewControllerDelegate{
     func heightOfTransportArea()->CGFloat
 }
 
@@ -73,6 +73,7 @@ class FlyersCollectionViewController: UICollectionViewController, UICollectionVi
         if let nav = storyboard?.instantiateViewControllerWithIdentifier("EditPlaylistItemNav") as? UINavigationController{
             if let root = nav.topViewController  as? EditPlaylistItemViewController{
                 root.performance = performance
+                root.delegate = delegate
                 presentViewController(nav, animated: true, completion: nil)
             }
         }

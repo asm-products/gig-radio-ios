@@ -127,5 +127,11 @@ class Playlist: Object {
             }
         }
     }
-    
+    func removeTracksForPerformance(performance:PlaylistPerformance){
+        let tracks = self.tracks.filter("performance = %@", performance)
+        let realm = Realm()
+        realm.write {
+            realm.delete(tracks)
+        }
+    }
 }

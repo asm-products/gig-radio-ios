@@ -17,3 +17,4 @@
 "Directions.SettingsTitle" = "Set Your Preferred Mapping App";
 "Directions.ButtonTitle" = "Show directions in %@";
 "SoundCloudUsers.CountOthersAvailable" = "%i more available";
+"SoundCloudUsers.SearchTitle" = "Results for '%@'";

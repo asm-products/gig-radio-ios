@@ -14,6 +14,7 @@ protocol TransportViewControllerDelegate{
     func playNextTrack()
     func playPreviousTrack()
     func getPlaylist()->Playlist
+    func scrollToPerformance(performance:PlaylistPerformance)
 }
 
 class TransportViewController: UIViewController,STKAudioPlayerDelegate{
@@ -161,6 +162,9 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate{
         default:
             println("ignored \(event)")
         }
+    }
+    @IBAction func didPressTrackInfo(sender: AnyObject) {
+        delegate.scrollToPerformance(track!.performance)
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let dest = segue.destinationViewController as? PlaylistTableViewController{

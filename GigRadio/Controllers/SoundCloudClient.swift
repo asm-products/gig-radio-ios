@@ -76,7 +76,7 @@ class SoundCloudClient: NSObject {
             Async.main {
                 if response.statusCode != 200{
                     if error == nil{
-                        let error = NSError(domain: "SoundCloud", code: response.statusCode, userInfo: json.object as! [NSObject : AnyObject])
+                        let error = NSError(domain: "SoundCloud", code: response.statusCode, userInfo: json.object as? [NSObject : AnyObject])
                         completion(json: json,error: error)
                     }else{
                         completion(json: json,error: error)

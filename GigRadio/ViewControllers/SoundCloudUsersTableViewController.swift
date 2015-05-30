@@ -17,25 +17,29 @@ protocol SoundCloudUsersTableViewControllerDelegate{
 class SoundCloudUsersTableViewController: UITableViewController {
     var songKickArtist: SongKickArtist!
     var selectedSoundCloudUser: SoundCloudUser!
+    var usersJSON: JSON?
     var users = [NSDictionary]()
     var delegate: SoundCloudUsersTableViewControllerDelegate!
     override func viewDidLoad() {
         super.viewDidLoad()
-        SoundCloudClient.sharedClient.findUsers(songKickArtist.displayName) {json,error in
-            if json.type == .Array{
-                for (index:String, item) in json{
-                    self.users.append(item.object as! NSDictionary)
-                    self.tableView.reloadData()
-                }
+        if usersJSON == nil{
+            SoundCloudClient.sharedClient.findUsers(songKickArtist.displayName) {json,error in
+                self.setUsers(json)
             }
         }
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableViewAutomaticDimension
+        navigationItem.title = template("SoundCloudUsers.SearchTitle", [songKickArtist.displayName])
     }
-
+    func setUsers(json:JSON){
+        self.usersJSON = json
+        if json.type == .Array{
+            for (index:String, item) in json{
+                self.users.append(item.object as! NSDictionary)
+            }
+            self.tableView.reloadData()
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -54,23 +58,29 @@ class SoundCloudUsersTableViewController: UITableViewController {
         return users[indexPath.row]
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
-        let user = userAtIndexPath(indexPath)
-        let id = user["id"] as! Int
-        cell.textLabel?.text = user["username"] as? String
-        let count = user["track_count"] as! Int
-        cell.detailTextLabel?.text = "\(count)"
-        let url = user["avatar_url"] as! String
-        preload([url]) {
-            cell.imageView?.image = cachedImage(url)
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! SoundCloudUserTableViewCell
+        let dict = userAtIndexPath(indexPath).dictionaryWithCamelCaseKeys() as NSDictionary
+        let user = SoundCloudUser(value: dict.dictionaryWithoutNullValues())
+        cell.user = user
+        cell.textLabel?.text = "\(user.username) (\(user.fullName), \(user.city) \(user.country))"
+        cell.detailTextLabel?.text = "\(user.trackCount) track(s), \(user.followersCount) follower(s)"
+        preload([user.avatarUrl]) {
+            cell.imageView?.image = cachedImage(user.avatarUrl)
         }
-        cell.accessoryType = selectedSoundCloudUser.id == id ? .Checkmark : .None
-        
+        cell.accessoryType = selectedSoundCloudUser.id == user.id ? .Checkmark : .DetailButton
+//        cell.editingAccessoryType = UITableViewCellAccessoryType.DetailButton
         return cell
     }
+    override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! SoundCloudUserTableViewCell
+        cell.user.showOnSoundCloud()
+    }
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let user = SoundCloudClient.createSoundCloudUser(self.userAtIndexPath(indexPath))
         delegate.soundCloudUsersTableDidSelectUser(user)
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        cell?.editingAccessoryType = .Checkmark
         self.navigationController?.popViewControllerAnimated(true)
     }
 

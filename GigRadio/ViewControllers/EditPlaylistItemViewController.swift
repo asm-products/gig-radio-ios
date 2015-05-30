@@ -9,16 +9,26 @@
 import UIKit
 import RealmSwift
 import SwiftyJSON
+
+protocol EditPlaylistItemViewControllerDelegate{
+    func editSoundCloudUserDidChangeUserForPerformance(performance:PlaylistPerformance)
+}
+
 class EditPlaylistItemViewController: UITableViewController,SoundCloudUsersTableViewControllerDelegate {
     var performance: PlaylistPerformance!
-
+    var delegate: EditPlaylistItemViewControllerDelegate!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var explanationLabel: UILabel!
     @IBOutlet weak var selectSoundCloudUserCell: UITableViewCell!
     @IBOutlet weak var doNotPlayTracksCell: UITableViewCell!
     @IBOutlet weak var viewOnSoundCloudCell: UITableViewCell!
+    
+    var users: JSON?
     override func viewDidLoad() {
         super.viewDidLoad()
+        populate()
+    }
+    func populate(){
         navigationItem.title = performance.songKickArtist.displayName
         if let image = cachedImage(performance.soundCloudUser.avatarUrl){
             imageView.image = image
@@ -30,22 +40,22 @@ class EditPlaylistItemViewController: UITableViewController,SoundCloudUsersTable
         explanationLabel.text = NSString(format: t("SoundCloudUser.Explanation"), performance.songKickArtist.displayName, performance.soundCloudUser.username) as String
         
         SoundCloudClient.sharedClient.findUsers(performance.songKickArtist.displayName, completion: { (json, error) -> Void in
-            let count = json.count - 1
-            self.selectSoundCloudUserCell.detailTextLabel?.text = template("SoundCloudUsers.CountOthersAvailable", [count])
+            self.users = json
+            self.updateCountCell()
         })
+    }
+    func updateCountCell(){
+        if let users = users{
+            let count = max(0,users.count - 1)
+            self.selectSoundCloudUserCell.detailTextLabel?.text = template("SoundCloudUsers.CountOthersAvailable", [count])
+            self.selectSoundCloudUserCell.detailTextLabel?.setNeedsDisplay()
+        }
     }
     @IBAction func didPressDone(sender: AnyObject) {
         navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
     func viewOnSoundCloud() {
-        let url = NSURL(string:"soundcloud://users:\(performance.soundCloudUser.id)")!
-        let app = UIApplication.sharedApplication()
-        if app.canOpenURL(url){
-            app.openURL(url)
-        }else{
-            let url = NSURL(string: "https://soundcloud.com/\(performance.soundCloudUser.permalink)")!
-            app.openURL(url)
-        }
+        performance.soundCloudUser.showOnSoundCloud()
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
@@ -64,6 +74,9 @@ class EditPlaylistItemViewController: UITableViewController,SoundCloudUsersTable
         if let dest = segue.destinationViewController as? SoundCloudUsersTableViewController{
             dest.selectedSoundCloudUser = performance.soundCloudUser
             dest.songKickArtist = performance.songKickArtist
+            if let users = users{
+                dest.setUsers(users)
+            }
             dest.delegate = self
         }
     }
@@ -71,5 +84,7 @@ class EditPlaylistItemViewController: UITableViewController,SoundCloudUsersTable
         Realm().write{
             self.performance.soundCloudUser = user
         }
+        populate()
+        delegate.editSoundCloudUserDidChangeUserForPerformance(self.performance)
     }
 }

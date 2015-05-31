@@ -15,20 +15,23 @@ class ApiClientBase: NSObject {
    
     func get(url:NSURL,completion:(json:JSON,error:NSError?)->Void){
         session.dataTaskWithURL(url, completionHandler: { data, response, error in
-            let response = response as! NSHTTPURLResponse
-            let json = JSON(data:data)
-            Async.main {
-                if response.statusCode != 200{
-                    if error == nil{
-                        let error = NSError(domain: self.errorDomain, code: response.statusCode, userInfo: json.object as? [NSObject : AnyObject])
-                        completion(json: json,error: error)
+            if let response = response as? NSHTTPURLResponse{
+                let json = JSON(data:data)
+                Async.main {
+                    if response.statusCode != 200{
+                        if error == nil{
+                            let error = NSError(domain: self.errorDomain, code: response.statusCode, userInfo: json.object as? [NSObject : AnyObject])
+                            completion(json: json,error: error)
+                        }else{
+                            completion(json: json,error: error)
+                        }
+                        
                     }else{
-                        completion(json: json,error: error)
+                        completion(json: json,error: nil)
                     }
-
-                }else{
-                    completion(json: json,error: nil)
                 }
+            }else{
+                completion(json: nil, error: error)
             }
         }).resume()
         return

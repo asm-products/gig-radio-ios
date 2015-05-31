@@ -160,7 +160,7 @@
                                         </state>
                                     </button>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UVv-t0-1md">
-                                        <rect key="frame" x="0.0" y="-80" width="320" height="64"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="64" id="gax-ml-awE"/>
                                         </constraints>
@@ -169,7 +169,7 @@
                                         </connections>
                                     </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RJ2-Np-nRp" userLabel="GradientOverlayView" customClass="GradientOverlayView" customModule="GigRadio" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="-80" width="320" height="64"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
@@ -183,7 +183,7 @@
                                     <constraint firstItem="UVv-t0-1md" firstAttribute="top" secondItem="RJ2-Np-nRp" secondAttribute="top" id="QUu-Sb-q3G"/>
                                     <constraint firstItem="MgT-VK-qEg" firstAttribute="leading" secondItem="dlj-Iq-DE6" secondAttribute="trailing" constant="8" id="Seo-66-bbi"/>
                                     <constraint firstItem="UVv-t0-1md" firstAttribute="bottom" secondItem="RJ2-Np-nRp" secondAttribute="bottom" id="T9y-KB-BqH"/>
-                                    <constraint firstItem="UVv-t0-1md" firstAttribute="top" secondItem="RkO-aP-Zdc" secondAttribute="top" constant="-80" id="WtS-Qz-UpB" userLabel="Date Selection"/>
+                                    <constraint firstItem="UVv-t0-1md" firstAttribute="top" secondItem="RkO-aP-Zdc" secondAttribute="top" id="WtS-Qz-UpB" userLabel="Date Selection"/>
                                     <constraint firstItem="F4K-8c-KN1" firstAttribute="centerX" secondItem="MgT-VK-qEg" secondAttribute="centerX" constant="8.5" id="aCI-Qt-ZUf"/>
                                     <constraint firstAttribute="bottom" secondItem="Cxa-TZ-4n2" secondAttribute="bottom" id="e6c-uW-DeN"/>
                                     <constraint firstItem="dlj-Iq-DE6" firstAttribute="leading" secondItem="Cxa-TZ-4n2" secondAttribute="trailing" constant="8" id="eJk-eg-ZfO"/>
@@ -756,7 +756,6 @@
                             <constraint firstItem="K5Z-AU-XgA" firstAttribute="top" secondItem="Y39-Is-SEZ" secondAttribute="bottom" id="AMZ-cG-7DC"/>
                             <constraint firstAttribute="trailing" secondItem="K5Z-AU-XgA" secondAttribute="trailing" id="Ic4-ZD-61O"/>
                             <constraint firstItem="Nn8-xi-qnO" firstAttribute="top" secondItem="K5Z-AU-XgA" secondAttribute="bottom" id="TWD-Jt-Q44"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="K5Z-AU-XgA" secondAttribute="trailing" constant="-16" id="bLX-yo-nfb"/>
                             <constraint firstItem="K5Z-AU-XgA" firstAttribute="top" secondItem="Y39-Is-SEZ" secondAttribute="bottom" id="qA4-Wl-fkz"/>
                             <constraint firstItem="K5Z-AU-XgA" firstAttribute="leading" secondItem="sL7-4n-1oI" secondAttribute="leading" id="xcr-oj-czR"/>
                         </constraints>

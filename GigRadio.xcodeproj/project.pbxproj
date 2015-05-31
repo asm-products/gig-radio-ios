@@ -117,6 +117,9 @@
 		AC8F43131B1786EE00EA51BD /* FavouriteItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F43121B1786EE00EA51BD /* FavouriteItemTableViewCell.swift */; };
 		AC8F43151B178C4000EA51BD /* PlaylistHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F43141B178C4000EA51BD /* PlaylistHelper.swift */; };
 		AC8F43171B178DDC00EA51BD /* Favourite.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F43161B178DDC00EA51BD /* Favourite.swift */; };
+		AC9584181B1B24C600DB0719 /* info-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AC9584151B1B24C600DB0719 /* info-button.png */; };
+		AC9584191B1B24C600DB0719 /* info-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC9584161B1B24C600DB0719 /* info-button@2x.png */; };
+		AC95841A1B1B24C600DB0719 /* info-button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC9584171B1B24C600DB0719 /* info-button@3x.png */; };
 		ACAE7996199F657E00030E26 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACAE7995199F657E00030E26 /* Foundation.framework */; };
 		ACAE7998199F657E00030E26 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACAE7997199F657E00030E26 /* CoreGraphics.framework */; };
 		ACAE799A199F657E00030E26 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACAE7999199F657E00030E26 /* UIKit.framework */; };
@@ -299,6 +302,9 @@
 		AC8F43121B1786EE00EA51BD /* FavouriteItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteItemTableViewCell.swift; sourceTree = "<group>"; };
 		AC8F43141B178C4000EA51BD /* PlaylistHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistHelper.swift; sourceTree = "<group>"; };
 		AC8F43161B178DDC00EA51BD /* Favourite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favourite.swift; sourceTree = "<group>"; };
+		AC9584151B1B24C600DB0719 /* info-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info-button.png"; sourceTree = "<group>"; };
+		AC9584161B1B24C600DB0719 /* info-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info-button@2x.png"; sourceTree = "<group>"; };
+		AC9584171B1B24C600DB0719 /* info-button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info-button@3x.png"; sourceTree = "<group>"; };
 		ACAE7992199F657E00030E26 /* GigRadio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GigRadio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACAE7995199F657E00030E26 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ACAE7997199F657E00030E26 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -449,6 +455,9 @@
 		AC5E952F19FC0B4C005B9872 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				AC9584151B1B24C600DB0719 /* info-button.png */,
+				AC9584161B1B24C600DB0719 /* info-button@2x.png */,
+				AC9584171B1B24C600DB0719 /* info-button@3x.png */,
 				AC3C78F21B19B16300586FC7 /* settings-small.png */,
 				AC3C78F31B19B16300586FC7 /* settings-small@2x.png */,
 				AC3C78F41B19B16300586FC7 /* settings-small@3x.png */,
@@ -892,6 +901,7 @@
 				ACD1C8E31B0A923000CF038C /* Roboto-Bold.ttf in Resources */,
 				ACDAF9F01B08F49B003B411A /* launch-logo@2x.png in Resources */,
 				AC3CB92D1B089AC4009203E1 /* forward@2x.png in Resources */,
+				AC9584181B1B24C600DB0719 /* info-button.png in Resources */,
 				AC0B0AD31B0E72B900B03F11 /* calendar-selection@2x.png in Resources */,
 				ACDAF9EF1B08F49B003B411A /* launch-logo.png in Resources */,
 				AC7AC1F01B121071002A550C /* tracks-avail-2@3x.png in Resources */,
@@ -900,6 +910,7 @@
 				AC8F430A1B1782CB00EA51BD /* playlist@2x.png in Resources */,
 				AC3CB9341B089AC4009203E1 /* play@3x.png in Resources */,
 				ACBC36EF1B162AF900C05845 /* tracks-count@2x.png in Resources */,
+				AC9584191B1B24C600DB0719 /* info-button@2x.png in Resources */,
 				AC3CB9501B08AA2C009203E1 /* speaker-quiet@2x.png in Resources */,
 				AC3CB9351B089AC4009203E1 /* rewind@3x.png in Resources */,
 				ACAE79B1199F657E00030E26 /* Images.xcassets in Resources */,
@@ -928,6 +939,7 @@
 				AC7AC1E91B121071002A550C /* tracks-avail-0@2x.png in Resources */,
 				ACD1C8D91B0A7F3800CF038C /* today-indicator@3x.png in Resources */,
 				AC0B0AD41B0E72B900B03F11 /* calendar-selection@3x.png in Resources */,
+				AC95841A1B1B24C600DB0719 /* info-button@3x.png in Resources */,
 				AC7AC1EA1B121071002A550C /* tracks-avail-0@3x.png in Resources */,
 				AC3CB95B1B08B4A3009203E1 /* playback-thumb@2x.png in Resources */,
 				AC3CB9751B08B7DF009203E1 /* disclosure-up.png in Resources */,

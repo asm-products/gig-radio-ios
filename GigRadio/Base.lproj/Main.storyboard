@@ -149,18 +149,8 @@
                                             <action selector="didPressDateHeader:" destination="9o0-oO-PbL" eventType="touchUpInside" id="zOW-Cl-aGe"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cxa-TZ-4n2" userLabel="Settings">
-                                        <rect key="frame" x="0.0" y="20" width="44" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="44" id="xeG-ML-pXf"/>
-                                            <constraint firstAttribute="height" constant="44" id="ySf-fV-gVG"/>
-                                        </constraints>
-                                        <state key="normal" image="settings.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UVv-t0-1md">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                        <rect key="frame" x="0.0" y="-84" width="320" height="64"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="64" id="gax-ml-awE"/>
                                         </constraints>
@@ -169,9 +159,19 @@
                                         </connections>
                                     </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RJ2-Np-nRp" userLabel="GradientOverlayView" customClass="GradientOverlayView" customModule="GigRadio" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                        <rect key="frame" x="0.0" y="-84" width="320" height="64"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cxa-TZ-4n2" userLabel="Settings">
+                                        <rect key="frame" x="0.0" y="20" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="xeG-ML-pXf"/>
+                                            <constraint firstAttribute="height" constant="44" id="ySf-fV-gVG"/>
+                                        </constraints>
+                                        <state key="normal" image="info-button.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25490196078431371" alpha="0.57999999999999996" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -183,7 +183,7 @@
                                     <constraint firstItem="UVv-t0-1md" firstAttribute="top" secondItem="RJ2-Np-nRp" secondAttribute="top" id="QUu-Sb-q3G"/>
                                     <constraint firstItem="MgT-VK-qEg" firstAttribute="leading" secondItem="dlj-Iq-DE6" secondAttribute="trailing" constant="8" id="Seo-66-bbi"/>
                                     <constraint firstItem="UVv-t0-1md" firstAttribute="bottom" secondItem="RJ2-Np-nRp" secondAttribute="bottom" id="T9y-KB-BqH"/>
-                                    <constraint firstItem="UVv-t0-1md" firstAttribute="top" secondItem="RkO-aP-Zdc" secondAttribute="top" id="WtS-Qz-UpB" userLabel="Date Selection"/>
+                                    <constraint firstItem="UVv-t0-1md" firstAttribute="top" secondItem="RkO-aP-Zdc" secondAttribute="top" constant="-84" id="WtS-Qz-UpB" userLabel="Date Selection"/>
                                     <constraint firstItem="F4K-8c-KN1" firstAttribute="centerX" secondItem="MgT-VK-qEg" secondAttribute="centerX" constant="8.5" id="aCI-Qt-ZUf"/>
                                     <constraint firstAttribute="bottom" secondItem="Cxa-TZ-4n2" secondAttribute="bottom" id="e6c-uW-DeN"/>
                                     <constraint firstItem="dlj-Iq-DE6" firstAttribute="leading" secondItem="Cxa-TZ-4n2" secondAttribute="trailing" constant="8" id="eJk-eg-ZfO"/>
@@ -1186,6 +1186,7 @@
         <image name="disclosure-right.png" width="10" height="15"/>
         <image name="flyer-placeholder.png" width="1024" height="1024"/>
         <image name="forward.png" width="28" height="17"/>
+        <image name="info-button.png" width="26" height="26"/>
         <image name="launch-logo.png" width="134" height="158"/>
         <image name="menu.png" width="19" height="13"/>
         <image name="play-large.png" width="68" height="68"/>
@@ -1193,7 +1194,6 @@
         <image name="playlist.png" width="28" height="17"/>
         <image name="rewind.png" width="28" height="17"/>
         <image name="settings-small.png" width="20" height="20"/>
-        <image name="settings.png" width="20" height="20"/>
         <image name="speaker-loud.png" width="22" height="28"/>
         <image name="star.png" width="25" height="25"/>
         <image name="tracks-count.png" width="13" height="11"/>

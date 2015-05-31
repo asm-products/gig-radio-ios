@@ -992,7 +992,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5hx-ML-LwC">
-                                <rect key="frame" x="16" y="183" width="288" height="281"/>
+                                <rect key="frame" x="16" y="192" width="288" height="272"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sKG-vi-e9n">
                                 <rect key="frame" x="55" y="472" width="211" height="44"/>
@@ -1074,7 +1074,7 @@
                             <constraint firstItem="sKG-vi-e9n" firstAttribute="top" secondItem="5hx-ML-LwC" secondAttribute="bottom" constant="8" id="Rs8-wW-ISU"/>
                             <constraint firstAttribute="centerX" secondItem="s4q-Va-QSV" secondAttribute="centerX" id="cty-MP-O9f"/>
                             <constraint firstItem="sKG-vi-e9n" firstAttribute="centerY" secondItem="vbs-2L-2Na" secondAttribute="centerY" id="d14-bB-GmP"/>
-                            <constraint firstItem="5hx-ML-LwC" firstAttribute="top" secondItem="JYO-ya-RIh" secondAttribute="bottom" id="egE-LZ-HU1"/>
+                            <constraint firstItem="5hx-ML-LwC" firstAttribute="top" secondItem="JYO-ya-RIh" secondAttribute="bottom" constant="9" id="egE-LZ-HU1"/>
                             <constraint firstItem="5hx-ML-LwC" firstAttribute="trailing" secondItem="vbs-2L-2Na" secondAttribute="trailing" constant="-16" id="fSg-x6-Shg"/>
                             <constraint firstAttribute="centerX" secondItem="sKG-vi-e9n" secondAttribute="centerX" id="ffg-TL-ojB"/>
                             <constraint firstItem="JYO-ya-RIh" firstAttribute="leading" secondItem="cgx-NL-Y7K" secondAttribute="leadingMargin" id="iwH-qY-Ifz"/>

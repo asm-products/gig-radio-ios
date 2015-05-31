@@ -85,7 +85,8 @@ class Playlist: Object {
             
             for event in events{
                 let eventMissingFromRun = self.performances.filter("songKickEvent == %@", event).count == 0
-                if eventMissingFromRun{
+                let statusIsOkay = event.status == "ok"
+                if eventMissingFromRun && statusIsOkay{
                     for performance in event.performance{
                         let item = PlaylistPerformance()
                         item.songKickEvent = event

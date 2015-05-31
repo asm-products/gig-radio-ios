@@ -101,7 +101,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
     func playPreviousTrack() {
         if var index = playlist.tracks.indexOf(playlist.currentTrack!){
             index -= 1
-            if index > 0{
+            if index >= 0{
                 let track = playlist.tracks[index]
                 playlist.currentTrack = track
                 displayAndPlayTrack(track)

@@ -15,7 +15,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Typography.initBarButtonStyles()
         
-        setSchemaVersion(3, Realm.defaultPath) { migration, oldSchemaVersion in
+        setSchemaVersion(4, Realm.defaultPath) { migration, oldSchemaVersion in
+            if oldSchemaVersion < 4{
+                migration.enumerate(SongKickEvent.className(), { (oldObject, newObject) -> Void in
+                    newObject!["status"] = "ok"
+                })
+            }
+            if oldSchemaVersion < 3{
+                var seen = NSMutableSet()
+                var toDelete = NSMutableArray()
+                migration.enumerate(SongKickVenue.className(), { (oldObject, newObject) -> Void in
+                    if seen.containsObject(newObject!["id"]!){
+                        toDelete.addObject(newObject!)
+                    }
+                    seen.addObject(newObject!["id"]!)
+                })
+                for object in toDelete{
+                    migration.delete(object as! MigrationObject)
+                }
+            }
         }
         return true
     }

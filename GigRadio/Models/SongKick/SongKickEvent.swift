@@ -21,6 +21,7 @@ class SongKickEvent: Object {
     dynamic var descriptionText = ""
     dynamic var popularity: Double = 0
     dynamic var series = SongKickDisplayName()
+    dynamic var status = "ok"
     
     dynamic var distanceCache: Double = 0
     dynamic var date:NSDate = NSDate(timeIntervalSince1970: 0) // don't accidentally accumulate events for today; set this long in the past

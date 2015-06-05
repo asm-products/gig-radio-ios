@@ -20,6 +20,9 @@ class FlyersCollectionViewController: UICollectionViewController, UICollectionVi
     var delegate: FlyersCollectionViewControllerDelegate!
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout{
+            layout.itemSize = CGSize(width: collectionView!.frame.width , height: collectionView!.frame.size.height)
+        }
         reload(nil)
     }
     func reload(callback:(()->Void)?){
@@ -78,11 +81,13 @@ class FlyersCollectionViewController: UICollectionViewController, UICollectionVi
             }
         }
     }
-    
-    // MARK: Layout Delegate
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{
-        return CGSize(width: collectionView.frame.width , height: collectionView.frame.size.height)
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout{
+            layout.itemSize = size
+        }
+        collectionView?.reloadData()
     }
+    
     // MARK: UICollectionViewDelegate
 
     /*

@@ -20,11 +20,30 @@ class Favourite: Object {
         return objects.first
     }
     class func remove(item:Favourite){
+        for notification in UIApplication.sharedApplication().scheduledLocalNotifications as! [UILocalNotification]{
+            if let userInfo = notification.userInfo as? [String:Int],
+            let eventId = userInfo["songKickEventId"]{
+                if eventId == item.event.id{
+                    UIApplication.sharedApplication().cancelLocalNotification(notification)
+                }
+            }
+        }
         Realm().write {
             Realm().delete(item)
         }
     }
     class func add(event:SongKickEvent){
+        let notification = UILocalNotification()
+        notification.userInfo = ["songKickEventId": event.id]
+        notification.alertTitle = "Gig tonight"
+        notification.alertBody = "\(event.displayName) \(event.venue.displayName) \(event.start.time)"
+        if let dateTime = event.start.parsedDateTime(){
+            notification.fireDate = dateTime.dateByAddingTimeInterval(2 * 60 * 60)
+        }else{
+            notification.fireDate = NSCalendar.currentCalendar().dateBySettingHour(12, minute: 00, second: 00, ofDate: event.date, options: nil)
+        }
+        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+
         Realm().write {
             let item = Favourite()
             item.event = event

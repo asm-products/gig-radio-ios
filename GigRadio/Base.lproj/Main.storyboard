@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qNN-Td-4yW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qNN-Td-4yW">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -17,6 +17,138 @@
         </mutableArray>
     </customFonts>
     <scenes>
+        <!--Info and Preferences-->
+        <scene sceneID="frg-Oo-7Ke">
+            <objects>
+                <tableViewController id="5qa-gz-zC7" customClass="InfoSettingsTableViewController" customModule="GigRadio" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Q71-fD-1D2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.72941176470000002" green="0.72549019609999998" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <sections>
+                            <tableViewSection headerTitle="Playlist order" footerTitle="Tracks from shows at venues without geo-coordinates will be played last when 'nearest first' is selected" id="ZOO-ef-C3K">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Ug5-Ee-1qb">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ug5-Ee-1qb" id="Vpz-vR-rsb">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rOh-uf-Vcv">
+                                                    <rect key="frame" x="8" y="8" width="359" height="29"/>
+                                                    <segments>
+                                                        <segment title="City wide"/>
+                                                        <segment title="Nearest first"/>
+                                                    </segments>
+                                                </segmentedControl>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="rOh-uf-Vcv" firstAttribute="trailing" secondItem="Vpz-vR-rsb" secondAttribute="trailingMargin" id="T7b-sy-nNR"/>
+                                                <constraint firstItem="rOh-uf-Vcv" firstAttribute="leading" secondItem="Vpz-vR-rsb" secondAttribute="leadingMargin" id="euY-4o-d9l"/>
+                                                <constraint firstAttribute="centerY" secondItem="rOh-uf-Vcv" secondAttribute="centerY" id="zcS-d7-EEm"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Filter by length" footerTitle="Shorter tracks are more likely to be music. Longer tracks could be DJ mixes or podcasts." id="ixX-UD-SBD">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="a9z-n0-UkX">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a9z-n0-UkX" id="0ia-ko-sZP">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="VgL-cZ-RLN">
+                                                    <rect key="frame" x="8" y="8" width="359" height="29"/>
+                                                    <segments>
+                                                        <segment title="&lt;10 min"/>
+                                                        <segment title="All"/>
+                                                        <segment title="&gt; 10 min"/>
+                                                    </segments>
+                                                </segmentedControl>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="VgL-cZ-RLN" firstAttribute="trailing" secondItem="0ia-ko-sZP" secondAttribute="trailingMargin" id="LjB-eL-5Vn"/>
+                                                <constraint firstItem="VgL-cZ-RLN" firstAttribute="leading" secondItem="0ia-ko-sZP" secondAttribute="leadingMargin" id="PvA-bB-4dG"/>
+                                                <constraint firstAttribute="centerY" secondItem="VgL-cZ-RLN" secondAttribute="centerY" id="mBt-VP-CtU"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="When all days gigs have been played for day" footerTitle="" id="v3b-CC-S0o">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="X3G-LI-cZH">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="X3G-LI-cZH" id="7Lu-Qs-xqw">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bZr-38-m4R">
+                                                    <rect key="frame" x="8" y="8" width="359" height="29"/>
+                                                    <segments>
+                                                        <segment title="Different songs, same day"/>
+                                                        <segment title="Move to next day"/>
+                                                    </segments>
+                                                </segmentedControl>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="bZr-38-m4R" firstAttribute="leading" secondItem="7Lu-Qs-xqw" secondAttribute="leadingMargin" id="nhF-dQ-iME"/>
+                                                <constraint firstItem="bZr-38-m4R" firstAttribute="trailing" secondItem="7Lu-Qs-xqw" secondAttribute="trailingMargin" id="qOa-wk-uZ6"/>
+                                                <constraint firstAttribute="centerY" secondItem="bZr-38-m4R" secondAttribute="centerY" id="ydh-6p-nf3"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Spoken announcements" footerTitle="" id="u4j-S5-a7C">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Yqv-Ap-MCm">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yqv-Ap-MCm" id="sC0-fe-zEc">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="aK1-Cm-g2O">
+                                                    <rect key="frame" x="8" y="8" width="359" height="29"/>
+                                                    <segments>
+                                                        <segment title="On"/>
+                                                        <segment title="Off"/>
+                                                    </segments>
+                                                </segmentedControl>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="aK1-Cm-g2O" firstAttribute="leading" secondItem="sC0-fe-zEc" secondAttribute="leadingMargin" id="5br-xy-ztz"/>
+                                                <constraint firstItem="aK1-Cm-g2O" firstAttribute="trailing" secondItem="sC0-fe-zEc" secondAttribute="trailingMargin" id="81s-bY-8OV"/>
+                                                <constraint firstAttribute="centerY" secondItem="aK1-Cm-g2O" secondAttribute="centerY" id="ciK-a2-0PX"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="5qa-gz-zC7" id="5pd-KI-AUe"/>
+                            <outlet property="delegate" destination="5qa-gz-zC7" id="ZuN-sX-QqT"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Info and Preferences" id="wiG-9v-R6w">
+                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="dJA-Z0-W7P">
+                            <connections>
+                                <action selector="didPressDone:" destination="5qa-gz-zC7" id="aiI-qb-d5I"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eNC-WX-bhi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="50.5" y="-361.5"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="LZz-Mh-zdE">
             <objects>
@@ -171,6 +303,11 @@
                                         <state key="normal" image="info-button.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="a8b-jB-bAz" kind="popoverPresentation" popoverAnchorView="Cxa-TZ-4n2" id="GV1-p8-wam">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25490196078431371" alpha="0.57999999999999996" colorSpace="calibratedRGB"/>
@@ -414,7 +551,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bsm-ZO-PBR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="466.5" y="-8"/>
+            <point key="canvasLocation" x="1278" y="-8"/>
         </scene>
         <!--Saved gigs-->
         <scene sceneID="Y6f-F9-ABC">
@@ -478,7 +615,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8PR-T6-R3A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1161" y="8"/>
+            <point key="canvasLocation" x="1973" y="8"/>
         </scene>
         <!--Date Picker View Controller-->
         <scene sceneID="fpK-US-oUY">
@@ -555,7 +692,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H4d-bs-NIv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="484.5" y="-657"/>
+            <point key="canvasLocation" x="1296" y="-657"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EQs-IV-i8P">
@@ -1128,7 +1265,7 @@
                     </items>
                 </navigationBar>
             </objects>
-            <point key="canvasLocation" x="1881.75" y="-8"/>
+            <point key="canvasLocation" x="2693" y="-8"/>
         </scene>
         <!--Playlist Table View Controller-->
         <scene sceneID="mUr-5D-qBt">
@@ -1199,6 +1336,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mTw-tK-EOO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="875" y="1126"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="YAQ-xI-cB0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="a8b-jB-bAz" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="61e-J6-occ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.72941176470000002" green="0.72549019609999998" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5qa-gz-zC7" kind="relationship" relationship="rootViewController" id="QF8-Jo-yaG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="thw-gm-7Uv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-390" y="-361"/>
         </scene>
     </scenes>
     <resources>

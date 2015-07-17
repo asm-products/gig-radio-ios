@@ -136,6 +136,7 @@
 		ACAE79DE199F6C3100030E26 /* CalendarHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE79DD199F6C3100030E26 /* CalendarHelper.m */; };
 		ACAE7A0C199F967E00030E26 /* LocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE7A0B199F967E00030E26 /* LocationHelper.m */; };
 		ACAE7A15199FAF7400030E26 /* NSDictionary+RemovesNullValues.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE7A14199FAF7400030E26 /* NSDictionary+RemovesNullValues.m */; };
+		ACB4BEB61B56586F007986AB /* InfoSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB4BEB51B56586F007986AB /* InfoSettingsTableViewController.swift */; };
 		ACBC36EB1B162AF900C05845 /* play-large.png in Resources */ = {isa = PBXBuildFile; fileRef = ACBC36E51B162AF900C05845 /* play-large.png */; };
 		ACBC36EC1B162AF900C05845 /* play-large@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACBC36E61B162AF900C05845 /* play-large@2x.png */; };
 		ACBC36ED1B162AF900C05845 /* play-large@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACBC36E71B162AF900C05845 /* play-large@3x.png */; };
@@ -307,6 +308,8 @@
 		AC9584151B1B24C600DB0719 /* info-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info-button.png"; sourceTree = "<group>"; };
 		AC9584161B1B24C600DB0719 /* info-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info-button@2x.png"; sourceTree = "<group>"; };
 		AC9584171B1B24C600DB0719 /* info-button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info-button@3x.png"; sourceTree = "<group>"; };
+		ACA9EC4F1B59451B00CC1B2D /* backward.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = backward.aif; sourceTree = "<group>"; };
+		ACA9EC501B59451B00CC1B2D /* forward.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = forward.aif; sourceTree = "<group>"; };
 		ACAE7992199F657E00030E26 /* GigRadio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GigRadio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACAE7995199F657E00030E26 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ACAE7997199F657E00030E26 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -328,6 +331,7 @@
 		ACAE7A0B199F967E00030E26 /* LocationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationHelper.m; sourceTree = "<group>"; };
 		ACAE7A13199FAF7400030E26 /* NSDictionary+RemovesNullValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+RemovesNullValues.h"; sourceTree = "<group>"; };
 		ACAE7A14199FAF7400030E26 /* NSDictionary+RemovesNullValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+RemovesNullValues.m"; sourceTree = "<group>"; };
+		ACB4BEB51B56586F007986AB /* InfoSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoSettingsTableViewController.swift; sourceTree = "<group>"; };
 		ACBC36E51B162AF900C05845 /* play-large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-large.png"; sourceTree = "<group>"; };
 		ACBC36E61B162AF900C05845 /* play-large@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-large@2x.png"; sourceTree = "<group>"; };
 		ACBC36E71B162AF900C05845 /* play-large@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-large@3x.png"; sourceTree = "<group>"; };
@@ -553,6 +557,15 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		ACA9EC4E1B59450C00CC1B2D /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				ACA9EC4F1B59451B00CC1B2D /* backward.aif */,
+				ACA9EC501B59451B00CC1B2D /* forward.aif */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		ACAE7989199F657E00030E26 = {
 			isa = PBXGroup;
 			children = (
@@ -665,6 +678,7 @@
 				AC6B7C711B17A8FC00989883 /* GigInfoViewController.swift */,
 				AC6B7C731B17BBFE00989883 /* EditPlaylistItemViewController.swift */,
 				AC1015641B1A2E1A000FC5A9 /* SoundCloudUsersTableViewController.swift */,
+				ACB4BEB51B56586F007986AB /* InfoSettingsTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1102,6 +1116,7 @@
 				AC6B7C721B17A8FC00989883 /* GigInfoViewController.swift in Sources */,
 				AC3CB9861B08CFDF009203E1 /* SongKickPerformance.swift in Sources */,
 				ACDAFA0D1B090900003B411A /* SongKickClient.swift in Sources */,
+				ACB4BEB61B56586F007986AB /* InfoSettingsTableViewController.swift in Sources */,
 				AC3CB98A1B08D070009203E1 /* SongKickVenue.swift in Sources */,
 				ACDAFA071B08FBE1003B411A /* I18nHelper.swift in Sources */,
 				ACDAF9E71B08E45F003B411A /* MusicEngine.swift in Sources */,

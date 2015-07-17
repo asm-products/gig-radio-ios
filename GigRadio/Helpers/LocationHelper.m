@@ -9,7 +9,7 @@
 #import "LocationHelper.h"
 #import "CLLocationManager+blocks.h"
 @implementation LocationHelper
-+(void)lookUp:(void (^)(CLLocation *, NSError *))completionHandler{
++(void)track:(void (^)(CLLocation *, NSError *))completionHandler{
 //+(void)lookupWithError:(void (^)(NSError *))errorHandler completion:(void (^)(CLLocation*))completionHandler{
     
 #if TARGET_IPHONE_SIMULATOR
@@ -20,17 +20,20 @@
 #endif
     static CLLocationManager * manager = nil;
     if(!manager) manager = [CLLocationManager new];
+    manager.desiredAccuracy = 500; // 0.5 km
+    manager.updateAccuracyFilter = 500; //
     if([manager respondsToSelector:@selector(requestWhenInUseAuthorization)]){
         [manager performSelector:@selector(requestWhenInUseAuthorization)];
     }
+
     [manager startUpdatingLocationWithUpdateBlock:^(CLLocationManager *manager, CLLocation *location, NSError *error, BOOL *stopUpdating) {
         if(error){
             completionHandler(nil, error);
         }else{
             completionHandler(location, nil);
         }
-        //TODO: wait until accuracy is sufficient
         *stopUpdating = YES;
+        [manager startMonitoringSignificantLocationChanges];
     }];
 }
 

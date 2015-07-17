@@ -4,7 +4,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 target "GigRadio" do
   pod 'RealmSwift', '~> 0.93'
-  pod 'CLLocationManager-blocks', '~> 1.1'
+  pod 'CLLocationManager-blocks', '~> 1.3'
   pod 'CMDQueryStringSerialization', '~> 0.3'
   pod 'YLMoment', '~> 0.5'
   pod 'Functional.m', '~> 1.0'

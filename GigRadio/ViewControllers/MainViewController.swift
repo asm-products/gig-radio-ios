@@ -26,6 +26,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
     var transportController: TransportViewController!
     
     var playlist: Playlist!
+    var hasStartedPlaybackOnLaunch = false
     func getPlaylist()->Playlist{
         return playlist
     }
@@ -56,13 +57,19 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
         updateFavouritesCount()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateFavouritesCount", name: FAVOURITE_COUNT_CHANGED, object: nil)
         // deal with location stuff here because we might need to show UI
-        LocationHelper.lookUp { (location, error) -> Void in
+        LocationHelper.track { (location, error) -> Void in
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+            // this will be called whenever the user's location changes, as well as on startup.
             self.playlist.setLocation(location)
             self.playlist.fetchEvents {
                 self.setDateHeading(self.playlist.utcDate)
                 self.flyersController?.reload{
-                    self.playNextTrack() // maybe check whether it was playing on last launch? But I think I prefer straight up playback - launching the app is like turning on a radio.
-                    self.hideLoadingView()
+                    if self.hasStartedPlaybackOnLaunch == false{
+                        self.playNextTrack() // maybe check whether it was playing on last launch? But I think I prefer straight up playback - launching the app is like turning on a radio.
+                        self.hideLoadingView()
+                        self.hasStartedPlaybackOnLaunch = true
+                    }
+                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 }
 
             }

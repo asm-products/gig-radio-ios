@@ -1,4 +1,5 @@
 Pods
+*.undo
 #########################
 # .gitignore file for Xcode4 and Xcode5 Source projects
 #

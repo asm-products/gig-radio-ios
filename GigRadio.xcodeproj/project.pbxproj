@@ -120,6 +120,8 @@
 		AC9584181B1B24C600DB0719 /* info-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AC9584151B1B24C600DB0719 /* info-button.png */; };
 		AC9584191B1B24C600DB0719 /* info-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC9584161B1B24C600DB0719 /* info-button@2x.png */; };
 		AC95841A1B1B24C600DB0719 /* info-button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC9584171B1B24C600DB0719 /* info-button@3x.png */; };
+		ACA9EC511B59451B00CC1B2D /* backward.aif in Resources */ = {isa = PBXBuildFile; fileRef = ACA9EC4F1B59451B00CC1B2D /* backward.aif */; };
+		ACA9EC521B59451B00CC1B2D /* forward.aif in Resources */ = {isa = PBXBuildFile; fileRef = ACA9EC501B59451B00CC1B2D /* forward.aif */; };
 		ACAE7996199F657E00030E26 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACAE7995199F657E00030E26 /* Foundation.framework */; };
 		ACAE7998199F657E00030E26 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACAE7997199F657E00030E26 /* CoreGraphics.framework */; };
 		ACAE799A199F657E00030E26 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACAE7999199F657E00030E26 /* UIKit.framework */; };
@@ -591,6 +593,7 @@
 		ACAE799B199F657E00030E26 /* GigRadio */ = {
 			isa = PBXGroup;
 			children = (
+				ACA9EC4E1B59450C00CC1B2D /* Sounds */,
 				AC3CB97C1B08CBCD009203E1 /* Lib */,
 				AC3CB9421B08A39F009203E1 /* Fonts */,
 				AC5E952F19FC0B4C005B9872 /* Images */,
@@ -869,6 +872,7 @@
 				AC3CB95F1B08B4A3009203E1 /* playback-track@3x.png in Resources */,
 				AC5E954519FC0B4D005B9872 /* disclosure_small@2x.png in Resources */,
 				AC3CB9511B08AA2C009203E1 /* speaker-quiet@3x.png in Resources */,
+				ACA9EC511B59451B00CC1B2D /* backward.aif in Resources */,
 				AC3CB94F1B08AA2C009203E1 /* speaker-quiet.png in Resources */,
 				ACD6EFD919FC44BD00DDE967 /* starred@2x.png in Resources */,
 				ACD1C8EB1B0A9E0B00CF038C /* volume-thumb.png in Resources */,
@@ -883,6 +887,7 @@
 				AC3CB9761B08B7DF009203E1 /* disclosure-up@2x.png in Resources */,
 				AC5E954219FC0B4D005B9872 /* compass_needle.png in Resources */,
 				ACDAF9F41B08FAD8003B411A /* Main.storyboard in Resources */,
+				ACA9EC521B59451B00CC1B2D /* forward.aif in Resources */,
 				ACD1C8EC1B0A9E0B00CF038C /* volume-thumb@2x.png in Resources */,
 				AC3CB9401B08A276009203E1 /* settings@2x.png in Resources */,
 				ACDAF9FE1B08FB72003B411A /* Localizable.strings in Resources */,

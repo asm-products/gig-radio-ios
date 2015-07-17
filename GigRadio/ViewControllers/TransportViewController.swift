@@ -16,6 +16,9 @@ protocol TransportViewControllerDelegate{
     func getPlaylist()->Playlist
     func scrollToPerformance(performance:PlaylistPerformance)
 }
+func soundURL(name:String)->NSURL{
+    return NSBundle.mainBundle().URLForResource(name, withExtension: "aif")!
+}
 
 class TransportViewController: UIViewController,STKAudioPlayerDelegate{
     var delegate: TransportViewControllerDelegate!
@@ -34,9 +37,15 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate{
     
     var track: PlaylistTrack?
     
+    let forwardSound = AVAudioPlayer(contentsOfURL: soundURL("forward"), error: nil)
+    let backwardSound = AVAudioPlayer(contentsOfURL: soundURL("backward"), error: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        forwardSound.prepareToPlay()
+        backwardSound.prepareToPlay()
+        
         displayLink = CADisplayLink(target: self, selector: "displayLinkCallback")
         displayLink.frameInterval = 60
         displayLink.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSDefaultRunLoopMode)
@@ -141,9 +150,11 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate{
     }
     @IBAction func didPressForward(sender: AnyObject) {
         setBufferingDisplay(true)
+        forwardSound.play()
         delegate.playNextTrack()
     }
     @IBAction func didPressRewind(sender: AnyObject) {
+        backwardSound.play()
         delegate.playPreviousTrack()
     }
     @IBAction func didDragPlaybackTime(sender: UISlider) {

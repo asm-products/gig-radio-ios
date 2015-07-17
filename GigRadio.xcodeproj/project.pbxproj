@@ -122,6 +122,10 @@
 		AC95841A1B1B24C600DB0719 /* info-button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC9584171B1B24C600DB0719 /* info-button@3x.png */; };
 		ACA9EC511B59451B00CC1B2D /* backward.aif in Resources */ = {isa = PBXBuildFile; fileRef = ACA9EC4F1B59451B00CC1B2D /* backward.aif */; };
 		ACA9EC521B59451B00CC1B2D /* forward.aif in Resources */ = {isa = PBXBuildFile; fileRef = ACA9EC501B59451B00CC1B2D /* forward.aif */; };
+		ACA9EC541B595D1700CC1B2D /* LightStatusBarNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA9EC531B595D1700CC1B2D /* LightStatusBarNavigationViewController.swift */; };
+		ACA9EC591B595E9500CC1B2D /* Appearance.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA9EC581B595E9500CC1B2D /* Appearance.m */; };
+		ACA9EC5D1B595FC700CC1B2D /* Vectors.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA9EC5C1B595FC700CC1B2D /* Vectors.m */; };
+		ACA9EC5F1B59610500CC1B2D /* GigRadioVectorLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA9EC5E1B59610500CC1B2D /* GigRadioVectorLogo.swift */; };
 		ACAE7996199F657E00030E26 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACAE7995199F657E00030E26 /* Foundation.framework */; };
 		ACAE7998199F657E00030E26 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACAE7997199F657E00030E26 /* CoreGraphics.framework */; };
 		ACAE799A199F657E00030E26 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACAE7999199F657E00030E26 /* UIKit.framework */; };
@@ -310,6 +314,12 @@
 		AC9584171B1B24C600DB0719 /* info-button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info-button@3x.png"; sourceTree = "<group>"; };
 		ACA9EC4F1B59451B00CC1B2D /* backward.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = backward.aif; sourceTree = "<group>"; };
 		ACA9EC501B59451B00CC1B2D /* forward.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = forward.aif; sourceTree = "<group>"; };
+		ACA9EC531B595D1700CC1B2D /* LightStatusBarNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightStatusBarNavigationViewController.swift; sourceTree = "<group>"; };
+		ACA9EC571B595E9500CC1B2D /* Appearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appearance.h; sourceTree = "<group>"; };
+		ACA9EC581B595E9500CC1B2D /* Appearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appearance.m; sourceTree = "<group>"; };
+		ACA9EC5B1B595FC700CC1B2D /* Vectors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vectors.h; sourceTree = "<group>"; };
+		ACA9EC5C1B595FC700CC1B2D /* Vectors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vectors.m; sourceTree = "<group>"; };
+		ACA9EC5E1B59610500CC1B2D /* GigRadioVectorLogo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GigRadioVectorLogo.swift; sourceTree = "<group>"; };
 		ACAE7992199F657E00030E26 /* GigRadio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GigRadio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACAE7995199F657E00030E26 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ACAE7997199F657E00030E26 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -442,6 +452,7 @@
 			children = (
 				AC43E88A1A8CFD0F0060FD80 /* DatePickerViewController.swift */,
 				AC3CB9521B08B1C6009203E1 /* PlaybackSlider.swift */,
+				ACA9EC531B595D1700CC1B2D /* LightStatusBarNavigationViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -454,6 +465,7 @@
 				AC8F43101B1786DF00EA51BD /* PlaylistItemTableViewCell.swift */,
 				AC8F43121B1786EE00EA51BD /* FavouriteItemTableViewCell.swift */,
 				AC8AB7781B1A6F7400A673E1 /* SoundCloudUserTableViewCell.swift */,
+				ACA9EC5E1B59610500CC1B2D /* GigRadioVectorLogo.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -564,6 +576,15 @@
 				ACA9EC501B59451B00CC1B2D /* forward.aif */,
 			);
 			path = Sounds;
+			sourceTree = "<group>";
+		};
+		ACA9EC5A1B595F9F00CC1B2D /* Vectors */ = {
+			isa = PBXGroup;
+			children = (
+				ACA9EC5B1B595FC700CC1B2D /* Vectors.h */,
+				ACA9EC5C1B595FC700CC1B2D /* Vectors.m */,
+			);
+			path = Vectors;
 			sourceTree = "<group>";
 		};
 		ACAE7989199F657E00030E26 = {
@@ -686,6 +707,7 @@
 		ACAE79D5199F697700030E26 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				ACA9EC5A1B595F9F00CC1B2D /* Vectors */,
 				ACAE79D6199F699B00030E26 /* DateFormats.h */,
 				ACAE79D7199F699B00030E26 /* DateFormats.m */,
 				ACAE79DC199F6C3100030E26 /* CalendarHelper.h */,
@@ -701,6 +723,8 @@
 				AC5E8D001B0D1F5A00E43A07 /* Typography.swift */,
 				AC8F43141B178C4000EA51BD /* PlaylistHelper.swift */,
 				AC1015621B1A1C7B000FC5A9 /* NextTrackFinder.swift */,
+				ACA9EC571B595E9500CC1B2D /* Appearance.h */,
+				ACA9EC581B595E9500CC1B2D /* Appearance.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1084,6 +1108,7 @@
 				AC8AB7791B1A6F7400A673E1 /* SoundCloudUserTableViewCell.swift in Sources */,
 				AC3CB9841B08CDCC009203E1 /* SongKickEvent.swift in Sources */,
 				AC3CB97B1B08C989009203E1 /* FlyerCollectionViewCell.swift in Sources */,
+				ACA9EC541B595D1700CC1B2D /* LightStatusBarNavigationViewController.swift in Sources */,
 				AC8F43111B1786DF00EA51BD /* PlaylistItemTableViewCell.swift in Sources */,
 				ACD1C8E21B0A855D00CF038C /* RoundedButton.swift in Sources */,
 				AC8F430F1B17838C00EA51BD /* PlaylistTableViewController.swift in Sources */,
@@ -1091,6 +1116,7 @@
 				AC1015631B1A1C7B000FC5A9 /* NextTrackFinder.swift in Sources */,
 				ACDAF9E91B08E945003B411A /* FlyersCollectionViewController.swift in Sources */,
 				AC43E88E1A8CFE2B0060FD80 /* PickerDayCollectionViewCell.swift in Sources */,
+				ACA9EC5D1B595FC700CC1B2D /* Vectors.m in Sources */,
 				AC53D01A1A1E829900F30767 /* Colors.swift in Sources */,
 				AC1015651B1A2E1A000FC5A9 /* SoundCloudUsersTableViewController.swift in Sources */,
 				AC8F43151B178C4000EA51BD /* PlaylistHelper.swift in Sources */,
@@ -1102,8 +1128,10 @@
 				AC08D4D61B0CD3290082D424 /* Playlist.swift in Sources */,
 				AC3CB98C1B08D265009203E1 /* SoundCloudUser.swift in Sources */,
 				AC10155F1B19C93E000FC5A9 /* MapLink.swift in Sources */,
+				ACA9EC591B595E9500CC1B2D /* Appearance.m in Sources */,
 				AC8F43131B1786EE00EA51BD /* FavouriteItemTableViewCell.swift in Sources */,
 				ACAE7A15199FAF7400030E26 /* NSDictionary+RemovesNullValues.m in Sources */,
+				ACA9EC5F1B59610500CC1B2D /* GigRadioVectorLogo.swift in Sources */,
 				ACD1C8D11B0A62D200CF038C /* GradientOverlayView.swift in Sources */,
 				ACD1C8E71B0A93A200CF038C /* ButtonWithRightAlignedImage.swift in Sources */,
 				AC3C78F11B1929B700586FC7 /* BlacklistedArtists.swift in Sources */,

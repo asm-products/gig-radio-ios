@@ -78,6 +78,7 @@ class EditPlaylistItemViewController: UITableViewController,SoundCloudUsersTable
             delegate.editSoundCloudUserDidBlacklistUser(performance.soundCloudUser)
         }
         updateBlacklistingCell()
+        dismissViewControllerAnimated(true, completion: nil)
     }
     func updateBlacklistingCell(){
         let text = BlacklistedArtist.includes(performance.soundCloudUser) ? t("Blacklisting.DoPlay") : t("Blacklisting.DoNotPlay")

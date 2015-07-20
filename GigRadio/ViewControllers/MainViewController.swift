@@ -118,11 +118,6 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
     func displayAndPlayTrack(track:PlaylistTrack){
         scrollToPerformance(track.performance)
         if let performanceIndex = playlist.performances.indexOf(track.performance){
-            let indexPath = NSIndexPath(forItem: performanceIndex, inSection: 0)
-            if let cell = flyersController?.collectionView?.cellForItemAtIndexPath(indexPath) as? FlyerCollectionViewCell{
-                cell.updateTrackAvailabilityIcon(track.performance.soundCloudUser.tracks.count)
-                cell.trackFetchingIndicator.stopAnimating()
-            }
             self.transportController.play(track)
         }
     }
@@ -246,6 +241,15 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
         playlist.removeTracksBySoundCloudUser(user)
         if wasPlaying{
             playNextTrack()
+        }
+    }
+    func problemButtonPressed(track: PlaylistTrack) {
+        if let nav = storyboard?.instantiateViewControllerWithIdentifier("EditPlaylistItemNav") as? UINavigationController{
+            if let root = nav.topViewController  as? EditPlaylistItemViewController{
+                root.performance = track.performance
+                root.delegate = self
+                presentViewController(nav, animated: true, completion: nil)
+            }
         }
     }
 }

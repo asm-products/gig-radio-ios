@@ -21,8 +21,6 @@ class FlyerCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var lineupLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var baselineConstraint: NSLayoutConstraint!
-    @IBOutlet weak var trackAvailabilityButton: UIButton!
-    @IBOutlet weak var trackFetchingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var favouriteButton: UIButton!
     
     var delegate : FlyerCollectionViewCellDelegate!
@@ -49,7 +47,6 @@ class FlyerCollectionViewCell: UICollectionViewCell {
                 }
                 
                 detailsButton.setTitle(PlaylistHelper.dateAndVenueText(item.songKickEvent), forState: .Normal)
-                updateTrackAvailabilityIcon(item.soundCloudUser.tracks.count)
                 updateFavouriteState(item)
             }
             
@@ -61,10 +58,6 @@ class FlyerCollectionViewCell: UICollectionViewCell {
         layer.startPoint = CGPoint(x: 0, y: 0)
         layer.endPoint = CGPoint(x: 0, y: 1)
     }
-    func updateTrackAvailabilityIcon(count:Int){
-        trackAvailabilityButton.setTitle("\(count)", forState: .Normal)
-    }
-    
     
     let FocusedArtistAttributes = [NSFontAttributeName: UIFont(name: "Roboto-Light", size: 40)!]
     let DefaultAttributes = [NSFontAttributeName: UIFont(name: "Roboto-Light", size: 24)!]

@@ -15,6 +15,7 @@ protocol TransportViewControllerDelegate{
     func playPreviousTrack()
     func getPlaylist()->Playlist
     func scrollToPerformance(performance:PlaylistPerformance)
+    func problemButtonPressed(track:PlaylistTrack)
 }
 func soundURL(name:String)->NSURL{
     return NSBundle.mainBundle().URLForResource(name, withExtension: "aif")!
@@ -56,22 +57,36 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate{
     }
     func play(track:PlaylistTrack){
         setBufferingDisplay(true)
-        AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: nil)
-        AVAudioSession.sharedInstance().setActive(true, error: nil)
-        UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
-        self.becomeFirstResponder()
         
         self.track = track
         trackInfoLabel.attributedText = PlaylistHelper.attributedTrackInfoText(track, separator: "\n")
         audioPlayer.play(track.soundCloudTrack.playbackUrl())
         
         MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = [
-            MPMediaItemPropertyAlbumTitle: "Upcoming gig: \(track.performance.songKickEvent.displayName)",
+            MPMediaItemPropertyAlbumTitle: "\(track.performance.songKickEvent.start.datetime) \(track.performance.songKickEvent.displayName)",
             MPMediaItemPropertyTitle: "\(track.soundCloudTrack.title) - \(track.performance.soundCloudUser.username)",
             MPMediaItemPropertyPlaybackDuration: track.soundCloudTrack.duration / 1000,
             MPNowPlayingInfoPropertyElapsedPlaybackTime: 0,
-            
+            MPNowPlayingInfoPropertyPlaybackRate: 1
         ]
+        becomeActive()
+    }
+    func becomeActive(){
+        AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: nil)
+        AVAudioSession.sharedInstance().setActive(true, error: nil)
+
+        UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
+        self.becomeFirstResponder()
+    }
+    @IBAction func didPressPlayPause(sender: AnyObject) {
+        if audioPlayer.state.value == STKAudioPlayerStatePlaying.value{
+            audioPlayer.pause()
+            MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = 0
+        }else{
+            audioPlayer.resume()
+            MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = 1
+            becomeActive()
+        }
     }
     override func canBecomeFirstResponder() -> Bool {
         return true
@@ -141,19 +156,14 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate{
     func audioPlayer(audioPlayer: STKAudioPlayer!, unexpectedError errorCode: STKAudioPlayerErrorCode){
        
     }
-    @IBAction func didPressPlayPause(sender: AnyObject) {
-        if audioPlayer.state.value == STKAudioPlayerStatePlaying.value{
-            audioPlayer.pause()
-        }else{
-            audioPlayer.resume()
-        }
-    }
     @IBAction func didPressForward(sender: AnyObject) {
+//        audioPlayer.stop()
         setBufferingDisplay(true)
         forwardSound.play()
         delegate.playNextTrack()
     }
     @IBAction func didPressRewind(sender: AnyObject) {
+//        audioPlayer.stop()
         backwardSound.play()
         delegate.playPreviousTrack()
     }
@@ -180,6 +190,11 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate{
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let dest = segue.destinationViewController as? PlaylistTableViewController{
             dest.playlist = delegate.getPlaylist()
+        }
+    }
+    @IBAction func didPressProblemButton(sender: AnyObject) {
+        if let track = self.track{
+            delegate.problemButtonPressed(track)
         }
     }
 }

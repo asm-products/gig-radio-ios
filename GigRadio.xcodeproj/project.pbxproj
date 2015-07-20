@@ -88,6 +88,9 @@
 		AC5E954519FC0B4D005B9872 /* disclosure_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC5E953519FC0B4C005B9872 /* disclosure_small@2x.png */; };
 		AC5E954819FC0B4D005B9872 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = AC5E953819FC0B4C005B9872 /* menu.png */; };
 		AC5E954919FC0B4D005B9872 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC5E953919FC0B4D005B9872 /* menu@2x.png */; };
+		AC652FB61B5D38DE00EAD5A4 /* problem.png in Resources */ = {isa = PBXBuildFile; fileRef = AC652FB31B5D38DE00EAD5A4 /* problem.png */; };
+		AC652FB71B5D38DE00EAD5A4 /* problem@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC652FB41B5D38DE00EAD5A4 /* problem@2x.png */; };
+		AC652FB81B5D38DE00EAD5A4 /* problem@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC652FB51B5D38DE00EAD5A4 /* problem@3x.png */; };
 		AC6B7C721B17A8FC00989883 /* GigInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6B7C711B17A8FC00989883 /* GigInfoViewController.swift */; };
 		AC6B7C741B17BBFE00989883 /* EditPlaylistItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6B7C731B17BBFE00989883 /* EditPlaylistItemViewController.swift */; };
 		AC7AC1D91B1127B7002A550C /* TransportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7AC1D81B1127B7002A550C /* TransportViewController.swift */; };
@@ -120,12 +123,14 @@
 		AC9584181B1B24C600DB0719 /* info-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AC9584151B1B24C600DB0719 /* info-button.png */; };
 		AC9584191B1B24C600DB0719 /* info-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC9584161B1B24C600DB0719 /* info-button@2x.png */; };
 		AC95841A1B1B24C600DB0719 /* info-button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC9584171B1B24C600DB0719 /* info-button@3x.png */; };
-		ACA9EC511B59451B00CC1B2D /* backward.aif in Resources */ = {isa = PBXBuildFile; fileRef = ACA9EC4F1B59451B00CC1B2D /* backward.aif */; };
-		ACA9EC521B59451B00CC1B2D /* forward.aif in Resources */ = {isa = PBXBuildFile; fileRef = ACA9EC501B59451B00CC1B2D /* forward.aif */; };
+		ACA9EC511B59451B00CC1B2D /* backward_debug.aif in Resources */ = {isa = PBXBuildFile; fileRef = ACA9EC4F1B59451B00CC1B2D /* backward_debug.aif */; };
+		ACA9EC521B59451B00CC1B2D /* forward_debug.aif in Resources */ = {isa = PBXBuildFile; fileRef = ACA9EC501B59451B00CC1B2D /* forward_debug.aif */; };
 		ACA9EC541B595D1700CC1B2D /* LightStatusBarNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA9EC531B595D1700CC1B2D /* LightStatusBarNavigationViewController.swift */; };
 		ACA9EC591B595E9500CC1B2D /* Appearance.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA9EC581B595E9500CC1B2D /* Appearance.m */; };
 		ACA9EC5D1B595FC700CC1B2D /* Vectors.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA9EC5C1B595FC700CC1B2D /* Vectors.m */; };
 		ACA9EC5F1B59610500CC1B2D /* GigRadioVectorLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA9EC5E1B59610500CC1B2D /* GigRadioVectorLogo.swift */; };
+		ACA9EC621B5A644200CC1B2D /* backward.aif in Resources */ = {isa = PBXBuildFile; fileRef = ACA9EC601B5A644200CC1B2D /* backward.aif */; };
+		ACA9EC631B5A644200CC1B2D /* forward.aif in Resources */ = {isa = PBXBuildFile; fileRef = ACA9EC611B5A644200CC1B2D /* forward.aif */; };
 		ACAE7996199F657E00030E26 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACAE7995199F657E00030E26 /* Foundation.framework */; };
 		ACAE7998199F657E00030E26 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACAE7997199F657E00030E26 /* CoreGraphics.framework */; };
 		ACAE799A199F657E00030E26 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACAE7999199F657E00030E26 /* UIKit.framework */; };
@@ -280,6 +285,9 @@
 		AC5E953519FC0B4C005B9872 /* disclosure_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclosure_small@2x.png"; sourceTree = "<group>"; };
 		AC5E953819FC0B4C005B9872 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
 		AC5E953919FC0B4D005B9872 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
+		AC652FB31B5D38DE00EAD5A4 /* problem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = problem.png; sourceTree = "<group>"; };
+		AC652FB41B5D38DE00EAD5A4 /* problem@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "problem@2x.png"; sourceTree = "<group>"; };
+		AC652FB51B5D38DE00EAD5A4 /* problem@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "problem@3x.png"; sourceTree = "<group>"; };
 		AC6B7C711B17A8FC00989883 /* GigInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GigInfoViewController.swift; sourceTree = "<group>"; };
 		AC6B7C731B17BBFE00989883 /* EditPlaylistItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPlaylistItemViewController.swift; sourceTree = "<group>"; };
 		AC7AC1D81B1127B7002A550C /* TransportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportViewController.swift; sourceTree = "<group>"; };
@@ -312,14 +320,16 @@
 		AC9584151B1B24C600DB0719 /* info-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info-button.png"; sourceTree = "<group>"; };
 		AC9584161B1B24C600DB0719 /* info-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info-button@2x.png"; sourceTree = "<group>"; };
 		AC9584171B1B24C600DB0719 /* info-button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info-button@3x.png"; sourceTree = "<group>"; };
-		ACA9EC4F1B59451B00CC1B2D /* backward.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = backward.aif; sourceTree = "<group>"; };
-		ACA9EC501B59451B00CC1B2D /* forward.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = forward.aif; sourceTree = "<group>"; };
+		ACA9EC4F1B59451B00CC1B2D /* backward_debug.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = backward_debug.aif; sourceTree = "<group>"; };
+		ACA9EC501B59451B00CC1B2D /* forward_debug.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = forward_debug.aif; sourceTree = "<group>"; };
 		ACA9EC531B595D1700CC1B2D /* LightStatusBarNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightStatusBarNavigationViewController.swift; sourceTree = "<group>"; };
 		ACA9EC571B595E9500CC1B2D /* Appearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appearance.h; sourceTree = "<group>"; };
 		ACA9EC581B595E9500CC1B2D /* Appearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appearance.m; sourceTree = "<group>"; };
 		ACA9EC5B1B595FC700CC1B2D /* Vectors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vectors.h; sourceTree = "<group>"; };
 		ACA9EC5C1B595FC700CC1B2D /* Vectors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vectors.m; sourceTree = "<group>"; };
 		ACA9EC5E1B59610500CC1B2D /* GigRadioVectorLogo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GigRadioVectorLogo.swift; sourceTree = "<group>"; };
+		ACA9EC601B5A644200CC1B2D /* backward.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = backward.aif; sourceTree = "<group>"; };
+		ACA9EC611B5A644200CC1B2D /* forward.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = forward.aif; sourceTree = "<group>"; };
 		ACAE7992199F657E00030E26 /* GigRadio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GigRadio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACAE7995199F657E00030E26 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ACAE7997199F657E00030E26 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -473,6 +483,9 @@
 		AC5E952F19FC0B4C005B9872 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				AC652FB31B5D38DE00EAD5A4 /* problem.png */,
+				AC652FB41B5D38DE00EAD5A4 /* problem@2x.png */,
+				AC652FB51B5D38DE00EAD5A4 /* problem@3x.png */,
 				AC9584151B1B24C600DB0719 /* info-button.png */,
 				AC9584161B1B24C600DB0719 /* info-button@2x.png */,
 				AC9584171B1B24C600DB0719 /* info-button@3x.png */,
@@ -572,8 +585,10 @@
 		ACA9EC4E1B59450C00CC1B2D /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				ACA9EC4F1B59451B00CC1B2D /* backward.aif */,
-				ACA9EC501B59451B00CC1B2D /* forward.aif */,
+				ACA9EC601B5A644200CC1B2D /* backward.aif */,
+				ACA9EC611B5A644200CC1B2D /* forward.aif */,
+				ACA9EC4F1B59451B00CC1B2D /* backward_debug.aif */,
+				ACA9EC501B59451B00CC1B2D /* forward_debug.aif */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -904,13 +919,14 @@
 				ACBC36ED1B162AF900C05845 /* play-large@3x.png in Resources */,
 				ACD1C8DF1B0A813E00CF038C /* today-indicator-top@3x.png in Resources */,
 				AC8F43091B1782CB00EA51BD /* playlist.png in Resources */,
+				ACA9EC621B5A644200CC1B2D /* backward.aif in Resources */,
 				AC3CB95A1B08B4A3009203E1 /* playback-thumb.png in Resources */,
 				AC3CB92E1B089AC4009203E1 /* forward@3x.png in Resources */,
 				ACD1C8E51B0A923000CF038C /* Roboto-Regular.ttf in Resources */,
 				AC3CB95F1B08B4A3009203E1 /* playback-track@3x.png in Resources */,
 				AC5E954519FC0B4D005B9872 /* disclosure_small@2x.png in Resources */,
 				AC3CB9511B08AA2C009203E1 /* speaker-quiet@3x.png in Resources */,
-				ACA9EC511B59451B00CC1B2D /* backward.aif in Resources */,
+				ACA9EC511B59451B00CC1B2D /* backward_debug.aif in Resources */,
 				AC3CB94F1B08AA2C009203E1 /* speaker-quiet.png in Resources */,
 				ACD6EFD919FC44BD00DDE967 /* starred@2x.png in Resources */,
 				ACD1C8EB1B0A9E0B00CF038C /* volume-thumb.png in Resources */,
@@ -925,7 +941,7 @@
 				AC3CB9761B08B7DF009203E1 /* disclosure-up@2x.png in Resources */,
 				AC5E954219FC0B4D005B9872 /* compass_needle.png in Resources */,
 				ACDAF9F41B08FAD8003B411A /* Main.storyboard in Resources */,
-				ACA9EC521B59451B00CC1B2D /* forward.aif in Resources */,
+				ACA9EC521B59451B00CC1B2D /* forward_debug.aif in Resources */,
 				ACD1C8EC1B0A9E0B00CF038C /* volume-thumb@2x.png in Resources */,
 				AC3CB9401B08A276009203E1 /* settings@2x.png in Resources */,
 				ACDAF9FE1B08FB72003B411A /* Localizable.strings in Resources */,
@@ -951,9 +967,12 @@
 				ACBC36F01B162AF900C05845 /* tracks-count@3x.png in Resources */,
 				AC7AC1F11B121071002A550C /* tracks-avail-3.png in Resources */,
 				AC8F430A1B1782CB00EA51BD /* playlist@2x.png in Resources */,
+				AC652FB81B5D38DE00EAD5A4 /* problem@3x.png in Resources */,
 				AC3CB9341B089AC4009203E1 /* play@3x.png in Resources */,
 				ACBC36EF1B162AF900C05845 /* tracks-count@2x.png in Resources */,
+				AC652FB71B5D38DE00EAD5A4 /* problem@2x.png in Resources */,
 				AC9584191B1B24C600DB0719 /* info-button@2x.png in Resources */,
+				ACA9EC631B5A644200CC1B2D /* forward.aif in Resources */,
 				AC3CB9501B08AA2C009203E1 /* speaker-quiet@2x.png in Resources */,
 				AC3CB9351B089AC4009203E1 /* rewind@3x.png in Resources */,
 				ACAE79B1199F657E00030E26 /* Images.xcassets in Resources */,
@@ -976,6 +995,7 @@
 				AC863F571B0D15FA00A6A9D3 /* flyer-placeholder.png in Resources */,
 				AC5E954319FC0B4D005B9872 /* compass_needle@2x.png in Resources */,
 				AC7AC1F31B121071002A550C /* tracks-avail-3@3x.png in Resources */,
+				AC652FB61B5D38DE00EAD5A4 /* problem.png in Resources */,
 				AC3CB9741B08B7DF009203E1 /* disclosure-right@3x.png in Resources */,
 				ACD1C8D81B0A7F3800CF038C /* today-indicator@2x.png in Resources */,
 				AC3CB94E1B08AA2C009203E1 /* speaker-loud@3x.png in Resources */,

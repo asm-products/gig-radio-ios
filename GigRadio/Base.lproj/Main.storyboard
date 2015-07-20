@@ -500,24 +500,6 @@
                                                 <constraint firstItem="OCP-y4-r3A" firstAttribute="leading" secondItem="xQz-9Y-5aB" secondAttribute="trailing" constant="-6" id="yXT-aF-CrQ"/>
                                             </constraints>
                                         </view>
-                                        <activityIndicatorView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="WUh-Ym-QLh">
-                                            <rect key="frame" x="18" y="84" width="20" height="20"/>
-                                        </activityIndicatorView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WcH-nG-phb" userLabel="track-count">
-                                            <rect key="frame" x="0.0" y="72" width="56" height="44"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="44" id="apm-LE-UGc"/>
-                                                <constraint firstAttribute="width" constant="56" id="eOW-np-zsT"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
-                                            <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                            <state key="normal" title="09" image="tracks-count.png">
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="didPressTracksIndicatorButton:" destination="WV7-54-S4d" eventType="touchUpInside" id="v10-Dc-Ewn"/>
-                                            </connections>
-                                        </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Xz-0O-AJN" userLabel="Star">
                                             <rect key="frame" x="273" y="72" width="44" height="44"/>
                                             <constraints>
@@ -539,11 +521,7 @@
                                     <constraint firstAttribute="trailingMargin" secondItem="1Xz-0O-AJN" secondAttribute="trailing" constant="-5" id="8CZ-RE-pSI"/>
                                     <constraint firstItem="1Xz-0O-AJN" firstAttribute="top" secondItem="WV7-54-S4d" secondAttribute="topMargin" constant="64" id="AHT-wj-Xxi"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="PQN-5h-Cxj" secondAttribute="bottom" constant="7" id="BCz-ha-egD" userLabel="BaselineConstraint"/>
-                                    <constraint firstItem="WcH-nG-phb" firstAttribute="centerX" secondItem="WUh-Ym-QLh" secondAttribute="centerX" id="Cv9-dy-ymU"/>
-                                    <constraint firstItem="WcH-nG-phb" firstAttribute="centerY" secondItem="WUh-Ym-QLh" secondAttribute="centerY" id="HXD-7K-MbH"/>
-                                    <constraint firstItem="WcH-nG-phb" firstAttribute="leading" secondItem="WV7-54-S4d" secondAttribute="leadingMargin" constant="-8" id="MuN-mu-pPe"/>
                                     <constraint firstItem="CQZ-ju-8C9" firstAttribute="leading" secondItem="WV7-54-S4d" secondAttribute="leading" id="PdJ-te-Oct"/>
-                                    <constraint firstItem="WcH-nG-phb" firstAttribute="top" secondItem="WV7-54-S4d" secondAttribute="topMargin" constant="64" id="W5H-0b-r52"/>
                                     <constraint firstItem="CQZ-ju-8C9" firstAttribute="top" secondItem="WV7-54-S4d" secondAttribute="top" id="bae-vg-y5Q"/>
                                     <constraint firstAttribute="trailing" secondItem="PQN-5h-Cxj" secondAttribute="trailing" id="fnB-l8-jpm"/>
                                     <constraint firstItem="PQN-5h-Cxj" firstAttribute="leading" secondItem="WV7-54-S4d" secondAttribute="leading" id="t5Y-H5-g6n"/>
@@ -556,8 +534,6 @@
                                     <outlet property="favouriteButton" destination="1Xz-0O-AJN" id="FAG-8u-mdM"/>
                                     <outlet property="imageView" destination="CQZ-ju-8C9" id="gwx-mY-ZyR"/>
                                     <outlet property="lineupLabel" destination="ju0-2L-yA2" id="Opw-CZ-4Be"/>
-                                    <outlet property="trackAvailabilityButton" destination="WcH-nG-phb" id="nIk-Pl-LPI"/>
-                                    <outlet property="trackFetchingIndicator" destination="WUh-Ym-QLh" id="G4x-CV-9mi"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -869,6 +845,19 @@
                                             <action selector="didPressTrackInfo:" destination="4aX-CJ-N7g" eventType="touchUpInside" id="QDo-V4-Lv6"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aKf-RQ-CtR" userLabel="Forward">
+                                        <rect key="frame" x="416" y="95" width="43" height="43"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="43" id="DF5-yY-Cta"/>
+                                            <constraint firstAttribute="width" constant="43" id="JE2-rV-0Q2"/>
+                                        </constraints>
+                                        <state key="normal" image="problem.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didPressProblemButton:" destination="4aX-CJ-N7g" eventType="touchUpInside" id="sCx-4P-fBp"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25490196078431371" alpha="0.57999999999999996" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -898,6 +887,8 @@
                                     <constraint firstAttribute="centerX" secondItem="X0f-hA-0eG" secondAttribute="centerX" id="qfI-lk-w9J"/>
                                     <constraint firstAttribute="trailing" secondItem="qml-N3-rWM" secondAttribute="trailing" constant="12" id="qlD-zD-Pj5"/>
                                     <constraint firstItem="Vfq-i4-zJK" firstAttribute="centerY" secondItem="TnY-Pu-iv5" secondAttribute="centerY" id="rdR-hs-UYG"/>
+                                    <constraint firstItem="aKf-RQ-CtR" firstAttribute="centerY" secondItem="R6b-jW-cHV" secondAttribute="centerY" id="saZ-25-4NT"/>
+                                    <constraint firstItem="aKf-RQ-CtR" firstAttribute="leading" secondItem="R6b-jW-cHV" secondAttribute="trailing" constant="21" id="u9Z-PU-oZu"/>
                                     <constraint firstAttribute="centerX" secondItem="TnY-Pu-iv5" secondAttribute="centerX" id="uDO-3D-1xa"/>
                                     <constraint firstItem="UMz-pc-C0I" firstAttribute="centerY" secondItem="qml-N3-rWM" secondAttribute="centerY" constant="-6" id="vI1-vv-gLQ">
                                         <variation key="widthClass=regular" constant="-6"/>
@@ -1392,11 +1383,11 @@
         <image name="menu.png" width="19" height="13"/>
         <image name="play-large.png" width="68" height="68"/>
         <image name="play.png" width="21" height="26"/>
+        <image name="problem.png" width="22" height="22"/>
         <image name="rewind.png" width="28" height="17"/>
         <image name="settings-small.png" width="20" height="20"/>
         <image name="speaker-loud.png" width="22" height="28"/>
         <image name="star.png" width="25" height="25"/>
-        <image name="tracks-count.png" width="13" height="11"/>
     </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

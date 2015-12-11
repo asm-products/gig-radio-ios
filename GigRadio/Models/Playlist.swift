@@ -69,10 +69,17 @@ class Playlist: Object {
                 self.addOrUpdateEventIds(ids)
             }
             SongKickVenue.updateDistanceCachesWithLocation(self.location)
+            self.sortEvents()
             completion()
         })
     }
-    
+    func sortEvents(){
+        //TODO: sort events by preference
+//        switch Defaults.venueSortOrder{
+//            case .Natural
+//            case .NearestFirst
+//        }
+    }
     func addOrUpdateEventIds(ids:[Int]){
         let realm = Realm()
         let events = realm.objects(SongKickEvent).filter("id in %@", ids)

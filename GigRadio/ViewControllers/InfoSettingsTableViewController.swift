@@ -10,24 +10,35 @@ import UIKit
 
 class InfoSettingsTableViewController: UITableViewController {
 
+    @IBOutlet weak var sortOrderControl: UISegmentedControl!
+    @IBOutlet weak var trackLengthFilterControl: UISegmentedControl!
+    @IBOutlet weak var spokenAnnouncementsControl: UISegmentedControl!
+    @IBOutlet weak var playlistFollowActionControl: UISegmentedControl!
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        let defaults = NSUserDefaults.standardUserDefaults()
+        sortOrderControl.selectedSegmentIndex = defaults.integerForKey(VenueSortOrderKey)
+        trackLengthFilterControl.selectedSegmentIndex = defaults.integerForKey(TrackLengthFilterKey)
+        spokenAnnouncementsControl.selectedSegmentIndex = defaults.integerForKey(SpokenAnnouncementsKey)
+        playlistFollowActionControl.selectedSegmentIndex = defaults.integerForKey(PlaylistFollowActionKey)
+    }
+    @IBAction func didChangePlaylistOrder(sender: AnyObject) {
+        NSUserDefaults.standardUserDefaults().setInteger(sortOrderControl.selectedSegmentIndex, forKey: VenueSortOrderKey)
+    }
+    @IBAction func didChangeTrackLengthFilter(sender: AnyObject) {
+        NSUserDefaults.standardUserDefaults().setInteger(trackLengthFilterControl.selectedSegmentIndex, forKey: TrackLengthFilterKey)
+    }
+    @IBAction func didChangePlaylistFollowAction(sender: AnyObject) {
+        NSUserDefaults.standardUserDefaults().setInteger(playlistFollowActionControl.selectedSegmentIndex
+            , forKey: PlaylistFollowActionKey)
+    }
+    @IBAction func didChangeSpokenAnnouncements(sender: AnyObject) {
+        NSUserDefaults.standardUserDefaults().setInteger(spokenAnnouncementsControl.selectedSegmentIndex, forKey: SpokenAnnouncementsKey)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     @IBAction func didPressDone(sender: AnyObject) {
         navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }

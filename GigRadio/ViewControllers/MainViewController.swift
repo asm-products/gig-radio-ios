@@ -98,10 +98,14 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
         }
     }
     func playNextTrack(){
+        let event = playlist.currentTrack?.performance.songKickEvent
         playlist.determineTrackAfter(playlist.currentTrack){ track in
             if let track = track{
                 self.playlist.currentTrack = track
                 self.displayAndPlayTrack(track)
+                if event != track.performance.songKickEvent{
+                    self.transportController.speech.announceEvent(track.performance.songKickEvent)
+                }
             }
         }
     }
@@ -251,5 +255,8 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
                 presentViewController(nav, animated: true, completion: nil)
             }
         }
+    }
+    func navigateToPerformance(performance: PlaylistPerformance) {
+
     }
 }

@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Typography.initBarButtonStyles()
         Appearance.apply()
-        
+        Defaults.register()
         setSchemaVersion(4, Realm.defaultPath) { migration, oldSchemaVersion in
             if oldSchemaVersion < 4{
                 migration.enumerate(SongKickEvent.className(), { (oldObject, newObject) -> Void in
@@ -38,5 +38,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return true
     }
-
 }

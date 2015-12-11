@@ -32,6 +32,7 @@ class NextTrackFinder: NSObject {
                 })
             }
         }else{
+            println("Warning, no more tracks found to play")
             self.callback(track: nil)
         }
     }
@@ -39,15 +40,25 @@ class NextTrackFinder: NSObject {
         let performances = performance.playlist.performances
         if var index = performances.indexOf(performance){
             index += 1
-            index %= performances.count
+            if index >= performances.count && Defaults.playlistFollowAction == .LoopDay{
+                index %= performances.count
+            }
+            // otherwise we'll get a handy exception.
             return performances[index]
+
         }else{
             return nil
         }
     }
     func determineNextTrackInPerformance(performance:PlaylistPerformance,callback: (track:PlaylistTrack?)->Void){
         performance.determineSoundCloudUser { user, error in
+            if let error = error{
+                println("We have an error \(error)")
+            }
             performance.determineTracksAvailable{ trackCount, error in
+                if let error = error{
+                    println("We have an error \(error)")
+                }
                 performance.determineNextTrackToPlay(callback)
             }
         }

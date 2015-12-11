@@ -68,7 +68,12 @@ class FlyerCollectionViewCell: UICollectionViewCell {
             let result = NSMutableAttributedString(string: "")
             let acts = item.songKickEvent.performance
             for (index, performance) in enumerate(acts){
-                let attributes: [NSObject:AnyObject] = ( (performance.artist.id == focusedArtist.id) ? FocusedArtistAttributes : DefaultAttributes)
+                var attributes: [NSObject:AnyObject] = ( (performance.artist.id == focusedArtist.id) ? FocusedArtistAttributes : DefaultAttributes)
+                if BlacklistedArtist.includesSoundCloudUserWithId(performance.artist.soundCloudUserId) == true{
+                    attributes[NSStrikethroughStyleAttributeName] = NSUnderlineStyle.StyleSingle.rawValue
+                }else{
+                    attributes[NSStrikethroughStyleAttributeName] = 0
+                }
                 let string = NSAttributedString(string: performance.artist.displayName + (index < acts.count - 1 ? "\n" : ""), attributes: attributes)
                 
                 result.appendAttributedString(string)

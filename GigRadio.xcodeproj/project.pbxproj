@@ -123,6 +123,8 @@
 		AC9584181B1B24C600DB0719 /* info-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AC9584151B1B24C600DB0719 /* info-button.png */; };
 		AC9584191B1B24C600DB0719 /* info-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC9584161B1B24C600DB0719 /* info-button@2x.png */; };
 		AC95841A1B1B24C600DB0719 /* info-button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC9584171B1B24C600DB0719 /* info-button@3x.png */; };
+		AC98D3E71B5EE38700020661 /* SpeechController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC98D3E61B5EE38700020661 /* SpeechController.swift */; };
+		AC98D3E91B5EFA4A00020661 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC98D3E81B5EFA4A00020661 /* Defaults.swift */; };
 		ACA9EC511B59451B00CC1B2D /* backward_debug.aif in Resources */ = {isa = PBXBuildFile; fileRef = ACA9EC4F1B59451B00CC1B2D /* backward_debug.aif */; };
 		ACA9EC521B59451B00CC1B2D /* forward_debug.aif in Resources */ = {isa = PBXBuildFile; fileRef = ACA9EC501B59451B00CC1B2D /* forward_debug.aif */; };
 		ACA9EC541B595D1700CC1B2D /* LightStatusBarNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA9EC531B595D1700CC1B2D /* LightStatusBarNavigationViewController.swift */; };
@@ -320,6 +322,8 @@
 		AC9584151B1B24C600DB0719 /* info-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info-button.png"; sourceTree = "<group>"; };
 		AC9584161B1B24C600DB0719 /* info-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info-button@2x.png"; sourceTree = "<group>"; };
 		AC9584171B1B24C600DB0719 /* info-button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info-button@3x.png"; sourceTree = "<group>"; };
+		AC98D3E61B5EE38700020661 /* SpeechController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechController.swift; sourceTree = "<group>"; };
+		AC98D3E81B5EFA4A00020661 /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		ACA9EC4F1B59451B00CC1B2D /* backward_debug.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = backward_debug.aif; sourceTree = "<group>"; };
 		ACA9EC501B59451B00CC1B2D /* forward_debug.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = forward_debug.aif; sourceTree = "<group>"; };
 		ACA9EC531B595D1700CC1B2D /* LightStatusBarNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightStatusBarNavigationViewController.swift; sourceTree = "<group>"; };
@@ -755,6 +759,7 @@
 				AC8F43161B178DDC00EA51BD /* Favourite.swift */,
 				AC3C78F01B1929B700586FC7 /* BlacklistedArtists.swift */,
 				AC10155E1B19C93E000FC5A9 /* MapLink.swift */,
+				AC98D3E81B5EFA4A00020661 /* Defaults.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -780,6 +785,7 @@
 				ACDAFA0C1B090900003B411A /* SongKickClient.swift */,
 				ACDAFA0E1B090908003B411A /* SoundCloudClient.swift */,
 				AC8AB77A1B1A7D7600A673E1 /* ApiClientBase.swift */,
+				AC98D3E61B5EE38700020661 /* SpeechController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1115,6 +1121,7 @@
 				AC8F43171B178DDC00EA51BD /* Favourite.swift in Sources */,
 				AC7AC1D91B1127B7002A550C /* TransportViewController.swift in Sources */,
 				AC1015611B19E36B000FC5A9 /* PlaylistTrack.swift in Sources */,
+				AC98D3E91B5EFA4A00020661 /* Defaults.swift in Sources */,
 				AC43E88B1A8CFD0F0060FD80 /* DatePickerViewController.swift in Sources */,
 				AC3CB9531B08B1C6009203E1 /* PlaybackSlider.swift in Sources */,
 				AC6B7C741B17BBFE00989883 /* EditPlaylistItemViewController.swift in Sources */,
@@ -1165,6 +1172,7 @@
 				AC3CB9861B08CFDF009203E1 /* SongKickPerformance.swift in Sources */,
 				ACDAFA0D1B090900003B411A /* SongKickClient.swift in Sources */,
 				ACB4BEB61B56586F007986AB /* InfoSettingsTableViewController.swift in Sources */,
+				AC98D3E71B5EE38700020661 /* SpeechController.swift in Sources */,
 				AC3CB98A1B08D070009203E1 /* SongKickVenue.swift in Sources */,
 				ACDAFA071B08FBE1003B411A /* I18nHelper.swift in Sources */,
 				ACDAF9E71B08E45F003B411A /* MusicEngine.swift in Sources */,

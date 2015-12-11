@@ -21,7 +21,7 @@ func soundURL(name:String)->NSURL{
     return NSBundle.mainBundle().URLForResource(name, withExtension: "aif")!
 }
 
-class TransportViewController: UIViewController,STKAudioPlayerDelegate{
+class TransportViewController: UIViewController,STKAudioPlayerDelegate,SpeechDelegate{
     var delegate: TransportViewControllerDelegate!
     @IBOutlet weak var volumeView: MPVolumeView!
     @IBOutlet weak var bufferingActivityIndicator: UIActivityIndicatorView!
@@ -33,8 +33,9 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate{
     @IBOutlet weak var playbackTimeView: UILabel!
     @IBOutlet weak var timeRemainingView: UILabel!
     
-    var audioPlayer = STKAudioPlayer()
+    var audioPlayer: STKAudioPlayer!
     var displayLink: CADisplayLink!
+    let speech = SpeechController()
     
     var track: PlaylistTrack?
     
@@ -43,6 +44,7 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        speech.delegate = self
         
         forwardSound.prepareToPlay()
         backwardSound.prepareToPlay()
@@ -50,13 +52,19 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate{
         displayLink = CADisplayLink(target: self, selector: "displayLinkCallback")
         displayLink.frameInterval = 60
         displayLink.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSDefaultRunLoopMode)
+        
+        var options = STKAudioPlayerOptions()
+        options.enableVolumeMixer = true
+        audioPlayer = STKAudioPlayer(options: options)
         audioPlayer.delegate = self
+
         
         volumeView.setVolumeThumbImage(UIImage(named: "volume-thumb"), forState: .Normal)
         
     }
     func play(track:PlaylistTrack){
         setBufferingDisplay(true)
+        speech.announceTrack(track)
         
         self.track = track
         trackInfoLabel.attributedText = PlaylistHelper.attributedTrackInfoText(track, separator: "\n")
@@ -81,10 +89,10 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate{
     @IBAction func didPressPlayPause(sender: AnyObject) {
         if audioPlayer.state.value == STKAudioPlayerStatePlaying.value{
             audioPlayer.pause()
-            MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = 0
+            MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo?[MPNowPlayingInfoPropertyPlaybackRate] = 0
         }else{
             audioPlayer.resume()
-            MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = 1
+            MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo?[MPNowPlayingInfoPropertyPlaybackRate] = 1
             becomeActive()
         }
     }
@@ -196,5 +204,11 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate{
         if let track = self.track{
             delegate.problemButtonPressed(track)
         }
+    }
+    func duckMusic() {
+        audioPlayer.volume = 0.5
+    }
+    func unduckMusic() {
+        audioPlayer.volume = 1.0
     }
 }

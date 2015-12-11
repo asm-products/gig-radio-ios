@@ -67,10 +67,7 @@ class FlyersCollectionViewController: UICollectionViewController, UICollectionVi
         return playlist!.performances[indexPath.row]
     }
     func flyerCellShowEventButtonPressed(event: SongKickEvent) {
-        if let controller = storyboard?.instantiateViewControllerWithIdentifier("GigPage") as? GigInfoViewController{
-            controller.event = event
-            navigationController?.pushViewController(controller, animated: true)
-        }
+        showEvent(event)
     }
     func flyerCellTrackCountButtonPressed(performance:PlaylistPerformance) {
         if let nav = storyboard?.instantiateViewControllerWithIdentifier("EditPlaylistItemNav") as? UINavigationController{
@@ -87,7 +84,17 @@ class FlyersCollectionViewController: UICollectionViewController, UICollectionVi
         }
         collectionView?.reloadData()
     }
-    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        if let performance = performanceAtIndexPath(indexPath){
+            showEvent(performance.songKickEvent)
+        }
+    }
+    func showEvent(event:SongKickEvent){
+        if let controller = storyboard?.instantiateViewControllerWithIdentifier("GigPage") as? GigInfoViewController{
+            controller.event = event
+            navigationController?.pushViewController(controller, animated: true)
+        }
+    }
     // MARK: UICollectionViewDelegate
 
     /*

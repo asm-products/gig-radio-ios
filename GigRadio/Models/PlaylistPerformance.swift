@@ -37,6 +37,7 @@ class PlaylistPerformance: Object {
                     self.userHasBeenChecked = true
                     if user != nil{
                         self.soundCloudUser = user!
+                        self.songKickArtist.soundCloudUserId = user!.id
                     }
                 }
                 callback(user: user, error:error)
@@ -58,11 +59,12 @@ class PlaylistPerformance: Object {
     func determineNextTrackToPlay(callback:(track:PlaylistTrack?)->Void){
         let realm = Realm()
         if BlacklistedArtist.includes(soundCloudUser){
+            println("Skipping blacklisted user \(soundCloudUser.username)")
             callback(track: nil)
             return
         }
         for track in soundCloudUser.tracks{
-            if track.streamable && track.duration / 60000 <= 10{ // don't play tracks over 10 minutes (TODO: turn this into a setting)
+            if track.streamable && shouldAllowTrack(track){
                 if playlist.tracks.filter("soundCloudTrack = %@", track).count == 0{
                     
                     realm.beginWrite()
@@ -78,5 +80,13 @@ class PlaylistPerformance: Object {
             }
         }
         callback(track:nil)
+    }
+    func shouldAllowTrack(track:SoundCloudTrack)->Bool{
+        switch Defaults.trackLengthFilter{
+        case .Short: return track.duration / 60000 <= 10
+        case .All: return true
+        case .Long: return track.duration / 60000 > 10
+        }
+
     }
 }

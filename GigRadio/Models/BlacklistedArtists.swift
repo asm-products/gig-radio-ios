@@ -10,8 +10,21 @@ import UIKit
 import RealmSwift
 class BlacklistedArtist: Object {
     dynamic var soundCloudUser = SoundCloudUser()
+    
+    
+    
     class func includes(user:SoundCloudUser)->Bool{
         return itemsWithSoundCloudUser(user).count > 0
+    }
+    class func includesSoundCloudUserWithId(id:Int)->Bool?{ // true, false or unknown
+        if id == 0 {
+            return nil
+        }
+        if let user = Realm().objectForPrimaryKey(SoundCloudUser.self, key: id){
+            return self.includes(user)
+        }else{
+            return nil
+        }
     }
     class func itemsWithSoundCloudUser(user:SoundCloudUser)->Results<BlacklistedArtist>{
         return Realm().objects(BlacklistedArtist).filter("soundCloudUser = %@", user)

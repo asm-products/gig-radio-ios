@@ -23,6 +23,7 @@ target "GigRadio" do
   pod 'TMCache', '~> 2.1'
   pod 'StreamingKit', '~> 0.1'
   pod 'NSDictionary+TRVSUnderscoreCamelCaseAdditions', '~> 0.1'
+  pod 'PureLayout'
 end
 
 target "GigRadioTests" do

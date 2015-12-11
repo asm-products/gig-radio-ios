@@ -20,3 +20,9 @@
 "SoundCloudUsers.SearchTitle" = "Results for '%@'";
 "Blacklisting.DoNotPlay" = "Don't play tracks by this artist";
 "Blacklisting.DoPlay" = "Do play tracks by this artist";
+"onboarding-1" = "You could browse nearby gigs on SongKick. You'd find plenty of artists you don't know.";
+"onboarding-2" = "So you could search for these artists on SoundCloud to see if you like them.";
+"onboarding-3" = "Gig Radio does this for you, so all you have to do is listen to music.";
+"onboarding-4" = "We search by band name, so if something doesn’t sound right, you can look for the right artist or skip it.";
+"onboarding-next" = "Okay";
+"onboarding-dismiss" = "Got it!";

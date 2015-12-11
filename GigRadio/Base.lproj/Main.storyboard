@@ -12,8 +12,11 @@
         </mutableArray>
         <mutableArray key="Roboto-Light.ttf">
             <string>Roboto-Light</string>
+            <string>Roboto-Light</string>
         </mutableArray>
         <mutableArray key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
         </mutableArray>
     </customFonts>
@@ -194,7 +197,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eNC-WX-bhi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="50.5" y="-361.5"/>
+            <point key="canvasLocation" x="648.5" y="-365.5"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="LZz-Mh-zdE">
@@ -717,7 +720,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H4d-bs-NIv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1296" y="-657"/>
+            <point key="canvasLocation" x="1278" y="-387"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EQs-IV-i8P">
@@ -737,12 +740,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="9o0-oO-PbL" kind="relationship" relationship="rootViewController" id="WPg-IP-FWN"/>
+                        <segue destination="PL4-YA-7Hd" kind="relationship" relationship="rootViewController" id="Ub7-EF-WEc"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yLR-1f-l5A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1152" y="313"/>
+            <point key="canvasLocation" x="-2324" y="313"/>
         </scene>
         <!--Transport View Controller-->
         <scene sceneID="HwB-dM-1oX">
@@ -1414,7 +1417,127 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="thw-gm-7Uv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-389.5" y="-361.5"/>
+            <point key="canvasLocation" x="208.5" y="-365.5"/>
+        </scene>
+        <!--Onboarding View Controller-->
+        <scene sceneID="W6y-zT-GG5">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="PL4-YA-7Hd" customClass="OnboardingViewController" customModule="GigRadio" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5ch-70-V6j"/>
+                        <viewControllerLayoutGuide type="bottom" id="Yux-wL-6uS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ab6-cY-neX">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8KX-pR-Jja" userLabel="Transition">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="launch-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="e4Q-yU-Nk2">
+                                        <rect key="frame" x="233" y="221" width="134" height="158"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.98039215690000003" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="e4Q-yU-Nk2" firstAttribute="centerY" secondItem="8KX-pR-Jja" secondAttribute="centerY" id="Jn9-ot-WuS"/>
+                                    <constraint firstItem="e4Q-yU-Nk2" firstAttribute="centerX" secondItem="8KX-pR-Jja" secondAttribute="centerX" id="NBY-Vu-GY3"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jdu-EA-yXw">
+                                <rect key="frame" x="20" y="536" width="560" height="44"/>
+                                <color key="backgroundColor" red="0.4392156862745098" green="0.10588235294117647" blue="0.33725490196078434" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="isf-Et-uep"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="didPressNext:" destination="PL4-YA-7Hd" eventType="touchUpInside" id="C3c-Wd-Bi9"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOW IT WORKS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="123-zN-R1p">
+                                <rect key="frame" x="247" y="130" width="106.5" height="20"/>
+                                <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="123-zN-R1p" firstAttribute="centerX" secondItem="ab6-cY-neX" secondAttribute="centerX" id="5Vf-Ue-OUb"/>
+                            <constraint firstItem="Yux-wL-6uS" firstAttribute="top" secondItem="8KX-pR-Jja" secondAttribute="bottom" id="8dQ-Ab-bSc"/>
+                            <constraint firstAttribute="trailing" secondItem="8KX-pR-Jja" secondAttribute="trailing" id="DK4-0H-gWe"/>
+                            <constraint firstItem="123-zN-R1p" firstAttribute="top" secondItem="ab6-cY-neX" secondAttribute="top" constant="130" id="LGo-z2-0MD"/>
+                            <constraint firstItem="8KX-pR-Jja" firstAttribute="top" secondItem="ab6-cY-neX" secondAttribute="top" id="Lw8-BA-ElQ"/>
+                            <constraint firstItem="Yux-wL-6uS" firstAttribute="top" secondItem="Jdu-EA-yXw" secondAttribute="bottom" constant="20" id="Oqp-lK-Mxi"/>
+                            <constraint firstItem="Jdu-EA-yXw" firstAttribute="trailing" secondItem="ab6-cY-neX" secondAttribute="trailingMargin" id="Qlz-HU-KJa"/>
+                            <constraint firstItem="Jdu-EA-yXw" firstAttribute="leading" secondItem="ab6-cY-neX" secondAttribute="leadingMargin" id="b7G-3G-dTb"/>
+                            <constraint firstItem="8KX-pR-Jja" firstAttribute="leading" secondItem="ab6-cY-neX" secondAttribute="leading" id="rnA-pE-nB2"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="5gd-bx-snz"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="logoCenterConstraint" destination="Jn9-ot-WuS" id="wCY-Tt-j3b"/>
+                        <outlet property="logoView" destination="e4Q-yU-Nk2" id="V6G-mh-tW3"/>
+                        <outlet property="nextButton" destination="Jdu-EA-yXw" id="88k-gH-tpr"/>
+                        <outlet property="titleLabel" destination="123-zN-R1p" id="IqK-hw-MqQ"/>
+                        <outlet property="transitionView" destination="8KX-pR-Jja" id="Mn5-Wp-IZP"/>
+                        <segue destination="9o0-oO-PbL" kind="show" identifier="exit" animates="NO" id="4Y5-Ut-5No"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ayp-Tg-XNy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1660" y="313"/>
+        </scene>
+        <!--Onboarding Item View Controller-->
+        <scene sceneID="gMm-wK-xxI">
+            <objects>
+                <viewController storyboardIdentifier="OnboardingItem" id="Ixr-cT-Sc1" customClass="OnboardingItemViewController" customModule="GigRadio" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zYg-Le-4fE"/>
+                        <viewControllerLayoutGuide type="bottom" id="VAG-C2-n7g"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EVe-cW-qhZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1po-xs-Qw3">
+                                <rect key="frame" x="150" y="230.5" width="300" height="200"/>
+                                <color key="backgroundColor" red="0.078431372550000003" green="0.074509803920000006" blue="0.074509803920000006" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="cCN-Xo-yN4"/>
+                                    <constraint firstAttribute="height" constant="200" id="oRO-Fw-9hD"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vuk-jh-ITG">
+                                <rect key="frame" x="150" y="200" width="300" height="18.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="4eE-YT-azo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                <color key="textColor" red="0.32156862745098042" green="0.31764705882352939" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Vuk-jh-ITG" firstAttribute="top" secondItem="EVe-cW-qhZ" secondAttribute="top" constant="200" id="5vf-MI-96f"/>
+                            <constraint firstItem="Vuk-jh-ITG" firstAttribute="centerX" secondItem="EVe-cW-qhZ" secondAttribute="centerX" id="EcJ-Jo-Wwf"/>
+                            <constraint firstItem="1po-xs-Qw3" firstAttribute="top" secondItem="Vuk-jh-ITG" secondAttribute="bottom" constant="12" id="eEC-cB-iKb"/>
+                            <constraint firstItem="1po-xs-Qw3" firstAttribute="centerX" secondItem="EVe-cW-qhZ" secondAttribute="centerX" id="t8I-AG-856"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bodyLabel" destination="Vuk-jh-ITG" id="BjD-uW-UxT"/>
+                        <outlet property="topConstraint" destination="5vf-MI-96f" id="mOX-07-kVz"/>
+                        <outlet property="videoContainer" destination="1po-xs-Qw3" id="iMC-dd-i8e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NHS-aS-SqH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1020" y="313"/>
         </scene>
     </scenes>
     <resources>

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		565620CB695699A252AC2666 /* Pods_GigRadio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4707A7DD71C739979C8D02F3 /* Pods_GigRadio.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		565620CB695699A252AC2666 /* Pods_GigRadio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4707A7DD71C739979C8D02F3 /* Pods_GigRadio.framework */; };
 		AC08D4D61B0CD3290082D424 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08D4D51B0CD3290082D424 /* Playlist.swift */; };
 		AC08D4DA1B0CF9190082D424 /* CachingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08D4D91B0CF9190082D424 /* CachingHelper.swift */; };
 		AC0B0AD21B0E72B900B03F11 /* calendar-selection.png in Resources */ = {isa = PBXBuildFile; fileRef = AC0B0ACF1B0E72B900B03F11 /* calendar-selection.png */; };
@@ -17,7 +17,6 @@
 		AC1015611B19E36B000FC5A9 /* PlaylistTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1015601B19E36B000FC5A9 /* PlaylistTrack.swift */; };
 		AC1015631B1A1C7B000FC5A9 /* NextTrackFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1015621B1A1C7B000FC5A9 /* NextTrackFinder.swift */; };
 		AC1015651B1A2E1A000FC5A9 /* SoundCloudUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1015641B1A2E1A000FC5A9 /* SoundCloudUsersTableViewController.swift */; };
-		AC1EB93F19B1171300BF7EAF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC1EB93E19B1171300BF7EAF /* Crashlytics.framework */; };
 		AC31FFD41B091E6300456C12 /* SongKickDisplayName.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31FFD31B091E6300456C12 /* SongKickDisplayName.swift */; };
 		AC3C78F11B1929B700586FC7 /* BlacklistedArtists.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3C78F01B1929B700586FC7 /* BlacklistedArtists.swift */; };
 		AC3C78F51B19B16300586FC7 /* settings-small.png in Resources */ = {isa = PBXBuildFile; fileRef = AC3C78F21B19B16300586FC7 /* settings-small.png */; };
@@ -109,6 +108,8 @@
 		AC7AC1F31B121071002A550C /* tracks-avail-3@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC7AC1E71B121071002A550C /* tracks-avail-3@3x.png */; };
 		AC863F551B0D10BE00A6A9D3 /* CompletionCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC863F541B0D10BE00A6A9D3 /* CompletionCounter.swift */; };
 		AC863F571B0D15FA00A6A9D3 /* flyer-placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = AC863F561B0D15FA00A6A9D3 /* flyer-placeholder.png */; };
+		AC891B8D1C1B219D0087C790 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC891B8B1C1B219D0087C790 /* Fabric.framework */; };
+		AC891B8E1C1B219D0087C790 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC891B8C1C1B219D0087C790 /* Crashlytics.framework */; };
 		AC8AB7791B1A6F7400A673E1 /* SoundCloudUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8AB7781B1A6F7400A673E1 /* SoundCloudUserTableViewCell.swift */; };
 		AC8AB77B1B1A7D7600A673E1 /* ApiClientBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8AB77A1B1A7D7600A673E1 /* ApiClientBase.swift */; };
 		AC8F43091B1782CB00EA51BD /* playlist.png in Resources */ = {isa = PBXBuildFile; fileRef = AC8F43061B1782CB00EA51BD /* playlist.png */; };
@@ -308,6 +309,8 @@
 		AC7AC1E71B121071002A550C /* tracks-avail-3@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tracks-avail-3@3x.png"; sourceTree = "<group>"; };
 		AC863F541B0D10BE00A6A9D3 /* CompletionCounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletionCounter.swift; sourceTree = "<group>"; };
 		AC863F561B0D15FA00A6A9D3 /* flyer-placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flyer-placeholder.png"; sourceTree = "<group>"; };
+		AC891B8B1C1B219D0087C790 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		AC891B8C1C1B219D0087C790 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		AC8AB7781B1A6F7400A673E1 /* SoundCloudUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundCloudUserTableViewCell.swift; sourceTree = "<group>"; };
 		AC8AB77A1B1A7D7600A673E1 /* ApiClientBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClientBase.swift; sourceTree = "<group>"; };
 		AC8F43061B1782CB00EA51BD /* playlist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playlist.png; sourceTree = "<group>"; };
@@ -413,10 +416,11 @@
 			files = (
 				ACD1C8CB1B0941E300CF038C /* MediaPlayer.framework in Frameworks */,
 				ACAE7998199F657E00030E26 /* CoreGraphics.framework in Frameworks */,
-				AC1EB93F19B1171300BF7EAF /* Crashlytics.framework in Frameworks */,
 				ACAE799A199F657E00030E26 /* UIKit.framework in Frameworks */,
 				ACAE7996199F657E00030E26 /* Foundation.framework in Frameworks */,
 				565620CB695699A252AC2666 /* Pods_GigRadio.framework in Frameworks */,
+				AC891B8D1C1B219D0087C790 /* Fabric.framework in Frameworks */,
+				AC891B8E1C1B219D0087C790 /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -632,6 +636,8 @@
 		ACAE7994199F657E00030E26 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AC891B8B1C1B219D0087C790 /* Fabric.framework */,
+				AC891B8C1C1B219D0087C790 /* Crashlytics.framework */,
 				ACD1C8CA1B0941E300CF038C /* MediaPlayer.framework */,
 				AC1EB93E19B1171300BF7EAF /* Crashlytics.framework */,
 				ACAE7995199F657E00030E26 /* Foundation.framework */,
@@ -837,8 +843,8 @@
 				ACAE798F199F657E00030E26 /* Frameworks */,
 				ACAE7990199F657E00030E26 /* Resources */,
 				7B7BB4CE530B4C6BB9E75278 /* Copy Pods Resources */,
-				AC1EB93D19B116EF00BF7EAF /* ShellScript */,
-				AC851CBA1A1381B20048C20E /* ShellScript */,
+				AC1EB93D19B116EF00BF7EAF /* Crashlytics */,
+				AC851CBA1A1381B20048C20E /* Increment build number */,
 				230E205BBC6F879977F5909C /* Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -874,6 +880,8 @@
 		ACAE798A199F657E00030E26 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0720;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Good To Hear";
 				TargetAttributes = {
@@ -1068,26 +1076,28 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GigRadio/Pods-GigRadio-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AC1EB93D19B116EF00BF7EAF /* ShellScript */ = {
+		AC1EB93D19B116EF00BF7EAF /* Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = Crashlytics;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run 3254ccee18a98f4b57c4dc9d4fdd5d961828f59d 3d342277e5866602e57cf63e100c248a8ae2614513986fa7e265a13234b1d651";
+			shellScript = "./Fabric.framework/run 3254ccee18a98f4b57c4dc9d4fdd5d961828f59d 3d342277e5866602e57cf63e100c248a8ae2614513986fa7e265a13234b1d651";
 		};
-		AC851CBA1A1381B20048C20E /* ShellScript */ = {
+		AC851CBA1A1381B20048C20E /* Increment build number */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Increment build number";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1277,7 +1287,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -1309,7 +1319,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1330,7 +1340,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GigRadio/GigRadio-Prefix.pch";
 				INFOPLIST_FILE = "GigRadio/GigRadio-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1356,7 +1366,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GigRadio/GigRadio-Prefix.pch";
 				INFOPLIST_FILE = "GigRadio/GigRadio-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

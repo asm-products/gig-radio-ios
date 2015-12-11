@@ -13,14 +13,14 @@ class SongKickEvent: Object {
     dynamic var id: Int = 0
     dynamic var type = "concert"
     dynamic var displayName = ""
-    dynamic var venue = SongKickVenue()
-    dynamic var performance = List<SongKickPerformance>()
-    dynamic var start = SongKickDateTime()
-    dynamic var end = SongKickDateTime()
+    dynamic var venue: SongKickVenue!
+    let performance = List<SongKickPerformance>()
+    dynamic var start: SongKickDateTime!
+    dynamic var end: SongKickDateTime!
     dynamic var uri = ""
     dynamic var descriptionText = ""
     dynamic var popularity: Double = 0
-    dynamic var series = SongKickDisplayName()
+    dynamic var series: SongKickDisplayName!
     dynamic var status = "ok"
     
     dynamic var distanceCache: Double = 0
@@ -38,6 +38,6 @@ class SongKickEvent: Object {
     }
     
     class func eventCountOnDate(date:NSDate)->Int{
-        return Realm().objects(SongKickEvent).filter("date = %@", date).count
+        return try! Realm().objects(SongKickEvent).filter("date = %@", date).count
     }
 }

@@ -8,11 +8,11 @@
 
 import UIKit
 import RealmSwift
-class PlaylistTrack: Object {
+@objc class PlaylistTrack: Object {
     dynamic var id = NSUUID().UUIDString
     override static func primaryKey()->String?{
         return "id"
     }
-    dynamic var soundCloudTrack = SoundCloudTrack()
-    dynamic var performance = PlaylistPerformance()
+    dynamic var soundCloudTrack: SoundCloudTrack!
+    dynamic var performance: PlaylistPerformance!
 }

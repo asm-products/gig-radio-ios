@@ -15,6 +15,6 @@ extension Dictionary{
             let value = "\(value)"
             result.append("\(key)=\(value.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)")
         }
-        return "&".join(result)
+        return result.joinWithSeparator("&")
     }
 }

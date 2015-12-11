@@ -32,7 +32,7 @@ class NextTrackFinder: NSObject {
                 })
             }
         }else{
-            println("Warning, no more tracks found to play")
+            print("Warning, no more tracks found to play")
             self.callback(track: nil)
         }
     }
@@ -53,11 +53,11 @@ class NextTrackFinder: NSObject {
     func determineNextTrackInPerformance(performance:PlaylistPerformance,callback: (track:PlaylistTrack?)->Void){
         performance.determineSoundCloudUser { user, error in
             if let error = error{
-                println("We have an error \(error)")
+                print("We have an error \(error)")
             }
             performance.determineTracksAvailable{ trackCount, error in
                 if let error = error{
-                    println("We have an error \(error)")
+                    print("We have an error \(error)")
                 }
                 performance.determineNextTrackToPlay(callback)
             }

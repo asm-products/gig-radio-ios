@@ -15,11 +15,11 @@ protocol DatePickerViewControllerDelegate{
 
 extension Int{
     func daysAfter(date:NSDate)->NSDate{
-        return NSCalendar.currentCalendar().dateByAddingComponents(CalendarHelper.days(self), toDate: date, options: nil)!
+        return NSCalendar.currentCalendar().dateByAddingComponents(CalendarHelper.days(self), toDate: date, options: [])!
     }
 }
 
-class DatePickerViewController: UICollectionViewController, UIScrollViewDelegate, UICollectionViewDelegateFlowLayout {
+class DatePickerViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     let DaysPerScreen = 10
     var day0: NSDate = (-4).daysAfter( CalendarHelper.startOfUTCDay(NSDate()) )
     var selectedDate: NSDate!
@@ -97,7 +97,7 @@ class DatePickerViewController: UICollectionViewController, UIScrollViewDelegate
     }
     func finishedChangingDateRange(){
         var cells = collectionView!.visibleCells() as! [PickerDayCollectionViewCell]
-        cells.sort { (a, b) -> Bool in
+        cells.sortInPlace { (a, b) -> Bool in
             a.date.compare(b.date) == NSComparisonResult.OrderedAscending
         }
         delegate.datePickerDidChangeVisibleDates(cells.map({$0.date}))

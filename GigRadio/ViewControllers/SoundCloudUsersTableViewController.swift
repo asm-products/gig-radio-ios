@@ -29,12 +29,12 @@ class SoundCloudUsersTableViewController: UITableViewController {
         }
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
-        navigationItem.title = template("SoundCloudUsers.SearchTitle", [songKickArtist.displayName])
+        navigationItem.title = template("SoundCloudUsers.SearchTitle", values: [songKickArtist.displayName])
     }
     func setUsers(json:JSON){
         self.usersJSON = json
         if json.type == .Array{
-            for (index:String, item) in json{
+            for (index, item): (String, JSON) in json{
                 self.users.append(item.object as! NSDictionary)
             }
             self.tableView.reloadData()

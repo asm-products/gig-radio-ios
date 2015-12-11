@@ -12,7 +12,7 @@ import RealmSwift
 class SongKickMetroArea: Object {
     dynamic var id = 0
     dynamic var displayName = ""
-    dynamic var country = SongKickDisplayName()
+    dynamic var country: SongKickDisplayName!
     dynamic var lat:Double = 0
     dynamic var lng:Double = 0
     

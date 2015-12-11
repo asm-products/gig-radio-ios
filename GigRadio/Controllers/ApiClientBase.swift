@@ -15,7 +15,7 @@ class ApiClientBase: NSObject {
    
     func get(url:NSURL,completion:(json:JSON,error:NSError?)->Void){
         session.dataTaskWithURL(url, completionHandler: { data, response, error in
-            if let response = response as? NSHTTPURLResponse{
+            if let response = response as? NSHTTPURLResponse, data = data{
                 let json = JSON(data:data)
                 Async.main {
                     if response.statusCode != 200{

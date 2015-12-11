@@ -25,10 +25,10 @@ extension UIImage{
         return image.getPixelAlpha(onePixel.origin) == 0
     }
     func getPixelAlpha(pos: CGPoint) -> CGFloat {
-        var pixelData = CGDataProviderCopyData(CGImageGetDataProvider(self.CGImage))
-        var data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
-        var pixelInfo: Int = ((Int(self.size.width) * Int(pos.y)) + Int(pos.x)) * 4
-        var a = CGFloat(data[pixelInfo+3]) / CGFloat(255.0)
+        let pixelData = CGDataProviderCopyData(CGImageGetDataProvider(self.CGImage))
+        let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
+        let pixelInfo: Int = ((Int(self.size.width) * Int(pos.y)) + Int(pos.x)) * 4
+        let a = CGFloat(data[pixelInfo+3]) / CGFloat(255.0)
         return a
     }
 }

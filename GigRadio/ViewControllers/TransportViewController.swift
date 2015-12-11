@@ -39,15 +39,15 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate,SpeechDel
     
     var track: PlaylistTrack?
     
-    let forwardSound = AVAudioPlayer(contentsOfURL: soundURL("forward"), error: nil)
-    let backwardSound = AVAudioPlayer(contentsOfURL: soundURL("backward"), error: nil)
+    let forwardSound = try? AVAudioPlayer(contentsOfURL: soundURL("forward"))
+    let backwardSound = try? AVAudioPlayer(contentsOfURL: soundURL("backward"))
     
     override func viewDidLoad() {
         super.viewDidLoad()
         speech.delegate = self
         
-        forwardSound.prepareToPlay()
-        backwardSound.prepareToPlay()
+        forwardSound?.prepareToPlay()
+        backwardSound?.prepareToPlay()
         
         displayLink = CADisplayLink(target: self, selector: "displayLinkCallback")
         displayLink.frameInterval = 60
@@ -80,14 +80,20 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate,SpeechDel
         becomeActive()
     }
     func becomeActive(){
-        AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: nil)
-        AVAudioSession.sharedInstance().setActive(true, error: nil)
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+        } catch _ {
+        }
+        do {
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch _ {
+        }
 
         UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
         self.becomeFirstResponder()
     }
     @IBAction func didPressPlayPause(sender: AnyObject) {
-        if audioPlayer.state.value == STKAudioPlayerStatePlaying.value{
+        if audioPlayer.state.rawValue == STKAudioPlayerStatePlaying.rawValue{
             audioPlayer.pause()
             MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo?[MPNowPlayingInfoPropertyPlaybackRate] = 0
         }else{
@@ -103,7 +109,7 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate,SpeechDel
         let formatter = NSDateComponentsFormatter()
         formatter.unitsStyle = NSDateComponentsFormatterUnitsStyle.Positional
         formatter.zeroFormattingBehavior = .Pad
-        formatter.allowedUnits = .CalendarUnitMinute | .CalendarUnitSecond
+        formatter.allowedUnits = [.Minute, .Second]
         let value = audioPlayer.progress / audioPlayer.duration
         playbackSlider.setValue(Float(value), animated: false)
         playbackTimeView.text = formatter.stringFromTimeInterval(audioPlayer.progress)
@@ -137,27 +143,27 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate,SpeechDel
     }
     /// Raised when the state of the player has changed
     func audioPlayer(audioPlayer: STKAudioPlayer!, stateChanged state: STKAudioPlayerState, previousState: STKAudioPlayerState){
-        switch state.value{
-        case STKAudioPlayerStateBuffering.value:
+        switch state.rawValue{
+        case STKAudioPlayerStateBuffering.rawValue:
             setBufferingDisplay(true)
-        case STKAudioPlayerStatePaused.value,STKAudioPlayerStateStopped.value:
+        case STKAudioPlayerStatePaused.rawValue,STKAudioPlayerStateStopped.rawValue:
             setPlayButtonDisplayState(false)
-        case STKAudioPlayerStatePlaying.value:
+        case STKAudioPlayerStatePlaying.rawValue:
             setPlayButtonDisplayState(true)
             setBufferingDisplay(false)
         default:
-            println("Ignored state \(state)")
+            print("Ignored state \(state)")
         }
     }
     /// Raised when an item has finished playing
     func audioPlayer(audioPlayer: STKAudioPlayer!, didFinishPlayingQueueItemId queueItemId: NSObject!, withReason stopReason: STKAudioPlayerStopReason, andProgress progress: Double, andDuration duration: Double){
-        switch stopReason.value{
-        case STKAudioPlayerStopReasonNone.value:
-            println("Stopped for no reason")
-        case STKAudioPlayerStopReasonEof.value:
+        switch stopReason.rawValue{
+        case STKAudioPlayerStopReasonNone.rawValue:
+            print("Stopped for no reason")
+        case STKAudioPlayerStopReasonEof.rawValue:
             delegate.playNextTrack()
         default:
-            println("Player stopped for STKAudioPlayerStopReason.\(stopReason.value)")
+            print("Player stopped for STKAudioPlayerStopReason.\(stopReason.rawValue)")
         }
     }
     /// Raised when an unexpected and possibly unrecoverable error has occured (usually best to recreate the STKAudioPlauyer)
@@ -167,29 +173,33 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate,SpeechDel
     @IBAction func didPressForward(sender: AnyObject) {
 //        audioPlayer.stop()
         setBufferingDisplay(true)
-        forwardSound.play()
+        forwardSound?.play()
         delegate.playNextTrack()
     }
     @IBAction func didPressRewind(sender: AnyObject) {
 //        audioPlayer.stop()
-        backwardSound.play()
+        backwardSound?.play()
         delegate.playPreviousTrack()
     }
     @IBAction func didDragPlaybackTime(sender: UISlider) {
         audioPlayer.seekToTime( Double(sender.value) * audioPlayer.duration )
     }
-    override func remoteControlReceivedWithEvent(event: UIEvent) {
-        switch event.subtype{
+    override func remoteControlReceivedWithEvent(event: UIEvent?) {
+        guard let subtype = event?.subtype else { return }
+        switch subtype{
         case .RemoteControlTogglePlayPause: didPressPlayPause(self)
         case .RemoteControlNextTrack: didPressForward(self)
         case .RemoteControlPreviousTrack: didPressRewind(self)
         case .RemoteControlPlay:
             audioPlayer.resume()
-            AVAudioSession.sharedInstance().setActive(true, error: nil)
+            do {
+                try AVAudioSession.sharedInstance().setActive(true)
+            } catch _ {
+            }
         case .RemoteControlPause:
             audioPlayer.pause()
         default:
-            println("ignored \(event)")
+            print("ignored \(event)")
         }
     }
     @IBAction func didPressTrackInfo(sender: AnyObject) {

@@ -9,10 +9,10 @@
 import UIKit
 import RealmSwift
 
-class SongKickPerformance: Object {
+@objc class SongKickPerformance: Object {
     dynamic var id: Int = 0
     dynamic var displayName = ""
-    dynamic var artist = SongKickArtist()
+    dynamic var artist: SongKickArtist!
     
     override static func primaryKey()->String?{
         return "id"

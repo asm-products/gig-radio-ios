@@ -46,7 +46,7 @@ class GigInfoViewController: UIViewController {
         let date = NSAttributedString(string: DateFormats.todayFormatter().stringFromDate(event.date), attributes: Typography.RobotoBold(13))
         
         let title = NSAttributedString(string: event.series.displayName, attributes: Typography.RobotoBold(13))
-        let artists = NSAttributedString(string: join("\n",event.artistNames()), attributes: Typography.RobotoLight(24))
+        let artists = NSAttributedString(string: event.artistNames().joinWithSeparator("\n"), attributes: Typography.RobotoLight(24))
         let location = NSAttributedString(string: "\(event.venue.displayName)\n\(event.venue.address())", attributes: Typography.RobotoRegular(13))
         
         let text = NSMutableAttributedString(string: "")
@@ -97,7 +97,7 @@ class GigInfoViewController: UIViewController {
     func updateDirectionsButton(){
         if let link = MapLink.preferredMapLink(event.venue){
             directionsButton.enabled = true
-            let title = template("Directions.ButtonTitle", [link.displayName])
+            let title = template("Directions.ButtonTitle", values: [link.displayName])
             directionsButton.setTitle(title, forState: .Normal)
             mapLink = link
         }else{

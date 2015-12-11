@@ -8,15 +8,19 @@
 
 import UIKit
 import RealmSwift
+import Fabric
+import Crashlytics
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        Fabric.with([Crashlytics.self])
         Typography.initBarButtonStyles()
         Appearance.apply()
         Defaults.register()
-        setSchemaVersion(4, Realm.defaultPath) { migration, oldSchemaVersion in
+        setSchemaVersion(4, realmPath: Realm.defaultPath) { migration, oldSchemaVersion in
             if oldSchemaVersion < 4{
                 migration.enumerate(SongKickEvent.className(), { (oldObject, newObject) -> Void in
                     newObject!["status"] = "ok"

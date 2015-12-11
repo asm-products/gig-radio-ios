@@ -16,10 +16,10 @@ class SoundCloudClient: ApiClientBase {
     class func createSoundCloudUser(json:NSDictionary)->SoundCloudUser{
         var dict:NSDictionary = json.dictionaryWithoutNullValues()
         dict = dict.dictionaryWithCamelCaseKeys()
-        let realm = Realm()
+        let realm = try! Realm()
         realm.beginWrite()
         let user = realm.create(SoundCloudUser.self, value: dict, update: true)
-        realm.commitWrite()
+        try! realm.commitWrite()
         return user
     }
     func findUser(name:String,completion:(user:SoundCloudUser?, error:NSError?)->Void){
@@ -39,17 +39,17 @@ class SoundCloudClient: ApiClientBase {
         ]
         let url = urlWithParams(params, resource: "users")
         self.get(url) { json, error in
-            println("fetched \(json.count) user(s) from SoundCloud via \(url)")
+            print("fetched \(json.count) user(s) from SoundCloud via \(url)")
             completion(json: json, error: error)
         }
     }
     func getTracks(user:SoundCloudUser, completion:(error:NSError?)->Void){
         let url = urlWithParams([:], resource: "users/\(user.id)/tracks")
         self.get(url) { json, error in
-            println("fetched \(json.count) track(s) from SoundCloud via \(url) with erro \(error)")
+            print("fetched \(json.count) track(s) from SoundCloud via \(url) with erro \(error)")
             if error == nil{
-                let realm = Realm()
-                realm.write {
+                let realm = try! Realm()
+                try! realm.write {
                     for item in json.object as! NSArray{
                         var item = item.dictionaryWithoutNullValues()
                         item = (item as NSDictionary).dictionaryWithCamelCaseKeys()
@@ -65,7 +65,7 @@ class SoundCloudClient: ApiClientBase {
     func urlWithParams(params: [String:AnyObject], resource: String)->NSURL{
         var params = params
         params["client_id"] = SoundCloudConfiguration().clientId
-        let uri = SoundCloudConfiguration().baseUri.stringByAppendingPathComponent("\(resource).json?\(params.querystring())")
+        let uri = (SoundCloudConfiguration().baseUri as NSString).stringByAppendingPathComponent("\(resource).json?\(params.querystring())")
         return NSURL(string: uri)!
     }
 }

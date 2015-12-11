@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 class BlacklistedArtist: Object {
-    dynamic var soundCloudUser = SoundCloudUser()
+    dynamic var soundCloudUser: SoundCloudUser!
     
     
     
@@ -20,24 +20,24 @@ class BlacklistedArtist: Object {
         if id == 0 {
             return nil
         }
-        if let user = Realm().objectForPrimaryKey(SoundCloudUser.self, key: id){
+        if let user = try! Realm().objectForPrimaryKey(SoundCloudUser.self, key: id){
             return self.includes(user)
         }else{
             return nil
         }
     }
     class func itemsWithSoundCloudUser(user:SoundCloudUser)->Results<BlacklistedArtist>{
-        return Realm().objects(BlacklistedArtist).filter("soundCloudUser = %@", user)
+        return try! Realm().objects(BlacklistedArtist).filter("soundCloudUser = %@", user)
     }
     class func add(user:SoundCloudUser){
-        let realm = Realm()
-        realm.write {
+        let realm = try! Realm()
+        try! realm.write {
            realm.create(BlacklistedArtist.self, value: ["soundCloudUser": user], update: false)
         }
     }
     class func remove(user:SoundCloudUser){
-        let realm = Realm()
-        realm.write {
+        let realm = try! Realm()
+        try! realm.write {
             realm.delete(self.itemsWithSoundCloudUser(user))
         }
     }

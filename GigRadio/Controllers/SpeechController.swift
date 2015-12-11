@@ -40,10 +40,10 @@ class SpeechController: NSObject, AVSpeechSynthesizerDelegate {
         synthesizer.stopSpeakingAtBoundary(.Word)
         say("\(track.soundCloudTrack.title) by \(track.performance.soundCloudUser.username)")
     }
-    func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, didStartSpeechUtterance utterance: AVSpeechUtterance!) {
+    func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didStartSpeechUtterance utterance: AVSpeechUtterance) {
         delegate.duckMusic()
     }
-    func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, didFinishSpeechUtterance utterance: AVSpeechUtterance!) {
+    func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didFinishSpeechUtterance utterance: AVSpeechUtterance) {
         delegate.unduckMusic()
     }
 }

@@ -10,5 +10,5 @@ import UIKit
 
 struct SongKickConfiguration{
     var apiKey = "D9wakwauz69uzYV5"
-    var baseUrl = "http://api.songkick.com/api/3.0"
+    var baseUrl = "https://api.songkick.com/api/3.0"
 }

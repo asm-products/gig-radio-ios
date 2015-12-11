@@ -31,16 +31,16 @@ class SongKickClient: ApiClientBase {
         self.get(url, completion: { json, error in
             if error == nil{
                 let events = json["resultsPage"]["results"]["event"]
-                println("Fetched \(events.count) event(s) from SongKick via \(url)")
+                print("Fetched \(events.count) event(s) from SongKick via \(url)")
                 var ids = [Int]()
                 if events.error == nil{
-                    let realm = Realm()
-                    realm.write {
+                    let realm = try! Realm()
+                    try! realm.write {
                         for event in events.object as! NSArray{
                             if let event = event as? NSDictionary{
                                 let event = event.dictionaryWithoutNullValues()
                                 let model = realm.create(SongKickEvent.self, value: event, update: true)
-                                if let date = model.start.parsedDate(){
+                                if let start = model.start, date = start.parsedDate(){
                                     model.date = date
                                 }
                                 ids.append(model.id)
@@ -69,8 +69,8 @@ class SongKickClient: ApiClientBase {
             if error == nil{
                 var object:NSDictionary = json["resultsPage"]["results"]["venue"].object as! NSDictionary
                 object = object.dictionaryWithoutNullValues()
-                let realm = Realm()
-                realm.write{
+                let realm = try! Realm()
+                try! realm.write{
                     realm.create(SongKickVenue.self, value: object, update: true)
                 }
                 completion()
@@ -81,7 +81,7 @@ class SongKickClient: ApiClientBase {
     func urlWithParams(params: [String:AnyObject], resource: String)->NSURL{
         var params = params
         params["apikey"] = SongKickConfiguration().apiKey
-        let uri = SongKickConfiguration().baseUrl.stringByAppendingPathComponent("\(resource).json?\(params.querystring())")
+        let uri = (SongKickConfiguration().baseUrl as NSString).stringByAppendingPathComponent("\(resource).json?\(params.querystring())")
         return NSURL(string: uri)!
     }
     

@@ -50,7 +50,7 @@ class EditPlaylistItemViewController: UITableViewController,SoundCloudUsersTable
     func updateCountCell(){
         if let users = users{
             let count = max(0,users.count - 1)
-            self.selectSoundCloudUserCell.detailTextLabel?.text = template("SoundCloudUsers.CountOthersAvailable", [count])
+            self.selectSoundCloudUserCell.detailTextLabel?.text = template("SoundCloudUsers.CountOthersAvailable", values: [count])
             self.selectSoundCloudUserCell.detailTextLabel?.setNeedsDisplay()
         }
     }
@@ -66,7 +66,7 @@ class EditPlaylistItemViewController: UITableViewController,SoundCloudUsersTable
         case viewOnSoundCloudCell: viewOnSoundCloud()
         case doNotPlayTracksCell: toggleArtist()
         default:
-            println("skip")
+            print("skip")
         }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
@@ -95,7 +95,7 @@ class EditPlaylistItemViewController: UITableViewController,SoundCloudUsersTable
         }
     }
     func soundCloudUsersTableDidSelectUser(user: SoundCloudUser) {
-        Realm().write{
+        try! Realm().write{
             self.performance.soundCloudUser = user
         }
         populate()

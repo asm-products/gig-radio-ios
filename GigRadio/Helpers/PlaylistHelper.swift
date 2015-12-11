@@ -19,7 +19,7 @@ class PlaylistHelper: NSObject {
         if track.soundCloudTrack.id == 0{
             return NSAttributedString(string: "")
         }
-        var result = NSMutableAttributedString(string: "")
+        let result = NSMutableAttributedString(string: "")
         let trackText = NSAttributedString(string: track.soundCloudTrack.title, attributes: TrackTitleAttributes)
         let artistText = NSAttributedString(string: track.performance.soundCloudUser.displayName(), attributes: TrackArtistAttributes)
         result.appendAttributedString(trackText)

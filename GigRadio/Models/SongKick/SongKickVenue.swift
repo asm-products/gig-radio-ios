@@ -19,7 +19,7 @@ class SongKickVenue: Object {
     dynamic var zip = ""
     dynamic var capacity: Int = 0
     dynamic var descriptionText = ""
-    dynamic var metroArea = SongKickMetroArea()
+    dynamic var metroArea: SongKickMetroArea!
     
     dynamic var distanceCache: Double = 0
     
@@ -29,8 +29,8 @@ class SongKickVenue: Object {
     }
     class func updateDistanceCachesWithLocation(location: CLLocation?){
         if let location = location{
-            let realm = Realm()
-            realm.write { () -> Void in
+            let realm = try! Realm()
+            try! realm.write { () -> Void in
                 for venue in realm.objects(SongKickVenue){
                     if let dest = venue.location(){
                         venue.distanceCache = location.distanceFromLocation(dest)

@@ -32,11 +32,11 @@ class CompassView: UIView, CLLocationManagerDelegate {
         locationManager.startUpdatingHeading()
         locationManager.startUpdatingLocation()
     }
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        currentLocation = locations.last as? CLLocation
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        currentLocation = locations.last
         updateNeedle()
     }
-    func locationManager(manager: CLLocationManager!, didUpdateHeading newHeading: CLHeading!) {
+    func locationManager(manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         currentHeading = newHeading
         updateNeedle()
     }

@@ -31,12 +31,12 @@ class Playlist: Object {
         return CLLocation(latitude: lat, longitude: lng)
     }
     
-    dynamic var specificEvent = SongKickEvent()
+    dynamic var specificEvent: SongKickEvent!
     
-    dynamic var performances = List<PlaylistPerformance>()
+    let performances = List<PlaylistPerformance>()
     
-    dynamic var createdAt = NSDate()
-    dynamic var tracks = List<PlaylistTrack>()
+    let createdAt = NSDate()
+    let tracks = List<PlaylistTrack>()
     
     var currentTrack: PlaylistTrack?
     override static func ignoredProperties() -> [String] {
@@ -44,12 +44,12 @@ class Playlist: Object {
     }
 
     class func findOrCreateForUtcDate(utcDate:NSDate)->Playlist{
-        let realm = Realm()
+        let realm = try! Realm()
         let playlists = realm.objects(Playlist).filter("utcDate = %@", utcDate)
         if playlists.count == 0{
             realm.beginWrite()
             let playlist = realm.create(Playlist.self, value: ["utcDate":utcDate], update: true)
-            realm.commitWrite()
+            try! realm.commitWrite()
             return playlist
         }else{
             return playlists.first!
@@ -57,7 +57,7 @@ class Playlist: Object {
     }
     
     func setLocation(newValue:CLLocation){
-        Realm().write{
+        try! Realm().write{
             self.lat = newValue.coordinate.latitude
             self.lng = newValue.coordinate.longitude
         }
@@ -81,9 +81,9 @@ class Playlist: Object {
 //        }
     }
     func addOrUpdateEventIds(ids:[Int]){
-        let realm = Realm()
+        let realm = try! Realm()
         let events = realm.objects(SongKickEvent).filter("id in %@", ids)
-        realm.write {
+        try! realm.write {
             // temporary soundcloud stuff cos realm doesn't support nil values
             var soundCloudUser = realm.objectForPrimaryKey(SoundCloudUser.self, key: 0)
             if soundCloudUser == nil {
@@ -137,13 +137,13 @@ class Playlist: Object {
     }
     func removeTracksForPerformance(performance:PlaylistPerformance){
         let tracks = self.tracks.filter("performance = %@", performance)
-        let realm = Realm()
-        realm.write {
+        let realm = try! Realm()
+        try! realm.write {
             realm.delete(tracks)
         }
     }
     func removeTracksBySoundCloudUser(user: SoundCloudUser){
-        let realm = Realm()
+        let realm = try! Realm()
         var ids = [String]()
         for track in self.tracks{
             if track.performance.soundCloudUser == user{
@@ -151,7 +151,7 @@ class Playlist: Object {
             }
         }
         let tracks = self.tracks.filter("id in %@", ids)
-        realm.write {
+        try! realm.write {
             realm.delete(tracks)
         }
     }

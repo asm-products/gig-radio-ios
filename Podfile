@@ -3,7 +3,7 @@
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 target "GigRadio" do
-  pod 'RealmSwift', '~> 0.93'
+  pod 'RealmSwift', '~> 0.96'
   pod 'CLLocationManager-blocks', '~> 1.3'
   pod 'CMDQueryStringSerialization', '~> 0.3'
   pod 'YLMoment', '~> 0.5'
@@ -17,9 +17,9 @@ target "GigRadio" do
   pod 'AVHexColor', '~> 1.1.0'
   pod 'SVProgressHUD'
   pod 'IFTTTLaunchImage'
-  pod 'SwiftyJSON', '~> 2.2'
+  pod 'SwiftyJSON'
   pod 'TWRDownloadManager', '~> 1.1'
-  pod 'CryptoSwift', '~> 0.0'
+  pod 'CryptoSwift'
   pod 'TMCache', '~> 2.1'
   pod 'StreamingKit', '~> 0.1'
   pod 'NSDictionary+TRVSUnderscoreCamelCaseAdditions', '~> 0.1'
@@ -34,4 +34,3 @@ post_install do | installer |
     require 'fileutils'
     FileUtils.cp_r('Pods/Target Support Files/Pods-GigRadio/Pods-GigRadio-Acknowledgements.plist', 'GigRadio/Settings.bundle/Acknowledgements.plist', :remove_destination => true)
 end
-

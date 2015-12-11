@@ -180,7 +180,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
         }
     }
     func setDateHeading(date:NSDate){
-        var title = NSMutableAttributedString()
+        let title = NSMutableAttributedString()
         title.appendAttributedString(NSAttributedString(string: "GIG RADIO\n", attributes: Typography.HeaderRegular(13)))
         // WARN: Potentially broken in the US!
         let dateString = DateFormats.todayFormatter().stringFromDate(date)

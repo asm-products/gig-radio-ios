@@ -15,9 +15,9 @@ class PlaylistPerformance: Object {
         return "id"
     }
     
-    dynamic var songKickEvent = SongKickEvent()
-    dynamic var songKickArtist = SongKickArtist()
-    dynamic var soundCloudUser = SoundCloudUser()
+    dynamic var songKickEvent:SongKickEvent!
+    dynamic var songKickArtist: SongKickArtist!
+    dynamic var soundCloudUser: SoundCloudUser!
     
     dynamic var colorIndex = 0
     dynamic var createdAt = NSDate()
@@ -33,7 +33,7 @@ class PlaylistPerformance: Object {
             callback(user: self.soundCloudUser, error:nil)
         }else{
             SoundCloudClient.sharedClient.findUser(songKickArtist.displayName) { (user,error) -> Void in
-                Realm().write{
+                try! Realm().write{
                     self.userHasBeenChecked = true
                     if user != nil{
                         self.soundCloudUser = user!
@@ -49,7 +49,7 @@ class PlaylistPerformance: Object {
             callback(trackCount: self.soundCloudUser.tracks.filter("streamable = %@", true).count, error:nil)
         }else{
             SoundCloudClient.sharedClient.getTracks(soundCloudUser){ error in
-                Realm().write{
+                try! Realm().write{
                     self.soundCloudUser.tracksHaveBeenChecked = true
                 }
                 callback(trackCount: self.soundCloudUser.tracks.filter("streamable = %@", true).count, error:error)
@@ -57,9 +57,9 @@ class PlaylistPerformance: Object {
         }
     }
     func determineNextTrackToPlay(callback:(track:PlaylistTrack?)->Void){
-        let realm = Realm()
+        let realm = try! Realm()
         if BlacklistedArtist.includes(soundCloudUser){
-            println("Skipping blacklisted user \(soundCloudUser.username)")
+            print("Skipping blacklisted user \(soundCloudUser.username)")
             callback(track: nil)
             return
         }
@@ -72,7 +72,7 @@ class PlaylistPerformance: Object {
                     playlistTrack.soundCloudTrack = track
                     playlistTrack.performance = self
                     playlist.tracks.append(playlistTrack)
-                    realm.commitWrite()
+                    try! realm.commitWrite()
                     
                     callback(track:playlistTrack)
                     return

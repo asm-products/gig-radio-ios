@@ -94,6 +94,7 @@
 		AC5E954519FC0B4D005B9872 /* disclosure_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC5E953519FC0B4C005B9872 /* disclosure_small@2x.png */; };
 		AC5E954819FC0B4D005B9872 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = AC5E953819FC0B4C005B9872 /* menu.png */; };
 		AC5E954919FC0B4D005B9872 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC5E953919FC0B4D005B9872 /* menu@2x.png */; };
+		AC6292CD1C1C7DF8005DFD56 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6292CC1C1C7DF8005DFD56 /* TableViewCell.swift */; };
 		AC652FB61B5D38DE00EAD5A4 /* problem.png in Resources */ = {isa = PBXBuildFile; fileRef = AC652FB31B5D38DE00EAD5A4 /* problem.png */; };
 		AC652FB71B5D38DE00EAD5A4 /* problem@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC652FB41B5D38DE00EAD5A4 /* problem@2x.png */; };
 		AC652FB81B5D38DE00EAD5A4 /* problem@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC652FB51B5D38DE00EAD5A4 /* problem@3x.png */; };
@@ -311,6 +312,7 @@
 		AC5E953519FC0B4C005B9872 /* disclosure_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclosure_small@2x.png"; sourceTree = "<group>"; };
 		AC5E953819FC0B4C005B9872 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
 		AC5E953919FC0B4D005B9872 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
+		AC6292CC1C1C7DF8005DFD56 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		AC652FB31B5D38DE00EAD5A4 /* problem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = problem.png; sourceTree = "<group>"; };
 		AC652FB41B5D38DE00EAD5A4 /* problem@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "problem@2x.png"; sourceTree = "<group>"; };
 		AC652FB51B5D38DE00EAD5A4 /* problem@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "problem@3x.png"; sourceTree = "<group>"; };
@@ -529,6 +531,7 @@
 				AC8F43121B1786EE00EA51BD /* FavouriteItemTableViewCell.swift */,
 				AC8AB7781B1A6F7400A673E1 /* SoundCloudUserTableViewCell.swift */,
 				ACA9EC5E1B59610500CC1B2D /* GigRadioVectorLogo.swift */,
+				AC6292CC1C1C7DF8005DFD56 /* TableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1269,6 +1272,7 @@
 				AC863F551B0D10BE00A6A9D3 /* CompletionCounter.swift in Sources */,
 				AC3CB9881B08D027009203E1 /* SongKickArtist.swift in Sources */,
 				AC08D4D61B0CD3290082D424 /* Playlist.swift in Sources */,
+				AC6292CD1C1C7DF8005DFD56 /* TableViewCell.swift in Sources */,
 				AC3CB98C1B08D265009203E1 /* SoundCloudUser.swift in Sources */,
 				AC10155F1B19C93E000FC5A9 /* MapLink.swift in Sources */,
 				ACA9EC591B595E9500CC1B2D /* Appearance.m in Sources */,
@@ -1577,6 +1581,7 @@
 				AC82F3B41C1B6453003E9551 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ACAE798D199F657E00030E26 /* Build configuration list for PBXProject "GigRadio" */ = {
 			isa = XCConfigurationList;

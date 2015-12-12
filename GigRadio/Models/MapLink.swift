@@ -55,6 +55,17 @@ class MapLink: NSObject {
     }
     class func citymapperUri(venue:SongKickVenue)->String{
         // citymapper://directions?endcoord=51.563612,-0.073299&endname=Abney%20Park%20Cemetery&endaddress=Stoke%20Newington%20High%20Street
-        return "citymapper://directions?endcoord=\(venue.lat),\(venue.lng)&endname=\(venue.displayName.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)&endaddress=\(venue.address().stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)"
+        var params = [
+            "endname": venue.displayName,
+            "endaddress": venue.address()
+            ].map { name, value -> NSURLQueryItem in
+                return NSURLQueryItem(name: name, value: value)
+        }
+        if venue.lat != 0{
+            params.append(NSURLQueryItem(name: "endcoord", value: "\(venue.lat),\(venue.lng)"))
+        }
+        let components = NSURLComponents(URL: NSURL(string: "citymapper://directions")!, resolvingAgainstBaseURL: false)
+        components?.queryItems = params
+        return components!.URL!.absoluteString
     }
 }

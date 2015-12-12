@@ -56,8 +56,12 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
         playlist.currentTrack = playlist.tracks.last
         updateFavouritesCount()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateFavouritesCount", name: FAVOURITE_COUNT_CHANGED, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleUIApplicationSignificantTimeChangeNotification", name: UIApplicationSignificantTimeChangeNotification, object: nil)
+        updateEvents()
+    }
+    func updateEvents(){
         // deal with location stuff here because we might need to show UI
-        LocationHelper.track { (location, error) -> Void in
+        LocationHelper.track { location, error in
             UIApplication.sharedApplication().networkActivityIndicatorVisible = true
             // this will be called whenever the user's location changes, as well as on startup.
             self.playlist.setLocation(location)
@@ -74,6 +78,9 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
 
             }
         }
+    }
+    func handleUIApplicationSignificantTimeChangeNotification(){
+        updateEvents()
     }
     func updateFavouritesCount(){
         favouritesCountLabel.layer.cornerRadius = 8

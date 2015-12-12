@@ -30,30 +30,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
-                            <tableViewSection footerTitle="" id="7R5-HY-VSu">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="128" id="Ew0-sC-Hez">
-                                        <rect key="frame" x="0.0" y="99" width="375" height="128"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ew0-sC-Hez" id="lOU-cz-xW9">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RvV-jI-ULc" customClass="GigRadioVectorLogo" customModule="GigRadio" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="157" height="116"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                </view>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Venue order" footerTitle="Tracks from shows at venues without geo-coordinates will be played last when 'nearest first' is selected" id="ZOO-ef-C3K">
+                            <tableViewSection headerTitle="Gigs order" footerTitle="Tracks from shows at venues without geo-coordinates will be played last when 'nearest first' is selected" id="ZOO-ef-C3K">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Ug5-Ee-1qb">
-                                        <rect key="frame" x="0.0" y="269" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="113.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ug5-Ee-1qb" id="Vpz-vR-rsb">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -62,8 +42,8 @@
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rOh-uf-Vcv">
                                                     <rect key="frame" x="8" y="8" width="359" height="29"/>
                                                     <segments>
-                                                        <segment title="City wide"/>
                                                         <segment title="Nearest first"/>
+                                                        <segment title="City wide"/>
                                                     </segments>
                                                     <connections>
                                                         <action selector="didChangePlaylistOrder:" destination="5qa-gz-zC7" eventType="valueChanged" id="LBu-Bj-0nX"/>
@@ -81,10 +61,10 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Tracks to play" footerTitle="Shorter tracks are more likely to be music. Longer tracks could be DJ mixes or podcasts." id="ixX-UD-SBD">
+                            <tableViewSection headerTitle="Track lengths to play" footerTitle="Shorter tracks are more likely to be music and will give you more variety. Longer tracks could be DJ mixes or podcasts." id="ixX-UD-SBD">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="a9z-n0-UkX">
-                                        <rect key="frame" x="0.0" y="395.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="240" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a9z-n0-UkX" id="0ia-ko-sZP">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -116,7 +96,7 @@
                             <tableViewSection headerTitle="When all days gigs have been played for day" footerTitle="" id="v3b-CC-S0o">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="X3G-LI-cZH">
-                                        <rect key="frame" x="0.0" y="522" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="366.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="X3G-LI-cZH" id="7Lu-Qs-xqw">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -125,7 +105,7 @@
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bZr-38-m4R">
                                                     <rect key="frame" x="8" y="8" width="359" height="29"/>
                                                     <segments>
-                                                        <segment title="Different songs, same day"/>
+                                                        <segment title="More songs, same day"/>
                                                         <segment title="Move to next day"/>
                                                     </segments>
                                                     <connections>
@@ -147,7 +127,7 @@
                             <tableViewSection headerTitle="Spoken announcements" footerTitle="" id="u4j-S5-a7C">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Yqv-Ap-MCm">
-                                        <rect key="frame" x="0.0" y="608" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="452.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yqv-Ap-MCm" id="sC0-fe-zEc">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

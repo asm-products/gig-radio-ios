@@ -113,6 +113,8 @@
 		AC7AC1F11B121071002A550C /* tracks-avail-3.png in Resources */ = {isa = PBXBuildFile; fileRef = AC7AC1E51B121071002A550C /* tracks-avail-3.png */; };
 		AC7AC1F21B121071002A550C /* tracks-avail-3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC7AC1E61B121071002A550C /* tracks-avail-3@2x.png */; };
 		AC7AC1F31B121071002A550C /* tracks-avail-3@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC7AC1E71B121071002A550C /* tracks-avail-3@3x.png */; };
+		AC82F3AF1C1B6453003E9551 /* GigRadioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC82F3AE1C1B6453003E9551 /* GigRadioUITests.swift */; };
+		AC82F3B71C1B653A003E9551 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC82F3B61C1B653A003E9551 /* SnapshotHelper.swift */; };
 		AC863F551B0D10BE00A6A9D3 /* CompletionCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC863F541B0D10BE00A6A9D3 /* CompletionCounter.swift */; };
 		AC863F571B0D15FA00A6A9D3 /* flyer-placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = AC863F561B0D15FA00A6A9D3 /* flyer-placeholder.png */; };
 		AC891B8D1C1B219D0087C790 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC891B8B1C1B219D0087C790 /* Fabric.framework */; };
@@ -199,6 +201,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		AC82F3B11C1B6453003E9551 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ACAE798A199F657E00030E26 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ACAE7991199F657E00030E26;
+			remoteInfo = GigRadio;
+		};
 		ACAE79BB199F657E00030E26 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ACAE798A199F657E00030E26 /* Project object */;
@@ -321,6 +330,10 @@
 		AC7AC1E51B121071002A550C /* tracks-avail-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tracks-avail-3.png"; sourceTree = "<group>"; };
 		AC7AC1E61B121071002A550C /* tracks-avail-3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tracks-avail-3@2x.png"; sourceTree = "<group>"; };
 		AC7AC1E71B121071002A550C /* tracks-avail-3@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tracks-avail-3@3x.png"; sourceTree = "<group>"; };
+		AC82F3AC1C1B6453003E9551 /* GigRadioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GigRadioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC82F3AE1C1B6453003E9551 /* GigRadioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GigRadioUITests.swift; sourceTree = "<group>"; };
+		AC82F3B01C1B6453003E9551 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC82F3B61C1B653A003E9551 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		AC863F541B0D10BE00A6A9D3 /* CompletionCounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletionCounter.swift; sourceTree = "<group>"; };
 		AC863F561B0D15FA00A6A9D3 /* flyer-placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flyer-placeholder.png"; sourceTree = "<group>"; };
 		AC891B8B1C1B219D0087C790 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
@@ -424,6 +437,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AC82F3A91C1B6453003E9551 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ACAE798F199F657E00030E26 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -615,6 +635,16 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		AC82F3AD1C1B6453003E9551 /* GigRadioUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AC82F3B61C1B653A003E9551 /* SnapshotHelper.swift */,
+				AC82F3AE1C1B6453003E9551 /* GigRadioUITests.swift */,
+				AC82F3B01C1B6453003E9551 /* Info.plist */,
+			);
+			path = GigRadioUITests;
+			sourceTree = "<group>";
+		};
 		ACA9EC4E1B59450C00CC1B2D /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
@@ -643,6 +673,7 @@
 				ACAE799B199F657E00030E26 /* GigRadio */,
 				ACAE79BD199F657E00030E26 /* GigRadioTests */,
 				ACD22F5C1A287AEA00EFBE59 /* Playgrounds */,
+				AC82F3AD1C1B6453003E9551 /* GigRadioUITests */,
 				ACAE7994199F657E00030E26 /* Frameworks */,
 				ACAE7993199F657E00030E26 /* Products */,
 				05B76765EF59017BC4D0EB6B /* Pods */,
@@ -654,6 +685,7 @@
 			children = (
 				ACAE7992199F657E00030E26 /* GigRadio.app */,
 				ACAE79B6199F657E00030E26 /* GigRadioTests.xctest */,
+				AC82F3AC1C1B6453003E9551 /* GigRadioUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -863,6 +895,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		AC82F3AB1C1B6453003E9551 /* GigRadioUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC82F3B51C1B6453003E9551 /* Build configuration list for PBXNativeTarget "GigRadioUITests" */;
+			buildPhases = (
+				AC82F3A81C1B6453003E9551 /* Sources */,
+				AC82F3A91C1B6453003E9551 /* Frameworks */,
+				AC82F3AA1C1B6453003E9551 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC82F3B21C1B6453003E9551 /* PBXTargetDependency */,
+			);
+			name = GigRadioUITests;
+			productName = GigRadioUITests;
+			productReference = AC82F3AC1C1B6453003E9551 /* GigRadioUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		ACAE7991199F657E00030E26 /* GigRadio */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = ACAE79C7199F657E00030E26 /* Build configuration list for PBXNativeTarget "GigRadio" */;
@@ -914,6 +964,10 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Good To Hear";
 				TargetAttributes = {
+					AC82F3AB1C1B6453003E9551 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = ACAE7991199F657E00030E26;
+					};
 					ACAE7991199F657E00030E26 = {
 						DevelopmentTeam = TNRLJ4WU59;
 						SystemCapabilities = {
@@ -944,11 +998,19 @@
 			targets = (
 				ACAE7991199F657E00030E26 /* GigRadio */,
 				ACAE79B5199F657E00030E26 /* GigRadioTests */,
+				AC82F3AB1C1B6453003E9551 /* GigRadioUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AC82F3AA1C1B6453003E9551 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ACAE7990199F657E00030E26 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1155,6 +1217,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		AC82F3A81C1B6453003E9551 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC82F3AF1C1B6453003E9551 /* GigRadioUITests.swift in Sources */,
+				AC82F3B71C1B653A003E9551 /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ACAE798E199F657E00030E26 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1238,6 +1309,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		AC82F3B21C1B6453003E9551 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ACAE7991199F657E00030E26 /* GigRadio */;
+			targetProxy = AC82F3B11C1B6453003E9551 /* PBXContainerItemProxy */;
+		};
 		ACAE79BC199F657E00030E26 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = ACAE7991199F657E00030E26 /* GigRadio */;
@@ -1291,6 +1367,45 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		AC82F3B31C1B6453003E9551 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = GigRadioUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = goodtohear.GigRadioUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TEST_TARGET_NAME = GigRadio;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		AC82F3B41C1B6453003E9551 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = GigRadioUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = goodtohear.GigRadioUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = GigRadio;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
 		ACAE79C5199F657E00030E26 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1455,6 +1570,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AC82F3B51C1B6453003E9551 /* Build configuration list for PBXNativeTarget "GigRadioUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC82F3B31C1B6453003E9551 /* Debug */,
+				AC82F3B41C1B6453003E9551 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		ACAE798D199F657E00030E26 /* Build configuration list for PBXProject "GigRadio" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

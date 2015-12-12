@@ -20,7 +20,7 @@ class SongKickEvent: Object {
     dynamic var uri = ""
     dynamic var descriptionText = ""
     dynamic var popularity: Double = 0
-    dynamic var series: SongKickDisplayName!
+    dynamic var series: SongKickDisplayName?
     dynamic var status = "ok"
     
     dynamic var distanceCache: Double = 0

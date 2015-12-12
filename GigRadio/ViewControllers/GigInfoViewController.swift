@@ -45,7 +45,7 @@ class GigInfoViewController: UIViewController {
     func updateText(){
         let date = NSAttributedString(string: DateFormats.todayFormatter().stringFromDate(event.date), attributes: Typography.RobotoBold(13))
         
-        let title = NSAttributedString(string: event.series.displayName, attributes: Typography.RobotoBold(13))
+        let title = NSAttributedString(string: event.series?.displayName ?? "", attributes: Typography.RobotoBold(13))
         let artists = NSAttributedString(string: event.artistNames().joinWithSeparator("\n"), attributes: Typography.RobotoLight(24))
         let location = NSAttributedString(string: "\(event.venue.displayName)\n\(event.venue.address())", attributes: Typography.RobotoRegular(13))
         
@@ -53,7 +53,7 @@ class GigInfoViewController: UIViewController {
         let br = NSAttributedString(string: "\n")
         text.appendAttributedString(date)
         text.appendAttributedString(br)
-        if event.series.displayName != ""{
+        if event.series?.displayName != ""{
             text.appendAttributedString(title)
             text.appendAttributedString(br)
         }

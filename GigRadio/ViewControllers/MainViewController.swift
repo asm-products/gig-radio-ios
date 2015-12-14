@@ -57,6 +57,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
         updateFavouritesCount()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateFavouritesCount", name: FAVOURITE_COUNT_CHANGED, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleUIApplicationSignificantTimeChangeNotification", name: UIApplicationSignificantTimeChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleDidChangeVenueSortOrderNotification", name: DidChangeVenueSortOrderNotification, object: nil)
         updateEvents()
     }
     func updateEvents(){
@@ -81,6 +82,11 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
     }
     func handleUIApplicationSignificantTimeChangeNotification(){
         updateEvents()
+    }
+    func handleDidChangeVenueSortOrderNotification(){
+        self.playlist.clearAndReloadEvents {
+            self.playNextTrack()
+        }
     }
     func updateFavouritesCount(){
         favouritesCountLabel.layer.cornerRadius = 8

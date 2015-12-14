@@ -27,9 +27,11 @@ class InfoSettingsTableViewController: UITableViewController {
     }
     @IBAction func didChangePlaylistOrder(sender: AnyObject) {
         NSUserDefaults.standardUserDefaults().setInteger(sortOrderControl.selectedSegmentIndex, forKey: VenueSortOrderKey)
+        NSNotificationCenter.defaultCenter().postNotificationName(DidChangeVenueSortOrderNotification, object: nil)
     }
     @IBAction func didChangeTrackLengthFilter(sender: AnyObject) {
         NSUserDefaults.standardUserDefaults().setInteger(trackLengthFilterControl.selectedSegmentIndex, forKey: TrackLengthFilterKey)
+        NSNotificationCenter.defaultCenter().postNotificationName(DidChangeTrackLengthFilterNotification, object: nil)
     }
     @IBAction func didChangePlaylistFollowAction(sender: AnyObject) {
         NSUserDefaults.standardUserDefaults().setInteger(playlistFollowActionControl.selectedSegmentIndex

@@ -14,8 +14,8 @@ let SpokenAnnouncementsKey = "SpokenAnnouncementsActive"
 let PlaylistFollowActionKey = "PlaylistFollowAction"
 
 enum VenueSortOrder: Int{
-    case Natural = 0
-    case NearestFirst = 1
+    case NearestFirst = 0
+    case Natural = 1
 }
 enum TrackLengthFilter: Int{
     case Short = 0
@@ -30,10 +30,16 @@ enum PlaylistFollowAction:Int{
     case LoopDay = 0
     case PlayNextDay = 1
 }
+
+let DidChangeVenueSortOrderNotification = "DidChangeVenueSortOrderNotification"
+let DidChangeTrackLengthFilterNotification = "DidChangeTrackLengthFilterNotification"
+let DidChangeSpokenAnnouncementsNotification = "DidChangeSpokenAnnouncementsNotification"
+let DidChangePlaylistFollowActionNotification = "DidChangePlaylistFollowActionNotification"
+
 class Defaults: NSObject {
     class func register(){
         NSUserDefaults.standardUserDefaults().registerDefaults([
-            VenueSortOrderKey: VenueSortOrder.Natural.rawValue,
+            VenueSortOrderKey: VenueSortOrder.NearestFirst.rawValue,
             TrackLengthFilterKey: TrackLengthFilter.Short.rawValue,
             SpokenAnnouncementsKey: SpokenAnnouncements.Off.rawValue,
             PlaylistFollowActionKey: PlaylistFollowAction.LoopDay.rawValue

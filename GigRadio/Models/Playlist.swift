@@ -61,23 +61,33 @@ class Playlist: Object {
             self.lng = newValue.coordinate.longitude
         }
     }
-
+    func clearAndReloadEvents(completion:()->Void){
+        try! Realm().write {
+            self.performances.removeAll()
+            self.currentTrack = nil
+        }
+        fetchEvents(completion)
+    }
     func fetchEvents(completion: ()->Void){
         SongKickClient.sharedClient.getEvents(utcDate, location: location, completion: { (eventIds, error) -> Void in
+            SongKickVenue.updateDistanceCachesWithLocation(self.location)
             if let ids = eventIds{
                 self.addOrUpdateEventIds(ids)
             }
-            SongKickVenue.updateDistanceCachesWithLocation(self.location)
-            self.sortEvents()
             completion()
         })
     }
-    func sortEvents(){
+    func sortedEvents(events:Results<SongKickEvent>)->Results<SongKickEvent>{
         //TODO: sort events by preference
-//        switch Defaults.venueSortOrder{
-//            case .Natural
-//            case .NearestFirst
-//        }
+        switch Defaults.venueSortOrder{
+        case .Natural:
+            return events
+        case .NearestFirst:
+            for event in events{
+                event.distanceCache = event.venue.distanceCache
+            }
+            return events.sorted("distanceCache")
+        }
     }
     func addOrUpdateEventIds(ids:[Int]){
         let realm = try! Realm()
@@ -89,7 +99,7 @@ class Playlist: Object {
                 soundCloudUser = SoundCloudUser()
             }
             
-            for event in events{
+            for event in self.sortedEvents(events){
                 let eventMissingFromRun = self.performances.filter("songKickEvent == %@", event).count == 0
                 let statusIsOkay = event.status == "ok"
                 if eventMissingFromRun && statusIsOkay{

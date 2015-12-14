@@ -9,6 +9,6 @@
 import UIKit
 
 struct SoundCloudConfiguration {
-    var clientId = "d47e0a544e6e43721dd9847efc6120c5"
+    var clientId = Secrets.SoundCloudClientId
     var baseUri = "https://api.soundcloud.com"
 }

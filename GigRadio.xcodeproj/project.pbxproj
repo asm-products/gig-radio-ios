@@ -206,6 +206,7 @@
 		ACE5C5511C1F0EF6000E769B /* disclosure-right-grey.png in Resources */ = {isa = PBXBuildFile; fileRef = ACE5C54E1C1F0EF6000E769B /* disclosure-right-grey.png */; };
 		ACE5C5521C1F0EF6000E769B /* disclosure-right-grey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACE5C54F1C1F0EF6000E769B /* disclosure-right-grey@2x.png */; };
 		ACE5C5531C1F0EF6000E769B /* disclosure-right-grey@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACE5C5501C1F0EF6000E769B /* disclosure-right-grey@3x.png */; };
+		ACE5C5551C1F1284000E769B /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5C5541C1F1284000E769B /* Secrets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -450,6 +451,7 @@
 		ACE5C54E1C1F0EF6000E769B /* disclosure-right-grey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclosure-right-grey.png"; sourceTree = "<group>"; };
 		ACE5C54F1C1F0EF6000E769B /* disclosure-right-grey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclosure-right-grey@2x.png"; sourceTree = "<group>"; };
 		ACE5C5501C1F0EF6000E769B /* disclosure-right-grey@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclosure-right-grey@3x.png"; sourceTree = "<group>"; };
+		ACE5C5541C1F1284000E769B /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -851,6 +853,7 @@
 				AC10155E1B19C93E000FC5A9 /* MapLink.swift */,
 				AC98D3E81B5EFA4A00020661 /* Defaults.swift */,
 				AC16A47F1C1B567200003582 /* Onboarding.swift */,
+				ACE5C5541C1F1284000E769B /* Secrets.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1265,6 +1268,7 @@
 				AC8F43171B178DDC00EA51BD /* Favourite.swift in Sources */,
 				AC7AC1D91B1127B7002A550C /* TransportViewController.swift in Sources */,
 				AC1015611B19E36B000FC5A9 /* PlaylistTrack.swift in Sources */,
+				ACE5C5551C1F1284000E769B /* Secrets.swift in Sources */,
 				AC98D3E91B5EFA4A00020661 /* Defaults.swift in Sources */,
 				AC16A47E1C1B32BE00003582 /* OnboardingItemViewController.swift in Sources */,
 				AC43E88B1A8CFD0F0060FD80 /* DatePickerViewController.swift in Sources */,

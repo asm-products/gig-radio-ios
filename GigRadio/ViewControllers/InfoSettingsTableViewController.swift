@@ -51,7 +51,7 @@ class InfoSettingsTableViewController: UITableViewController {
         navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
     override func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        let firstLinkIndexPath = tableView.indexPathForCell(musicByMichaelForrestCell)!
+        let firstLinkIndexPath = tableView.indexPathForCell(musicByMichaelForrestCell) ?? NSIndexPath(forRow: 0, inSection: 3)
         return indexPath.section >= firstLinkIndexPath.section
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

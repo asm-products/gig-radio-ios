@@ -61,6 +61,22 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate,SpeechDel
         
         volumeView.setVolumeThumbImage(UIImage(named: "volume-thumb"), forState: .Normal)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleAVAudioSessionRouteChangeNotification:", name: AVAudioSessionRouteChangeNotification, object: nil)
+        
+    }
+    func handleAVAudioSessionRouteChangeNotification(notification:NSNotification){
+        guard let info = notification.userInfo as? [String:AnyObject],
+            reasonRaw = info[AVAudioSessionRouteChangeReasonKey] as? UInt,
+            reason = AVAudioSessionRouteChangeReason(rawValue: reasonRaw),
+            oldRoute = info[AVAudioSessionRouteChangePreviousRouteKey]
+            else {
+                print("no reason found for \(notification.userInfo)")
+                return
+        }
+        print("old route \(oldRoute)")
+        if reason == .OldDeviceUnavailable && oldRoute.description.containsString("Headphones"){ // seems to work internationally
+            setPlaying(false)
+        }
     }
     func play(track:PlaylistTrack){
         setBufferingDisplay(true)
@@ -82,9 +98,6 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate,SpeechDel
     func becomeActive(){
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-        } catch _ {
-        }
-        do {
             try AVAudioSession.sharedInstance().setActive(true)
         } catch _ {
         }
@@ -93,13 +106,20 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate,SpeechDel
         self.becomeFirstResponder()
     }
     @IBAction func didPressPlayPause(sender: AnyObject) {
-        if audioPlayer.state.rawValue == STKAudioPlayerStatePlaying.rawValue{
-            audioPlayer.pause()
-            MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo?[MPNowPlayingInfoPropertyPlaybackRate] = 0
+        if audioPlayer.state == STKAudioPlayerStatePlaying{
+            setPlaying(false)
         }else{
+            setPlaying(true)
+        }
+    }
+    func setPlaying(playing:Bool){
+        if playing{
             audioPlayer.resume()
             MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo?[MPNowPlayingInfoPropertyPlaybackRate] = 1
             becomeActive()
+        }else{
+            audioPlayer.pause()
+            MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo?[MPNowPlayingInfoPropertyPlaybackRate] = 0
         }
     }
     override func canBecomeFirstResponder() -> Bool {

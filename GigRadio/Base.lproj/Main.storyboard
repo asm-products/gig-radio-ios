@@ -31,7 +31,7 @@
             <objects>
                 <tableViewController id="5qa-gz-zC7" customClass="InfoSettingsTableViewController" customModule="GigRadio" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Q71-fD-1D2">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
@@ -214,9 +214,9 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="THE CREATORS" footerTitle="" id="ecL-ln-FN8" userLabel="The Creators">
+                            <tableViewSection headerTitle="INFO" footerTitle="" id="ecL-ln-FN8" userLabel="The Creators">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="LN9-uJ-vQu" userLabel="MF" customClass="TableViewCell" customModule="GigRadio" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="LN9-uJ-vQu" userLabel="FAQ" customClass="TableViewCell" customModule="GigRadio" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="701" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LN9-uJ-vQu" id="qJv-By-7tM">
@@ -230,7 +230,7 @@
                                                         <constraint firstAttribute="height" constant="1" id="PyN-w6-5Ha"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music by Michael Forrest" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDK-Xp-iuN">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FAQ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDK-Xp-iuN">
                                                     <rect key="frame" x="16" y="8" width="351" height="27"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                     <color key="textColor" red="0.19215686269999999" green="0.19215686269999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
@@ -255,7 +255,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="bON-dW-p1F" userLabel="JA" customClass="TableViewCell" customModule="GigRadio" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="bON-dW-p1F" userLabel="App Store" customClass="TableViewCell" customModule="GigRadio" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="745" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bON-dW-p1F" id="f4y-uz-27H">
@@ -269,7 +269,7 @@
                                                         <constraint firstAttribute="height" constant="1" id="O1D-r6-XhQ"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Follow @jonarcher on Twitter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wka-1K-NeR">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review on App Store" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wka-1K-NeR">
                                                     <rect key="frame" x="16" y="8" width="351" height="28"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                     <color key="textColor" red="0.19215686269999999" green="0.19215686269999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
@@ -294,7 +294,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="MJp-g1-o8g" userLabel="MK" customClass="TableViewCell" customModule="GigRadio" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="MJp-g1-o8g" userLabel="Facebook" customClass="TableViewCell" customModule="GigRadio" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="789" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MJp-g1-o8g" id="5FC-NV-3GB">
@@ -308,7 +308,7 @@
                                                         <constraint firstAttribute="height" constant="1" id="04r-zv-en8"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Follow @MikeKuech on Dribbble" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OS1-wI-hjo">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gig Radio on Facebook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OS1-wI-hjo">
                                                     <rect key="frame" x="16" y="8" width="351" height="28"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                     <color key="textColor" red="0.19215686269999999" green="0.19215686269999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
@@ -333,6 +333,166 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="gac-TH-sVo" userLabel="Twitter" customClass="TableViewCell" customModule="GigRadio" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="833" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gac-TH-sVo" id="KFg-dN-7Gl">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P17-n8-n4f" userLabel="Divider">
+                                                    <rect key="frame" x="0.0" y="43" width="375" height="1"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="lvf-dF-cto"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gig Radio on Twitter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uFo-oJ-HTS">
+                                                    <rect key="frame" x="16" y="8" width="351" height="28"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" red="0.19215686269999999" green="0.19215686269999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="disclosure-right-grey.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ioj-qO-Woc">
+                                                    <rect key="frame" x="357" y="14" width="10" height="15"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="P17-n8-n4f" firstAttribute="top" secondItem="uFo-oJ-HTS" secondAttribute="bottom" constant="7" id="1Lb-Tg-f2Q"/>
+                                                <constraint firstItem="uFo-oJ-HTS" firstAttribute="top" secondItem="KFg-dN-7Gl" secondAttribute="topMargin" id="NVS-By-ppA"/>
+                                                <constraint firstAttribute="bottom" secondItem="P17-n8-n4f" secondAttribute="bottom" id="Pew-eX-eXv"/>
+                                                <constraint firstItem="uFo-oJ-HTS" firstAttribute="leading" secondItem="KFg-dN-7Gl" secondAttribute="leadingMargin" constant="8" id="fiO-b4-cnJ"/>
+                                                <constraint firstItem="P17-n8-n4f" firstAttribute="leading" secondItem="KFg-dN-7Gl" secondAttribute="leading" id="iRc-wc-Hht"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Ioj-qO-Woc" secondAttribute="trailing" id="pD6-TF-JrD"/>
+                                                <constraint firstItem="Ioj-qO-Woc" firstAttribute="centerY" secondItem="KFg-dN-7Gl" secondAttribute="centerY" id="r1e-54-3CY"/>
+                                                <constraint firstAttribute="trailing" secondItem="P17-n8-n4f" secondAttribute="trailing" constant="-40" id="wGL-kQ-BiG"/>
+                                                <constraint firstItem="uFo-oJ-HTS" firstAttribute="trailing" secondItem="KFg-dN-7Gl" secondAttribute="trailingMargin" id="wfZ-4w-N5O"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="THE CREATORS" footerTitle="" id="k7q-XR-epj" userLabel="The Creators">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="WjX-aF-cjX" userLabel="MF" customClass="TableViewCell" customModule="GigRadio" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="919" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WjX-aF-cjX" id="dbY-lS-mX0">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rsk-T6-K0q">
+                                                    <rect key="frame" x="0.0" y="43" width="375" height="1"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="hFm-hX-1Lj"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music by Michael Forrest" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A3j-kP-iz0">
+                                                    <rect key="frame" x="16" y="8" width="351" height="27"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" red="0.19215686269999999" green="0.19215686269999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="disclosure-right-grey.png" translatesAutoresizingMaskIntoConstraints="NO" id="MQ6-m9-aXS">
+                                                    <rect key="frame" x="357" y="14" width="10" height="15"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="MQ6-m9-aXS" firstAttribute="trailing" secondItem="dbY-lS-mX0" secondAttribute="trailingMargin" id="9ta-wS-kgt"/>
+                                                <constraint firstItem="Rsk-T6-K0q" firstAttribute="leading" secondItem="dbY-lS-mX0" secondAttribute="leading" id="BaL-qB-X1I"/>
+                                                <constraint firstItem="A3j-kP-iz0" firstAttribute="leading" secondItem="dbY-lS-mX0" secondAttribute="leadingMargin" constant="8" id="U61-vP-e9k"/>
+                                                <constraint firstItem="MQ6-m9-aXS" firstAttribute="centerY" secondItem="dbY-lS-mX0" secondAttribute="centerY" id="ZMl-Bv-Sc2"/>
+                                                <constraint firstItem="A3j-kP-iz0" firstAttribute="trailing" secondItem="dbY-lS-mX0" secondAttribute="trailingMargin" id="bcI-lc-y1Q"/>
+                                                <constraint firstItem="Rsk-T6-K0q" firstAttribute="top" secondItem="A3j-kP-iz0" secondAttribute="bottom" constant="8" id="fQO-jj-a8N"/>
+                                                <constraint firstAttribute="bottom" secondItem="Rsk-T6-K0q" secondAttribute="bottom" id="kne-0p-eYs"/>
+                                                <constraint firstAttribute="trailing" secondItem="Rsk-T6-K0q" secondAttribute="trailing" constant="-40" id="rds-YE-v5F"/>
+                                                <constraint firstItem="A3j-kP-iz0" firstAttribute="top" secondItem="dbY-lS-mX0" secondAttribute="topMargin" id="wyx-8Y-hVM"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Shv-ZU-E0U" userLabel="JA" customClass="TableViewCell" customModule="GigRadio" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="963" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Shv-ZU-E0U" id="5LK-2o-d0W">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FLH-ZK-Jdy" userLabel="Divider">
+                                                    <rect key="frame" x="0.0" y="43" width="375" height="1"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="mqE-Gj-7DJ"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Follow @jonarcher on Twitter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yKS-Id-5bW">
+                                                    <rect key="frame" x="16" y="8" width="351" height="28"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" red="0.19215686269999999" green="0.19215686269999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="disclosure-right-grey.png" translatesAutoresizingMaskIntoConstraints="NO" id="0jo-aY-YP4">
+                                                    <rect key="frame" x="357" y="15" width="10" height="15"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="yKS-Id-5bW" firstAttribute="top" secondItem="5LK-2o-d0W" secondAttribute="topMargin" id="5dn-P0-Nav"/>
+                                                <constraint firstItem="yKS-Id-5bW" firstAttribute="trailing" secondItem="5LK-2o-d0W" secondAttribute="trailingMargin" id="PdH-zd-MuH"/>
+                                                <constraint firstItem="FLH-ZK-Jdy" firstAttribute="leading" secondItem="5LK-2o-d0W" secondAttribute="leading" id="Std-mo-mj1"/>
+                                                <constraint firstAttribute="bottom" secondItem="FLH-ZK-Jdy" secondAttribute="bottom" id="ZCB-4a-rwB"/>
+                                                <constraint firstAttribute="trailing" secondItem="FLH-ZK-Jdy" secondAttribute="trailing" constant="-40" id="cYT-fA-yAg"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="0jo-aY-YP4" secondAttribute="trailing" id="jCU-RS-Zz1"/>
+                                                <constraint firstItem="0jo-aY-YP4" firstAttribute="centerY" secondItem="5LK-2o-d0W" secondAttribute="centerY" id="uP5-UN-trH"/>
+                                                <constraint firstItem="yKS-Id-5bW" firstAttribute="leading" secondItem="5LK-2o-d0W" secondAttribute="leadingMargin" constant="8" id="vhX-Eg-N9G"/>
+                                                <constraint firstItem="FLH-ZK-Jdy" firstAttribute="top" secondItem="yKS-Id-5bW" secondAttribute="bottom" constant="7" id="yqd-1p-grU"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="bGF-2n-fPJ" userLabel="MK" customClass="TableViewCell" customModule="GigRadio" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="1007" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bGF-2n-fPJ" id="sU5-K3-Hlg">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IfX-an-wFY" userLabel="Divider">
+                                                    <rect key="frame" x="0.0" y="43" width="375" height="1"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="XbD-Yo-WrN"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Follow @MikeKuech on Dribbble" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qc4-Ue-H1j">
+                                                    <rect key="frame" x="16" y="8" width="351" height="28"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" red="0.19215686269999999" green="0.19215686269999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="disclosure-right-grey.png" translatesAutoresizingMaskIntoConstraints="NO" id="d8d-xg-7P3">
+                                                    <rect key="frame" x="357" y="14" width="10" height="15"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="Qc4-Ue-H1j" firstAttribute="leading" secondItem="sU5-K3-Hlg" secondAttribute="leadingMargin" constant="8" id="33a-P3-1WG"/>
+                                                <constraint firstItem="IfX-an-wFY" firstAttribute="top" secondItem="Qc4-Ue-H1j" secondAttribute="bottom" constant="7" id="HTN-jU-Ghj"/>
+                                                <constraint firstAttribute="trailing" secondItem="IfX-an-wFY" secondAttribute="trailing" constant="-40" id="Sxu-Zo-sQu"/>
+                                                <constraint firstItem="d8d-xg-7P3" firstAttribute="centerY" secondItem="sU5-K3-Hlg" secondAttribute="centerY" id="WtV-sc-Un9"/>
+                                                <constraint firstItem="Qc4-Ue-H1j" firstAttribute="top" secondItem="sU5-K3-Hlg" secondAttribute="topMargin" id="eVH-9P-p8w"/>
+                                                <constraint firstAttribute="bottom" secondItem="IfX-an-wFY" secondAttribute="bottom" id="h1P-DE-m3h"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="d8d-xg-7P3" secondAttribute="trailing" id="iVi-zd-FjZ"/>
+                                                <constraint firstItem="Qc4-Ue-H1j" firstAttribute="trailing" secondItem="sU5-K3-Hlg" secondAttribute="trailingMargin" id="w2e-nf-m2e"/>
+                                                <constraint firstItem="IfX-an-wFY" firstAttribute="leading" secondItem="sU5-K3-Hlg" secondAttribute="leading" id="xFZ-GH-Xrs"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -349,15 +509,19 @@
                         </barButtonItem>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="900"/>
+                    <size key="freeformSize" width="375" height="1200"/>
                     <connections>
-                        <outlet property="jonArcherOnTwitterCell" destination="bON-dW-p1F" id="KMh-Nj-1DH"/>
-                        <outlet property="mikeKuechOnTwitterCell" destination="MJp-g1-o8g" id="BrN-L9-qbf"/>
-                        <outlet property="musicByMichaelForrestCell" destination="LN9-uJ-vQu" id="Vuv-pi-3r5"/>
+                        <outlet property="appStoreCell" destination="bON-dW-p1F" id="n70-yz-Ynu"/>
+                        <outlet property="facebookCell" destination="MJp-g1-o8g" id="xrV-Pg-lgX"/>
+                        <outlet property="faqCell" destination="LN9-uJ-vQu" id="JnH-H3-NKg"/>
+                        <outlet property="jonArcherOnTwitterCell" destination="Shv-ZU-E0U" id="fdh-gK-MHD"/>
+                        <outlet property="mikeKuechOnTwitterCell" destination="bGF-2n-fPJ" id="1eX-93-9C4"/>
+                        <outlet property="musicByMichaelForrestCell" destination="WjX-aF-cjX" id="77B-F0-EdY"/>
                         <outlet property="playlistFollowActionControl" destination="bZr-38-m4R" id="rh1-5q-5hl"/>
                         <outlet property="sortOrderControl" destination="rOh-uf-Vcv" id="1Tz-4j-cDD"/>
                         <outlet property="spokenAnnouncementsControl" destination="aK1-Cm-g2O" id="eg9-0N-glV"/>
                         <outlet property="trackLengthFilterControl" destination="VgL-cZ-RLN" id="qfk-OC-gB4"/>
+                        <outlet property="twitterCell" destination="gac-TH-sVo" id="TlH-MD-0gl"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eNC-WX-bhi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1168,7 +1332,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wur-gn-3eH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="454.5" y="555.5"/>
+            <point key="canvasLocation" x="361" y="416.5"/>
         </scene>
         <!--Get Inuit-->
         <scene sceneID="h3T-jt-zvq">

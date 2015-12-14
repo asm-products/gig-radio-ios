@@ -19,6 +19,10 @@ class InfoSettingsTableViewController: UITableViewController {
     @IBOutlet weak var jonArcherOnTwitterCell: TableViewCell!
     @IBOutlet weak var mikeKuechOnTwitterCell: TableViewCell!
     
+    @IBOutlet weak var faqCell: TableViewCell!
+    @IBOutlet weak var appStoreCell: TableViewCell!
+    @IBOutlet weak var facebookCell: TableViewCell!
+    @IBOutlet weak var twitterCell: TableViewCell!
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
@@ -59,25 +63,28 @@ class InfoSettingsTableViewController: UITableViewController {
         navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
     override func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        let firstLinkIndexPath = tableView.indexPathForCell(musicByMichaelForrestCell) ?? NSIndexPath(forRow: 0, inSection: 3)
+        let firstLinkIndexPath = tableView.indexPathForCell(faqCell) ?? NSIndexPath(forRow: 0, inSection: 3)
         return indexPath.section >= firstLinkIndexPath.section
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
-        var link = ""
-        if cell == musicByMichaelForrestCell{
-            link = "http://michaelforrestmusic.com/about"
-        }else if cell == jonArcherOnTwitterCell{
-            link = "http://twitter.com/jonarcher"
-        }else if cell == mikeKuechOnTwitterCell{ // urgh. misnamed now.
-            link = "https://dribbble.com/MikeKuech"
-        }
-        trackEvent(.CreatorLinkFollowed, properties: ["URL": link])
-        if let url = NSURL(string: link){
-            UIApplication.sharedApplication().openURL(url)
-        }
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let cell = tableView.cellForRowAtIndexPath(indexPath)!
         
+        let links:[UITableViewCell:String] = [
+            musicByMichaelForrestCell: "http://michaelforrestmusic.com/about",
+            jonArcherOnTwitterCell: "http://twitter.com/jonarcher",
+            mikeKuechOnTwitterCell: "https://dribbble.com/MikeKuech",
+            faqCell: "http://getgigradio.com/faq",
+            appStoreCell: "itms-apps://itunes.apple.com/app/933577240",
+            facebookCell: "https://facebook.com/GigRadio",
+            twitterCell: "https://twitter.com/getgigradio"
+        ]
+        if let link = links[cell]{
+            trackEvent(.InfoLinkFollowed, properties: ["URL": link])
+            if let url = NSURL(string: link){
+                UIApplication.sharedApplication().openURL(url)
+            }
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        }
     }
 
 }

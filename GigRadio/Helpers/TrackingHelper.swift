@@ -33,7 +33,7 @@ enum TrackedEvent: String{
     case TrackLengthFilterChanged = "Track Length Filter Changed"
     case PlaylistFollowActionChanged = "Playlist Follow Action Changed"
     case SpokenAnnouncementsChanged = "Spoken Announcements Changed"
-    case CreatorLinkFollowed = "Creator Link Followed"
+    case InfoLinkFollowed = "Creator Link Followed"
 }
 
 class TrackingHelper: NSObject {

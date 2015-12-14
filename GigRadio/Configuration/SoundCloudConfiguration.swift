@@ -10,5 +10,5 @@ import UIKit
 
 struct SoundCloudConfiguration {
     var clientId = Secrets.SoundCloudClientId
-    var baseUri = "https://api.soundcloud.com"
+    var baseUri = NSProcessInfo().environment["SOUNDCLOUD_BASE_URL"] ?? "https://api.soundcloud.com"
 }

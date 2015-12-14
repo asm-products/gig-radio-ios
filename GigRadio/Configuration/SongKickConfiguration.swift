@@ -10,5 +10,5 @@ import UIKit
 
 struct SongKickConfiguration{
     var apiKey = Secrets.SongKickApiKey
-    var baseUrl = "https://api.songkick.com/api/3.0"
+    var baseUrl = NSProcessInfo().environment["SONGKICK_BASE_URL"] ?? "https://api.songkick.com/api/3.0"
 }

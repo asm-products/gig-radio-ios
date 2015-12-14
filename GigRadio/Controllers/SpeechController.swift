@@ -29,7 +29,7 @@ class SpeechController: NSObject, AVSpeechSynthesizerDelegate {
         }
         let utterance = AVSpeechUtterance(string: string)
 //        utterance.voice = AVSpeechSynthesisVoice(language: "de-DE")
-        utterance.rate = AVSpeechUtteranceDefaultSpeechRate * 0.10
+//        utterance.rate = AVSpeechUtteranceDefaultSpeechRate * 0.10
         synthesizer.speakUtterance(utterance)
     }
     func announceEvent(event:SongKickEvent){

@@ -1,0 +1,517 @@
+{
+    "resultsPage": {
+        "status": "ok",
+        "results": {
+            "event": [
+                      {
+                      "type": "Concert",
+                      "displayName": "My Name Is Ann, Michael Forrest and Joey Molinaro at Loophole Berlin (June 5, 2015)",
+                      "ageRestriction": null,
+                      "status": "ok",
+                      "start": {
+                      "datetime": "2015-06-05T20:00:00+0100",
+                      "time": "20:00:00",
+                      "date": "2015-06-05"
+                      },
+                      "location": {
+                      "city": "Berlin, Germany",
+                      "lat": 52.480679,
+                      "lng": 13.43296
+                      },
+                      "performance": [
+                                      {
+                                      "artist": {
+                                          "displayName": "My Name Is Ann",
+                                          "uri": "http://www.songkick.com/artists/533276-sophie-hunger?utm_source=34547&utm_medium=partner",
+                                          "identifier": [
+                                                         {
+                                                         "href": "http://api.songkick.com/api/3.0/artists/mbid:a2a4ab71-cbda-436b-8d1d-94a1469ffbe6.json",
+                                                         "mbid": "a2a4ab71-cbda-436b-8d1d-94a1469ffbe6"
+                                                         }
+                                                         ],
+                                          "id": 1082240
+                                      },
+                                      "displayName": "My Name Is Ann",
+                                      "billing": "headline",
+                                      "id": 1082240,
+                                      "billingIndex": 1
+                                      },
+                                      {
+                                      "artist": {
+                                      "displayName": "Michael Forrest",
+                                      "uri": "http://www.songkick.com/artists/533276-sophie-hunger?utm_source=34547&utm_medium=partner",
+                                      "identifier": [
+                                                     {
+                                                     "href": "http://api.songkick.com/api/3.0/artists/mbid:a2a4ab71-cbda-436b-8d1d-94a1469ffbe6.json",
+                                                     "mbid": "a2a4ab71-cbda-436b-8d1d-94a1469ffbe6"
+                                                     }
+                                                     ],
+                                      "id": 1073422
+                                      },
+                                      "displayName": "Michael Forrest",
+                                      "billing": "headline",
+                                      "id": 4484833,
+                                      "billingIndex": 2
+                                      },{
+                                      "artist": {
+                                      "displayName": "Joey Molinaro",
+                                      "uri": "http://www.songkick.com/artists/533276-sophie-hunger?utm_source=34547&utm_medium=partner",
+                                      "identifier": [
+                                                     {
+                                                     "href": "http://api.songkick.com/api/3.0/artists/mbid:a2a4ab71-cbda-436b-8d1d-94a1469ffbe6.json",
+                                                     "mbid": "a2a4ab71-cbda-436b-8d1d-94a1469ffbe6"
+                                                     }
+                                                     ],
+                                      "id": 4484833
+                                      },
+                                      "displayName": "Joey Molinaro",
+                                      "billing": "headline",
+                                      "id": 48860154,
+                                      "billingIndex": 3
+                                      }
+                                      ],
+                      "venue": {
+                      "displayName": "Loophole, Berlin",
+                      "lat": 52.48681,
+                      "lng": 13.42154,
+                      "uri": "http://www.songkick.com/venues/29588-huxleys-neue-welt?utm_source=34547&utm_medium=partner",
+                      "id": 29588,
+                      "metroArea": {
+                      "displayName": "Berlin",
+                      "uri": "http://www.songkick.com/metro_areas/28443-germany-berlin?utm_source=34547&utm_medium=partner",
+                      "country": {
+                      "displayName": "Germany"
+                      },
+                      "id": 28443
+                      }
+                      },
+                      "uri": "http://www.songkick.com/concerts/24838154-sophie-hunger-at-huxleys-neue-welt?utm_source=34547&utm_medium=partner",
+                      "id": 24838154,
+                      "popularity": 0.006088
+                      },
+                      {
+                      "type": "Concert",
+                      "status": "cancelled",
+                      "performance": [
+                                      {
+                                      "billing": "headline",
+                                      "artist": {
+                                      "displayName": "Ferris Mc",
+                                      "uri": "http://www.songkick.com/artists/218878-ferris-mc?utm_source=34547&utm_medium=partner",
+                                      "identifier": [
+                                                     {
+                                                     "href": "http://api.songkick.com/api/3.0/artists/mbid:1670ecd7-a00f-4534-bf80-b8efaa1f965e.json",
+                                                     "mbid": "1670ecd7-a00f-4534-bf80-b8efaa1f965e"
+                                                     }
+                                                     ],
+                                      "id": 218878
+                                      },
+                                      "billingIndex": 1,
+                                      "displayName": "Ferris Mc",
+                                      "id": 45421508
+                                      }
+                                      ],
+                      "venue": {
+                      "lng": 13.436794,
+                      "displayName": "PBHFCLUB",
+                      "uri": "http://www.songkick.com/venues/3060324-pbhfclub?utm_source=34547&utm_medium=partner",
+                      "metroArea": {
+                      "displayName": "Berlin",
+                      "uri": "http://www.songkick.com/metro_areas/28443-germany-berlin?utm_source=34547&utm_medium=partner",
+                      "country": {
+                      "displayName": "Germany"
+                      },
+                      "id": 28443
+                      },
+                      "id": 3060324,
+                      "lat": 52.508725
+                      },
+                      "popularity": 0.000239,
+                      "start": {
+                      "datetime": "2015-12-14T19:00:00+0100",
+                      "time": "19:00:00",
+                      "date": "2015-12-14"
+                      },
+                      "location": {
+                      "lng": 13.436794,
+                      "city": "Berlin, Germany",
+                      "lat": 52.508725
+                      },
+                      "displayName": "Ferris Mc at PBHFCLUB (December 14, 2015) (CANCELLED) ",
+                      "uri": "http://www.songkick.com/concerts/22963233-ferris-mc-at-pbhfclub?utm_source=34547&utm_medium=partner",
+                      "ageRestriction": null,
+                      "id": 22963233
+                      },
+                      {
+                      "type": "Concert",
+                      "performance": [
+                                      {
+                                      "artist": {
+                                      "identifier": [
+                                                     {
+                                                     "href": "http://api.songkick.com/api/3.0/artists/mbid:24009991-8c3a-4a01-ad19-d0238460ac66.json",
+                                                     "mbid": "24009991-8c3a-4a01-ad19-d0238460ac66"
+                                                     }
+                                                     ],
+                                      "displayName": "Käptn Peng",
+                                      "uri": "http://www.songkick.com/artists/5192073-kaptn-peng?utm_source=34547&utm_medium=partner",
+                                      "id": 5192073
+                                      },
+                                      "billingIndex": 1,
+                                      "displayName": "Käptn Peng",
+                                      "billing": "headline",
+                                      "id": 49207874
+                                      },
+                                      {
+                                      "artist": {
+                                      "identifier": [
+                                                     {
+                                                     "href": "http://api.songkick.com/api/3.0/artists/mbid:ee0d1ef4-876b-49cd-a8fe-a48725c128af.json",
+                                                     "mbid": "ee0d1ef4-876b-49cd-a8fe-a48725c128af"
+                                                     }
+                                                     ],
+                                      "displayName": "Kaptn Peng & Die Tentakel von Delphi",
+                                      "uri": "http://www.songkick.com/artists/6693194-kaptn-peng-and-die-tentakel-von-delphi?utm_source=34547&utm_medium=partner",
+                                      "id": 6693194
+                                      },
+                                      "billingIndex": 2,
+                                      "displayName": "Kaptn Peng & Die Tentakel von Delphi",
+                                      "billing": "support",
+                                      "id": 49224654
+                                      },
+                                      {
+                                      "artist": {
+                                      "identifier": [
+                                                     {
+                                                     "href": "http://api.songkick.com/api/3.0/artists/mbid:4db658f3-b6bd-4e77-b8ac-1727c6f10e55.json",
+                                                     "mbid": "4db658f3-b6bd-4e77-b8ac-1727c6f10e55"
+                                                     }
+                                                     ],
+                                      "displayName": "HELMUT",
+                                      "uri": "http://www.songkick.com/artists/692559-helmut?utm_source=34547&utm_medium=partner",
+                                      "id": 692559
+                                      },
+                                      "billingIndex": 3,
+                                      "displayName": "HELMUT",
+                                      "billing": "support",
+                                      "id": 49576439
+                                      }
+                                      ],
+                      "venue": {
+                      "displayName": "Kesselhaus in der Kulturbrauerei",
+                      "lat": 52.5403844,
+                      "uri": "http://www.songkick.com/venues/664826-kesselhaus-in-der-kulturbrauerei?utm_source=34547&utm_medium=partner",
+                      "id": 664826,
+                      "metroArea": {
+                      "displayName": "Berlin",
+                      "uri": "http://www.songkick.com/metro_areas/28443-germany-berlin?utm_source=34547&utm_medium=partner",
+                      "country": {
+                      "displayName": "Germany"
+                      },
+                      "id": 28443
+                      },
+                      "lng": 13.4141428
+                      },
+                      "status": "ok",
+                      "ageRestriction": null,
+                      "displayName": "Käptn Peng with Kaptn Peng & Die Tentakel von Delphi and HELMUT at Kesselhaus in der Kulturbrauerei (December 14, 2015)",
+                      "start": {
+                      "datetime": "2015-12-14T21:00:00+0100",
+                      "time": "21:00:00",
+                      "date": "2015-12-14"
+                      },
+                      "popularity": 0.000398,
+                      "location": {
+                      "city": "Berlin, Germany",
+                      "lat": 52.5403844,
+                      "lng": 13.4141428
+                      },
+                      "uri": "http://www.songkick.com/concerts/25033829-kaptn-peng-at-kesselhaus-in-der-kulturbrauerei?utm_source=34547&utm_medium=partner",
+                      "id": 25033829
+                      },
+                      {
+                      "type": "Concert",
+                      "performance": [
+                                      {
+                                      "artist": {
+                                      "identifier": [
+                                                     {
+                                                     "href": "http://api.songkick.com/api/3.0/artists/mbid:3e110139-bfd7-4a21-a56e-925474121ec6.json",
+                                                     "mbid": "3e110139-bfd7-4a21-a56e-925474121ec6"
+                                                     },
+                                                     {
+                                                     "href": "http://api.songkick.com/api/3.0/artists/mbid:72f62c54-ffa6-4c67-a396-3aa890840fc7.json",
+                                                     "mbid": "72f62c54-ffa6-4c67-a396-3aa890840fc7"
+                                                     },
+                                                     {
+                                                     "href": "http://api.songkick.com/api/3.0/artists/mbid:5bd9c3eb-7885-448d-94a3-b0c4c5fff266.json",
+                                                     "mbid": "5bd9c3eb-7885-448d-94a3-b0c4c5fff266"
+                                                     }
+                                                     ],
+                                      "displayName": "GBH",
+                                      "uri": "http://www.songkick.com/artists/541522-gbh?utm_source=34547&utm_medium=partner",
+                                      "id": 541522
+                                      },
+                                      "billingIndex": 1,
+                                      "displayName": "GBH",
+                                      "billing": "headline",
+                                      "id": 49410549
+                                      }
+                                      ],
+                      "venue": {
+                      "displayName": "Cassiopeia",
+                      "lat": 52.5076327,
+                      "uri": "http://www.songkick.com/venues/32852-cassiopeia?utm_source=34547&utm_medium=partner",
+                      "id": 32852,
+                      "metroArea": {
+                      "displayName": "Berlin",
+                      "uri": "http://www.songkick.com/metro_areas/28443-germany-berlin?utm_source=34547&utm_medium=partner",
+                      "country": {
+                      "displayName": "Germany"
+                      },
+                      "id": 28443
+                      },
+                      "lng": 13.4543612
+                      },
+                      "status": "ok",
+                      "ageRestriction": null,
+                      "displayName": "GBH at Cassiopeia (December 14, 2015)",
+                      "start": {
+                      "datetime": "2015-12-14T20:30:00+0100",
+                      "time": "20:30:00",
+                      "date": "2015-12-14"
+                      },
+                      "popularity": 0.00776,
+                      "location": {
+                      "city": "Berlin, Germany",
+                      "lat": 52.5076327,
+                      "lng": 13.4543612
+                      },
+                      "uri": "http://www.songkick.com/concerts/25150159-gbh-at-cassiopeia?utm_source=34547&utm_medium=partner",
+                      "id": 25150159
+                      },
+                      {
+                      "displayName": "cristobal and the sea at Lido (December 14, 2015)",
+                      "type": "Concert",
+                      "ageRestriction": null,
+                      "status": "ok",
+                      "start": {
+                      "time": null,
+                      "datetime": null,
+                      "date": "2015-12-14"
+                      },
+                      "performance": [
+                                      {
+                                      "billingIndex": 1,
+                                      "displayName": "cristobal and the sea",
+                                      "artist": {
+                                      "identifier": [
+                                                     {
+                                                     "href": "http://api.songkick.com/api/3.0/artists/mbid:fbf37814-c831-4d11-b46c-597e4be37354.json",
+                                                     "mbid": "fbf37814-c831-4d11-b46c-597e4be37354"
+                                                     }
+                                                     ],
+                                      "displayName": "cristobal and the sea",
+                                      "uri": "http://www.songkick.com/artists/7312119-cristobal-and-the-sea?utm_source=34547&utm_medium=partner",
+                                      "id": 7312119
+                                      },
+                                      "billing": "headline",
+                                      "id": 49510534
+                                      }
+                                      ],
+                      "location": {
+                      "city": "Berlin, Germany",
+                      "lat": 52.4992631,
+                      "lng": 13.445216
+                      },
+                      "venue": {
+                      "displayName": "Lido",
+                      "metroArea": {
+                      "displayName": "Berlin",
+                      "uri": "http://www.songkick.com/metro_areas/28443-germany-berlin?utm_source=34547&utm_medium=partner",
+                      "id": 28443,
+                      "country": {
+                      "displayName": "Germany"
+                      }
+                      },
+                      "lat": 52.4992631,
+                      "lng": 13.445216,
+                      "uri": "http://www.songkick.com/venues/29991-lido?utm_source=34547&utm_medium=partner",
+                      "id": 29991
+                      },
+                      "uri": "http://www.songkick.com/concerts/25210614-cristobal-and-the-sea-at-lido?utm_source=34547&utm_medium=partner",
+                      "popularity": 0.000059,
+                      "id": 25210614
+                      },
+                      {
+                      "type": "Concert",
+                      "displayName": "Atemlos at Wintergarten Varieté (December 14, 2015)",
+                      "status": "ok",
+                      "popularity": 0.000048,
+                      "start": {
+                      "time": null,
+                      "datetime": null,
+                      "date": "2015-12-14"
+                      },
+                      "ageRestriction": null,
+                      "location": {
+                      "city": "Berlin, Germany",
+                      "lat": 52.50222,
+                      "lng": 13.36446
+                      },
+                      "uri": "http://www.songkick.com/concerts/23895993-atemlos-at-wintergarten-variete?utm_source=34547&utm_medium=partner",
+                      "performance": [
+                                      {
+                                      "billing": "headline",
+                                      "billingIndex": 1,
+                                      "displayName": "Atemlos",
+                                      "artist": {
+                                      "identifier": [
+                                                     {
+                                                     "href": "http://api.songkick.com/api/3.0/artists/mbid:4adb04eb-b7a2-4b82-bf7e-8ad51bdd9579.json",
+                                                     "mbid": "4adb04eb-b7a2-4b82-bf7e-8ad51bdd9579"
+                                                     }
+                                                     ],
+                                      "displayName": "Atemlos",
+                                      "uri": "http://www.songkick.com/artists/140813-atemlos?utm_source=34547&utm_medium=partner",
+                                      "id": 140813
+                                      },
+                                      "id": 47165928
+                                      }
+                                      ],
+                      "venue": {
+                      "displayName": "Wintergarten Varieté",
+                      "metroArea": {
+                      "displayName": "Berlin",
+                      "uri": "http://www.songkick.com/metro_areas/28443-germany-berlin?utm_source=34547&utm_medium=partner",
+                      "id": 28443,
+                      "country": {
+                      "displayName": "Germany"
+                      }
+                      },
+                      "lat": 52.50222,
+                      "uri": "http://www.songkick.com/venues/1265391-wintergarten-variete?utm_source=34547&utm_medium=partner",
+                      "lng": 13.36446,
+                      "id": 1265391
+                      },
+                      "id": 23895993
+                      },
+                      {
+                      "type": "Concert",
+                      "ageRestriction": null,
+                      "displayName": "Max Giesinger at Grüner Salon (December 14, 2015)",
+                      "status": "ok",
+                      "start": {
+                      "datetime": "2015-12-14T21:30:00+0100",
+                      "time": "21:30:00",
+                      "date": "2015-12-14"
+                      },
+                      "location": {
+                      "city": "Berlin, Germany",
+                      "lat": 52.52695,
+                      "lng": 13.4114
+                      },
+                      "uri": "http://www.songkick.com/concerts/24687019-max-giesinger-at-gruner-salon?utm_source=34547&utm_medium=partner",
+                      "performance": [
+                                      {
+                                      "artist": {
+                                      "displayName": "Max Giesinger",
+                                      "uri": "http://www.songkick.com/artists/3983616-max-giesinger?utm_source=34547&utm_medium=partner",
+                                      "identifier": [
+                                                     {
+                                                     "href": "http://api.songkick.com/api/3.0/artists/mbid:b6b5e4fd-c455-48c1-b384-d7362ac2e3d2.json",
+                                                     "mbid": "b6b5e4fd-c455-48c1-b384-d7362ac2e3d2"
+                                                     }
+                                                     ],
+                                      "id": 3983616
+                                      },
+                                      "billingIndex": 1,
+                                      "displayName": "Max Giesinger",
+                                      "billing": "headline",
+                                      "id": 48600054
+                                      }
+                                      ],
+                      "venue": {
+                      "metroArea": {
+                      "displayName": "Berlin",
+                      "uri": "http://www.songkick.com/metro_areas/28443-germany-berlin?utm_source=34547&utm_medium=partner",
+                      "country": {
+                      "displayName": "Germany"
+                      },
+                      "id": 28443
+                      },
+                      "displayName": "Grüner Salon",
+                      "lat": 52.52695,
+                      "lng": 13.4114,
+                      "uri": "http://www.songkick.com/venues/670551-gruner-salon?utm_source=34547&utm_medium=partner",
+                      "id": 670551
+                      },
+                      "id": 24687019,
+                      "popularity": 0.000431
+                      },
+                      {
+                      "type": "Concert",
+                      "performance": [
+                                      {
+                                      "artist": {
+                                      "identifier": [
+                                                     {
+                                                     "href": "http://api.songkick.com/api/3.0/artists/mbid:e4d32f51-bc57-42a4-8165-b80f7a86496d.json",
+                                                     "mbid": "e4d32f51-bc57-42a4-8165-b80f7a86496d"
+                                                     }
+                                                     ],
+                                      "displayName": "Nina Hagen",
+                                      "uri": "http://www.songkick.com/artists/90506-nina-hagen?utm_source=34547&utm_medium=partner",
+                                      "id": 90506
+                                      },
+                                      "billingIndex": 1,
+                                      "displayName": "Nina Hagen",
+                                      "billing": "headline",
+                                      "id": 49885604
+                                      }
+                                      ],
+                      "venue": {
+                      "displayName": "Berliner Ensemble",
+                      "lat": 52.522047,
+                      "uri": "http://www.songkick.com/venues/182693-berliner-ensemble?utm_source=34547&utm_medium=partner",
+                      "id": 182693,
+                      "metroArea": {
+                      "displayName": "Berlin",
+                      "uri": "http://www.songkick.com/metro_areas/28443-germany-berlin?utm_source=34547&utm_medium=partner",
+                      "country": {
+                      "displayName": "Germany"
+                      },
+                      "id": 28443
+                      },
+                      "lng": 13.3856633
+                      },
+                      "status": "ok",
+                      "ageRestriction": null,
+                      "displayName": "Nina Hagen at Berliner Ensemble (December 14, 2015)",
+                      "start": {
+                      "datetime": "2015-12-14T20:00:00+0100",
+                      "time": "20:00:00",
+                      "date": "2015-12-14"
+                      },
+                      "popularity": 0.00678,
+                      "location": {
+                      "city": "Berlin, Germany",
+                      "lat": 52.522047,
+                      "lng": 13.3856633
+                      },
+                      "uri": "http://www.songkick.com/concerts/25426999-nina-hagen-at-berliner-ensemble?utm_source=34547&utm_medium=partner",
+                      "id": 25426999
+                      }
+                      ]
+        },
+        "perPage": 50,
+        "page": 1,
+        "totalEntries": 8,
+        "clientLocation": {
+            "ip": null,
+            "lat": 52.48949722,
+            "lng": 13.42834774,
+            "metroAreaId": 28443
+        }
+    }
+}

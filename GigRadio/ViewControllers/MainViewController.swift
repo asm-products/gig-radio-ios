@@ -50,7 +50,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
     override func viewDidLoad() {
         super.viewDidLoad()
         if playlist == nil{
-            playlist = Playlist.findOrCreateForUtcDate( CalendarHelper.startOfUTCDay(NSDate()))
+            playlist = Playlist.findOrCreateForUtcDate( CalendarHelper.startOfUTCDay( CalendarHelper.envDate() ?? NSDate()))
         }
         flyersController?.playlist = playlist
         playlist.currentTrack = playlist.tracks.last

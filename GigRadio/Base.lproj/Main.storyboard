@@ -152,7 +152,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="When all days gigs have been played for day" footerTitle="" id="v3b-CC-S0o">
+                            <tableViewSection headerTitle="When all gigs have been played for day" footerTitle="" id="v3b-CC-S0o">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="X3G-LI-cZH" customClass="TableViewCell" customModule="GigRadio" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="529" width="375" height="44"/>
@@ -183,7 +183,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Spoken announcements" footerTitle="" id="u4j-S5-a7C">
+                            <tableViewSection headerTitle="Spoken announcements (beta)" footerTitle="" id="u4j-S5-a7C">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Yqv-Ap-MCm" customClass="TableViewCell" customModule="GigRadio" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="615" width="375" height="44"/>

@@ -32,6 +32,10 @@ target "GigRadioTests" do
 
 end
 
+target "GigRadioUITests" do
+  pod 'GCDWebServer', '~> 3.2'
+end
+
 # copy in acknowledgments
 post_install do | installer |
     require 'fileutils'

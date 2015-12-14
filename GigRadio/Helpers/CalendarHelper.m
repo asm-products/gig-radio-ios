@@ -7,7 +7,7 @@
 //
 
 #import "CalendarHelper.h"
-
+#import "DateFormats.h"
 @implementation CalendarHelper
 +(NSDateComponents*)days:(NSInteger)count{
     NSDateComponents * result = [NSDateComponents new];
@@ -21,5 +21,13 @@
     NSDateComponents *components = [calendar components:calendarUnits
                                                 fromDate:date];
     return [calendar dateFromComponents:components];
+}
++(NSDate *)envDate{
+    NSString * dateString = [NSProcessInfo new].environment[@"INITIAL_DATE"];
+    if(dateString){
+        return [[DateFormats querystringDateFormatter] dateFromString:dateString];
+    }else{
+        return nil;
+    }
 }
 @end

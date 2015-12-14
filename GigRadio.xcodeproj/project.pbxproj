@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C08BDC9A9042B6B5700485C /* Pods_GigRadioUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4035E5EF0B9991ADB7B1C3B /* Pods_GigRadioUITests.framework */; };
 		565620CB695699A252AC2666 /* Pods_GigRadio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4707A7DD71C739979C8D02F3 /* Pods_GigRadio.framework */; };
 		AC08D4D61B0CD3290082D424 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08D4D51B0CD3290082D424 /* Playlist.swift */; };
 		AC08D4DA1B0CF9190082D424 /* CachingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08D4D91B0CF9190082D424 /* CachingHelper.swift */; };
@@ -208,6 +209,8 @@
 		ACE5C5531C1F0EF6000E769B /* disclosure-right-grey@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACE5C5501C1F0EF6000E769B /* disclosure-right-grey@3x.png */; };
 		ACE5C5551C1F1284000E769B /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5C5541C1F1284000E769B /* Secrets.swift */; };
 		ACE5C5571C1F1F92000E769B /* TrackingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5C5561C1F1F92000E769B /* TrackingHelper.swift */; };
+		ACE5C5591C1F3C5C000E769B /* TestingWebServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5C5581C1F3C5C000E769B /* TestingWebServer.swift */; };
+		ACE5C55C1C1F3C7E000E769B /* SnapshotFixtures in Resources */ = {isa = PBXBuildFile; fileRef = ACE5C55B1C1F3C7E000E769B /* SnapshotFixtures */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -231,6 +234,7 @@
 		0C88CA704AA7C5FC060C979D /* Pods-GigRadio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GigRadio.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GigRadio/Pods-GigRadio.debug.xcconfig"; sourceTree = "<group>"; };
 		4707A7DD71C739979C8D02F3 /* Pods_GigRadio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GigRadio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76A8A8CA5724D9E3EA5BF797 /* Pods-GigRadio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GigRadio.release.xcconfig"; path = "Pods/Target Support Files/Pods-GigRadio/Pods-GigRadio.release.xcconfig"; sourceTree = "<group>"; };
+		9EE279035A789A65789FE112 /* Pods-GigRadioUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GigRadioUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GigRadioUITests/Pods-GigRadioUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		AC08D4D51B0CD3290082D424 /* Playlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		AC08D4D91B0CF9190082D424 /* CachingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachingHelper.swift; sourceTree = "<group>"; };
 		AC0B0ACF1B0E72B900B03F11 /* calendar-selection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-selection.png"; sourceTree = "<group>"; };
@@ -454,6 +458,10 @@
 		ACE5C5501C1F0EF6000E769B /* disclosure-right-grey@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclosure-right-grey@3x.png"; sourceTree = "<group>"; };
 		ACE5C5541C1F1284000E769B /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		ACE5C5561C1F1F92000E769B /* TrackingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingHelper.swift; sourceTree = "<group>"; };
+		ACE5C5581C1F3C5C000E769B /* TestingWebServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingWebServer.swift; sourceTree = "<group>"; };
+		ACE5C55B1C1F3C7E000E769B /* SnapshotFixtures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SnapshotFixtures; sourceTree = "<group>"; };
+		C915EA5015E9678BC9FC9C91 /* Pods-GigRadioUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GigRadioUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GigRadioUITests/Pods-GigRadioUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E4035E5EF0B9991ADB7B1C3B /* Pods_GigRadioUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GigRadioUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -461,6 +469,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C08BDC9A9042B6B5700485C /* Pods_GigRadioUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +505,8 @@
 			children = (
 				0C88CA704AA7C5FC060C979D /* Pods-GigRadio.debug.xcconfig */,
 				76A8A8CA5724D9E3EA5BF797 /* Pods-GigRadio.release.xcconfig */,
+				9EE279035A789A65789FE112 /* Pods-GigRadioUITests.debug.xcconfig */,
+				C915EA5015E9678BC9FC9C91 /* Pods-GigRadioUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -665,6 +676,8 @@
 		AC82F3AD1C1B6453003E9551 /* GigRadioUITests */ = {
 			isa = PBXGroup;
 			children = (
+				ACE5C55B1C1F3C7E000E769B /* SnapshotFixtures */,
+				ACE5C5581C1F3C5C000E769B /* TestingWebServer.swift */,
 				AC82F3B61C1B653A003E9551 /* SnapshotHelper.swift */,
 				AC82F3AE1C1B6453003E9551 /* GigRadioUITests.swift */,
 				AC82F3B01C1B6453003E9551 /* Info.plist */,
@@ -729,6 +742,7 @@
 				ACAE7999199F657E00030E26 /* UIKit.framework */,
 				ACAE79B7199F657E00030E26 /* XCTest.framework */,
 				4707A7DD71C739979C8D02F3 /* Pods_GigRadio.framework */,
+				E4035E5EF0B9991ADB7B1C3B /* Pods_GigRadioUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -929,9 +943,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AC82F3B51C1B6453003E9551 /* Build configuration list for PBXNativeTarget "GigRadioUITests" */;
 			buildPhases = (
+				95874786CFE846C678DF6914 /* Check Pods Manifest.lock */,
 				AC82F3A81C1B6453003E9551 /* Sources */,
 				AC82F3A91C1B6453003E9551 /* Frameworks */,
 				AC82F3AA1C1B6453003E9551 /* Resources */,
+				F6AA85D9D2AC5AF9A94FCE62 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1038,6 +1054,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACE5C55C1C1F3C7E000E769B /* SnapshotFixtures in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1207,6 +1224,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GigRadio/Pods-GigRadio-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		95874786CFE846C678DF6914 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		AC1EB93D19B116EF00BF7EAF /* Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1235,6 +1267,21 @@
 			shellPath = /bin/sh;
 			shellScript = "pwd\nproductVersion=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"$INFOPLIST_FILE\")\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\n\nif [ \"${CONFIGURATION}\" = \"Release\" ]; then\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\necho \"Bumped build number to\" $buildNumber\nelse\necho \"Skipped build number bump\"\nfi";
 		};
+		F6AA85D9D2AC5AF9A94FCE62 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GigRadioUITests/Pods-GigRadioUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		F7F9E44208ED4DC3BF0B61C4 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1258,6 +1305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC82F3AF1C1B6453003E9551 /* GigRadioUITests.swift in Sources */,
+				ACE5C5591C1F3C5C000E769B /* TestingWebServer.swift in Sources */,
 				AC82F3B71C1B653A003E9551 /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1409,6 +1457,7 @@
 /* Begin XCBuildConfiguration section */
 		AC82F3B31C1B6453003E9551 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9EE279035A789A65789FE112 /* Pods-GigRadioUITests.debug.xcconfig */;
 			buildSettings = {
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1429,6 +1478,7 @@
 		};
 		AC82F3B41C1B6453003E9551 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C915EA5015E9678BC9FC9C91 /* Pods-GigRadioUITests.release.xcconfig */;
 			buildSettings = {
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				COPY_PHASE_STRIP = NO;

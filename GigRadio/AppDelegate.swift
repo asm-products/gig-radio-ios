@@ -42,6 +42,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
         }
+        
+        if NSProcessInfo().environment["RESET_ALL"] == "YES"{
+            try! Realm().write {
+                try! Realm().deleteAll()
+            }
+        }
+        
+        
         return true
     }
 }

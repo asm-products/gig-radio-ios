@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 import Fabric
 import Crashlytics
+import Mixpanel
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Fabric.with([Crashlytics.self])
+        Mixpanel.sharedInstanceWithToken("09bb48cc8d1df1a1b63e48b512661cca")
         Typography.initBarButtonStyles()
         Appearance.apply()
         Defaults.register()

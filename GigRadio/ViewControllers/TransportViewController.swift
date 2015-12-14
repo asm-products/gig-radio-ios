@@ -10,6 +10,7 @@ import UIKit
 import MediaPlayer
 import StreamingKit
 import AVFoundation
+import Mixpanel
 protocol TransportViewControllerDelegate{
     func playNextTrack()
     func playPreviousTrack()
@@ -79,6 +80,7 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate,SpeechDel
         }
     }
     func play(track:PlaylistTrack){
+        trackEvent(.TrackPlayed, properties: ["SoundCloud ID": track.soundCloudTrack.id])
         setBufferingDisplay(true)
         speech.announceTrack(track)
         
@@ -108,12 +110,15 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate,SpeechDel
     @IBAction func didPressPlayPause(sender: AnyObject) {
         if audioPlayer.state == STKAudioPlayerStatePlaying{
             setPlaying(false)
+            trackEvent(.PlaybackPaused, properties: [:])
         }else{
             setPlaying(true)
+            trackEvent(.PlaybackResumed, properties: [:])
         }
     }
     func setPlaying(playing:Bool){
         if playing{
+            timeEvent(.PlaybackPaused)
             audioPlayer.resume()
             MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo?[MPNowPlayingInfoPropertyPlaybackRate] = 1
             becomeActive()

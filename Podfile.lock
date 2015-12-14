@@ -14,6 +14,9 @@ PODS:
   - HTCoreImage (1.0.1)
   - IFTTTLaunchImage (0.4.1)
   - ISO8601 (0.1.1)
+  - Mixpanel (2.9.1):
+    - Mixpanel/Mixpanel (= 2.9.1)
+  - Mixpanel/Mixpanel (2.9.1)
   - NSDictionary+TRVSUnderscoreCamelCaseAdditions (0.1.0)
   - PureLayout (3.0.1)
   - Realm (0.96.3):
@@ -41,6 +44,7 @@ DEPENDENCIES:
   - Functional.m (~> 1.0)
   - HTCoreImage (~> 1.0)
   - IFTTTLaunchImage
+  - Mixpanel (~> 2.9)
   - NSDictionary+TRVSUnderscoreCamelCaseAdditions (~> 0.1)
   - PureLayout
   - RealmSwift (~> 0.96)
@@ -65,6 +69,7 @@ SPEC CHECKSUMS:
   HTCoreImage: 986888b613bc7d0a3dde5bda654e4e15afedb911
   IFTTTLaunchImage: af0c8f2f366efcdb54cc971f54ccceed32dbf0a7
   ISO8601: 65c04bc4ccf075235e93aa44caed3fbad7e55b1b
+  Mixpanel: 5ca24b2a05f4c77fe9bcfe7671d681d0f3f8d76f
   NSDictionary+TRVSUnderscoreCamelCaseAdditions: 2d3cb6d3ef929149b37c3c65dfc60170e89d1861
   PureLayout: f35f5384c9c4e4479df041dbe33ad7577b71ddfb
   Realm: 145d3cdf78a03aee71bde5381ad7e542bd541720

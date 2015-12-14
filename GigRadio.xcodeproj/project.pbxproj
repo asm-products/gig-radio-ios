@@ -95,10 +95,10 @@
 		AC5E954819FC0B4D005B9872 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = AC5E953819FC0B4C005B9872 /* menu.png */; };
 		AC5E954919FC0B4D005B9872 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC5E953919FC0B4D005B9872 /* menu@2x.png */; };
 		AC6292CD1C1C7DF8005DFD56 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6292CC1C1C7DF8005DFD56 /* TableViewCell.swift */; };
+		AC6292CF1C1CD197005DFD56 /* GigInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6292CE1C1CD197005DFD56 /* GigInfoTableViewController.swift */; };
 		AC652FB61B5D38DE00EAD5A4 /* problem.png in Resources */ = {isa = PBXBuildFile; fileRef = AC652FB31B5D38DE00EAD5A4 /* problem.png */; };
 		AC652FB71B5D38DE00EAD5A4 /* problem@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC652FB41B5D38DE00EAD5A4 /* problem@2x.png */; };
 		AC652FB81B5D38DE00EAD5A4 /* problem@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC652FB51B5D38DE00EAD5A4 /* problem@3x.png */; };
-		AC6B7C721B17A8FC00989883 /* GigInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6B7C711B17A8FC00989883 /* GigInfoViewController.swift */; };
 		AC6B7C741B17BBFE00989883 /* EditPlaylistItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6B7C731B17BBFE00989883 /* EditPlaylistItemViewController.swift */; };
 		AC7AC1D91B1127B7002A550C /* TransportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7AC1D81B1127B7002A550C /* TransportViewController.swift */; };
 		AC7AC1DB1B11EB34002A550C /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AC7AC1DA1B11EB34002A550C /* Settings.bundle */; };
@@ -313,10 +313,10 @@
 		AC5E953819FC0B4C005B9872 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
 		AC5E953919FC0B4D005B9872 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
 		AC6292CC1C1C7DF8005DFD56 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		AC6292CE1C1CD197005DFD56 /* GigInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GigInfoTableViewController.swift; sourceTree = "<group>"; };
 		AC652FB31B5D38DE00EAD5A4 /* problem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = problem.png; sourceTree = "<group>"; };
 		AC652FB41B5D38DE00EAD5A4 /* problem@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "problem@2x.png"; sourceTree = "<group>"; };
 		AC652FB51B5D38DE00EAD5A4 /* problem@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "problem@3x.png"; sourceTree = "<group>"; };
-		AC6B7C711B17A8FC00989883 /* GigInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GigInfoViewController.swift; sourceTree = "<group>"; };
 		AC6B7C731B17BBFE00989883 /* EditPlaylistItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPlaylistItemViewController.swift; sourceTree = "<group>"; };
 		AC7AC1D81B1127B7002A550C /* TransportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportViewController.swift; sourceTree = "<group>"; };
 		AC7AC1DA1B11EB34002A550C /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -782,12 +782,12 @@
 				AC7AC1D81B1127B7002A550C /* TransportViewController.swift */,
 				AC8F430C1B17837E00EA51BD /* FavouritesTableViewController.swift */,
 				AC8F430E1B17838C00EA51BD /* PlaylistTableViewController.swift */,
-				AC6B7C711B17A8FC00989883 /* GigInfoViewController.swift */,
 				AC6B7C731B17BBFE00989883 /* EditPlaylistItemViewController.swift */,
 				AC1015641B1A2E1A000FC5A9 /* SoundCloudUsersTableViewController.swift */,
 				ACB4BEB51B56586F007986AB /* InfoSettingsTableViewController.swift */,
 				AC16A47B1C1B2C8100003582 /* OnboardingViewController.swift */,
 				AC16A47D1C1B32BE00003582 /* OnboardingItemViewController.swift */,
+				AC6292CE1C1CD197005DFD56 /* GigInfoTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1244,6 +1244,7 @@
 				AC3CB9531B08B1C6009203E1 /* PlaybackSlider.swift in Sources */,
 				AC6B7C741B17BBFE00989883 /* EditPlaylistItemViewController.swift in Sources */,
 				AC31FFD41B091E6300456C12 /* SongKickDisplayName.swift in Sources */,
+				AC6292CF1C1CD197005DFD56 /* GigInfoTableViewController.swift in Sources */,
 				AC8AB77B1B1A7D7600A673E1 /* ApiClientBase.swift in Sources */,
 				ACDAF9E31B08DEEA003B411A /* SoundCloudConfiguration.swift in Sources */,
 				ACAE79DE199F6C3100030E26 /* CalendarHelper.m in Sources */,
@@ -1289,7 +1290,6 @@
 				ACDAF9E51B08E13D003B411A /* CompassView.swift in Sources */,
 				AC3CB9821B08CC50009203E1 /* SongKickDateTime.swift in Sources */,
 				AC3CB98E1B08D35A009203E1 /* SoundCloudTrack.swift in Sources */,
-				AC6B7C721B17A8FC00989883 /* GigInfoViewController.swift in Sources */,
 				AC3CB9861B08CFDF009203E1 /* SongKickPerformance.swift in Sources */,
 				ACDAFA0D1B090900003B411A /* SongKickClient.swift in Sources */,
 				ACB4BEB61B56586F007986AB /* InfoSettingsTableViewController.swift in Sources */,

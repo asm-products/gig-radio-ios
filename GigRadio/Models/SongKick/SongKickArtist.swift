@@ -19,6 +19,14 @@ class SongKickArtist: Object {
         return "id"
     }
     func imageUrl()->String{
-        return "http://images.sk-static.com/images/media/profile_images/artists/\(id)/huge_avatar"
+        return "https://images.sk-static.com/images/media/profile_images/artists/\(id)/huge_avatar"
+    }
+    func songKickURL()->NSURL{
+        let url = NSURL(string: "songkick://artists/\(id)")!
+        if UIApplication.sharedApplication().canOpenURL(url){
+            return url
+        }else{
+            return NSURL(string: "https://songkick.com/artists/\(id)")!
+        }
     }
 }

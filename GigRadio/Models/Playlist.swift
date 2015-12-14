@@ -35,7 +35,6 @@ class Playlist: Object {
     
     let performances = List<PlaylistPerformance>()
     
-    let createdAt = NSDate()
     let tracks = List<PlaylistTrack>()
     
     var currentTrack: PlaylistTrack?

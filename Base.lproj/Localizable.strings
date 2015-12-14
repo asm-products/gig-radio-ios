@@ -26,3 +26,6 @@
 "onboarding-4" = "We search by band name, so if something doesn’t sound right, you can look for the right artist or skip it.";
 "onboarding-next" = "Okay";
 "onboarding-dismiss" = "Got it!";
+"Link.ShowInSongKick" = "Show gig in SongKick";
+"EventInfo.ArtistsTitle" = "Line up";
+"EventInfo.Title" = "Gig Info";

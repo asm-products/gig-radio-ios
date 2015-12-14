@@ -23,7 +23,22 @@ class FlyersCollectionViewController: UICollectionViewController, UICollectionVi
         if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout{
             layout.itemSize = CGSize(width: collectionView!.frame.width , height: collectionView!.frame.size.height)
         }
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleFavouriteCountChanged", name: FAVOURITE_COUNT_CHANGED, object: nil)
         reload(nil)
+    }
+    deinit{
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    func handleFavouriteCountChanged(){
+        guard let cells = collectionView?.visibleCells() as? [FlyerCollectionViewCell] else {
+            print("Bad cells!")
+            return
+        }
+        for cell in cells{
+            if let item = cell.performance{
+                cell.updateFavouriteState(item)
+            }
+        }
     }
     func reload(callback:(()->Void)?){
         var urls = [String]()
@@ -90,7 +105,7 @@ class FlyersCollectionViewController: UICollectionViewController, UICollectionVi
         }
     }
     func showEvent(event:SongKickEvent){
-        if let controller = storyboard?.instantiateViewControllerWithIdentifier("GigPage") as? GigInfoViewController{
+        if let controller = storyboard?.instantiateViewControllerWithIdentifier("GigPage") as? GigInfoTableViewController{
             controller.event = event
             navigationController?.pushViewController(controller, animated: true)
         }

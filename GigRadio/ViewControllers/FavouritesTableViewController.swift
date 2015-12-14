@@ -59,7 +59,7 @@ class FavouritesTableViewController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let dest = segue.destinationViewController as? GigInfoViewController{
+        if let dest = segue.destinationViewController as? GigInfoTableViewController{
             if let indexPath = tableView.indexPathForSelectedRow{
                 dest.event = favouriteAtIndexPath(indexPath)!.event
             }

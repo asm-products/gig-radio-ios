@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import SVProgressHUD
 
-class MainViewController: UIViewController, UICollectionViewDelegate, CLLocationManagerDelegate, DatePickerViewControllerDelegate,FlyersCollectionViewControllerDelegate,TransportViewControllerDelegate {
+class MainViewController: UIViewController, UICollectionViewDelegate, CLLocationManagerDelegate, DatePickerViewControllerDelegate,FlyersCollectionViewControllerDelegate, TransportViewControllerDelegate {
     let DatePickerOffScreen:CGFloat = -80
     
     @IBOutlet weak var headerDateButton: UIButton!

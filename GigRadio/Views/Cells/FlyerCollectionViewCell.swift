@@ -97,7 +97,6 @@ class FlyerCollectionViewCell: UICollectionViewCell {
             }else{
                 Favourite.add(item.songKickEvent)
             }
-            updateFavouriteState(item)
             NSNotificationCenter.defaultCenter().postNotificationName(FAVOURITE_COUNT_CHANGED, object: nil)
         }
     }

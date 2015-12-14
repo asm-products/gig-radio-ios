@@ -37,26 +37,37 @@ class GigRadioUITests: XCTestCase {
     func testScreenshots() {
         
         let app = XCUIApplication()
-        snapshot("01_MainScreen")
+        let okayButton = app.buttons["Okay"]
+        okayButton.tap()
+        okayButton.tap()
+        okayButton.tap()
+        snapshot("01_Onboarding")
+        app.buttons["Got it!"].tap()
+        
+        snapshot("02_MainScreen")
         app.buttons["pause"].tap()
         
         app.collectionViews.buttons["8:00 PM at Loophole, Berlin, 0.3 mi away"].tap()
-        snapshot("02_GigDetail")
+        
+        app.tables.buttons["settings"].tap()
+        app.buttons["Apple Maps"].tap()
+        snapshot("03_GigDetail")
         
         app.navigationBars["Gig Info"].childrenMatchingType(.Button).matchingIdentifier("Back").elementBoundByIndex(1).tap()
         app.buttons["info button"].tap()
-        app.tables.childrenMatchingType(.Other).elementBoundByIndex(3).otherElements["Shorter tracks are more likely to be music and will give you more variety. Longer tracks could be DJ mixes or podcasts."].tap()
-        snapshot("03_Settings")
+        
+//        app.tables.otherElements["INFO"].tap()// should scroll to make this section visible automatically
+        
+        snapshot("04_Settings")
         
         app.navigationBars["Info and Preferences"].buttons["Done"].tap()
+        app.collectionViews.buttons["star"].tap()
+        
         app.buttons["menu"].tap()
+        snapshot("05_SavedGigs")
+        
         app.navigationBars["Saved gigs"].childrenMatchingType(.Button).matchingIdentifier("Back").elementBoundByIndex(1).tap()
-        snapshot("04_SavedGigs")
         
-        app.buttons["problem"].tap()
-        snapshot("05_TweakResults")
-        
-        app.buttons["Done"].tap()
     }
     
 }

@@ -117,7 +117,7 @@ class GigInfoTableViewController: UITableViewController {
             let image = UIImage(named: "settings")
             button.frame.size = CGSize(width: 44, height: 44)
             button.setImage(image, forState: .Normal)
-            button.addTarget(self, action: "didPressDirectionsSettings", forControlEvents: .TouchUpInside)
+            button.addTarget(self, action: "didPressDirectionsSettings:", forControlEvents: .TouchUpInside)
             cell.accessoryView = button
         case .EventLinks:
             cell.titleLabel.text = t("Link.ShowInSongKick")
@@ -142,7 +142,7 @@ class GigInfoTableViewController: UITableViewController {
         UIApplication.sharedApplication().openURL(performance.artist.songKickURL())
         trackEvent(.SongKickArtistViewed, properties: ["SongKick Artist ID":performance.artist.id])
     }
-    func didPressDirectionsSettings(){
+    func didPressDirectionsSettings(sender:UIButton){
         let sheet = UIAlertController(title: t("Directions.SettingsTitle"), message: nil, preferredStyle: .ActionSheet)
         for link in MapLink.allMapLinks(event.venue){
             sheet.addAction(UIAlertAction(title: link.displayName, style: .Default){ action in
@@ -152,6 +152,7 @@ class GigInfoTableViewController: UITableViewController {
         }
         sheet.addAction(UIAlertAction(title: t("Cancel"), style: .Cancel) { action in
         })
+        sheet.popoverPresentationController?.sourceView = sender
         presentViewController(sheet, animated: true, completion: nil)
     }
     func openMapLink(){
@@ -176,14 +177,14 @@ class GigInfoTableViewController: UITableViewController {
     }
 
 }
-class ArtistCell:UITableViewCell{
+class ArtistCell:TableViewCell{
     @IBOutlet weak var titleLabel: UILabel!
 }
-class MapCell:UITableViewCell{
+class MapCell:TableViewCell{
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var titleLabel: UILabel!
 }
-class LinkCell:UITableViewCell{
+class LinkCell:TableViewCell{
     @IBOutlet weak var titleLabel: UILabel!
     override func layoutSubviews() {
         super.layoutSubviews()

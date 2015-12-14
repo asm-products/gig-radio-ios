@@ -1,0 +1,36 @@
+{
+  "default": {
+    "keyword": {
+      /*"supported": ["en"],*/
+      "font": "./fonts/HelveNeuLig"
+    },
+    "title": {
+      "font": "./fonts/HelveNeuMed",
+      /*"supported": ["en"],*/
+      "color": "#545454"
+    },
+    "background": "./background.jpg",
+    "padding": 50
+  },
+
+  "data": [
+    {
+      "filter": "screenshot_1",
+      "keyword": {
+        "color": "#d21559"
+      }
+    },
+    {
+      "filter": "screenshot_3",
+      "keyword": {
+        "color": "#aa4dbc"
+      }
+    },
+    {
+      "filter": "screenshot_2",
+      "keyword": {
+        "color": "#31bb48"
+      }
+    }
+  ]
+}

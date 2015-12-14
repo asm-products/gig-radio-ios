@@ -35,5 +35,11 @@ class Onboarding: NSObject {
         timesSeenCount += 1
         NSUserDefaults.standardUserDefaults().setInteger(timesSeenCount, forKey: key.rawValue)
     }
+    static func resetAll(){
+        for key in OnboardingKey.allValues{
+            NSUserDefaults.standardUserDefaults().removeObjectForKey(key.rawValue)
+        }
+        NSUserDefaults.standardUserDefaults().synchronize()
+    }
     
 }

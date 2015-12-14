@@ -59,9 +59,9 @@ class Favourite: Object {
         }
     }
     class func futureEvents()->Results<Favourite>{
-        return try! Realm().objects(Favourite).filter("event.date >= %@", CalendarHelper.startOfUTCDay(NSDate()))
+        return try! Realm().objects(Favourite).filter("event.date >= %@", CalendarHelper.startOfUTCDay(CalendarHelper.envDate() ?? NSDate()))
     }
     class func pastEvents()->Results<Favourite>{
-        return try! Realm().objects(Favourite).filter("event.date < %@", CalendarHelper.startOfUTCDay(NSDate()))
+        return try! Realm().objects(Favourite).filter("event.date < %@", CalendarHelper.startOfUTCDay(CalendarHelper.envDate() ?? NSDate()))
     }
 }

@@ -1632,7 +1632,8 @@
                                         <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="l6K-nq-I1t">
                                             <rect key="frame" x="0.0" y="50" width="600" height="343"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" secondItem="l6K-nq-I1t" secondAttribute="height" multiplier="600:343" id="GAl-s7-iKd"/>
+                                                <constraint firstAttribute="width" secondItem="l6K-nq-I1t" secondAttribute="height" multiplier="600:343" priority="750" id="GAl-s7-iKd"/>
+                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="400" id="M2C-uT-Lbb"/>
                                             </constraints>
                                         </mapView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="This is the name of the event and venue" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zni-Cv-wcr">

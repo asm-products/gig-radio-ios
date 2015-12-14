@@ -44,6 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         if NSProcessInfo().environment["RESET_ALL"] == "YES"{
+            Onboarding.resetAll()
             try! Realm().write {
                 try! Realm().deleteAll()
             }

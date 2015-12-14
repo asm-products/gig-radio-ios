@@ -100,6 +100,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
     }
     func changeDate(date:NSDate, callback:()->Void){
         let location = playlist.location
+        print("changing date to \(date)")
         self.playlist = Playlist.findOrCreateForUtcDate(CalendarHelper.startOfUTCDay(date)) // being cautious
         playlist.setLocation(location)
         flyersController?.playlist = playlist
@@ -112,6 +113,16 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
     }
     func playNextTrack(){
         let event = playlist.currentTrack?.performance.songKickEvent
+        if Defaults.playlistFollowAction == .PlayNextDay &&  playlist.isPlayingLastTrackOfTheDay{
+            // reassign playlist
+            print("At end of current day, going to tomorrow")
+            let oneDay = NSDateComponents()
+            oneDay.day = 1
+            let date = NSCalendar.currentCalendar().dateByAddingComponents(oneDay, toDate: playlist.utcDate, options: [])!
+            changeDate(date){}
+            setDateHeading(date)
+            return
+        }
         playlist.determineTrackAfter(playlist.currentTrack){ track in
             if let track = track{
                 self.playlist.currentTrack = track

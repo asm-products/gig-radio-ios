@@ -40,7 +40,7 @@ class NextTrackFinder: NSObject {
         let performances = performance.playlist.performances
         if var index = performances.indexOf(performance){
             index += 1
-            if index >= performances.count && Defaults.playlistFollowAction == .LoopDay{
+            if index >= performances.count{
                 index %= performances.count
             }
             // otherwise we'll get a handy exception.

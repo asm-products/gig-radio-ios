@@ -124,6 +124,10 @@ class Playlist: Object {
             }
         }
     }
+    var isPlayingLastTrackOfTheDay: Bool{
+        guard let currentTrack = currentTrack else { return false }
+        return performances.indexOf(currentTrack.performance) == performances.count - 1
+    }
     var nextTrackFinder: NextTrackFinder?
     func determineTrackAfter(track:PlaylistTrack?, callback:(track:PlaylistTrack?)->Void){ // optional for edge case of totally running out of music to play
         if let track = track{

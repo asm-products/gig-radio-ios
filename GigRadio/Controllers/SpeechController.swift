@@ -28,12 +28,12 @@ class SpeechController: NSObject, AVSpeechSynthesizerDelegate {
             return
         }
         let utterance = AVSpeechUtterance(string: string)
-        utterance.voice = AVSpeechSynthesisVoice(language: "de-DE")
+//        utterance.voice = AVSpeechSynthesisVoice(language: "de-DE")
         utterance.rate = AVSpeechUtteranceDefaultSpeechRate * 0.10
         synthesizer.speakUtterance(utterance)
     }
     func announceEvent(event:SongKickEvent){
-        let when = YLMoment(date:event.start.parsedDate()).fromNow()
+//        let when = YLMoment(date:event.start.parsedDate()).fromNow()
         say("\(event.displayName)")
     }
     func announceTrack(track:PlaylistTrack){

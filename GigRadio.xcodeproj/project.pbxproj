@@ -199,6 +199,13 @@
 		ACDAFA0D1B090900003B411A /* SongKickClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDAFA0C1B090900003B411A /* SongKickClient.swift */; };
 		ACDAFA0F1B090908003B411A /* SoundCloudClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDAFA0E1B090908003B411A /* SoundCloudClient.swift */; };
 		ACDAFA131B090BDC003B411A /* Dictionary+Querystrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDAFA121B090BDC003B411A /* Dictionary+Querystrings.swift */; };
+		ACE31D791C1F057500211A24 /* jonarcher.png in Resources */ = {isa = PBXBuildFile; fileRef = ACE31D761C1F057500211A24 /* jonarcher.png */; };
+		ACE31D7A1C1F057500211A24 /* michaelforrest.png in Resources */ = {isa = PBXBuildFile; fileRef = ACE31D771C1F057500211A24 /* michaelforrest.png */; };
+		ACE31D7B1C1F057500211A24 /* mikekuech.png in Resources */ = {isa = PBXBuildFile; fileRef = ACE31D781C1F057500211A24 /* mikekuech.png */; };
+		ACE31D7D1C1F092600211A24 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE31D7C1C1F092600211A24 /* AvatarView.swift */; };
+		ACE5C5511C1F0EF6000E769B /* disclosure-right-grey.png in Resources */ = {isa = PBXBuildFile; fileRef = ACE5C54E1C1F0EF6000E769B /* disclosure-right-grey.png */; };
+		ACE5C5521C1F0EF6000E769B /* disclosure-right-grey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACE5C54F1C1F0EF6000E769B /* disclosure-right-grey@2x.png */; };
+		ACE5C5531C1F0EF6000E769B /* disclosure-right-grey@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACE5C5501C1F0EF6000E769B /* disclosure-right-grey@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -436,6 +443,13 @@
 		ACDAFA0C1B090900003B411A /* SongKickClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongKickClient.swift; sourceTree = "<group>"; };
 		ACDAFA0E1B090908003B411A /* SoundCloudClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundCloudClient.swift; sourceTree = "<group>"; };
 		ACDAFA121B090BDC003B411A /* Dictionary+Querystrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Querystrings.swift"; sourceTree = "<group>"; };
+		ACE31D761C1F057500211A24 /* jonarcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jonarcher.png; sourceTree = "<group>"; };
+		ACE31D771C1F057500211A24 /* michaelforrest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = michaelforrest.png; sourceTree = "<group>"; };
+		ACE31D781C1F057500211A24 /* mikekuech.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mikekuech.png; sourceTree = "<group>"; };
+		ACE31D7C1C1F092600211A24 /* AvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
+		ACE5C54E1C1F0EF6000E769B /* disclosure-right-grey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclosure-right-grey.png"; sourceTree = "<group>"; };
+		ACE5C54F1C1F0EF6000E769B /* disclosure-right-grey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclosure-right-grey@2x.png"; sourceTree = "<group>"; };
+		ACE5C5501C1F0EF6000E769B /* disclosure-right-grey@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclosure-right-grey@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -539,6 +553,12 @@
 		AC5E952F19FC0B4C005B9872 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				ACE5C54E1C1F0EF6000E769B /* disclosure-right-grey.png */,
+				ACE5C54F1C1F0EF6000E769B /* disclosure-right-grey@2x.png */,
+				ACE5C5501C1F0EF6000E769B /* disclosure-right-grey@3x.png */,
+				ACE31D761C1F057500211A24 /* jonarcher.png */,
+				ACE31D771C1F057500211A24 /* michaelforrest.png */,
+				ACE31D781C1F057500211A24 /* mikekuech.png */,
 				AC652FB31B5D38DE00EAD5A4 /* problem.png */,
 				AC652FB41B5D38DE00EAD5A4 /* problem@2x.png */,
 				AC652FB51B5D38DE00EAD5A4 /* problem@3x.png */,
@@ -768,6 +788,7 @@
 				ACDAF9E41B08E13D003B411A /* CompassView.swift */,
 				ACD1C8D01B0A62D200CF038C /* GradientOverlayView.swift */,
 				ACD1C8D21B0A67EB00CF038C /* SignalStrengthIndicator.swift */,
+				ACE31D7C1C1F092600211A24 /* AvatarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1035,6 +1056,7 @@
 				AC3CB95F1B08B4A3009203E1 /* playback-track@3x.png in Resources */,
 				AC16A4781C1B2B6F00003582 /* gig-radio-playback-Apple Devices HD (Best Quality).m4v in Resources */,
 				AC5E954519FC0B4D005B9872 /* disclosure_small@2x.png in Resources */,
+				ACE5C5521C1F0EF6000E769B /* disclosure-right-grey@2x.png in Resources */,
 				AC3CB9511B08AA2C009203E1 /* speaker-quiet@3x.png in Resources */,
 				ACA9EC511B59451B00CC1B2D /* backward_debug.aif in Resources */,
 				AC3CB94F1B08AA2C009203E1 /* speaker-quiet.png in Resources */,
@@ -1051,6 +1073,7 @@
 				AC16A4771C1B2B6F00003582 /* fixing-errors-Apple Devices HD (Best Quality).m4v in Resources */,
 				ACBC36EE1B162AF900C05845 /* tracks-count.png in Resources */,
 				AC3CB9761B08B7DF009203E1 /* disclosure-up@2x.png in Resources */,
+				ACE5C5531C1F0EF6000E769B /* disclosure-right-grey@3x.png in Resources */,
 				AC5E954219FC0B4D005B9872 /* compass_needle.png in Resources */,
 				ACDAF9F41B08FAD8003B411A /* Main.storyboard in Resources */,
 				ACA9EC521B59451B00CC1B2D /* forward_debug.aif in Resources */,
@@ -1070,6 +1093,8 @@
 				AC7AC1EE1B121071002A550C /* tracks-avail-2.png in Resources */,
 				AC3CB92C1B089AC4009203E1 /* forward.png in Resources */,
 				ACD1C8E31B0A923000CF038C /* Roboto-Bold.ttf in Resources */,
+				ACE5C5511C1F0EF6000E769B /* disclosure-right-grey.png in Resources */,
+				ACE31D7B1C1F057500211A24 /* mikekuech.png in Resources */,
 				ACDAF9F01B08F49B003B411A /* launch-logo@2x.png in Resources */,
 				AC3CB92D1B089AC4009203E1 /* forward@2x.png in Resources */,
 				AC9584181B1B24C600DB0719 /* info-button.png in Resources */,
@@ -1095,6 +1120,7 @@
 				AC7AC1EF1B121071002A550C /* tracks-avail-2@2x.png in Resources */,
 				AC3CB9721B08B7DF009203E1 /* disclosure-right.png in Resources */,
 				ACDAF9F11B08F49B003B411A /* launch-logo@3x.png in Resources */,
+				ACE31D7A1C1F057500211A24 /* michaelforrest.png in Resources */,
 				AC5E954019FC0B4D005B9872 /* compass_background.png in Resources */,
 				AC3CB96F1B08B7DF009203E1 /* disclosure-left.png in Resources */,
 				AC3CB9331B089AC4009203E1 /* play@2x.png in Resources */,
@@ -1103,6 +1129,7 @@
 				ACBC36EB1B162AF900C05845 /* play-large.png in Resources */,
 				AC5E954819FC0B4D005B9872 /* menu.png in Resources */,
 				AC3CB9411B08A276009203E1 /* settings@3x.png in Resources */,
+				ACE31D791C1F057500211A24 /* jonarcher.png in Resources */,
 				AC3CB92F1B089AC4009203E1 /* pause.png in Resources */,
 				AC863F571B0D15FA00A6A9D3 /* flyer-placeholder.png in Resources */,
 				AC5E954319FC0B4D005B9872 /* compass_needle@2x.png in Resources */,
@@ -1288,6 +1315,7 @@
 				AC3CB9801B08CBEB009203E1 /* Async.swift in Sources */,
 				AC3CB9941B08D8C2009203E1 /* AppDelegate.swift in Sources */,
 				ACDAF9E51B08E13D003B411A /* CompassView.swift in Sources */,
+				ACE31D7D1C1F092600211A24 /* AvatarView.swift in Sources */,
 				AC3CB9821B08CC50009203E1 /* SongKickDateTime.swift in Sources */,
 				AC3CB98E1B08D35A009203E1 /* SoundCloudTrack.swift in Sources */,
 				AC3CB9861B08CFDF009203E1 /* SongKickPerformance.swift in Sources */,

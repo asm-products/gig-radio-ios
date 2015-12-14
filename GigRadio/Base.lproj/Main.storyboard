@@ -28,15 +28,69 @@
         <scene sceneID="frg-Oo-7Ke">
             <objects>
                 <tableViewController id="5qa-gz-zC7" customClass="InfoSettingsTableViewController" customModule="GigRadio" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Q71-fD-1D2">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Q71-fD-1D2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
+                            <tableViewSection footerTitle="" id="se3-ad-sVw" userLabel="Created By">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="135" id="cHI-cq-g6d" customClass="TableViewCell" customModule="GigRadio" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="99" width="375" height="135"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cHI-cq-g6d" id="pt8-U8-Ema">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="135"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jonarcher.png" translatesAutoresizingMaskIntoConstraints="NO" id="vpv-rG-pLy" customClass="AvatarView" customModule="GigRadio" customModuleProvider="target">
+                                                    <rect key="frame" x="146" y="3" width="82" height="82"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="82" id="Tbl-50-gc0"/>
+                                                        <constraint firstAttribute="height" constant="82" id="ckt-9k-nFI"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mikekuech.png" translatesAutoresizingMaskIntoConstraints="NO" id="sdA-tz-vjg" customClass="AvatarView" customModule="GigRadio" customModuleProvider="target">
+                                                    <rect key="frame" x="236" y="3" width="82" height="82"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="82" id="3G2-6D-5UC"/>
+                                                        <constraint firstAttribute="width" constant="82" id="q2z-vc-HC1"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="michaelforrest.png" translatesAutoresizingMaskIntoConstraints="NO" id="e2w-D9-Xoj" customClass="AvatarView" customModule="GigRadio" customModuleProvider="target">
+                                                    <rect key="frame" x="56" y="3" width="82" height="82"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="82" id="YpP-l1-Lat"/>
+                                                        <constraint firstAttribute="width" constant="82" id="qCU-dG-ezv"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Built by Michael Forrest with help from Jon Archer and Mike Kuechenmeister" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3q-ky-kk1">
+                                                    <rect key="frame" x="56" y="93" width="262" height="35"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="sdA-tz-vjg" firstAttribute="trailing" secondItem="k3q-ky-kk1" secondAttribute="trailing" id="21v-a0-aFx"/>
+                                                <constraint firstItem="k3q-ky-kk1" firstAttribute="top" secondItem="vpv-rG-pLy" secondAttribute="bottom" constant="8" id="5uJ-V4-fL4"/>
+                                                <constraint firstItem="e2w-D9-Xoj" firstAttribute="top" secondItem="vpv-rG-pLy" secondAttribute="top" id="7pt-X5-JQw"/>
+                                                <constraint firstItem="vpv-rG-pLy" firstAttribute="top" secondItem="sdA-tz-vjg" secondAttribute="top" id="WMS-4l-if6"/>
+                                                <constraint firstItem="vpv-rG-pLy" firstAttribute="centerX" secondItem="pt8-U8-Ema" secondAttribute="centerX" id="Zmd-KF-Ksn"/>
+                                                <constraint firstItem="e2w-D9-Xoj" firstAttribute="leading" secondItem="k3q-ky-kk1" secondAttribute="leading" id="ghS-jj-ZnM"/>
+                                                <constraint firstItem="vpv-rG-pLy" firstAttribute="leading" secondItem="e2w-D9-Xoj" secondAttribute="trailing" constant="8" id="hBq-Ci-EgP"/>
+                                                <constraint firstItem="sdA-tz-vjg" firstAttribute="leading" secondItem="vpv-rG-pLy" secondAttribute="trailing" constant="8" id="kZl-9I-PKM"/>
+                                                <constraint firstItem="vpv-rG-pLy" firstAttribute="top" secondItem="pt8-U8-Ema" secondAttribute="top" constant="3" id="o9e-Tq-efO"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection headerTitle="Gigs order" footerTitle="Tracks from shows at venues without geo-coordinates will be played last when 'nearest first' is selected" id="ZOO-ef-C3K">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Ug5-Ee-1qb" customClass="TableViewCell" customModule="GigRadio" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="113.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="276" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ug5-Ee-1qb" id="Vpz-vR-rsb">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -67,7 +121,7 @@
                             <tableViewSection headerTitle="Track lengths to play" footerTitle="Shorter tracks are more likely to be music and will give you more variety. Longer tracks could be DJ mixes or podcasts." id="ixX-UD-SBD">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="a9z-n0-UkX" customClass="TableViewCell" customModule="GigRadio" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="240" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="402.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a9z-n0-UkX" id="0ia-ko-sZP">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -99,7 +153,7 @@
                             <tableViewSection headerTitle="When all days gigs have been played for day" footerTitle="" id="v3b-CC-S0o">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="X3G-LI-cZH" customClass="TableViewCell" customModule="GigRadio" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="366.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="529" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="X3G-LI-cZH" id="7Lu-Qs-xqw">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -130,7 +184,7 @@
                             <tableViewSection headerTitle="Spoken announcements" footerTitle="" id="u4j-S5-a7C">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Yqv-Ap-MCm" customClass="TableViewCell" customModule="GigRadio" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="452.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="615" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yqv-Ap-MCm" id="sC0-fe-zEc">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -158,6 +212,127 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="THE CREATORS" footerTitle="" id="ecL-ln-FN8" userLabel="The Creators">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="LN9-uJ-vQu" userLabel="MF" customClass="TableViewCell" customModule="GigRadio" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="701" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LN9-uJ-vQu" id="qJv-By-7tM">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Szf-3Y-Fr8">
+                                                    <rect key="frame" x="0.0" y="43" width="375" height="1"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="PyN-w6-5Ha"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music by Michael Forrest" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDK-Xp-iuN">
+                                                    <rect key="frame" x="16" y="8" width="351" height="27"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" red="0.19215686269999999" green="0.19215686269999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="disclosure-right-grey.png" translatesAutoresizingMaskIntoConstraints="NO" id="Vbd-jd-tZZ">
+                                                    <rect key="frame" x="357" y="14" width="10" height="15"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="Szf-3Y-Fr8" firstAttribute="top" secondItem="LDK-Xp-iuN" secondAttribute="bottom" constant="8" id="3zm-Od-KKC"/>
+                                                <constraint firstItem="Szf-3Y-Fr8" firstAttribute="leading" secondItem="qJv-By-7tM" secondAttribute="leading" id="6sU-Fu-3wg"/>
+                                                <constraint firstAttribute="bottom" secondItem="Szf-3Y-Fr8" secondAttribute="bottom" id="Gau-uo-Fzk"/>
+                                                <constraint firstItem="LDK-Xp-iuN" firstAttribute="leading" secondItem="qJv-By-7tM" secondAttribute="leadingMargin" constant="8" id="QQQ-Nj-FpX"/>
+                                                <constraint firstItem="LDK-Xp-iuN" firstAttribute="trailing" secondItem="qJv-By-7tM" secondAttribute="trailingMargin" id="U8O-Uu-Pe8"/>
+                                                <constraint firstAttribute="trailing" secondItem="Szf-3Y-Fr8" secondAttribute="trailing" constant="-40" id="fk8-Gw-14J"/>
+                                                <constraint firstItem="Vbd-jd-tZZ" firstAttribute="trailing" secondItem="qJv-By-7tM" secondAttribute="trailingMargin" id="msf-Yh-W19"/>
+                                                <constraint firstItem="Vbd-jd-tZZ" firstAttribute="centerY" secondItem="qJv-By-7tM" secondAttribute="centerY" id="nbG-58-fBT"/>
+                                                <constraint firstItem="LDK-Xp-iuN" firstAttribute="top" secondItem="qJv-By-7tM" secondAttribute="topMargin" id="urf-Yo-Djq"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="bON-dW-p1F" userLabel="JA" customClass="TableViewCell" customModule="GigRadio" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="745" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bON-dW-p1F" id="f4y-uz-27H">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OMz-TY-Jar" userLabel="Divider">
+                                                    <rect key="frame" x="0.0" y="43" width="375" height="1"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="O1D-r6-XhQ"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Follow @jonarcher on Twitter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wka-1K-NeR">
+                                                    <rect key="frame" x="16" y="8" width="351" height="28"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" red="0.19215686269999999" green="0.19215686269999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="disclosure-right-grey.png" translatesAutoresizingMaskIntoConstraints="NO" id="Z0v-7h-FFO">
+                                                    <rect key="frame" x="357" y="15" width="10" height="15"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="Wka-1K-NeR" firstAttribute="trailing" secondItem="f4y-uz-27H" secondAttribute="trailingMargin" id="DxX-a8-DZW"/>
+                                                <constraint firstItem="OMz-TY-Jar" firstAttribute="leading" secondItem="f4y-uz-27H" secondAttribute="leading" id="OPF-wK-iQo"/>
+                                                <constraint firstItem="Z0v-7h-FFO" firstAttribute="centerY" secondItem="f4y-uz-27H" secondAttribute="centerY" id="RYQ-ea-yeL"/>
+                                                <constraint firstItem="OMz-TY-Jar" firstAttribute="top" secondItem="Wka-1K-NeR" secondAttribute="bottom" constant="7" id="UCQ-Cc-jsv"/>
+                                                <constraint firstItem="Wka-1K-NeR" firstAttribute="leading" secondItem="f4y-uz-27H" secondAttribute="leadingMargin" constant="8" id="bhc-8m-6eY"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Z0v-7h-FFO" secondAttribute="trailing" id="c3J-Kg-E7z"/>
+                                                <constraint firstAttribute="bottom" secondItem="OMz-TY-Jar" secondAttribute="bottom" id="rEf-oE-zE5"/>
+                                                <constraint firstAttribute="trailing" secondItem="OMz-TY-Jar" secondAttribute="trailing" constant="-40" id="u4N-lG-nnc"/>
+                                                <constraint firstItem="Wka-1K-NeR" firstAttribute="top" secondItem="f4y-uz-27H" secondAttribute="topMargin" id="x1S-1g-TUI"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="MJp-g1-o8g" userLabel="MK" customClass="TableViewCell" customModule="GigRadio" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="789" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MJp-g1-o8g" id="5FC-NV-3GB">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JxO-lQ-gKA" userLabel="Divider">
+                                                    <rect key="frame" x="0.0" y="43" width="375" height="1"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="04r-zv-en8"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Follow @MikeKuech on Dribbble" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OS1-wI-hjo">
+                                                    <rect key="frame" x="16" y="8" width="351" height="28"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" red="0.19215686269999999" green="0.19215686269999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="disclosure-right-grey.png" translatesAutoresizingMaskIntoConstraints="NO" id="4Je-Dj-jfH">
+                                                    <rect key="frame" x="357" y="14" width="10" height="15"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="JxO-lQ-gKA" firstAttribute="top" secondItem="OS1-wI-hjo" secondAttribute="bottom" constant="7" id="ABE-h0-AgO"/>
+                                                <constraint firstItem="OS1-wI-hjo" firstAttribute="top" secondItem="5FC-NV-3GB" secondAttribute="topMargin" id="DRx-KI-kH4"/>
+                                                <constraint firstItem="JxO-lQ-gKA" firstAttribute="leading" secondItem="5FC-NV-3GB" secondAttribute="leading" id="GUD-ln-bm5"/>
+                                                <constraint firstAttribute="bottom" secondItem="JxO-lQ-gKA" secondAttribute="bottom" id="GUR-RT-hib"/>
+                                                <constraint firstItem="OS1-wI-hjo" firstAttribute="trailing" secondItem="5FC-NV-3GB" secondAttribute="trailingMargin" id="OIH-uj-SoO"/>
+                                                <constraint firstItem="4Je-Dj-jfH" firstAttribute="centerY" secondItem="5FC-NV-3GB" secondAttribute="centerY" id="Pvf-5e-mSS"/>
+                                                <constraint firstItem="OS1-wI-hjo" firstAttribute="leading" secondItem="5FC-NV-3GB" secondAttribute="leadingMargin" constant="8" id="fmh-6K-xkF"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="4Je-Dj-jfH" secondAttribute="trailing" id="gEv-aq-xEn"/>
+                                                <constraint firstAttribute="trailing" secondItem="JxO-lQ-gKA" secondAttribute="trailing" constant="-40" id="iAQ-gT-Dfx"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="5qa-gz-zC7" id="5pd-KI-AUe"/>
@@ -171,7 +346,12 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="900"/>
                     <connections>
+                        <outlet property="jonArcherOnTwitterCell" destination="bON-dW-p1F" id="KMh-Nj-1DH"/>
+                        <outlet property="mikeKuechOnTwitterCell" destination="MJp-g1-o8g" id="BrN-L9-qbf"/>
+                        <outlet property="musicByMichaelForrestCell" destination="LN9-uJ-vQu" id="Vuv-pi-3r5"/>
                         <outlet property="playlistFollowActionControl" destination="bZr-38-m4R" id="rh1-5q-5hl"/>
                         <outlet property="sortOrderControl" destination="rOh-uf-Vcv" id="1Tz-4j-cDD"/>
                         <outlet property="spokenAnnouncementsControl" destination="aK1-Cm-g2O" id="eg9-0N-glV"/>
@@ -180,7 +360,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eNC-WX-bhi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="648.5" y="-365.5"/>
+            <point key="canvasLocation" x="648.5" y="-366"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="LZz-Mh-zdE">
@@ -1523,12 +1703,16 @@
         <image name="calendar-selection.png" width="29" height="42"/>
         <image name="disclosure-down.png" width="15" height="10"/>
         <image name="disclosure-left.png" width="10" height="15"/>
+        <image name="disclosure-right-grey.png" width="10" height="15"/>
         <image name="disclosure-right.png" width="10" height="15"/>
         <image name="flyer-placeholder.png" width="1024" height="1024"/>
         <image name="forward.png" width="28" height="17"/>
         <image name="info-button.png" width="26" height="26"/>
+        <image name="jonarcher.png" width="200" height="200"/>
         <image name="launch-logo.png" width="134" height="158"/>
         <image name="menu.png" width="19" height="13"/>
+        <image name="michaelforrest.png" width="200" height="200"/>
+        <image name="mikekuech.png" width="200" height="200"/>
         <image name="play-large.png" width="68" height="68"/>
         <image name="play.png" width="21" height="26"/>
         <image name="problem.png" width="22" height="22"/>

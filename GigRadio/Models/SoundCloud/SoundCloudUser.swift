@@ -54,4 +54,7 @@ class SoundCloudUser: Object {
             app.openURL(url)
         }
     }
+    var avatarUrlLarge:String{
+        return avatarUrl// .stringByReplacingOccurrencesOfString("", withString: "large")
+    }
 }

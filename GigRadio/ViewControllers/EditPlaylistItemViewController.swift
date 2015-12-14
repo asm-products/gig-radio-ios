@@ -31,11 +31,11 @@ class EditPlaylistItemViewController: UITableViewController,SoundCloudUsersTable
     }
     func populate(){
         navigationItem.title = performance.songKickArtist.displayName
-        if let image = cachedImage(performance.soundCloudUser.avatarUrl){
+        if let image = cachedImage(performance.soundCloudUser.avatarUrlLarge){
             imageView.image = image
         }else{
-            preload([performance.soundCloudUser.avatarUrl]){
-                self.imageView.image = cachedImage(self.performance.soundCloudUser.avatarUrl)
+            preload([performance.soundCloudUser.avatarUrlLarge]){
+                self.imageView.image = cachedImage(self.performance.soundCloudUser.avatarUrlLarge)
             }
         }
         var unstreamableTracksCount = performance.soundCloudUser.tracks.filter("streamable = false").count

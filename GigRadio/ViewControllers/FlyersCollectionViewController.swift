@@ -105,6 +105,9 @@ class FlyersCollectionViewController: UICollectionViewController, UICollectionVi
         }
     }
     func showEvent(event:SongKickEvent){
+        trackEvent(.EventDetailsViewed, properties: [
+            "SongKick Event ID": event.id
+            ])
         if let controller = storyboard?.instantiateViewControllerWithIdentifier("GigPage") as? GigInfoTableViewController{
             controller.event = event
             navigationController?.pushViewController(controller, animated: true)

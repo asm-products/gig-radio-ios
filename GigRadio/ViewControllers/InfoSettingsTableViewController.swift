@@ -32,19 +32,27 @@ class InfoSettingsTableViewController: UITableViewController {
         playlistFollowActionControl.selectedSegmentIndex = defaults.integerForKey(PlaylistFollowActionKey)
     }
     @IBAction func didChangePlaylistOrder(sender: AnyObject) {
-        NSUserDefaults.standardUserDefaults().setInteger(sortOrderControl.selectedSegmentIndex, forKey: VenueSortOrderKey)
+        let selection = VenueSortOrder(rawValue: sortOrderControl.selectedSegmentIndex)!
+        NSUserDefaults.standardUserDefaults().setInteger(selection.rawValue, forKey: VenueSortOrderKey)
         NSNotificationCenter.defaultCenter().postNotificationName(DidChangeVenueSortOrderNotification, object: nil)
+        trackEvent(.PlaylistOrderChanged, properties: ["Value": selection.description])
     }
     @IBAction func didChangeTrackLengthFilter(sender: AnyObject) {
-        NSUserDefaults.standardUserDefaults().setInteger(trackLengthFilterControl.selectedSegmentIndex, forKey: TrackLengthFilterKey)
+        let selection = TrackLengthFilter(rawValue: trackLengthFilterControl.selectedSegmentIndex)!
+        NSUserDefaults.standardUserDefaults().setInteger(selection.rawValue, forKey: TrackLengthFilterKey)
         NSNotificationCenter.defaultCenter().postNotificationName(DidChangeTrackLengthFilterNotification, object: nil)
+        trackEvent(.TrackLengthFilterChanged, properties: ["Value": selection.description])
     }
     @IBAction func didChangePlaylistFollowAction(sender: AnyObject) {
-        NSUserDefaults.standardUserDefaults().setInteger(playlistFollowActionControl.selectedSegmentIndex
+        let selection = PlaylistFollowAction(rawValue: playlistFollowActionControl.selectedSegmentIndex)!
+        NSUserDefaults.standardUserDefaults().setInteger(selection.rawValue
             , forKey: PlaylistFollowActionKey)
+        trackEvent(.PlaylistFollowActionChanged, properties: ["Value": selection.description])
     }
     @IBAction func didChangeSpokenAnnouncements(sender: AnyObject) {
-        NSUserDefaults.standardUserDefaults().setInteger(spokenAnnouncementsControl.selectedSegmentIndex, forKey: SpokenAnnouncementsKey)
+        let selection = SpokenAnnouncements(rawValue: spokenAnnouncementsControl.selectedSegmentIndex)!
+        NSUserDefaults.standardUserDefaults().setInteger(selection.rawValue, forKey: SpokenAnnouncementsKey)
+        trackEvent(.SpokenAnnouncementsChanged, properties: ["Value": selection.description])
     }
     
     @IBAction func didPressDone(sender: AnyObject) {
@@ -64,6 +72,7 @@ class InfoSettingsTableViewController: UITableViewController {
         }else if cell == mikeKuechOnTwitterCell{ // urgh. misnamed now.
             link = "https://dribbble.com/MikeKuech"
         }
+        trackEvent(.CreatorLinkFollowed, properties: ["URL": link])
         if let url = NSURL(string: link){
             UIApplication.sharedApplication().openURL(url)
         }

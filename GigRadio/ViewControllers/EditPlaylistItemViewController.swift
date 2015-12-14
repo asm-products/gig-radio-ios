@@ -58,6 +58,7 @@ class EditPlaylistItemViewController: UITableViewController,SoundCloudUsersTable
         navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
     func viewOnSoundCloud() {
+        trackEvent(.SoundCloudUserViewed, properties: ["SoundCloud Username": performance.soundCloudUser.username])
         performance.soundCloudUser.showOnSoundCloud()
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -72,8 +73,10 @@ class EditPlaylistItemViewController: UITableViewController,SoundCloudUsersTable
     }
     func toggleArtist(){
         if BlacklistedArtist.includes(performance.soundCloudUser){
+            trackEvent(.BlacklistedArtistRemoved, properties: ["SoundCloud ID": performance.soundCloudUser.id])
             BlacklistedArtist.remove(performance.soundCloudUser)
         }else{
+            trackEvent(.BlacklistedArtistAdded, properties: ["SoundCloud ID": performance.soundCloudUser.id])
             BlacklistedArtist.add(performance.soundCloudUser)
             delegate.editSoundCloudUserDidBlacklistUser(performance.soundCloudUser)
         }
@@ -95,6 +98,16 @@ class EditPlaylistItemViewController: UITableViewController,SoundCloudUsersTable
         }
     }
     func soundCloudUsersTableDidSelectUser(user: SoundCloudUser) {
+        if self.performance.soundCloudUser != user{
+            trackEvent(.SoundCloudUserChanged, properties: [
+                "toId": user.id,
+                "toUsername": user.username,
+                "toName": user.fullName,
+                "fromId": self.performance.soundCloudUser.id,
+                "fromUsername": self.performance.soundCloudUser.username,
+                "fromName": self.performance.soundCloudUser.fullName
+                ])
+        }
         try! Realm().write{
             self.performance.soundCloudUser = user
         }

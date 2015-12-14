@@ -140,6 +140,7 @@ class GigInfoTableViewController: UITableViewController {
         if indexPath.section != Section.Artists.rawValue { return }
         let performance = event.performance[indexPath.row]
         UIApplication.sharedApplication().openURL(performance.artist.songKickURL())
+        trackEvent(.SongKickArtistViewed, properties: ["SongKick Artist ID":performance.artist.id])
     }
     func didPressDirectionsSettings(){
         let sheet = UIAlertController(title: t("Directions.SettingsTitle"), message: nil, preferredStyle: .ActionSheet)
@@ -155,10 +156,15 @@ class GigInfoTableViewController: UITableViewController {
     }
     func openMapLink(){
         if let link = MapLink.preferredMapLink(event.venue){
+            trackEvent(.MapLinkViewed, properties: [
+                "URL": link.appURL.absoluteString,
+                "Service": link.displayName
+                ])
             UIApplication.sharedApplication().openURL(link.appURL)
         }
     }
     func openSongKickLink(){
+        trackEvent(.SongKickEventViewed, properties: ["SongKick Event ID": event.id])
         let url = NSURL(string: "songkick://events/\(event.id)")!
         let app = UIApplication.sharedApplication()
         if app.canOpenURL(url){

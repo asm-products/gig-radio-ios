@@ -195,6 +195,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
         }
     }
     func datePickerDidSelectDate(startDate: NSDate) {
+        trackEvent(.ChangedDate, properties: ["to":startDate])
         let status = DateFormats.todayFormatter().stringFromDate(startDate)
         SVProgressHUD.showWithStatus(status, maskType: .Black)
         setDateHeading(startDate)
@@ -247,6 +248,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
         }
     }
     @IBAction func didPressDateHeader(sender: AnyObject) {
+        trackEvent(.TappedDateHeader, properties: [:])
         showDatePickerAnimated(true)
     }
     func heightOfTransportArea() -> CGFloat {

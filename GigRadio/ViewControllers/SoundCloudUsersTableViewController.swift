@@ -22,6 +22,7 @@ class SoundCloudUsersTableViewController: UITableViewController {
     var delegate: SoundCloudUsersTableViewControllerDelegate!
     override func viewDidLoad() {
         super.viewDidLoad()
+        trackEvent(.SoundCloudUsersListed, properties: ["Songkick Artist Name": songKickArtist.displayName])
         if usersJSON == nil{
             SoundCloudClient.sharedClient.findUsers(songKickArtist.displayName) {json,error in
                 self.setUsers(json)

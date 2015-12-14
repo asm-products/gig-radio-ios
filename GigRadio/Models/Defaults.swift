@@ -16,19 +16,44 @@ let PlaylistFollowActionKey = "PlaylistFollowAction"
 enum VenueSortOrder: Int{
     case NearestFirst = 0
     case Natural = 1
+    var description: String{
+        switch self {
+        case .NearestFirst: return "Nearest First"
+        case .Natural: return "Natural"
+        }
+    }
 }
 enum TrackLengthFilter: Int{
     case Short = 0
     case All = 1
     case Long = 2
+    var description: String {
+        switch self {
+        case .Short: return "< 10 Minutes"
+        case .All: return "All"
+        case .Long: return "> 10 Minutes"
+        }
+    }
 }
 enum SpokenAnnouncements:Int{
     case Off = 0
     case On = 1
+    var description: String{
+        switch self {
+        case .Off: return "Off"
+        case .On: return "On"
+        }
+    }
 }
 enum PlaylistFollowAction:Int{
     case LoopDay = 0
     case PlayNextDay = 1
+    var description: String{
+        switch self {
+        case .LoopDay: return "Same Day"
+        case .PlayNextDay: return "Continue To Next Day"
+        }
+    }
 }
 
 let DidChangeVenueSortOrderNotification = "DidChangeVenueSortOrderNotification"

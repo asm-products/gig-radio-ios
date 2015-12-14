@@ -20,6 +20,10 @@ class Favourite: Object {
         return objects.first
     }
     class func remove(item:Favourite){
+        trackEvent(.FavouriteEventRemoved, properties: [
+            "SongKick ID": item.event.id,
+            "Display Name": item.event.displayName
+            ])
         for notification in UIApplication.sharedApplication().scheduledLocalNotifications!{
             if let userInfo = notification.userInfo as? [String:Int],
             let eventId = userInfo["songKickEventId"]{
@@ -33,6 +37,10 @@ class Favourite: Object {
         }
     }
     class func add(event:SongKickEvent){
+        trackEvent(.FavouriteEventAdded, properties: [
+            "SongKick ID": event.id,
+            "Display Name": event.displayName
+            ])
         let notification = UILocalNotification()
         notification.userInfo = ["songKickEventId": event.id]
         notification.alertTitle = "Gig tonight"

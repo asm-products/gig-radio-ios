@@ -197,11 +197,13 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate,SpeechDel
     }
     @IBAction func didPressForward(sender: AnyObject) {
 //        audioPlayer.stop()
+        trackEvent(.SkippedForward, properties: ["From SoundCloud Track ID": (track?.soundCloudTrack.id) ?? 0])
         setBufferingDisplay(true)
         forwardSound?.play()
         delegate.playNextTrack()
     }
     @IBAction func didPressRewind(sender: AnyObject) {
+        trackEvent(.SkippedBackward, properties: ["From SoundCloud Track ID": (track?.soundCloudTrack.id) ?? 0])
 //        audioPlayer.stop()
         backwardSound?.play()
         delegate.playPreviousTrack()
@@ -212,17 +214,16 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate,SpeechDel
     override func remoteControlReceivedWithEvent(event: UIEvent?) {
         guard let subtype = event?.subtype else { return }
         switch subtype{
-        case .RemoteControlTogglePlayPause: didPressPlayPause(self)
-        case .RemoteControlNextTrack: didPressForward(self)
-        case .RemoteControlPreviousTrack: didPressRewind(self)
+        case .RemoteControlTogglePlayPause:
+            didPressPlayPause(self)
+        case .RemoteControlNextTrack:
+            didPressForward(self)
+        case .RemoteControlPreviousTrack:
+            didPressRewind(self)
         case .RemoteControlPlay:
-            audioPlayer.resume()
-            do {
-                try AVAudioSession.sharedInstance().setActive(true)
-            } catch _ {
-            }
+            setPlaying(true)
         case .RemoteControlPause:
-            audioPlayer.pause()
+            setPlaying(false)
         default:
             print("ignored \(event)")
         }
@@ -237,6 +238,7 @@ class TransportViewController: UIViewController,STKAudioPlayerDelegate,SpeechDel
     }
     @IBAction func didPressProblemButton(sender: AnyObject) {
         if let track = self.track{
+            trackEvent(.ProblemButtonPressed, properties: ["Track ID":track.id ])
             delegate.problemButtonPressed(track)
         }
     }

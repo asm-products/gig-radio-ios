@@ -25,6 +25,7 @@ target "GigRadio" do
   pod 'NSDictionary+TRVSUnderscoreCamelCaseAdditions', '~> 0.1'
   pod 'PureLayout'
   pod 'Mixpanel', '~> 2.9'
+  pod 'UICollectionViewEmptyState', '~> 1.4'
 end
 
 target "GigRadioTests" do

@@ -8,6 +8,8 @@
 
 import UIKit
 import RealmSwift
+import UICollectionViewEmptyState
+import PureLayout
 
 let reuseIdentifier = "Flyer"
 
@@ -16,6 +18,10 @@ protocol FlyersCollectionViewControllerDelegate: EditPlaylistItemViewControllerD
 }
 
 class FlyersCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, FlyerCollectionViewCellDelegate {
+    
+    @IBOutlet var noGigsFoundView: UIView!
+    
+    
     var playlist: Playlist?
     var delegate: FlyersCollectionViewControllerDelegate!
     override func viewDidLoad() {
@@ -25,6 +31,8 @@ class FlyersCollectionViewController: UICollectionViewController, UICollectionVi
         }
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleFavouriteCountChanged", name: FAVOURITE_COUNT_CHANGED, object: nil)
         reload(nil)
+        
+        collectionView?.emptyState_view = noGigsFoundView
     }
     deinit{
         NSNotificationCenter.defaultCenter().removeObserver(self)

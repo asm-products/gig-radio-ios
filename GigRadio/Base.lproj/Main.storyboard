@@ -11,6 +11,7 @@
             <string>Roboto-Bold</string>
             <string>Roboto-Bold</string>
             <string>Roboto-Bold</string>
+            <string>Roboto-Bold</string>
         </mutableArray>
         <mutableArray key="Roboto-Light.ttf">
             <string>Roboto-Light</string>
@@ -18,6 +19,7 @@
             <string>Roboto-Light</string>
         </mutableArray>
         <mutableArray key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
@@ -597,7 +599,7 @@
             <objects>
                 <collectionViewController automaticallyAdjustsScrollViewInsets="NO" id="nBz-M3-urm" customClass="FlyersCollectionViewController" customModule="GigRadio" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" indicatorStyle="white" dataMode="prototypes" id="s7k-zj-JgI">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="kIc-SP-V1o">
                             <size key="itemSize" width="320" height="400"/>
@@ -737,10 +739,42 @@
                             <outlet property="delegate" destination="nBz-M3-urm" id="hUr-a6-rJV"/>
                         </connections>
                     </collectionView>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="600"/>
+                    <connections>
+                        <outlet property="noGigsFoundView" destination="vNH-cg-O2D" id="Iwi-S7-nOr"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bsm-ZO-PBR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="vNH-cg-O2D">
+                    <rect key="frame" x="0.0" y="0.0" width="310" height="276"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No gigs found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXG-aj-vI3">
+                            <rect key="frame" x="8" y="91.5" width="294" height="37"/>
+                            <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="28"/>
+                            <color key="textColor" red="0.71764705880000002" green="0.71764705880000002" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="highlightedColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Can you try another date? " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FbR-1a-Q27">
+                            <rect key="frame" x="8" y="128.5" width="294" height="20"/>
+                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                            <color key="textColor" red="0.71764705880000002" green="0.71764705880000002" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="highlightedColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="FbR-1a-Q27" firstAttribute="leading" secondItem="vNH-cg-O2D" secondAttribute="leading" constant="8" id="0Fu-eh-ipB"/>
+                        <constraint firstAttribute="trailing" secondItem="dXG-aj-vI3" secondAttribute="trailing" constant="8" id="Ib7-1F-l5j"/>
+                        <constraint firstItem="FbR-1a-Q27" firstAttribute="centerY" secondItem="vNH-cg-O2D" secondAttribute="centerY" id="M4a-aB-Rls"/>
+                        <constraint firstItem="FbR-1a-Q27" firstAttribute="top" secondItem="dXG-aj-vI3" secondAttribute="bottom" id="MdL-FS-gzO"/>
+                        <constraint firstAttribute="trailing" secondItem="FbR-1a-Q27" secondAttribute="trailing" constant="8" id="YAR-Ww-LCF"/>
+                        <constraint firstItem="dXG-aj-vI3" firstAttribute="leading" secondItem="vNH-cg-O2D" secondAttribute="leading" constant="8" id="dOA-Qe-py4"/>
+                    </constraints>
+                </view>
             </objects>
-            <point key="canvasLocation" x="1278" y="-8"/>
+            <point key="canvasLocation" x="1138" y="-5"/>
         </scene>
         <!--Saved gigs-->
         <scene sceneID="Y6f-F9-ABC">

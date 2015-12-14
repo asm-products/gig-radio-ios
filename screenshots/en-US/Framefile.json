@@ -2,10 +2,10 @@
   "default": {
     "keyword": {
       /*"supported": ["en"],*/
-      "font": "./fonts/HelveNeuLig"
+      "font": "./fonts/HelveNeuMed"
     },
     "title": {
-      "font": "./fonts/HelveNeuMed",
+      "font": "./fonts/HelveNeuLig",
       /*"supported": ["en"],*/
       "color": "#545454"
     },
@@ -15,21 +15,33 @@
 
   "data": [
     {
-      "filter": "screenshot_1",
+      "filter": "Onboarding",
       "keyword": {
-        "color": "#d21559"
+        "color": "#832F68" /*pink*/
       }
     },
     {
-      "filter": "screenshot_3",
+      "filter": "MainScreen",
       "keyword": {
-        "color": "#aa4dbc"
+        "color": "#7C59BE" /*purple*/
       }
     },
     {
-      "filter": "screenshot_2",
+      "filter": "GigDetail",
       "keyword": {
-        "color": "#31bb48"
+        "color": "#1697A6" /*teal*/
+      }
+    },
+    {
+      "filter": "Settings",
+      "keyword": {
+        "color": "#3EB14F" /*green*/
+      }
+    },
+    {
+      "filter": "SavedGigs",
+      "keyword": {
+        "color": "#FC9626" /*orange*/
       }
     }
   ]

@@ -211,6 +211,7 @@
 		ACE5C5571C1F1F92000E769B /* TrackingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5C5561C1F1F92000E769B /* TrackingHelper.swift */; };
 		ACE5C5591C1F3C5C000E769B /* TestingWebServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5C5581C1F3C5C000E769B /* TestingWebServer.swift */; };
 		ACE5C55C1C1F3C7E000E769B /* SnapshotFixtures in Resources */ = {isa = PBXBuildFile; fileRef = ACE5C55B1C1F3C7E000E769B /* SnapshotFixtures */; };
+		ACE5C5601C1F61C7000E769B /* screenshots in Resources */ = {isa = PBXBuildFile; fileRef = ACE5C55F1C1F61C7000E769B /* screenshots */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -460,6 +461,7 @@
 		ACE5C5561C1F1F92000E769B /* TrackingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingHelper.swift; sourceTree = "<group>"; };
 		ACE5C5581C1F3C5C000E769B /* TestingWebServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingWebServer.swift; sourceTree = "<group>"; };
 		ACE5C55B1C1F3C7E000E769B /* SnapshotFixtures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SnapshotFixtures; sourceTree = "<group>"; };
+		ACE5C55F1C1F61C7000E769B /* screenshots */ = {isa = PBXFileReference; lastKnownFileType = folder; path = screenshots; sourceTree = SOURCE_ROOT; };
 		C915EA5015E9678BC9FC9C91 /* Pods-GigRadioUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GigRadioUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GigRadioUITests/Pods-GigRadioUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E4035E5EF0B9991ADB7B1C3B /* Pods_GigRadioUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GigRadioUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -676,6 +678,7 @@
 		AC82F3AD1C1B6453003E9551 /* GigRadioUITests */ = {
 			isa = PBXGroup;
 			children = (
+				ACE5C55F1C1F61C7000E769B /* screenshots */,
 				ACE5C55B1C1F3C7E000E769B /* SnapshotFixtures */,
 				ACE5C5581C1F3C5C000E769B /* TestingWebServer.swift */,
 				AC82F3B61C1B653A003E9551 /* SnapshotHelper.swift */,
@@ -1054,6 +1057,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACE5C5601C1F61C7000E769B /* screenshots in Resources */,
 				ACE5C55C1C1F3C7E000E769B /* SnapshotFixtures in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -5,7 +5,7 @@ devices([
   "iPhone 6",
   "iPhone 6 Plus",
   "iPhone 5",
-  # "iPhone 4s",
+  "iPhone 4s",
   "iPad Retina",
   # "iPad Pro"
 ])

@@ -65,7 +65,9 @@ class MainViewController: UIViewController, UICollectionViewDelegate, CLLocation
         LocationHelper.track { location, error in
             UIApplication.sharedApplication().networkActivityIndicatorVisible = true
             // this will be called whenever the user's location changes, as well as on startup.
-            self.playlist.setLocation(location)
+            if let location = location{
+                self.playlist.setLocation(location)
+            }
             self.playlist.fetchEvents {
                 self.setDateHeading(self.playlist.utcDate)
                 self.flyersController?.reload{

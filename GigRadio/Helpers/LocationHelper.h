@@ -10,5 +10,5 @@
 
 @import CoreLocation;
 @interface LocationHelper : NSObject
-+(void)track:(void(^)(CLLocation*location, NSError*error))completionHandler;
++(void)track:(void(^)(CLLocation*__nullable location, NSError*__nullable error))completionHandler;
 @end
